@@ -1,0 +1,12 @@
+cff-version: 1.2.0
+title: "Seeded Prime-Comb Dynamics and the Finite Harmonic Reduction of Primorial-Block Möbius Sums"
+message: "Please cite the accompanying paper and this formalization repository."
+type: software
+authors:
+  - family-names: Viole
+    given-names: Fred
+    affiliation: OVVO Labs
+version: 1.0.0
+date-released: 2026-07-30
+repository-code: "https://github.com/OVVO-Financial/prime-wheel-mobius"
+url: "https://github.com/OVVO-Financial/prime-wheel-mobius"
