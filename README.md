@@ -45,7 +45,7 @@ $$\sigma(n) = s\,\mu(n), \qquad B = s\,M(W).$$
 
 The default seed $s=-1$ has limit $-\mu$; `--seed +1` makes the primes alone land on $\mu$.
 
-### Endpoint alignment is a tautology
+### Endpoint alignment
 
 Every $n \le W$ has all of its prime factors $\le W$, so its $W$-rough part is $1$ and $\sigma(n) = s\mu(n)$ pointwise. Nothing about the distribution of the primes is used — the cutoff simply exceeds the block.
 
@@ -59,9 +59,11 @@ and fails at $x = q_1(y)^2$, the least integer carrying two $y$-rough prime fact
 
 The endpoints are pinned; the route between them is not, and the route is the object of interest. Each prime moves the signed sum by
 
-$$B_j = B_{j-1} - 2\,C_j,$$
+$$
+B_j = B_{j-1} - K_j - 2\,C_j ,
+$$
 
-where $C_j$ is the signed mass on that prime's flip channel before it acts. On $W_4 = 210$ with $s = -1$, so limit $B = +1$:
+where $K_j$ and $C_j$ are the signed masses carried by the kill and flip channels of the $j$-th prime immediately before it acts: whitened sites lose their mass outright, flipped sites reverse theirs. Once $p_j^2 > W$ the kill channel is empty and the update reduces to $B_j = B_{j-1} - 2C_j$; on $W_4 = 210$ that is every prime after $13$. With $s = -1$, so limit $B = +1$:
 
 | after prime | $B$ | distance to limit | sites agreeing |
 |---|---:|---:|---:|
@@ -99,7 +101,7 @@ The reconstruction settles neither, because the endpoint is pinned by a tautolog
 
 ## Bounding it for arbitrary $x$
 
-Take the cutoff $y$ free of $x$ and let $r_y(n) = n / s_y(n)$ be the rough part. With
+Fix the seed $s = -1$ and take the cutoff $y$ free of $x$. With $r_y(n) = n / s_y(n)$ the rough part and
 
 $$
 A_y(x) = \sum_{n \le x} \sigma_y(n),
