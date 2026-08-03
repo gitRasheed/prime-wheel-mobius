@@ -4,6 +4,9 @@ on:
   push:
     branches:
       - agent/rename-public-lean-modules
+  pull_request:
+    branches:
+      - main
 
 permissions:
   contents: write
@@ -33,7 +36,6 @@ jobs:
 
           python3 - <<'PY'
           from pathlib import Path
-          import re
           import subprocess
 
           old_to_new = {
