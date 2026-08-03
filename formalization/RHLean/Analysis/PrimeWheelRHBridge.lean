@@ -1,6 +1,6 @@
 import Mathlib.NumberTheory.LSeries.RiemannZeta
 import RHLean.Analysis.PrimeWheelHarmonicCriterion
-import RHLean.Analysis.SquarePrefixMertensBridge
+import RHLean.Analysis.MertensEnergyCriterion
 
 noncomputable section
 

@@ -1,7 +1,7 @@
 import RHLean.Analysis.PrimeWheelArithmeticSpectrum
 import RHLean.Analysis.PrimeWheelCompleteSpectrum
 import RHLean.Analysis.PrimeWheelConductorGram
-import RHLean.Analysis.PrimeWheelExplicitCriterion
+import RHLean.Analysis.PrimorialWheelExplicitCriterion
 import RHLean.Analysis.PrimorialWheelMertensTransfer
 
 noncomputable section

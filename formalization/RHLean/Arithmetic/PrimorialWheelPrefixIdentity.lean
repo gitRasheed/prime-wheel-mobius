@@ -1,6 +1,6 @@
 import Mathlib
 import RHLean.Arithmetic.PrimeWheelMobiusRecovery
-import RHLean.Analysis.SquarePrefixMertensBridge
+import RHLean.Analysis.MertensEnergyCriterion
 
 open scoped ArithmeticFunction.Moebius BigOperators
 

@@ -17,7 +17,7 @@ import RHLean.Analysis.PrimeWheelCompleteSpectrum
 import RHLean.Analysis.PrimeWheelHarmonicCriterion
 import RHLean.Analysis.PrimeWheelConductorGram
 import RHLean.Analysis.PrimeWheelDirichletResponse
-import RHLean.Analysis.PrimeWheelExplicitCriterion
+import RHLean.Analysis.PrimorialWheelExplicitCriterion
 import RHLean.Analysis.PrimeWheelRHBridge
 import RHLean.Analysis.PrimorialWheelMertensTransfer
 import RHLean.Analysis.PublicPrimeWheelReduction

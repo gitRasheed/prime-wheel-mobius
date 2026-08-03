@@ -34,14 +34,14 @@ The paper and numerical-path update was prepared from sandbox commit:
 - `RHLean/Analysis/PrimeWheelHarmonicCriterion.lean`
 - `RHLean/Analysis/PrimeWheelConductorGram.lean`
 - `RHLean/Analysis/PrimeWheelDirichletResponse.lean`
-- `RHLean/Analysis/PrimeWheelExplicitCriterion.lean`
+- `RHLean/Analysis/PrimorialWheelExplicitCriterion.lean`
 - `RHLean/Analysis/PrimorialWheelMertensTransfer.lean`
 
-## Public adapters
+## Public bridge foundations
 
-The export replaces two sandbox-coupled bridge modules with minimal public adapters at the same module paths:
+The public export uses role-specific module names rather than reusing sandbox-coupled internal paths whose names describe different theorem layers:
 
-- `RHLean/Analysis/SquarePrefixMertensBridge.lean` defines only the Mertens summatory function and squared growth criterion required by the exact reduction.
+- `RHLean/Analysis/MertensEnergyCriterion.lean` defines the Mertens summatory function and squared growth criterion required by the exact reduction.
 - `RHLean/Analysis/PrimeWheelRHBridge.lean` names Mathlib's `RiemannHypothesis` proposition and keeps the classical Mertens/RH theorem as an explicit argument.
 
 `RHLean/Analysis/PublicPrimeWheelReduction.lean` exposes the final public theorem without a caller-supplied primorial bridge.
@@ -49,7 +49,7 @@ The export replaces two sandbox-coupled bridge modules with minimal public adapt
 ## Paper provenance
 
 - Current manuscript: `paper/seeded_prime_comb_harmonic_reduction.tex`.
-- Manuscript SHA-256 at export assembly: `8f02277dd763774f1c4859c64c52157aa7a4323ffb4fc861b192ad3ab2617a72`.
+- Manuscript SHA-256 at export assembly: `dccf5c23465d93b9d8fb6ba08b3fa36893cd2c8ef81b53f1f2e43de1709d2e55`.
 - Public repository: `https://github.com/OVVO-Financial/prime-wheel-mobius`.
 - Section 7 links directly to `numerics/primorial_block_validation.py`.
 
