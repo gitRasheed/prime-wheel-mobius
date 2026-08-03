@@ -1,33 +1,30 @@
 #!/usr/bin/env python3
-"""Seeded prime-comb Moebius reconstruction over a complete wheel block.
+"""Prime-comb reconstruction of the Moebius function on 1,...,W.
 
-One continuous path, each prime used exactly once, and nothing after the last
-prime.
+The visualization uses the intended prime-candidate interpretation:
 
-    Frame 0        uniform seed J_0(n) = s, with s = -1 by default.
-    Frames 1..46   apply the square-sensitive local operator, one prime at a
-                   time, for every prime p <= W:
+    J_0(1) = +1,
+    J_0(n) = -1 for 2 <= n <= W.
 
-                       u_p(n) = 0   if p^2 | n        (kill channel)
-                               -1   if p || n         (flip channel)
-                                1   if p does not divide n,
+An untouched -1 means that no smaller prime has hit the site, so the site is
+still a prime candidate. A prime p never acts on itself. It acts only on proper
+multiples 2p, 3p, ... <= W:
 
-                   updating J <- J * u_p. White sites appear exactly when p^2 | n
-                   and are permanent, since zero is absorbing under a
-                   multiplicative operator. For W = 210 every white site is in
-                   place by p = 13, because 17^2 > 210, but the later primes keep
-                   acting on the surviving signs.
+* if p^2 divides n, kill the site permanently by setting it to 0;
+* on the first proper-prime hit, leave the initial -1 unchanged;
+* on every later distinct-prime hit, flip the surviving sign.
 
-Every n <= W is W-smooth, so after the last prime the state is exactly
+Therefore only primes p <= floor(W/2) can act. Every prime p > W/2 has no
+proper multiple inside the block and is exactly inert. After the final active
+prime, the state is exactly mu(n), and the signed sum is M(W).
 
-    sigma(n) = s * mu(s_W(n)) = s * mu(n),        B = s * M(W),
+For p > sqrt(W), no p^2-kill is possible. Writing K = floor(W/p), the proper
+multiples are kp for 2 <= k <= K and the exact tail identity is
 
-and the path ends there. With s = -1 the limit is -mu, the exact negative of the
-target; with --seed +1 it is mu itself. Either way the object on display is the
-prime-by-prime path B_j and its distance from that limit, which is what a bound
-has to control. Neither the signed sum nor the agreement count is monotone.
+    C_p = sum_{k=2}^K mu(k) = M(K) - 1,
+    Delta B_p = -2 C_p = 2(1 - M(K)).
 
-Diagnostic and expository only. Not a Lean certificate and not a proof.
+This program is diagnostic and expository. It is not a proof certificate.
 """
 
 from __future__ import annotations
@@ -53,7 +50,11 @@ from matplotlib.patches import Patch
 STEELBLUE = "#4682B4"
 WHITE = "#FFFFFF"
 CYAN = "#00FFFF"
-RED = "red"
+RED = "#D62728"
+ORANGE = "#FF8C00"
+BLACK = "#111111"
+DIVIDER = "#B0B0B0"
+PADDING = "#E6E6E6"
 
 
 # ---------------------------------------------------------------------------
@@ -75,7 +76,7 @@ def get_primes_upto(n: int) -> list[int]:
 
 
 def compute_mobius(limit: int) -> np.ndarray:
-    """Compute mu(1), ..., mu(limit) independently by a linear sieve."""
+    """Compute mu(1),...,mu(limit) independently by a linear sieve."""
     mu = np.zeros(limit + 1, dtype=int)
     mu[1] = 1
     primes: list[int] = []
@@ -99,6 +100,11 @@ def compute_mobius(limit: int) -> np.ndarray:
     return mu[1:]
 
 
+def mertens_prefix(mu_true: np.ndarray) -> np.ndarray:
+    """Return an array M with M[k] = sum_{n<=k} mu(n), including M[0]=0."""
+    return np.concatenate(([0], np.cumsum(mu_true, dtype=int)))
+
+
 # ---------------------------------------------------------------------------
 # Frame construction
 # ---------------------------------------------------------------------------
@@ -109,85 +115,154 @@ class Frame:
     state: np.ndarray
     phase: str
     prime: Optional[int]
+    first_hit: np.ndarray
     flipped: np.ndarray
+    killed: np.ndarray
     label: str
     title: str
     signed_sum: int
     agreement_mu: int
-    agreement_neg_mu: int
     white_count: int
-    killed_count: int
+    first_hit_count: int
     flipped_count: int
-    channel_mass_before: int
+    killed_count: int
+    flip_channel_mass_before: int
+    kill_channel_mass_before: int
     delta_signed_sum: int
+    tail_k: Optional[int]
+    tail_expected_channel: Optional[int]
 
 
-def build_frames(limit: int, mu_true: np.ndarray, seed: int) -> list[Frame]:
-    """Seed uniformly, then comb every prime p <= limit exactly once."""
+def build_frames(limit: int, mu_true: np.ndarray) -> tuple[list[Frame], list[int]]:
+    """Build the intended prime-candidate comb using only p <= floor(W/2)."""
     numbers = np.arange(1, limit + 1)
     empty = np.zeros(limit, dtype=bool)
+    M = mertens_prefix(mu_true)
 
-    def snapshot(state, phase, prime, flipped, label, title, **extra) -> Frame:
+    def snapshot(
+        state: np.ndarray,
+        phase: str,
+        prime: Optional[int],
+        first_hit: np.ndarray,
+        flipped: np.ndarray,
+        killed: np.ndarray,
+        label: str,
+        title: str,
+        **extra: int | None,
+    ) -> Frame:
         return Frame(
             state=state.copy(),
             phase=phase,
             prime=prime,
+            first_hit=first_hit.copy(),
             flipped=flipped.copy(),
+            killed=killed.copy(),
             label=label,
             title=title,
             signed_sum=int(state.sum()),
             agreement_mu=int(np.count_nonzero(state == mu_true)),
-            agreement_neg_mu=int(np.count_nonzero(state == -mu_true)),
             white_count=int(np.count_nonzero(state == 0)),
-            killed_count=extra.get("killed_count", 0),
+            first_hit_count=int(np.count_nonzero(first_hit)),
             flipped_count=int(np.count_nonzero(flipped)),
-            channel_mass_before=extra.get("channel_mass_before", 0),
-            delta_signed_sum=extra.get("delta_signed_sum", 0),
+            killed_count=int(np.count_nonzero(killed)),
+            flip_channel_mass_before=int(extra.get("flip_channel_mass_before", 0) or 0),
+            kill_channel_mass_before=int(extra.get("kill_channel_mass_before", 0) or 0),
+            delta_signed_sum=int(extra.get("delta_signed_sum", 0) or 0),
+            tail_k=extra.get("tail_k"),
+            tail_expected_channel=extra.get("tail_expected_channel"),
         )
 
-    state = np.full(limit, seed, dtype=int)
-    frames = [snapshot(state, "seed", None, empty, "seed",
-                       f"Seed: uniform J0(n) = {seed:+d}")]
+    # Prime-candidate seed: 1 is exceptional; every n >= 2 starts at -1.
+    state = np.full(limit, -1, dtype=int)
+    state[0] = 1
 
-    comb_primes = get_primes_upto(limit)
-    assert len(set(comb_primes)) == len(comb_primes), "a prime is only used once"
+    # hit[n-1] means that some proper prime divisor has already acted on n.
+    hit = np.zeros(limit, dtype=bool)
+    hit[0] = True
+
+    frames = [
+        snapshot(
+            state,
+            "seed",
+            None,
+            empty,
+            empty,
+            empty,
+            "seed",
+            "Prime-candidate seed: J0(1)=+1 and J0(n)=-1 for n>=2",
+        )
+    ]
+
+    active_bound = limit // 2
+    comb_primes = get_primes_upto(active_bound)
+    assert len(set(comb_primes)) == len(comb_primes), "a prime is used at most once"
 
     for p in comb_primes:
         alive = state != 0
-        kill = alive & (numbers % (p * p) == 0)
-        flip = alive & ~kill & (numbers % p == 0)
+        proper_multiple = (numbers >= 2 * p) & (numbers % p == 0)
+
+        # Square divisibility kills permanently. The first non-square proper hit
+        # identifies a composite but does not alter the initial -1. Only later
+        # distinct-prime hits flip the sign.
+        killed = alive & proper_multiple & (numbers % (p * p) == 0)
+        first_hit = alive & proper_multiple & ~hit & ~killed
+        flipped = alive & proper_multiple & hit & ~killed
 
         before = int(state.sum())
-        kill_mass = int(state[kill].sum())
-        flip_mass = int(state[flip].sum())
+        kill_mass = int(state[killed].sum())
+        flip_mass = int(state[flipped].sum())
 
-        state[kill] = 0
-        state[flip] *= -1
+        state[killed] = 0
+        state[flipped] *= -1
+        hit[proper_multiple] = True
 
         delta = int(state.sum()) - before
-        # Kills remove their mass outright; flips reverse theirs.
-        assert delta == -kill_mass - 2 * flip_mass, f"channel accounting failed at p={p}"
+        assert delta == -kill_mass - 2 * flip_mass, (
+            f"channel accounting failed at p={p}: "
+            f"delta={delta}, kill_mass={kill_mass}, flip_mass={flip_mass}"
+        )
+
+        tail_k: Optional[int] = None
+        tail_expected_channel: Optional[int] = None
+        if p > math.isqrt(limit):
+            tail_k = limit // p
+            tail_expected_channel = int(M[tail_k] - 1)
+            assert not np.any(killed), f"p={p}>sqrt(W) unexpectedly killed a site"
+            assert flip_mass == tail_expected_channel, (
+                f"tail identity failed at p={p}: C_p={flip_mass}, "
+                f"M(floor(W/p))-1={tail_expected_channel}"
+            )
+            assert delta == -2 * tail_expected_channel
 
         frames.append(
             snapshot(
                 state,
                 "comb",
                 p,
-                flip,
+                first_hit,
+                flipped,
+                killed,
                 str(p),
-                f"Prime comb p = {p}: kill p^2 | n, flip p || n",
-                killed_count=int(np.count_nonzero(kill)),
-                channel_mass_before=flip_mass,
+                f"Active prime p={p}: proper multiples only (2p,3p,...<=W)",
+                flip_channel_mass_before=flip_mass,
+                kill_channel_mass_before=kill_mass,
                 delta_signed_sum=delta,
+                tail_k=tail_k,
+                tail_expected_channel=tail_expected_channel,
             )
         )
 
-    # After every prime has acted once the state is exactly seed * mu.
-    assert np.array_equal(state, seed * mu_true), "comb path did not land on seed * mu"
+    # Exact endpoint and structural invariants.
+    assert np.array_equal(state, mu_true), "comb path did not land exactly on mu"
+
+    all_primes = get_primes_upto(limit)
+    inert_primes = [p for p in all_primes if p > active_bound]
+    for p in inert_primes:
+        assert state[p - 1] == -1 == mu_true[p - 1]
 
     expected = 1 + len(comb_primes)
-    assert len(frames) == expected, f"expected {expected} frames, built {len(frames)}"
-    return frames
+    assert len(frames) == expected
+    return frames, inert_primes
 
 
 # ---------------------------------------------------------------------------
@@ -225,8 +300,10 @@ def combine_grids(left: np.ndarray, right: np.ndarray, gap: int = 2) -> np.ndarr
 # ---------------------------------------------------------------------------
 
 
-def write_metrics_csv(frames: list[Frame], target_sum: int, seed: int, path: Path) -> None:
-    """Write the entire path for independent inspection."""
+def write_metrics_csv(
+    frames: list[Frame], target_sum: int, active_bound: int, path: Path
+) -> None:
+    """Write the complete active-prime path for independent inspection."""
     with path.open("w", newline="", encoding="utf-8") as handle:
         writer = csv.writer(handle)
         writer.writerow(
@@ -234,16 +311,20 @@ def write_metrics_csv(frames: list[Frame], target_sum: int, seed: int, path: Pat
                 "frame",
                 "phase",
                 "prime",
+                "active_prime_bound_floor_W_over_2",
                 "signed_sum",
-                "target_MX",
-                "limit_sum",
-                "distance_to_limit",
-                "agreement_with_limit",
+                "target_MW",
+                "distance_to_MW",
+                "agreement_with_mu",
                 "white_count",
-                "killed_sites",
+                "first_hit_sites",
                 "flipped_sites",
+                "killed_sites",
                 "flip_channel_mass_before",
+                "kill_channel_mass_before",
                 "delta_signed_sum",
+                "tail_K_floor_W_over_p",
+                "tail_expected_Cp_MK_minus_1",
             ]
         )
         for index, frame in enumerate(frames):
@@ -252,16 +333,20 @@ def write_metrics_csv(frames: list[Frame], target_sum: int, seed: int, path: Pat
                     index,
                     frame.phase,
                     "" if frame.prime is None else frame.prime,
+                    active_bound,
                     frame.signed_sum,
                     target_sum,
-                    seed * target_sum,
-                    abs(frame.signed_sum - seed * target_sum),
-                    frame.agreement_neg_mu if seed == -1 else frame.agreement_mu,
+                    abs(frame.signed_sum - target_sum),
+                    frame.agreement_mu,
                     frame.white_count,
-                    frame.killed_count,
+                    frame.first_hit_count,
                     frame.flipped_count,
-                    frame.channel_mass_before,
+                    frame.killed_count,
+                    frame.flip_channel_mass_before,
+                    frame.kill_channel_mass_before,
                     frame.delta_signed_sum,
+                    "" if frame.tail_k is None else frame.tail_k,
+                    "" if frame.tail_expected_channel is None else frame.tail_expected_channel,
                 ]
             )
 
@@ -270,36 +355,46 @@ def render_outputs(
     limit: int,
     grid_width: int,
     frames: list[Frame],
+    inert_primes: list[int],
     mu_true: np.ndarray,
     output_dir: Path,
     fps: int,
     dpi: int,
     hold_seconds: float,
-    seed: int,
 ) -> tuple[Path, Path, Path, Path]:
     output_dir.mkdir(parents=True, exist_ok=True)
 
-    gif_path = output_dir / f"prime_comb_mobius_W{limit}.gif"
-    final_png_path = output_dir / f"prime_comb_mobius_W{limit}_final.png"
-    path_png_path = output_dir / f"prime_comb_mobius_W{limit}_path.png"
-    csv_path = output_dir / f"prime_comb_mobius_W{limit}_metrics.csv"
+    gif_path = output_dir / f"prime_comb_mobius_W{limit}_fixed.gif"
+    final_png_path = output_dir / f"prime_comb_mobius_W{limit}_fixed_final.png"
+    path_png_path = output_dir / f"prime_comb_mobius_W{limit}_fixed_path.png"
+    csv_path = output_dir / f"prime_comb_mobius_W{limit}_fixed_metrics.csv"
 
+    active_bound = limit // 2
     target_sum = int(mu_true.sum())
-    limit_sum = seed * target_sum
-    limit_name = 'mu' if seed == 1 else '-mu'
-    write_metrics_csv(frames, target_sum, seed, csv_path)
+    write_metrics_csv(frames, target_sum, active_bound, csv_path)
 
     true_grid = padded_grid(mu_true, grid_width)
     gap = 2
 
     cmap = ListedColormap([STEELBLUE, WHITE, CYAN])
-    cmap.set_bad("#E6E6E6")
+    cmap.set_bad(PADDING)
     norm = plt.Normalize(-1.5, 1.5)
 
     legend_handles = [
-        Patch(facecolor=STEELBLUE, edgecolor="black", label="-1"),
-        Patch(facecolor=WHITE, edgecolor="black", label="0 (square factor)"),
-        Patch(facecolor=CYAN, edgecolor="black", label="+1"),
+        Patch(facecolor=STEELBLUE, edgecolor=BLACK, label="-1"),
+        Patch(facecolor=WHITE, edgecolor=BLACK, label="0 (square factor)"),
+        Patch(facecolor=CYAN, edgecolor=BLACK, label="+1"),
+        Line2D(
+            [0],
+            [0],
+            marker="s",
+            linestyle="none",
+            markerfacecolor="none",
+            markeredgecolor=ORANGE,
+            markeredgewidth=1.8,
+            markersize=8,
+            label="First proper-prime hit (no sign change)",
+        ),
         Line2D(
             [0],
             [0],
@@ -307,42 +402,66 @@ def render_outputs(
             linestyle="none",
             markerfacecolor="none",
             markeredgecolor=RED,
-            markeredgewidth=2,
+            markeredgewidth=1.8,
             markersize=8,
-            label="Sites flipped by the current prime",
+            label="Later distinct-prime hit (sign flip)",
+        ),
+        Line2D(
+            [0],
+            [0],
+            marker="x",
+            linestyle="none",
+            color=BLACK,
+            markeredgewidth=1.8,
+            markersize=8,
+            label="Square-factor kill",
         ),
     ]
 
     labels = [f.label for f in frames]
     sums = np.array([f.signed_sum for f in frames], dtype=int)
-    agree_mu = np.array([f.agreement_mu for f in frames], dtype=int)
-    agree_limit = np.array(
-        [f.agreement_neg_mu if seed == -1 else f.agreement_mu for f in frames], dtype=int
-    )
+    agreements = np.array([f.agreement_mu for f in frames], dtype=int)
+    distances = np.abs(sums - target_sum)
     count = len(frames)
 
-    sum_low = min(int(sums.min()), limit_sum)
-    sum_high = max(int(sums.max()), limit_sum)
+    sum_low = min(int(sums.min()), target_sum)
+    sum_high = max(int(sums.max()), target_sum)
     span = max(sum_high - sum_low, 1)
-    agree_high = max(int(agree_limit.max()), int(np.abs(sums - limit_sum).max()))
+    metric_high = max(int(agreements.max()), int(distances.max()), 1)
 
     stride = max(1, count // 12)
     last = count - 1
     ticks = [i for i in range(0, count, stride) if last - i >= stride]
     ticks.append(last)
 
-    fig = plt.figure(figsize=(16, 10.5))
+    fig = plt.figure(figsize=(16, 10.8))
     fig.set_dpi(dpi)
-    gs = fig.add_gridspec(2, 2, height_ratios=[3.2, 1.35], hspace=0.62, wspace=0.22)
+    gs = fig.add_gridspec(2, 2, height_ratios=[3.25, 1.35], hspace=0.64, wspace=0.22)
     ax_grid = fig.add_subplot(gs[0, :])
     ax_sum = fig.add_subplot(gs[1, 0])
     ax_agree = fig.add_subplot(gs[1, 1])
     footer = fig.text(0.5, 0.012, "", ha="center", va="bottom", fontsize=10, color="#333333")
 
+    def overlay_mask(axis, mask: np.ndarray, marker: str, color: str, size: float) -> None:
+        if not np.any(mask):
+            return
+        rows, cols = np.where(padded_mask(mask, grid_width))
+        if marker == "x":
+            axis.scatter(cols, rows, marker=marker, s=size, color=color, linewidths=1.6)
+        else:
+            axis.scatter(
+                cols,
+                rows,
+                marker=marker,
+                s=size,
+                facecolors="none",
+                edgecolors=color,
+                linewidths=1.7,
+            )
+
     def draw_grid(frame: Frame) -> None:
         ax_grid.clear()
         combined = combine_grids(padded_grid(frame.state, grid_width), true_grid, gap=gap)
-
         ax_grid.imshow(
             np.ma.masked_invalid(combined),
             cmap=cmap,
@@ -351,25 +470,17 @@ def render_outputs(
             aspect="equal",
         )
 
-        if frame.flipped_count:
-            rows, cols = np.where(padded_mask(frame.flipped, grid_width))
-            ax_grid.scatter(
-                cols,
-                rows,
-                marker="o",
-                s=48,
-                facecolors="none",
-                edgecolors=RED,
-                linewidths=1.8,
-            )
+        overlay_mask(ax_grid, frame.first_hit, "s", ORANGE, 50)
+        overlay_mask(ax_grid, frame.flipped, "o", RED, 50)
+        overlay_mask(ax_grid, frame.killed, "x", BLACK, 46)
 
-        ax_grid.axvline(grid_width + (gap - 1) / 2, linewidth=1.5)
+        ax_grid.axvline(grid_width + (gap - 1) / 2, linewidth=1.5, color=DIVIDER)
         ax_grid.axis("off")
 
         ax_grid.text(
             0.24,
             -0.035,
-            "Seeded prime-comb state",
+            "Prime-candidate comb state",
             transform=ax_grid.transAxes,
             ha="center",
             va="top",
@@ -389,54 +500,62 @@ def render_outputs(
 
         if frame.phase == "comb":
             operation_line = (
-                f"killed={frame.killed_count}, flipped={frame.flipped_count}, "
-                f"C_p before flip={frame.channel_mass_before:+d}, "
+                f"first hits={frame.first_hit_count}, flips={frame.flipped_count}, "
+                f"kills={frame.killed_count}, C_p={frame.flip_channel_mass_before:+d}, "
                 f"Delta B={frame.delta_signed_sum:+d}"
             )
+            if frame.tail_k is not None:
+                operation_line += (
+                    f"; tail check: K=floor(W/p)={frame.tail_k}, "
+                    f"C_p=M(K)-1={frame.tail_expected_channel:+d}"
+                )
         else:
-            operation_line = f"uniform seed on all {limit} sites; no prime has acted yet"
+            operation_line = (
+                "untouched -1 means prime candidate; primes never hit themselves"
+            )
 
         ax_grid.set_title(
             f"{frame.title}\n"
-            f"B={frame.signed_sum:+d}, limit {limit_name} has B={limit_sum:+d}, "
-            f"|B-limit|={abs(frame.signed_sum - limit_sum)}, "
-            f"agreement with {limit_name}="
-            f"{frame.agreement_neg_mu if seed == -1 else frame.agreement_mu}/{limit}\n"
+            f"Only primes p <= floor(W/2)={active_bound} are active; "
+            f"{len(inert_primes)} primes above W/2 are inert\n"
+            f"B={frame.signed_sum:+d}, M({limit})={target_sum:+d}, "
+            f"|B-M(W)|={abs(frame.signed_sum-target_sum)}, "
+            f"agreement with mu={frame.agreement_mu}/{limit}\n"
             f"{operation_line}",
-            fontsize=13.5,
+            fontsize=12.8,
             pad=18,
         )
         ax_grid.legend(
             handles=legend_handles,
             loc="upper center",
             bbox_to_anchor=(0.5, -0.13),
-            ncol=4,
+            ncol=3,
             frameon=True,
-            fontsize=9.5,
+            fontsize=8.8,
             handlelength=1.4,
-            columnspacing=1.4,
+            columnspacing=1.25,
         )
 
     def style_axis(axis) -> None:
         axis.set_xlim(-0.6, count - 0.4)
         axis.set_xticks(ticks)
         axis.set_xticklabels([labels[i] for i in ticks], rotation=45, ha="right")
-        axis.set_xlabel("Prime just applied")
+        axis.set_xlabel("Active prime just applied")
         axis.grid(True, alpha=0.25)
 
     def draw_paths(index: int) -> None:
         x = np.arange(index + 1)
 
         ax_sum.clear()
-        ax_sum.plot(x, sums[: index + 1], marker="o", markersize=3, color="#1f5fa8")
+        ax_sum.plot(x, sums[: index + 1], marker="o", markersize=3, color="#1F5FA8")
         ax_sum.axhline(
-            limit_sum,
+            target_sum,
             linestyle="--",
             linewidth=1.3,
-            color="#c0392b",
-            label=f"limit: B = {limit_sum:+d}",
+            color="#C0392B",
+            label=f"target M({limit})={target_sum:+d}",
         )
-        ax_sum.set_title("Signed sum along the prime path")
+        ax_sum.set_title("Signed sum along the active-prime path")
         ax_sum.set_ylabel("B")
         ax_sum.set_ylim(sum_low - 0.08 * span, sum_high + 0.34 * span)
         style_axis(ax_sum)
@@ -445,23 +564,23 @@ def render_outputs(
         ax_agree.clear()
         ax_agree.plot(
             x,
-            agree_limit[: index + 1],
+            agreements[: index + 1],
             marker="o",
             markersize=3,
-            color="#2e8b57",
-            label=f"agreement with {limit_name}",
+            color="#2E8B57",
+            label="agreement with mu",
         )
         ax_agree.plot(
             x,
-            np.abs(sums[: index + 1] - limit_sum),
+            distances[: index + 1],
             marker=".",
             markersize=3,
-            color="#c0392b",
-            label="|B - limit|",
+            color="#C0392B",
+            label="|B-M(W)|",
         )
-        ax_agree.set_title("No monotonicity is assumed")
+        ax_agree.set_title("Exact endpoint; no monotonicity assumed")
         ax_agree.set_ylabel("Count / distance")
-        ax_agree.set_ylim(-0.04 * agree_high, 1.30 * agree_high)
+        ax_agree.set_ylim(-0.04 * metric_high, 1.30 * metric_high)
         style_axis(ax_agree)
         ax_agree.legend(loc="upper left", fontsize=8.5, framealpha=0.9)
 
@@ -469,20 +588,14 @@ def render_outputs(
         frame = frames[index]
         draw_grid(frame)
         draw_paths(index)
-        phase_name = {
-            "seed": "seed",
-            "comb": "prime comb",
-        }[frame.phase]
         current = "-" if frame.prime is None else str(frame.prime)
         footer.set_text(
-            f"phase = {phase_name}   |   white sites = {frame.white_count}   |   "
-            f"current prime = {current}   |   killed = {frame.killed_count}   |   "
-            f"flipped = {frame.flipped_count}"
+            f"phase={frame.phase} | active prime={current} | whites={frame.white_count} | "
+            f"first hits={frame.first_hit_count} | flips={frame.flipped_count} | "
+            f"kills={frame.killed_count}"
         )
         return []
 
-    # Hold the exact final frame by repeating it: PillowWriter has one duration
-    # for every frame, so the dwell has to come from repeated indices.
     hold_repeats = max(1, round(hold_seconds * fps))
     sequence = list(range(len(frames))) + [len(frames) - 1] * (hold_repeats - 1)
 
@@ -497,9 +610,9 @@ def render_outputs(
     ani.save(gif_path, writer=animation.PillowWriter(fps=fps))
     plt.close(fig)
 
-    # Final exact state.
+    # Final exact-state comparison.
     final = frames[-1]
-    fig_final, ax_final = plt.subplots(figsize=(15, 7.8))
+    fig_final, ax_final = plt.subplots(figsize=(15, 8.4))
     ax_final.imshow(
         np.ma.masked_invalid(
             combine_grids(padded_grid(final.state, grid_width), true_grid, gap=gap)
@@ -509,17 +622,19 @@ def render_outputs(
         interpolation="none",
         aspect="equal",
     )
-    ax_final.axvline(grid_width + (gap - 1) / 2, linewidth=1.5)
+    ax_final.axvline(grid_width + (gap - 1) / 2, linewidth=1.5, color=DIVIDER)
     ax_final.axis("off")
     ax_final.set_title(
-        f"After every prime p <= {limit} has acted once: the state is exactly "
-        f"{limit_name}(n)\n"
-        f"agreement={agree_limit[-1]}/{limit}, B={final.signed_sum:+d} = "
-        f"{'' if seed == 1 else '-'}M({limit})",
+        f"Exact endpoint after active primes p <= floor({limit}/2)={active_bound}\n"
+        f"The state is mu(n): agreement={final.agreement_mu}/{limit}, "
+        f"B={final.signed_sum:+d}=M({limit}); primes p>{active_bound} are inert",
         fontsize=15,
         pad=18,
     )
-    for x_pos, text in ((0.24, "Seeded prime-comb state"), (0.76, "Exact Moebius mu(n)")):
+    for x_pos, text in (
+        (0.24, "Prime-candidate comb state"),
+        (0.76, "Exact Moebius mu(n)"),
+    ):
         ax_final.text(
             x_pos,
             -0.035,
@@ -542,31 +657,41 @@ def render_outputs(
     plt.close(fig_final)
 
     # Static path diagnostic.
-    fig_path, axes = plt.subplots(2, 1, figsize=(13, 8), sharex=True)
+    fig_path, axes = plt.subplots(2, 1, figsize=(13, 8.5), sharex=True)
     x_all = np.arange(count)
-    axes[0].plot(x_all, sums, marker="o", markersize=3, color="#1f5fa8")
+    axes[0].plot(x_all, sums, marker="o", markersize=3, color="#1F5FA8")
     axes[0].axhline(
-        limit_sum,
+        target_sum,
         linestyle="--",
         linewidth=1.3,
-        color="#c0392b",
-        label=f"limit: B = {limit_sum:+d}",
+        color="#C0392B",
+        label=f"M({limit})={target_sum:+d}",
     )
     axes[0].set_ylabel("Signed sum B")
-    axes[0].set_title("Seeded prime-comb path: exact endpoint, non-monotone route")
+    axes[0].set_title(
+        f"Corrected prime-candidate comb: only p <= floor(W/2)={active_bound} act"
+    )
     axes[0].grid(True, alpha=0.25)
     axes[0].legend(loc="best")
 
     axes[1].plot(
-        x_all, agree_limit, marker="o", markersize=3, color="#2e8b57",
-        label=f"agreement with {limit_name}"
+        x_all,
+        agreements,
+        marker="o",
+        markersize=3,
+        color="#2E8B57",
+        label="agreement with mu",
     )
     axes[1].plot(
-        x_all, np.abs(sums - limit_sum), marker=".", markersize=3, color="#c0392b",
-        label="|B - limit|"
+        x_all,
+        distances,
+        marker=".",
+        markersize=3,
+        color="#C0392B",
+        label="|B-M(W)|",
     )
     axes[1].set_ylabel("Count / distance")
-    axes[1].set_xlabel("Prime just applied")
+    axes[1].set_xlabel("Active prime just applied")
     axes[1].grid(True, alpha=0.25)
     axes[1].legend(loc="best")
 
@@ -590,23 +715,16 @@ def render_outputs(
 def parse_args() -> argparse.Namespace:
     parser = argparse.ArgumentParser(
         description=(
-            "Animate the seeded prime-comb reconstruction of mu over a complete "
-            "wheel block: uniform seed, then every prime exactly once."
+            "Animate the corrected prime-candidate comb for mu(1),...,mu(W), "
+            "using only active primes p <= floor(W/2)."
         )
     )
-    parser.add_argument("--limit", type=int, default=210, help="Wheel block W (default: 210).")
+    parser.add_argument("--limit", type=int, default=210, help="Block endpoint W (default: 210).")
     parser.add_argument(
         "--grid-width", type=int, default=15, help="Cells per grid row (default: 15)."
     )
     parser.add_argument("--fps", type=int, default=2, help="GIF frames per second (default: 2).")
     parser.add_argument("--dpi", type=int, default=80, help="GIF render dpi (default: 80).")
-    parser.add_argument(
-        "--seed",
-        type=int,
-        choices=(-1, 1),
-        default=-1,
-        help="Uniform seed value. -1 (default) ends at -mu; +1 ends at mu.",
-    )
     parser.add_argument(
         "--hold-seconds",
         type=float,
@@ -621,8 +739,8 @@ def parse_args() -> argparse.Namespace:
     )
     args = parser.parse_args()
 
-    if args.limit < 4:
-        parser.error("--limit must be at least 4")
+    if args.limit < 2:
+        parser.error("--limit must be at least 2")
     if args.grid_width < 1:
         parser.error("--grid-width must be at least 1")
     if args.fps < 1:
@@ -637,50 +755,52 @@ def parse_args() -> argparse.Namespace:
 def main() -> None:
     args = parse_args()
     mu_true = compute_mobius(args.limit)
-    frames = build_frames(args.limit, mu_true, args.seed)
+    frames, inert_primes = build_frames(args.limit, mu_true)
 
     gif_path, final_png_path, path_png_path, csv_path = render_outputs(
         limit=args.limit,
         grid_width=args.grid_width,
         frames=frames,
+        inert_primes=inert_primes,
         mu_true=mu_true,
         output_dir=args.output_dir,
         fps=args.fps,
         dpi=args.dpi,
         hold_seconds=args.hold_seconds,
-        seed=args.seed,
     )
 
     target_sum = int(mu_true.sum())
-    limit_sum = args.seed * target_sum
-    comb = [f for f in frames if f.phase == "comb"]
-    sums = [f.signed_sum for f in comb]
+    active = [f for f in frames if f.phase == "comb"]
+    active_primes = [f.prime for f in active]
+    sums = [f.signed_sum for f in active]
+    distances = [abs(value - target_sum) for value in sums]
     monotone = all(a <= b for a, b in zip(sums, sums[1:])) or all(
         a >= b for a, b in zip(sums, sums[1:])
     )
-    distances = [abs(value - limit_sum) for value in sums]
-    last_white = next(f.prime for f in reversed(comb) if f.killed_count)
-    hold_repeats = max(1, round(args.hold_seconds * args.fps))
-    final_agreement = (
-        frames[-1].agreement_neg_mu if args.seed == -1 else frames[-1].agreement_mu
-    )
+    killing_frames = [f for f in active if f.killed_count]
+    last_white = killing_frames[-1].prime if killing_frames else None
+    tail_frames = [f for f in active if f.tail_k is not None]
+    tail_delta = sum(f.delta_signed_sum for f in tail_frames)
 
     print("Generated files:")
     for path in (gif_path, final_png_path, path_png_path, csv_path):
         print(f"  {path}")
     print()
-    print(f"Frames: {len(frames)}  (1 seed + {len(comb)} primes, each used once)")
-    print(f"  GIF holds the final frame {hold_repeats / args.fps:.1f}s")
-    print(f"White (square-factor) sites : {frames[-1].white_count}")
-    print(f"Squarefree support          : {args.limit - frames[-1].white_count}")
-    print(f"Last prime to create white  : {last_white}")
+    print(f"Block W                       : {args.limit}")
+    print(f"Active prime bound floor(W/2): {args.limit // 2}")
+    print(f"Active primes                 : {len(active_primes)}")
+    print(f"Last active prime             : {active_primes[-1] if active_primes else None}")
+    print(f"Inert primes above W/2        : {len(inert_primes)}")
+    print(f"First/last inert prime        : "
+          f"{(inert_primes[0], inert_primes[-1]) if inert_primes else None}")
+    print(f"Last prime to create white    : {last_white}")
     print()
-    print(f"State after the last prime  : {'mu' if args.seed == 1 else '-mu'}, "
-          f"agreement {final_agreement}/{args.limit}")
-    print(f"  B = {frames[-1].signed_sum:+d}   (limit {limit_sum:+d})")
-    print()
-    print(f"Max |B - limit| along the path : {max(distances)}")
-    print(f"Signed-sum path monotone       : {monotone}")
+    print(f"Exact endpoint agreement      : {frames[-1].agreement_mu}/{args.limit}")
+    print(f"Final B                       : {frames[-1].signed_sum:+d}")
+    print(f"M(W)                          : {target_sum:+d}")
+    print(f"Tail delta for sqrt(W)<p<=W/2 : {tail_delta:+d}")
+    print(f"Max |B-M(W)| on active path   : {max(distances) if distances else 0}")
+    print(f"Signed-sum path monotone      : {monotone}")
 
 
 if __name__ == "__main__":
