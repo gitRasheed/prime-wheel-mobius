@@ -7,17 +7,14 @@ ML campaigns, adversarial cross-model review, and live trial installs; the
 receipts for every transferred rule live in that repo's `RATIONALE.md`, cited
 here as `(source R<n>)`. Nothing in this file assumes a particular theorem, a
 particular proof assistant beyond "one exists and has a kernel", or a
-particular subject area. Every unusual rule exists because something specific
-went wrong somewhere; where the failure was observed in the empirical domain
-and transfers by analogy, the citation says so.
+particular subject area.
 
 **The one failure mode this OS exists to prevent, named up front:** an agent
 claiming a proof that does not compile, or that compiles with a hidden
 `sorry`, `admit`, added axiom, or opaque constant standing in for the
 mathematics. This is the exact analogue of leaderboard self-deception in the
-source domain — the motivated-reasoning pressure is identical, the
-paper-trail discipline that defeats it is identical, and every rule below
-about frozen declarations, typed records and separated review rights is
+source domain — the motivated-reasoning pressure is identical, and every rule
+below about frozen declarations, typed records and separated review rights is
 aimed at it. A claimed theorem is **UNVERIFIED** until the kernel has checked
 it, whoever claims it and however plausible the sketch.
 
@@ -68,7 +65,7 @@ because "we did not check" is not `false` (source R4). Where two source
 documents disagree — two papers, a paper and its formalization, a
 collaborator's statement and the repository — the fact is recorded
 **CONFLICTED** with a resolution owner, never silently resolved by picking
-the convenient reading (source R22). And one state this domain adds:
+the convenient reading (source R22). One state this domain adds:
 **UNVERIFIED** — a mathematical claim made by any agent or human that the
 kernel has not checked and no reviewer has confirmed. UNVERIFIED claims may
 seed the tree; they may never promote, close, or release.
@@ -82,11 +79,10 @@ ledger as of this revision: ~7 generation families (attack tree, literature
 analogue search, blind panel, protected exploration, reference-grade
 formalization effort, retention/recombination of partial results,
 known-unknown reopening) against ~11 rejection/control families. The gap is
-recorded, not hidden — control families are mostly one-line contracts while
-generation is where effort actually goes — but an edit that widens the gap
-must add generation machinery first. In proof search the asymmetry bites
-harder than in ML: a failed attempt produces no gradient, so the only
-renewable resource is the tree.
+recorded, not hidden, but an edit that widens it must add generation
+machinery first. In proof search the asymmetry bites harder than in ML: a
+failed attempt produces no gradient, so the only renewable resource is the
+tree.
 
 ## The laws
 
@@ -95,14 +91,12 @@ angles, must avoid fooling itself about what has actually been proved, and
 must carry a promising sketch all the way to a kernel-checked formal proof.
 The third job is the one most often lost: an informal argument that is
 "basically done" and never formalized is worth exactly nothing to the
-program's stated goal, and the gap between "the idea works" and "the kernel
-accepts it" is where entire lemma stacks die. Left alone, an agent searches
-one basin exhaustively with beautiful rigour and misses the reformulation
-that makes the problem tractable (source R2). And incentives select
-behaviour more reliably than rules constrain it — a campaign that rewarded
-fast auditable closure produced 41 closures in nine hours, none reviewed
-(source R3). When you add a rule, ask what an agent optimising the resulting
-accounting surface does.
+program's stated goal. Left alone, an agent searches one basin exhaustively
+with beautiful rigour and misses the reformulation that makes the problem
+tractable (source R2). And incentives select behaviour more reliably than
+rules constrain it — a campaign that rewarded fast auditable closure
+produced 41 closures in nine hours, none reviewed (source R3). When you add
+a rule, ask what an agent optimising the resulting accounting surface does.
 
 **2 — The journal.** `JOURNAL.md` is untouchable: one per project,
 agent-written, comprehensive — a bounded mutable live block at the top
@@ -132,8 +126,7 @@ re-verification of an old proof under a new toolchain is a `diagnostic`
 whose failure triggers a review (law 5). Untyped work goes invisible, and
 the one fabricated score in the source campaigns propagated from exactly
 such an untracked tier (source R4). Relabelling after seeing the outcome is
-the escape hatch this rule welds shut, and the commit timestamps are what
-make the weld hold.
+the escape hatch this rule welds shut; commit timestamps make the weld hold.
 
 **4 — Two gates, two jobs.** `promotion_gate` is frozen **by the launch
 commit** and never edited: it binds what a result may promote, and it stops
@@ -175,39 +168,36 @@ source file; an uncited declaration is `[assumed]` and flagged. Add the
 mathematical literature's *established* results to the same standard: a
 known theorem is cited, not rediscovered, and a known **barrier** (a
 parity-type obstruction, a known limit of a technique class) is a declared
-fact an attack must address, not an unpleasant surprise to be re-derived
-mid-attempt. Contradictions are recorded CONFLICTED with a resolution owner.
-This is a standing watch, not a day-0 event: a new paper version, a new
-sibling repo, or an upstream mathlib change touching used lemmas is a review
-event.
+fact an attack must address, not a surprise to be re-derived mid-attempt.
+Contradictions are recorded CONFLICTED with a resolution owner. This is a
+standing watch, not a day-0 event: a new paper version, a new sibling repo,
+or an upstream change touching used lemmas is a review event.
 
 **7 — Channels carry declared, scoped authority.** This program runs four
 evaluation channels, each declaring in `AGENTS.md`, per predicate it bears
 on, a policy object — `may_promote`, `promotion_rule`, `may_close`,
 `closure_rule`, `rationale`:
 
-- **kernel** — the only channel with `may_promote: true`, under law 5. It may
-  also close: a `sorry`-free disproof of a candidate lemma is a closure of
-  the strongest kind.
+- **kernel** — the only channel with `may_promote: true`, under law 5. It
+  may also close: a kernel-checked disproof of a candidate lemma is a
+  closure of the strongest kind.
 - **numerics** — `may_promote: false`, always and unconditionally. It may
   **close** conjectured auxiliary statements: an exact counterexample closes
   a universally-quantified candidate outright; a falsified asymptotic
   (measured growth incompatible with the conjectured bound over a declared
   range) closes at `implementation` strength only, because finite-range
-  behaviour of arithmetic sums is a known liar — the constant-one Mertens
-  conjecture looked flat for decades before Odlyzko–te Riele. Every numeric
-  read declares its precision, its range, and its arithmetic model (exact
-  integer vs floating point) `[invariant]`; a float-derived "counterexample"
-  to an exact statement is UNVERIFIED until reproduced exactly.
-- **informal argument** (paper drafts, sketches, agent chains of reasoning) —
+  behaviour of arithmetic quantities is a known liar. Every numeric read
+  declares its precision, range, and arithmetic model (exact integer vs
+  floating point) `[invariant]`; a float-derived "counterexample" to an
+  exact statement is UNVERIFIED until reproduced exactly.
+- **informal argument** (paper drafts, sketches, agent reasoning chains) —
   generates candidates and decompositions; promotes nothing, closes nothing.
   Its output enters the record as UNVERIFIED and stays so until the kernel
   or a reviewer confirms each load-bearing step.
 - **literature** — the analogue shelf for the target statement: known
-  technique families, their canonical forms, and their known failure modes.
-  It promotes nothing; it may close a node only by producing a *cited,
-  checked* impossibility or barrier result whose applicability a reviewer
-  confirms.
+  technique families, their canonical forms, their known failure modes. It
+  promotes nothing; it may close a node only by producing a *cited, checked*
+  impossibility or barrier result whose applicability a reviewer confirms.
 
 The source OS's `generalisation_design` object — observation unit,
 resampling unit, effective n, leakage keys, uncertainty protocol — is
@@ -224,7 +214,7 @@ at \<budget\>* — the narrowest claim the evidence supports. The two live
 types, sharpened for proof search:
 
 - **`implementation`** — "this tactic, this formalization route, this
-  estimate chain failed here." Reopens on a stated condition (a new mathlib
+  estimate chain failed here." Reopens on a stated condition (a new library
   lemma, a stronger intermediate bound, more budget). This is the default
   verdict for every failed attempt, however discouraging the failure felt.
 - **`class`** — "this approach cannot work, for a stated reason." The reason
@@ -262,11 +252,10 @@ the target.** The proof-search analogue of the ceiling estimate is the
 special case, an added hypothesis) and what known barrier blocks the
 stronger form. Maintain the ladder explicitly in `IDEAS.md`: the weakest
 statement whose proof would still be progress, the target, and the stronger
-statements known to be out of reach, each with its status. The
-weakest-rung result is this domain's trivial entrant: a machinery that
-demonstrably closes end-to-end at lower strength (the same decomposition
-yielding a classical known result, say) proves the pipeline and isolates
-the difficulty — build it early and cite it often. A conditional result is
+statements known to be out of reach, each with its status. The weakest-rung
+result is this domain's trivial entrant: machinery that demonstrably closes
+end-to-end at lower strength proves the pipeline and isolates the
+difficulty — build it early and cite it often. A conditional result is
 titled with its hypothesis — `theorem-T-given-H`, never `theorem-T`
 `[policy]` — and closing a conditional route never closes the unconditional
 target (source R15).
@@ -280,11 +269,9 @@ and the axiom audit output on the exact released statements `[invariant]`.
 Drafts and preprints cite the exact commit they were built against. The
 release enumeration is generated from the record files, never recalled from
 memory (source R16): every statement the release text asserts, mapped to
-the record that proved it or explicitly labelled open/conjectural. The
-source campaigns' costliest endgame failures were claims recalled instead of
-enumerated; the mathematical analogue — a README asserting more than the
-kernel checked — is precisely the failure mode named in the preamble, now
-with the program's public credibility attached.
+the record that proved it or explicitly labelled open/conjectural. A README
+asserting more than the kernel checked is precisely the failure mode named
+in the preamble, now with the program's public credibility attached.
 
 **12 — Compute in pools; throughput first; attention budgeted.** Split
 effort into exploration (new attack angles, first-contact attempts,
@@ -293,11 +280,10 @@ formalization), and evaluation (builds, audits, numeric verification). The
 exploration floor — default 25% `[policy]` — is protected: an early
 highest-EV estimate may not consume it. If the build or the numeric harness
 will run more than a few dozen times, make it fast before making it deep
-(source R17): a slow `lake build` in the inner loop is the tax every
-attempt pays. Long builds and long numeric sweeps run detached and durable,
-preserving terminal evidence. Agent attention is a budgeted resource: wake
-on decision events plus a bounded heartbeat, one batched turn per wakeup —
-never poll.
+(source R17): a slow build in the inner loop is the tax every attempt pays.
+Long builds and long numeric sweeps run detached and durable, preserving
+terminal evidence. Agent attention is a budgeted resource: wake on decision
+events plus a bounded heartbeat, one batched turn per wakeup — never poll.
 
 **13 — Adversarial review at checkpoints; generation stays blind.** Blocking
 triggers — first attempt under a new attack angle above the budget
@@ -311,12 +297,11 @@ separated rights constrain its choice. Idea generation is staged-blind: the
 pass-1 packet is **committed before dispatch** and carries the problem
 statement only — no ranking of angles, no history of failures, no
 coordinator preferences — because a panel shown the incumbent returns
-variations on the incumbent (source: both campaigns' panels). Reviews use
-the fixed anti-sycophancy contract and are recorded as `review` records.
-Mathematical review has one extra tooth the source domain lacked: a reviewer
-confirming an informal step is itself an UNVERIFIED→reviewed transition,
-recorded per step, and "the reviewer found no error" is weaker evidence
-than "the kernel checked it" — the record must never conflate the two.
+variations on the incumbent. Reviews use the fixed anti-sycophancy contract
+and are recorded as `review` records. Mathematical review has one extra
+tooth: a reviewer confirming an informal step is an UNVERIFIED→reviewed
+transition, recorded per step, and "the reviewer found no error" is weaker
+evidence than "the kernel checked it" — the record never conflates the two.
 
 ## The record system
 
@@ -335,10 +320,9 @@ adds its producer and machine-readable outputs, and owes nothing else. A
 `migration` records an adoption or format cutover. Keys are prose — no
 schema file — and `tools/lint.py` checks completeness without gating.
 **Frontmatter is the live summary**: `status` and `one_line` are updated
-when the verdict lands (that edit is lawful — the dashboard reads them); the
-frozen declaration section below is what never changes. Status vocabulary
-`[reference]`: `declared → launched → done | failed`, then
-`closed | retained | legacy` as judgment settles.
+when the verdict lands; the frozen declaration section below is what never
+changes. Status vocabulary `[reference]`: `declared → launched → done |
+failed`, then `closed | retained | legacy` as judgment settles.
 
 **The canonical specimen.** Every record file has this shape and no other:
 
@@ -352,27 +336,26 @@ class: bilinear-offdiagonal
 parent: 003
 ---
 ## Declaration (frozen at launch commit)
-target: the exact statement attacked — ideally the Lean signature verbatim
-  (e.g. `theorem survivor_power_saving : ∀ ε > 0, ...`); where the target is
-  a paper-level statement not yet stated in Lean, say so and freeze the
-  prose statement instead
+target: the exact statement attacked — ideally the Lean signature verbatim;
+  where the target is not yet stated in Lean, say so and freeze the prose
+  statement instead
 approach: the technique family and the specific plan of attack, 3-10 lines
 analogue: where this technique comes from in the literature, with citation;
   `analogue-unverified` if the relevance is conjectured
 obstacles_addressed: each declared obstacle on the class node, and how this
   attempt addresses or evades it
 decision_rule: what each outcome causes — including, explicitly, what a
-  failure would close (nothing? this formulation? this angle?) and at what
+  failure would close (nothing? this formulation? this angle?) at what
   type and scope
-promotion_gate: kernel evidence per law 5 on the named target — this line
-  restates it, it does not weaken it
+promotion_gate: kernel evidence per law 5 on the named target — restated,
+  never weakened
 viability_gate: the observable that says keep going — e.g. "the key lemma
   stack compiles with sorries only below level 2 by hour N"
 budget: agent-hours / compute / calendar bound for this attempt
 ## Gate revisions
 (none)
 ## Run
-(evidence pointers: commits, build logs, `#print axioms` output, numeric
+(evidence pointers: commits, build logs, axiom-audit output, numeric
 artifacts with range and precision, where the Lean sources live)
 ## Verdict
 (appended after the run: deployment_status, candidate_status, closure_type,
@@ -390,9 +373,9 @@ scope" is an experiment.
 Commit `results/NN/NN.md` with its declaration before result-bearing work
 begins; `git log -p results/NN/` afterwards shows the gate was committed
 before any result was recorded against it. This is the entire integrity
-mechanism (source R19, R25). It is an audit trail for an honest process,
-not forgery-proofing. An attempt launched before its declaration was
-committed is a diagnostic, whatever the file says.
+mechanism (source R19, R25) — an audit trail for an honest process, not
+forgery-proofing. An attempt launched before its declaration was committed
+is a diagnostic, whatever the file says.
 
 **Verdicts are appended, never edits.** The verdict section is written after
 the run, below the frozen block. Gate and budget revisions are new dated
@@ -441,7 +424,7 @@ for angles whose relevance is itself unestablished), `New leverage` (what
 this angle exploits that its siblings do not — "another tactic" is not
 leverage), `Cheapest kill test`, `Distance` (a node that cannot say how it
 differs from its siblings gets merged), `Analogue` (the literature this
-technique comes from — marked `analogue-unverified` where the mapping is
+technique comes from — `analogue-unverified` where the mapping is
 conjectured), `Declared obstacles` (the known barriers an attack under this
 node must address), `Committed`, `See also`. Per branch: status, the
 experiments that touched it, `Closure type`, `Why closed`, `Reopens when`.
@@ -462,30 +445,29 @@ every record of every kind and flags missing or malformed ones loudly
 The kernel's authority is total within its scope and zero outside it. Within
 scope: a green build plus a clean axiom audit at a named commit proves the
 statement as written — not the statement as intended. The standing check at
-every promotion: **does the Lean statement say what the mathematics means?**
-Definition drift — a formalized statement subtly weaker than the paper
-statement it claims to capture — is the kernel-era failure mode that
+every promotion: **does the formal statement say what the mathematics
+means?** Definition drift — a formalized statement subtly weaker than the
+paper statement it claims to capture — is the kernel-era failure mode that
 compiles. Promotion of any statement bridging to a classical result records
 the bridge's exact form: what is proved outright, what is a typed premise
-(an `↔` or hypothesis argument standing for a cited classical theorem), and
-what remains open. A typed premise is honest and lawful; an undeclared one
-is the failure mode in the preamble.
+(a hypothesis argument standing for a cited classical theorem), and what
+remains open. A typed premise is honest and lawful; an undeclared one is
+the failure mode in the preamble.
 
 ### The numerics channel
 
-Numerics in this domain are diagnostics and falsifiers, never provers. The
-honest declaration per read: range (up to what x, which k), arithmetic model
-(exact integer, interval, float), and what the read can and cannot
-distinguish — a near-flat empirical exponent over a handful of dyadic scales
-is exactly the signature that misled the constant-one Mertens conjecture,
-and every asymptotic read carries that caveat structurally, not as a
-footnote. Legitimate products: exact counterexamples (closing power),
-identity validation (implementation confidence), landscape reconnaissance —
-where is the sum large, which terms dominate, does the conjectured decay
-appear — which seeds the tree and calibrates viability gates. Preregister
-numeric kill criteria where possible: "if the ratio exceeds B before
-x = 10^7, the conjectured form is dead at this range" is a numeric
-declaration worth freezing.
+Numerics are diagnostics and falsifiers, never provers. The honest
+declaration per read: range, arithmetic model (exact integer, interval,
+float), and what the read can and cannot distinguish — a near-flat empirical
+exponent over a handful of dyadic scales is exactly the signature that
+misled the constant-one Mertens conjecture, and every asymptotic read
+carries that caveat structurally, not as a footnote. Legitimate products:
+exact counterexamples (closing power), identity validation (implementation
+confidence), and landscape reconnaissance — where is the sum large, which
+terms dominate, does the conjectured decay appear — which seeds the tree
+and calibrates viability gates. Preregister numeric kill criteria where
+possible: "if the ratio exceeds B before x = 10^7, the conjectured form is
+dead at this range" is a numeric declaration worth freezing.
 
 ### Informal argument and literature
 
@@ -501,24 +483,23 @@ statement, a bilinear form bound, a maximal-function estimate — retrieve
 each field's canonical machinery, and put 3–5 analogue formulations in
 `IDEAS.md` with honest `analogue-unverified` marks where the mapping is
 hoped rather than checked. Both source campaigns paid for skipping this
-step; the mathematical version costs an afternoon of reading and can
-retire a decade of wrong-basin effort.
+step; the mathematical version costs an afternoon of reading and can retire
+a wrong-basin year.
 
 ### The attack tree and closures
 
 `class` closures are almost never empirically earned — an attempt that
-failed is `implementation` until a stated, checkable reason says otherwise.
-The discipline mirrors the source OS's `information-absent` rule: deductive
-arguments only, or a cited barrier confirmed applicable by review. Barriers
-deserve first-class treatment: the literature's known obstructions are
-declared on class nodes *before* attempts run, so that an attempt's
-declaration must say how it gets past them — this converts the barrier from
-a post-hoc excuse into a pre-hoc filter, and an attempt that cannot state
-its evasion is redirected to a cheaper node before spending. Concentration
-in one angle is a review trigger, not a gate `[policy]`. Robust repeated
-failure without a nameable reason is a valid `closed-exhausted` — do not
-demand a barrier theorem you lack, but scope the closure to the budget
-spent.
+failed is `implementation` until a stated, checkable reason says otherwise:
+deductive arguments only, or a cited barrier confirmed applicable by
+review. Barriers deserve first-class treatment: the literature's known
+obstructions are declared on class nodes *before* attempts run, so that an
+attempt's declaration must say how it gets past them — this converts the
+barrier from a post-hoc excuse into a pre-hoc filter, and an attempt that
+cannot state its evasion is redirected to a cheaper node before spending.
+Concentration in one angle is a review trigger, not a gate `[policy]`.
+Robust repeated failure without a nameable reason is a valid
+`closed-exhausted` — do not demand a barrier theorem you lack, but scope
+the closure to the budget spent.
 
 ### First contact with a new angle
 
@@ -554,11 +535,12 @@ records — every asserted statement mapped to its proving record and commit,
 or explicitly labelled open/conjectural in the release text itself. Re-run
 the build and the axiom audit fresh at the release commit — not a cached
 result, not a remembered green (source R16's fresh-runs rule, transferred
-whole). The release text's mathematical boundary section is not boilerplate:
-it is the enumeration made prose, and it is reviewed as a blocking trigger.
-Cite exact commits in drafts and preprints. Where a collaborator's public
-statement outruns the records, that is a CONFLICTED fact with the
-collaborator as resolution owner — flag it, do not silently ratify it.
+whole). The release text's mathematical-boundary section is not
+boilerplate: it is the enumeration made prose, and it is reviewed as a
+blocking trigger. Cite exact commits in drafts and preprints. Where a
+collaborator's public statement outruns the records, that is a CONFLICTED
+fact with the collaborator as resolution owner — flag it, do not silently
+ratify it.
 
 ### Multi-agent coordination
 
@@ -568,18 +550,17 @@ The intended operating shape: **one coordinator, several attack agents.**
   angles, and the review calendar. It writes no proofs in anger; its job is
   laws 1–2 and 12–13.
 - Each **attack agent** owns exactly one open `experiment` record at a time
-  `[policy]`: one declared target, one frozen gate, one budget. Its
-  workspace is its own; its claims enter the shared record only through its
-  record file and journal events, and every mathematical claim it reports is
-  **UNVERIFIED until the kernel or a reviewer confirms it** `[invariant]` —
-  the coordinator records the claim with its label, never launders it into
-  fact by restatement.
+  `[policy]`: one declared target, one frozen gate, one budget. Its claims
+  enter the shared record only through its record file and journal events,
+  and every mathematical claim it reports is **UNVERIFIED until the kernel
+  or a reviewer confirms it** `[invariant]` — the coordinator records the
+  claim with its label, never launders it into fact by restatement.
 - **Blind seeding**: when the coordinator convenes a panel to seed or
   re-seed the tree, the pass-1 packet is the problem statement, the exact
   target, the declared obstacles, and the strength ladder — **not** the
-  coordinator's rankings, the attempt history, or the current leading angle.
-  The packet is committed before dispatch; anchoring the panel on the
-  incumbent reproduces the incumbent (source: both campaigns).
+  coordinator's rankings, the attempt history, or the current leading
+  angle. The packet is committed before dispatch; anchoring the panel on
+  the incumbent reproduces the incumbent.
 - **Convergence is a signal, not a vote**: two agents independently
   proposing the same decomposition is worth a journal event; it is still
   UNVERIFIED mathematics.
@@ -600,7 +581,7 @@ half is invalid.
 
 ### Compute and attention
 
-The three pools (law 12) and their floor. Long `lake build`s, mathlib cache
+The three pools (law 12) and their floor. Long builds, library cache
 downloads and wide numeric sweeps run detached with terminal evidence
 preserved; smoke-test before a long run; freeze a working toolchain
 environment the first time it works and record the freeze. The project
@@ -657,10 +638,11 @@ value of an old record is that it says what it said at the time.
 
 1. Write `AGENTS.md`, `JOURNAL.md` (live block plus a first event) and
    `IDEAS.md`, seeding the tree from what the program's own papers already
-   believe — the papers' stated open problems and suggested programs are the
-   founding nodes, before any panel adds to them.
-2. Commit a `migration` record at the next integer under `results/`, stating
-   the adoption date and the first record ID governed by these conventions.
+   believe — the papers' stated open problems and suggested programs are
+   the founding nodes, before any panel adds to them.
+2. Commit a `migration` record at the next integer under `results/`,
+   stating the adoption date and the first record ID governed by these
+   conventions.
 3. Append a journal decision event naming the adoption, the OS revision
    read, and anything deliberately not adopted.
 
