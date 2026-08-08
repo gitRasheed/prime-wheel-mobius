@@ -413,6 +413,30 @@ the bridge's exact form: what is proved outright, what is a typed premise
 remains open. A typed premise is honest and lawful; an undeclared one is
 the failure mode in the preamble.
 
+**The frontier delta `[invariant]` — the closure-theatre guard.** The
+program's most dangerous failure mode is not a hidden `sorry`; it is
+hundreds of kernel-checked identities, coordinate equivalences and
+conditional bridges accumulating while the one genuinely new analytic
+inequality stays exactly as hard as it began. Every promotion therefore
+declares its **frontier delta**, and a result counts as analytic progress
+only if it does at least one of: (1) improves an unconditional exponent or
+range; (2) removes a typed premise; (3) proves a nontrivial *signed*
+cancellation estimate for the actual target object; (4) reduces the
+frontier to a cited theorem demonstrably weaker than the endpoint. A
+promotion with none of these is retained and valued — labelled
+`coordinate-identity`, `conditional-bridge`, or `formalization-support` —
+and never counted as movement toward the endpoint.
+
+**The theorem dependency DAG `[policy]`.** `IDEAS.md` carries, alongside
+the attack tree, the dependency graph of the program's theorem nodes: each
+node an exact Lean name with its repo+commit, its typed premises, and its
+axiom-audit state; each edge `uses`, `implies`, or `iff`, backed by the
+exact declaration. The **frontier** — the smallest set of unproved analytic
+nodes from which the endpoint follows — is derived from this graph and
+restated at the top of `IDEAS.md` whenever it changes. Records reference
+the nodes they attack; the frontier delta above is measured against this
+graph, not against theorem counts.
+
 ### The numerics channel
 
 Numerics are diagnostics and falsifiers, never provers. The honest
@@ -516,6 +540,16 @@ The intended operating shape: **one coordinator, several attack agents.**
   UNVERIFIED mathematics. Contested closures escalate to review; the
   coordinator breaks allocation ties, never evidence ties — evidence ties
   are broken by the kernel or not at all.
+- **Branch hygiene** `[policy]`: attack agents work on per-record branches
+  or worktrees; only declared records, journal events, and compiling
+  artifacts merge to the trunk. Exploratory commits stay on the agent's
+  branch — the trunk's history is the program's record, not its scratch
+  space.
+- **Journal scale** `[policy]`: the journal stays one append-only file —
+  that is the thesis and it does not bend — but at scale the coordinator
+  maintains a *generated* index (records ↔ journal events ↔ DAG nodes) and
+  may write dated epoch-summary *events* into the stream. Summaries are
+  new events; they never replace, edit, or gate reading the stream itself.
 
 ### Compute and attention
 
