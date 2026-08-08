@@ -161,15 +161,20 @@ writing the exact statement it would prove.
 
 ## Known unknowns (reviewed at every closure)
 
-1. **Has eq:HN's left side ever been computed?** `numerics/` validates
-   exact identities and kill gates; no artifact plots
-   `|Σ b_k(r) D_N(r/Q_k)|` against `(L_k+N)^{1/2}` across N for feasible
-   k. Feasibility itself is unknown (Q_k = Π p² grows fast — which k are
-   reachable?). Highest-value first diagnostic.
+1. **Has eq:HN's left side ever been computed?** — **ANSWERED**
+   (`results/002/`, 2026-08-09). Computed and plotted for k=2..8 via the
+   kernel-proved identity (exact), spectral side verified at k=2,3.
+   Pinned ratio 0.43–0.89, flat; nothing anomalous. Feasibility settled:
+   dense spectrum k≤3 only, 𝒬₄ ≈ 9×10⁸ structured-only, k≥5 never —
+   large-k numerical access is identity-side only, and attack-angle
+   gates must not assume otherwise.
 2. **Conductor decay after smooth-core subtraction.** Raw-spectrum
    conductor decay is proved; the *joint* (raw − 2·smooth) coefficient
-   decay profile is, empirically, unplotted. Is the smooth-core correction
-   concentrated in few conductors?
+   decay profile is, empirically, unplotted. Partial first look at k=3
+   (`results/002/conductor_energy_k3.csv`): ℓ² mass concentrates in
+   conductors 6 and 30 (~half the energy), ℓ¹ mass anti-concentrates at
+   the full conductor — toy scale only. Open at k=4 via the structured
+   route (CRT tensor × 44 smooth sites).
 3. **Synthesis constants.** Does C(q) decay? Is Σ|C(q)| finite over the
    relevant range? What does the signed sum look like at x = 10⁶?
    Unanswerable until the synthesis repo lands (node D).
