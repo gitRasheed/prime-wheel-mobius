@@ -71,14 +71,12 @@ claims may seed the tree; they may never promote, close, or release.
 Falsification machinery is easy to build and compounds; generation machinery
 is hard to build and decays. A revision that adds more ways to reject work
 than to produce it makes the next campaign worse, however well-evidenced
-each rule is. The counting unit is the independent procedure family. The
-ledger as of this revision: ~7 generation families (attack tree, literature
-analogue search, blind panel, protected exploration, reference-grade
-formalization effort, retention/recombination of partial results,
-known-unknown reopening) against ~11 rejection/control families. An edit
-that widens the gap must add generation machinery first — and in proof
-search the asymmetry bites harder than in ML: a failed attempt produces no
-gradient, so the only renewable resource is the tree.
+each rule is. The counting unit is the independent procedure family; the ledger
+as of this revision runs ~7 generation families against ~11
+rejection/control families. An edit that widens the gap must add generation
+machinery first — and in proof search the asymmetry bites harder than in
+ML: a failed attempt produces no gradient, so the only renewable resource
+is the tree.
 
 ## The laws
 
@@ -116,11 +114,11 @@ program's leading approach — declared *before results are observed*. A
 reconnaissance, refactoring probes, literature reads, build-health checks. A
 diagnostic can never be the sole evidence for promotion or closure — it
 spawns an experiment, it does not become one. The source OS's `submission`
-and `rescore` kinds are retired: there is no platform to submit to, and
-re-verification under a new toolchain is a `diagnostic` whose failure
-triggers a review (law 5). Untyped work goes invisible (source R4), and
-relabelling after seeing the outcome is the escape hatch this rule welds
-shut; commit timestamps make the weld hold.
+and `rescore` kinds are retired: there is no platform, and re-verification
+under a new toolchain is a `diagnostic` whose failure triggers a review
+(law 5). Untyped work goes invisible (source R4), and relabelling after
+seeing the outcome is the escape hatch this rule welds shut; commit
+timestamps make the weld hold.
 
 **4 — Two gates, two jobs.** `promotion_gate` is frozen **by the launch
 commit** and never edited: it binds what a result may promote, and it stops
@@ -231,27 +229,26 @@ formalizations are exactly what a later synthesis recombines.
 
 **10 — A conditional result names its hypotheses; a strength ladder brackets
 the target.** The proof-search analogue of the ceiling estimate is the
-**bracket**: what is provable under weaker demands (a weaker bound, a
-special case, an added hypothesis) and what known barrier blocks the
-stronger form. Maintain the ladder explicitly in `IDEAS.md`: the weakest
-statement whose proof would still be progress, the target, and the stronger
-statements known out of reach, each with its status. The weakest-rung
-result is this domain's trivial entrant: machinery that demonstrably closes
-end-to-end at lower strength proves the pipeline and isolates the
-difficulty. A conditional result is titled with its hypothesis —
-`theorem-T-given-H`, never `theorem-T` `[policy]` — and closing a
+**bracket**: what is provable under weaker demands and what known barrier
+blocks the stronger form. Maintain the ladder explicitly in `IDEAS.md`: the
+weakest statement whose proof would still be progress, the target, and the
+stronger statements known out of reach, each with its status. The
+weakest-rung result is this domain's trivial entrant: machinery that
+demonstrably closes end-to-end at lower strength proves the pipeline and
+isolates the difficulty. A conditional result is titled with its hypothesis
+— `theorem-T-given-H`, never `theorem-T` `[policy]` — and closing a
 conditional route never closes the unconditional target (source R15).
 
-**11 — Release discipline.** There is no leaderboard and no submission slot;
-what replaces the endgame is the moment a claim leaves the repo — a
-preprint, a message to a collaborator, a public README line. A claimed
-theorem ships **only** with its kernel evidence recorded: the exact repo
-commit, toolchain and library pins, the build command and its green result,
-and the axiom audit output on the exact released statements `[invariant]`.
-Drafts and preprints cite the exact commit they were built against. The
-release enumeration is generated from the record files, never recalled from
-memory (source R16). A README asserting more than the kernel checked is the
-preamble's failure mode with the program's public credibility attached.
+**11 — Release discipline.** What replaces the endgame is the moment a
+claim leaves the repo — a preprint, a message to a collaborator, a public
+README line. A claimed theorem ships **only** with its kernel evidence
+recorded: the exact repo commit, toolchain and library pins, the build
+command and its green result, and the axiom audit output on the exact
+released statements `[invariant]`. Drafts and preprints cite the exact
+commit they were built against. The release enumeration is generated from
+the record files, never recalled from memory (source R16). A README
+asserting more than the kernel checked is the preamble's failure mode with
+the program's public credibility attached.
 
 **12 — Compute in pools; throughput first; attention budgeted.** Split
 effort into exploration (new angles, first contacts, analogue prototypes),
@@ -328,7 +325,7 @@ budget: agent-hours / compute / calendar bound for this attempt
 (none)
 ## Run
 (evidence pointers: commits, build logs, axiom-audit output, numeric
-artifacts with range and precision, where the Lean sources live)
+artifacts with range and precision)
 ## Verdict
 (appended after the run: deployment_status, candidate_status, closure_type,
 closure_scope, untested_axes, retained_artifacts, reasoning)
@@ -427,8 +424,7 @@ Legitimate products: exact counterexamples (closing power), identity
 validation, and landscape reconnaissance — where is the sum large, which
 terms dominate, does the conjectured decay appear — which seeds the tree
 and calibrates viability gates. Preregister numeric kill criteria where
-possible: "if the ratio exceeds B before x = 10^7, the conjectured form is
-dead at this range" is a declaration worth freezing.
+possible — a frozen threshold-and-range is a declaration worth committing.
 
 ### Informal argument and literature
 
@@ -443,8 +439,7 @@ inequality, an equidistribution statement, a bilinear form bound, a
 maximal-function estimate — retrieve each field's canonical machinery, and
 put 3–5 analogue formulations in `IDEAS.md` with honest
 `analogue-unverified` marks where the mapping is hoped rather than checked.
-Both source campaigns paid for skipping this step; the mathematical version
-costs an afternoon of reading and can retire a wrong-basin year.
+Both source campaigns paid for skipping this step.
 
 ### The attack tree and closures
 
