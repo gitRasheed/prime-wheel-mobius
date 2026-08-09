@@ -43,7 +43,7 @@ spine — low-height occupancy, death-process control, criteria equivalences
 open").
 
 **Synthesis (forthcoming repo — the eventual focus).** Collaborator-stated
-(Fred Viole) unified target: `Σ_q C(q)·(unshifted c_q − 2×smooth-shifted
+(the upstream maintainer) unified target: `Σ_q C(q)·(unshifted c_q − 2×smooth-shifted
 c_q) = O(√x)`, with `c_q` Ramanujan sums and `C(q)` an explicit local
 product; the weaker `o(x)` bound yields PNT from the same decomposition.
 Status: `[assumed]` — no repo yet; the statement is UNVERIFIED against
@@ -51,7 +51,7 @@ sources. Note for reconciliation: the prime-wheel paper explicitly remarks
 (remark "Not a Ramanujan sum", after eq:core-fourier) that its truncated
 divisor sum is *not* a classical Ramanujan sum; whether the synthesis
 recasting is exactly Ramanujan-sum-indexed is a fact to extract from the
-synthesis repo when it lands. Resolution owner: Fred Viole.
+synthesis repo when it lands. Resolution owner: the upstream maintainer.
 
 **Strength ladder (law 10).** Rungs, weakest first: (1) sublinear maximal
 control of the same block residual ⟺ PNT — the program's trivial-entrant
@@ -119,7 +119,7 @@ No rung is currently proved unconditionally — all status: open.
   mobius-synthesis `agent-os` 6026165+59c7fdd, local branch only; the
   formerly orphan module is now imported and audited). One target, two
   proven faces. Upstream `main` still has the orphan gap — report item
-  for Fred (owner: Fred Viole).
+  for upstream (owner: the upstream maintainer).
 
 **Fleet evaluator (record 003 onward).** EC2 `mobius-fleet-1`
 (i-0fc2bb4713d1486ca, us-east-1, Ubuntu 24.04, elan → lean4 v4.24.0,
@@ -170,11 +170,11 @@ per law 5.
 | square-block-mobius | `/mnt/d/Projects/square-block-mobius` | square-block coordinates | local branch `agent-os` only — **never push** (relaxed from read-only 2026-08-09, journal 2026-08-09-3) |
 | mobius-synthesis | `/mnt/d/Projects/mobius-synthesis` | seam layer joining both systems; primary bounding focus | local branch `agent-os` only — **never push** (journal 2026-08-09-3) |
 
-Uniform rule (Fred's go-ahead as reported by Rasheed, 2026-08-09): all
+Uniform rule (upstream's go-ahead as reported by Rasheed, 2026-08-09): all
 agent work lives on local `agent-os` branches in each repo; `main` is
 never modified, nothing is ever pushed.
 
-Both repos belong to Fred Viole / OVVO-Financial
+Both repos belong to the upstream org (OVVO-Financial)
 (`github.com/OVVO-Financial/…`, public). All Proof-OS records, journal and
 tree live on local branch `agent-os` in this repo until the collaborator
 decides otherwise. Nothing on `main` is modified.

@@ -19,7 +19,7 @@
   mobius-fleet-1). C/E correlation confirmed to 0.94 (record 004).
 - Active constraints:
   - NO PUSH, any repo; all agent work on local `agent-os` branches;
-    `main` never modified. Expires: only by Fred's explicit direction.
+    `main` never modified. Expires: only by upstream's explicit direction.
   - Cross-model policy (Rasheed, 2026-08-09): adversarial reviews and
     independent verification via Codex companion; Claude agents for
     deep-context work. Expires: by direction.
@@ -32,7 +32,7 @@
      Codex adversarial review on each declaration.
   3. Connecting-theorem experiment (NonzeroResponseRHScale ↔ quadratic
      statement) — small, kernel-checkable, closes the orphan gap.
-  4. Report to Fred: records 002–005 summary + orphan flag.
+  4. Report to upstream: records 002–005 summary + orphan flag.
 
 ---
 
@@ -81,7 +81,7 @@ both flagged as known unknowns rather than assumed.
 
 Record `results/002/` (declared and committed before running, per
 declare→commit→run). Rasheed asked for known-unknown #1 directly,
-noting honest uncertainty about whether Fred will want the artifact —
+noting honest uncertainty about whether upstream will want the artifact —
 recorded here as a diagnostic on `agent-os` regardless; it promotes
 nothing and the branch is never pushed, so the question is deferred.
 
@@ -144,7 +144,7 @@ Remote check (Rasheed asked for updates; law 6 standing watch):
   axiom" (constructs the forward criterion via Mellin/completed-zeta
   reflection) — stronger than prime-wheel's typed-premise honesty;
   CONFLICTED-pending-kernel-audit until `#print axioms` on the terminal
-  theorem is run. (2) Fred's Discord summary described a
+  theorem is run. (2) upstream's Discord summary described a
   Ramanujan-sum-indexed target; the repo's canonical target is H and
   C−2E (Ramanujan modules exist, e.g. `RamanujanDivisorBoundaryBulk`,
   but are not the headline). AGENTS.md extraction = next task 1.
@@ -153,9 +153,9 @@ Remote check (Rasheed asked for updates; law 6 standing watch):
 
 Rasheed's direction this session: (1) all three repos get local
 `agent-os` branches; `main` untouched everywhere; nothing ever pushed —
-"we don't step on Fred's foot on main"; (2) Fred has given the
+"we don't step on upstream's foot on main"; (2) upstream has given the
 go-ahead for us to "do our thing" on our own end (reported by Rasheed;
-recorded as such, not as a first-hand Fred statement). Effects:
+recorded as such, not as a first-hand upstream statement). Effects:
 square-block's read-only constraint relaxed to branch-only writes; the
 experiment-gate constraint reduces to the blind-panel half; synthesis
 governance set to the same branch-only rule on arrival. AGENTS.md
@@ -228,7 +228,7 @@ references it — no theorem ties it to
 consumes. Definition drift caught exactly as PROOF_OS's kernel-channel
 reference section warns. Program response: canonical target is now
 declared as the quadratic statement (AGENTS.md updated); the orphan is
-flagged to Fred; proving the connecting theorem is queued as the
+flagged to upstream; proving the connecting theorem is queued as the
 candidate first experiment after the blind panel.
 
 Frontier delta: none — this is formalization-support (verified
@@ -283,7 +283,7 @@ baseline-only on all three theorems). Frontier delta: none —
 formalization-support, honestly labelled; the analytic frontier is
 unchanged but the program now has ONE canonical target with two
 proven-equivalent faces, and the definition-drift gap flagged in
-record 003 is closed on our branch. Report item for Fred (his README
+record 003 is closed on our branch. Report item for upstream (his README
 cites the formerly-orphan predicate). Kill-test wave (006) still
 running in parallel.
 
@@ -498,14 +498,14 @@ delta: gate-correction. Next experiment against Z must target the
 repaired gate; rung 0 = 𝓜 = o(√x).
 
 ## 2026-08-09-26
-Upstream PRs opened at Fred's request (his message 20:24+), split per
+Upstream PRs opened at upstream's request (his message 20:24+), split per
 his spec: OVVO-Financial/mobius-synthesis #1 (bridge equivalence,
 head 1ddce28), #2 (collapse+Abel identities, head c7d328c), #3
 (Lipschitz/excursion, head 6886ce6, stacked on #2). Branches
-cherry-picked onto Fred's new main c2b5df6 ("Research update", 8 new
+cherry-picked onto upstream's new main c2b5df6 ("Research update", 8 new
 SquareWheel/Survivor modules); each head re-verified on EC2 warm
 tree: lake build RHLean --wfail green + audit_assumptions.sh pass.
-Governance files kept out per Fred's instruction. EC2 started for
+Governance files kept out per upstream's instruction. EC2 started for
 verification, stopped after.
 
 ## 2026-08-09-27
@@ -618,18 +618,26 @@ declarations for I1 (kernel amplification lemma + exact zero-mode
 desk derivation) then I2.
 
 ## 2026-08-09-39
-results/028 (external): Fred's independent stack ran IDEAS.md kill
+results/028 (external): upstream's independent stack ran IDEAS.md kill
 test 4 (μ×R sign correlation) on the Abel form via our landed
 PrimeSieveAbelIdentity; expected fast death (his dyadic-Li route
 died on exactly this measurement); result — pathology NOT
 reproduced. Cross-stack replication loop confirmed live; coordinate
-choice validated; numerics-grade, promotes nothing. Fred requests
+choice validated; numerics-grade, promotes nothing. upstream requests
 more PRs incl. route-closing content → PR #4 (backward affine
 excursion, b26e73e) queued.
 
 ## 2026-08-09-40
 PR #4 opened (backward affine excursion → OVVO-Financial/mobius-
 synthesis, head 7ed0075, stacked on #3): --wfail green + audit pass
-at head on warm tree; complies with Fred's cache caveat (existing
+at head on warm tree; complies with upstream's cache caveat (existing
 toolchain/mathlib, incremental, no new deps). EC2 stopped. Night
 closes: records 021–028, PRs #1–#4.
+
+## 2026-08-09-41
+Redaction pass (Rasheed's direction): personal names and verbatim
+private-channel quotes removed from all published docs; results/028
+rewritten anonymized; raw source moved to internal ops notes
+(local-only). Policy forward: upstream collaborator referred to as
+"upstream maintainer" in published records; verbatim external
+messages live only in internal ops notes.
