@@ -1,0 +1,31 @@
+{
+ "angle_name": "Conductor-lowered signed dispersion for the prime\u2013M\u00f6bius hyperbola",
+ "mechanism": "Define \u03b7(n)=1_{n prime}\u2212(Li(n)\u2212Li(n\u22121)), so R(N)=\u03a3_{n\u2264N}\u03b7(n) up to a fixed endpoint convention. On the canonical window K=y is fixed and S(y,X)=\u03a3_{dn\u2264X,d\u2264y}\u03bc(d)\u03b7(n). Smooth only the hyperbola boundary at scale W\u2248\u221ax, expand the windowed second moment, and apply a \u03b4/Jutila decomposition to dn\u2212em while retaining the complete \u03bc(d)\u03bc(e)\u03b7(n)\u03b7(m) sum. The averaging lowers the relevant circle-method conductor to q\u2248\u221a(x/W)=x^{1/4}. Treat large-q and nonzero-shift packets using bilinear Kloosterman large-sieve estimates after exact Vaughan decomposition of the prime weight and an exact finite M\u00f6bius identity. The decisive step is to evaluate the entire low-q major-arc packet, including q=1, before any Cauchy\u2013Schwarz or dyadic absolute-value recombination; cancellation between d-scales must remain visible. Prime-power corrections from \u039b/log are retained as separate signed sparse packets rather than discarded absolutely.",
+ "new_leverage": "The kernel-backed canonical-window theorem supplies exactly the Fej\u00e9r-type averaging needed for conductor lowering. This replaces the killed bounded-fiber transfer by spectral averaging over all fibers and uses moduli q\u2272x^{1/4}, not the astronomical wheel modulus. More importantly, the proposed low-major-arc calculation keeps \u03bc and the centered prime discrepancy in one packet, so it is outside the proved F-closure and its zero-coordinate shadow. The q=1 packet is explicitly recognized as the make-or-break signed term rather than hidden behind generic dispersion.",
+ "target_estimate": {
+  "name": "Signed Low-Conductor Hyperbola Packet Bound",
+  "statement": "Let K_W(u,v;x0)=\u03a3_{0\u2264t<W}1_{u\u2264x0\u2212t}1_{v\u2264x0\u2212t}. Prove, after the \u03b4-decomposition with Q=x^{1/4+o(1)}, that the combined low-conductor contribution q\u2264Q to \u03a3_{d,e\u2264y}\u03a3_{n,m\u22652} \u03bc(d)\u03bc(e)\u03b7(n)\u03b7(m)K_W(dn,em;x0) is \u226a\u03b5 W x^{1+\u03b5}; the complementary conductor, diagonal, boundary, and prime-power packets should satisfy the same bound by existing bilinear and divisor-moment estimates. Crucially, the assertion is for the sum over all d-scales and all low q, not separately for each dyadic block."
+ },
+ "obstacle_positions": {
+  "1": "No Mertens-energy input and no separation of the two factors: Cauchy\u2013Schwarz is postponed until after the complete signed low-q packet has been evaluated.",
+  "2": "Growing pair-to-modulus fibers are accepted; the \u03b4-method and spectral large sieve estimate their total L2 multiplicity instead of demanding bounded fibers.",
+  "3": "The argument is built specifically for the backward window at x0=(y+1)^2\u22121, using its fixed K and the sanctioned mean-square-to-pin transfer.",
+  "4": "Only conductor-lowered moduli q\u2272x^{1/4+o(1)} occur; no estimate depends on the full wheel modulus.",
+  "5": "Parity is not bypassed by a sieve majorant: \u03bc remains a signed coefficient through the major-arc evaluation, while Vaughan identities are used as exact identities.",
+  "6": "No pointwise bound for R and no absolute sum over zeros is assumed; any off-line zero must manifest as failure of the joint q=1 packet estimate.",
+  "7": "Finite computations are used only for the kill test and parameter calibration, never as evidence for the estimate.",
+  "8": "Wigert jumps enter the exact quadratic form; their diagonal contribution is controlled by averaged divisor moments, with no pointwise polylogarithmic smoothness claim.",
+  "9": "There is no renewal induction or scalar telescope. Heath-Brown/Vaughan decompositions serve only as support-tracked finite coefficient identities inside dispersion."
+ },
+ "kill_test": "Isolate the q=1 major arc before doing any long calculation. Perform every proposed coefficient identity symbolically and check whether the resulting bound still requires estimating \u03a3_{d\u2264y}\u03bc(d)R(x/d) blockwise, |M(y)|, or |R(x/d)|. If it does, or if replacing \u03bc by arbitrary |a_d|\u22641 leaves the proof unchanged, the route has lost the required signed interaction and should be killed immediately. A secondary exponent ledger at D\u2248N\u2248\u221ax should verify that the best available Kloosterman large-sieve bound actually beats x^2 for the windowed moment.",
+ "rung1_version": "Prove the same combined packet estimate with W x^{2\u22122\u03b4} in place of W x^{1+\u03b5} for one explicit \u03b4>0, initially \u03b4=1/100. Together with matching bounds for the complementary packets, this gives the unconditional fixed saving S\u226ax^{1\u2212\u03b4+\u03b5}.",
+ "plausible_partial": "Give an exact, endpoint-correct reduction from the Abel windowed moment to the four-variable kernel above; separate and bound its diagonal and prime-power packets; execute conductor lowering; and prove that all remaining difficulty is confined to an explicitly written low-q signed major-arc packet containing q=1. The discrete reduction and support statements are good candidates for Lean formalization.",
+ "weakest_assumption": "A uniform power-saving estimate for the complete signed low-conductor packet, including q=1, with \u03bc and the centered prime weight kept coupled across all d-scales. No zero-free strip, RH, pointwise prime-error estimate, or bounded-fiber assertion is assumed.",
+ "self_assessed_probabilities": {
+  "exact_reduction_and_isolation_of_the_core": 0.85,
+  "bounded_effort_partial": 0.65,
+  "rung1_fixed_power_saving": 0.07,
+  "full_rung2_bound": 0.012,
+  "risk_q1_collapses_to_an_already_killed_zero_or_Mertens_problem": 0.72
+ }
+}

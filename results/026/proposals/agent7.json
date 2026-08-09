@@ -1,0 +1,28 @@
+{
+ "angle_name": "Canonical-square signed arm transposition via the deformed \u03bc*\u039b identity",
+ "mechanism": "Put I_y = {y^2+y,...,y^2+2y}. For X in I_y, dm <= X implies d <= y or m <= y, since (y+1)^2 > X. For u >= 0 define E_u(m) = \u039b(m)m^(-u) - integral_{m-1}^m v^(-u)dv, with the finitely many endpoint conventions separated explicitly. Define F_u(X) = sum_{n<=X}(\u03bc*E_u)(n), B_u(X) = sum_{m<=y}E_u(m)M(floor(X/m)), and O_u = M(y)sum_{m<=y}E_u(m). Exact arm transposition gives D_{y,u}(X) := F_u(X)-B_u(X)+O_u = sum_{d<=y}\u03bc(d)sum_{m<=X/d}E_u(m). At u=0 the full term collapses algebraically because \u03bc*(\u039b-1) = -\u03bc(n)log n - 1_{n=1}. The proposal is to estimate the L2 norm of this signed defect directly, expanding all cross terms and symmetrizing the quotient-incidence matrix under d\u2194m; F_u and B_u must never be bounded separately. Mellin wave packets diagonalize the continuous model, while the exact affine modes and small-m endpoint packets are removed before seeking a spectral gap. Integrating in u recovers \u039b(m)/log m minus the Li increment, hence the Riemann-J discrepancy. Exact prime-power M\u00f6bius inversion then transfers from J to \u03c0 as a triangular descent in the scale x^(1/k), retaining its signs rather than estimating prime powers absolutely.",
+ "new_leverage": "The canonical backward window is exactly the range where the two hyperbola arms cover the entire product region with a constant overlap. This turns the previously fatal two-parameter renewal edge into a transpose of the target arm on the same finite L2 space. Combining that geometry with \u03bc*\u039b = -\u03bc log exposes a signed renewal defect whose decisive term is the cross-correlation between the two arms. Thus it passes obstacle 9 only through genuinely signed contraction, and passes obstacle 3 because the operator lives on the sanctioned canonical window itself.",
+ "target_estimate": "Canonical signed-arm defect estimate: for every epsilon>0, integral_0^infinity ||D_{y,u}||_{ell2(I_y)} du <<_epsilon y^(3/2+epsilon), uniformly in y, together with the same estimate for the lower-scale prime-power descendants. Since |I_y| is asymptotic to y and x is asymptotic to y^2, this yields the required windowed mean square O(x^(1+epsilon)) after logarithmic deweighting.",
+ "obstacle_positions": {
+  "1": "No Cauchy-Schwarz separation of \u03bc from the prime error is allowed; the proposed gain is specifically the negative cross-term between F_u and B_u in the signed defect energy.",
+  "2": "No pair-to-modulus map is used; growing fibers remain inside the quotient-incidence matrix with their true multiplicities.",
+  "3": "The argument is restricted to I_y, the exact canonical backward window, so no generic averaging or exceptional-set removal is invoked.",
+  "4": "There is no wheel modulus; localization is by dyadic Mellin packets and the small conductors naturally occurring in individual quotient blocks.",
+  "5": "This is not a sieve upper bound: \u03bc remains linear and the identity \u03bc*\u039b = -\u03bc log is used before taking norms. A parity-type low spectral mode is nevertheless the principal risk.",
+  "6": "No pointwise bound for R and no absolute zero sum is assumed. Any off-line-zero mode must manifest as failure of the proposed real-variable spectral gap rather than being silently discarded.",
+  "7": "Finite computations can reject the spectral-gap model but cannot support or promote it.",
+  "8": "Individual floor jumps are never controlled. Only the full ell2(I_y) operator is estimated, after projecting its exact affine modes.",
+  "9": "The restricted edge is accepted as a two-parameter hyperbola operator; the only claimed reopening is a signed arm-transpose contraction, never an absolute renewal induction."
+ },
+ "kill_test": "Form the exact finite signed arm-transpose matrix for moderate y and compute Rayleigh quotients on Mellin packets X^(beta+i*tau), after removing the constant and affine directions. If for some fixed beta<1 the normalized quotient approaches 1 along y, or if the F_u-B_u cross-term has the wrong sign already at u=0, then no uniform power-saving gap can follow from this mechanism. This is a kill test only, not evidence for the estimate.",
+ "rung1_version": "Prove for one fixed eta in (0,1/4), for example eta=1/8, that integral_0^infinity ||D_{y,u}||_2 du << y^(5/2-2eta+epsilon). This gives canonical-window mean square << x^(2-2eta+epsilon), hence S << x^(1-eta+epsilon). Taking eta<1/4 permits the prime-power descendants to be disposed of initially at their honest x^(3/4+epsilon) scale.",
+ "plausible_partial": "A bounded-effort, Lean-formalizable result is the exact canonical arm-transpose identity on I_y, including the constant overlap, the u=0 collapse to -sum_{n<=X}\u03bc(n)log n, and an exact signed prime-power descent from the J discrepancy to the \u03c0 discrepancy. Analytically, one can additionally isolate the balanced low-Mellin-frequency block as the sole unresolved component by proving the required gain for packets with |tau| above a fixed polylogarithmic cutoff using standard Dirichlet-polynomial mean values.",
+ "weakest_assumption": "A fixed positive spectral gap, uniform in y, for the symmetrized signed prime-renewal operator on the canonical-window L2 space after its exact affine modes are removed; for the full target, the corresponding defect must have square-root-size norm and the gap must persist through logarithmic deweighting and prime-power descent.",
+ "self_assessed_probabilities": {
+  "exact_formalizable_partial": 0.82,
+  "high_frequency_reduction": 0.45,
+  "rung1_fixed_power_saving": 0.07,
+  "rung2_full_target": 0.008,
+  "angle_survives_the_mellin_packet_kill_test": 0.28
+ }
+}

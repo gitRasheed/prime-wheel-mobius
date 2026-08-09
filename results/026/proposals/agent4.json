@@ -1,0 +1,28 @@
+{
+ "angle_name": "Square-hyperbola zero-mode cancellation via signed \u039b-dispersion",
+ "mechanism": "Put D=y and X=(D+1)^2-1. First replace \u03c0-Li by the Stieltjes transform of E(N)=\u03c8(N)-N, retaining the prime-power correction as a separate signed term. For A_D(z)=\u03a3_{d\u2264D} \u03bc(d)E(\u230az/d\u230b), exact convolution gives A_D(z)=-1-\u03a3_{n\u2264z}\u03bc(n)log n-\u03a3_{m\u2264D}(\u039b(m)-1)(M(\u230az/m\u230b)-M(D)) throughout z\u2208[X-D,X]; the upper limit m\u2264D is stable because this is the canonical square window. Decompose the last two terms together into dyadic multiplicative packets and prove dispersion for their difference, not separate bounds. The zero-frequency contribution is cancelled algebraically by \u03bc*\u039b(n)=-\u03bc(n)log n; nonzero packets are attacked by a hybrid multiplicative large-sieve/TT* estimate over the D endpoint translations. Smooth logarithmic weights are inserted before estimating, and the sparse \u039b-\u03b8 prime-power layers are treated by the same signed packet estimate. Partial summation then transfers the \u03c8 estimate to the Abel face.",
+ "new_leverage": "This uses three facts simultaneously that the killed routes did not: the canonical window makes the complementary hyperbola edge exactly stable and symmetric; \u03bc*\u039b supplies an exact signed cancellation of the otherwise fatal zero mode; and translation averaging supplies a genuine frequency family for the remaining packets. Thus it exits the F-closure rather than improving a Cauchy-Schwarz bound, uses the amended pinned-to-window bridge, and enters precisely the signed-contraction door left open by obstacle 9.",
+ "target_estimate": "Signed square-hyperbola dispersion: uniformly for X=(D+1)^2-1, H=D, and the logarithmic weights required by Stieltjes partial summation, prove (1/H)\u03a3_{0\u2264t<H}|\u03a3_{d\u2264D}\u03bc(d)(\u03c8(\u230a(X-t)/d\u230b)-\u230a(X-t)/d\u230b)|^2\u226a\u03b5 X^{1+\u03b5}, together with the analogous X^{1+\u03b5} bound for the signed prime-power removal term. The exact hyperbola identity reduces the first estimate to an L2 cancellation between -\u03a3_{n\u2264X-t}\u03bc(n)log n and \u03a3_{m\u2264D}(\u039b(m)-1)(M(\u230a(X-t)/m\u230b)-M(D)).",
+ "obstacle_positions": {
+  "1": "Passed structurally: \u03bc and \u039b-1 remain coupled until after \u03bc*\u039b=-\u03bc log cancels the zero mode; no M^2 input is recombined by absolute inequalities.",
+  "2": "Avoided: TT* is organized by translation frequencies and dyadic product packets, not by a bounded-fiber pair-to-modulus map.",
+  "3": "Used essentially: every estimate is on the specific backward window at X=(D+1)^2-1, where the complementary support m\u2264D is exactly stable.",
+  "4": "Irrelevant: only packet lengths, additive translation frequencies, and small dyadic conductors occur; no primorial or full-wheel modulus is introduced.",
+  "5": "Not sieve-only: the decisive cancellation is the signed convolution identity involving \u03bc; parity remains a danger only if TT* takes absolute values before that identity is used.",
+  "6": "No pointwise bound for R and no absolute sum over zeros is assumed; a zeros implementation would be rejected unless it reproduces the algebraic zero-mode cancellation and controls off-line terms collectively.",
+  "7": "Finite computations may falsify the proposed packet contraction or locate a bad scale, but favorable data are assigned no evidentiary role.",
+  "8": "Individual floor jumps are never bounded by polylogarithms; the argument allows Wigert spikes and estimates the complete canonical-window L2 norm.",
+  "9": "This explicitly takes the sole surviving route: a signed contraction/cancellation between the log-M\u00f6bius full convolution and the two-parameter complementary edge, never an absolute renewal induction."
+ },
+ "kill_test": "On exact arithmetic data, form the dyadic packets of F_t=-\u03a3_{n\u2264X-t}\u03bc(n)log n and B_t=\u03a3_{m\u2264D}(\u039b(m)-1)(M(\u230a(X-t)/m\u230b)-M(D)) for successive square windows. Compute the signed TT* cross-energy 2\u27e8F,B\u27e9/(||F||\u00b2+||B||\u00b2) packet by packet. If the balanced packets fail to approach the cancellation sign, or the residual energy has exponent 2-o(1), the proposed spectral-gap mechanism is dead; success only licenses the analytic TT* calculation.",
+ "rung1_version": "Prove the same signed dispersion estimate with right side X^{7/4+\u03b5}. Stieltjes transfer and the prime-power term then give windowed mean square \u226aX^{7/4+\u03b5}, hence the canonical pointwise bound S\u226aX^{7/8+\u03b5}, a genuine fixed power saving with \u03b4=1/8.",
+ "plausible_partial": "A Lean-formalizable square-window hyperbola lemma: throughout 0\u2264t<D, prove the stable-support identity for A_D(X-t), the exact \u03bc*\u039b=-\u03bc log reduction, and a Stieltjes-transfer theorem showing that weighted \u03c8-dispersion plus a separately stated signed prime-power dispersion implies the Abel-face window bound. Analytically, one balanced dyadic packet bound with a power saving is a bounded-effort first theorem even before summing all packets.",
+ "weakest_assumption": "A uniform signed Type-II dispersion estimate for the balanced dyadic packets of the paired log-M\u00f6bius/full-edge expression, strong enough to save X^\u03b7 after summing O(log\u00b2X) packets; no pointwise Mertens bound, zero-free strip, or separate estimate for either half is assumed.",
+ "self_assessed_probabilities": {
+  "exact_reduction_and_formalizable_partial": 0.8,
+  "nontrivial_balanced_packet_saving": 0.25,
+  "full_rung1_fixed_power_saving": 0.1,
+  "rung2_windowed_mean_square": 0.012,
+  "fatal_failure_from_an_uncancelled_low_frequency_packet": 0.5
+ }
+}

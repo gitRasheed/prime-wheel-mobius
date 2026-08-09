@@ -593,3 +593,10 @@ deception, Wigert floor-jump, renewal edge kill), the windowed
 mean-square central object at backward canonical windows, and the
 updated ladder (rung 0 = KNOWN floor; rung 1 = fixed power saving;
 rung 2 = target). 10 blind Codex agents dispatched.
+
+## 2026-08-09-36
+results/026 panel complete: 10/10 proposals in (agent6 recovered from
+plugin log). All ten angles are signed-mechanism routes — the round-3
+packet's proved obstacles fully suppressed the absolute-value class
+that dominated round 2. Proposals in results/026/proposals/. Mapping
+record 027 next.
