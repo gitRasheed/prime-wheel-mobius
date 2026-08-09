@@ -294,3 +294,17 @@ is RH-conditional throughout; no verbatim theorem proves or kills the
 repaired gate. Rung 0 = 𝓜 = o(√x) unconditional (PNT-strength);
 𝓜 ≪ x^{1/4−δ} = rung 1. Any second-moment/CS proof attempt re-enters
 the zero-coordinate shadow of 𝔉. Full chain audit: results/021.
+
+### H4 verdict (record 025, 2026-08-09): CLOSED-KILLED
+
+Agent6's exact-telescoping sieve reduction is dead on five desk-exact
+grounds: HB type-I support claim false (g(p) = (1−k)log p for p > D);
+Λ-vs-1_P telescope destruction; honest kernel mass ≍ D^{1/2−ε} at
+rung-2 scale (polynomially divergent); edge is a truncated hyperbola
+sum, not the Abel functional (self-similarity false); no internal
+repair survives. Salvage: complete-hyperbola telescope identity
+Σ(g*1)(n)M(⌊X/n⌋) = Σg(a) is TRUE + exact edge formula (candidates
+for kernel identity module). Reopens on: edge operator of norm < 1
+at homogeneity 1/2+ε, or a signed contraction for (k−1)μ(a)log a —
+new Möbius-correlation input (Cell D again). Full grounds:
+results/025.

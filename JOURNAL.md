@@ -572,3 +572,14 @@ Declared results/025 (diagnostic): H4 audit debt — renewal-kernel
 mass of agent6's telescoping reduction (Q1 honest mass computation,
 Q2 repairability, Q3 telescoping-lemma desk check, Q4 node verdict).
 Routed to Codex, desk only.
+
+## 2026-08-09-34
+results/025 closed: **CLOSED-KILLED** — H4 dead on five desk-exact
+grounds (support claim false, Λ/1_P telescope destruction, kernel
+mass D^{1/2−ε} divergent, self-similarity false, no repair).
+Salvage: complete-hyperbola telescope identity true + exact edge
+formula. Reopen condition frozen in IDEAS.md. **Weekend queue
+drained**: H3 parked at rung 0, H1 kernel-upgraded (b26e73e), H4
+killed. Remaining: seeding round 3 with five impossibility filters +
+the named central object (windowed mean-square upper bound at
+backward canonical windows).
