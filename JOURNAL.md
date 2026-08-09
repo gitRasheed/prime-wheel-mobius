@@ -454,3 +454,18 @@ constant ≈ 2√x/log x, not O(1); H1's promised power saving now
 hinges on a well-defined open subproblem (improve C toward polylog by
 closing D2+D3). 019's hostile review still pending — that verdict
 decides whether rung 0 closes today via the analytic route.
+
+### 2026-08-09-22 — 019 closed: proof airtight, theorem dominated — H2 dead at the constant level
+
+The hostile review verified every contour step of the Theorem A proof
+and then killed its value: the route's constant is Ingham-level,
+0.51× the real KV constant (zero-density access is structurally
+impossible for the pointwise contour), so the repaired theorem loses
+to triangle + best-known PNT by 1.293× in the exponent. Declined the
+revision iteration — a true-but-dominated theorem is not worth the
+budget. H2 closed (implementation; reopens only with zero-density
+access). Day-end shortlist: H3 (Z-cluster, gate = unconditional J₋₁
+discrete moment at zeros — genuinely deep), H1 (constant-improvement
+subproblem D2+D3 from record 020), H4 (audit debt). Rung 0
+beat-the-trivial remains open; five informal claims corrected by the
+kernel/review channels today.
