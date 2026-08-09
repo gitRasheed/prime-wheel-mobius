@@ -507,3 +507,12 @@ SquareWheel/Survivor modules); each head re-verified on EC2 warm
 tree: lake build RHLean --wfail green + audit_assumptions.sh pass.
 Governance files kept out per Fred's instruction. EC2 started for
 verification, stopped after.
+
+## 2026-08-09-27
+Declared results/022 (experiment): Z-repaired rung 0. Program decision
+(Rasheed): exhaust cluster Z before pivoting to H1. Target:
+unconditional uniform 𝓜(x,K,T) = o(√x) normalized (S = o(x),
+PNT-strength); stretch rung 1 x^{1/2−δ}. Desk only, EC2 stays
+stopped. Verdicts: PROOF-COMPLETE (then blocking refute-mode second
+pass) / PROOF-GAP (named object becomes Z's sub-gate) / FALSE-ROUTE
+(Z parks, pivot H1). Routed to Codex.
