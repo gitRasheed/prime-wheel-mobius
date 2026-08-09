@@ -566,3 +566,9 @@ support-insertion identity. Gate green: --wfail + audit + axioms
 [propext, Classical.choice, Quot.sound]. Excursion window at
 canonical pins upgraded W ≍ log x → W ≍ √x (at H ≍ y). Open half:
 windowed moment upper bound. EC2 stopped after gate.
+
+## 2026-08-09-33
+Declared results/025 (diagnostic): H4 audit debt — renewal-kernel
+mass of agent6's telescoping reduction (Q1 honest mass computation,
+Q2 repairability, Q3 telescoping-lemma desk check, Q4 node verdict).
+Routed to Codex, desk only.
