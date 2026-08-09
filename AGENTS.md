@@ -82,13 +82,23 @@ No rung is currently proved unconditionally — all status: open.
 - Foundations: standard Lean/mathlib classical foundations; noncomputable
   defs allowed (`docs/THEOREM_STATUS.md`)
 
-**square-block-mobius** (sibling, read-only):
-- `lean/RHLean/` is a **source-only snapshot**: no lakefile, no
-  lean-toolchain file in the repo. Standalone kernel verification is
-  currently **UNOBSERVABLE locally**; provenance is upstream
-  `OVVO-Financial/RH_Lean` merged commit `f6110ca00b27` per this repo's
-  `docs/SOURCE_MANIFEST.md` convention and square-block's `MODULES.md`.
-  Resolution owner: Fred Viole (build scaffolding or upstream access).
+**square-block-mobius** (sibling):
+- The 2026-08-09 republished export (origin/main `8ff51e1`, local branch
+  `agent-os`) **adds build scaffolding**: `lean/lakefile.lean`,
+  `lean/lean-toolchain` (`leanprover/lean4:v4.24.0`, mathlib `v4.24.0`),
+  `lean/scripts/audit_assumptions.sh`. The former UNOBSERVABLE status is
+  resolvable; kernel verification in progress under `results/003/`.
+
+**mobius-synthesis** (sibling, arrived 2026-08-09, commit `e87f728`):
+- Toolchain: `leanprover/lean4:v4.24.0`, mathlib `v4.24.0` (root
+  `lakefile.lean`, `lean-toolchain`); audit script
+  `scripts/audit_assumptions.sh`; 248 modules under `RHLean/`.
+- Declared targets (prose extraction pending kernel audit, see journal
+  2026-08-09-2): `NonzeroResponseRHScale` (|H_{k,n}| ≪ X_n^{1/2+ε});
+  route doc directs attack at the signed object C^PNT − 2E^rec.
+- Claim to verify at kernel grade: terminal RH bridge with **no
+  external Mertens→RH typed premise** (stronger than this repo's
+  bridge). CONFLICTED-pending-audit; owner: this program (record 003).
 
 Audit fact (2026-08-08, this adoption): grep over all 61 `.lean` files in
 both repos — zero `sorry`/`admit`, zero project-local `axiom`/`constant`
@@ -130,8 +140,12 @@ per law 5.
 | Repo | Path | Role | Write? |
 |---|---|---|---|
 | prime-wheel-mobius | `/mnt/d/Projects/prime-wheel-mobius` | prime-wheel coordinates; OS home | local branch `agent-os` only — **never push** |
-| square-block-mobius | `/mnt/d/Projects/square-block-mobius` | square-block coordinates | **read-only** |
-| synthesis | (forthcoming) | unified target; future focus of bounding work | governance TBD on arrival |
+| square-block-mobius | `/mnt/d/Projects/square-block-mobius` | square-block coordinates | local branch `agent-os` only — **never push** (relaxed from read-only 2026-08-09, journal 2026-08-09-3) |
+| mobius-synthesis | `/mnt/d/Projects/mobius-synthesis` | seam layer joining both systems; primary bounding focus | local branch `agent-os` only — **never push** (journal 2026-08-09-3) |
+
+Uniform rule (Fred's go-ahead as reported by Rasheed, 2026-08-09): all
+agent work lives on local `agent-os` branches in each repo; `main` is
+never modified, nothing is ever pushed.
 
 Both repos belong to Fred Viole / OVVO-Financial
 (`github.com/OVVO-Financial/…`, public). All Proof-OS records, journal and

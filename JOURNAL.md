@@ -12,14 +12,17 @@
   (UNOBSERVABLE here; CI green per repo workflows — unverified this
   session). Source-level grep audit clean (event 2026-08-08-1).
 - Active constraints:
-  - NO PUSH; all OS work stays on local branch `agent-os`. Expires: only
-    by Fred's explicit direction.
-  - square-block-mobius is read-only. Expires: only by Fred's direction.
-  - No experiment declarations until the blind-panel seeding event and
-    Fred's sign-off on the OS adoption. Expires: on that sign-off.
+  - NO PUSH, any repo; all agent work on local `agent-os` branches in
+    all three repos; `main` never modified. Expires: only by Fred's
+    explicit direction. (Uniform rule set 2026-08-09-3; square-block
+    read-only relaxed to branch-only per Fred's reported go-ahead.)
+  - No experiment declarations until the blind-panel seeding event.
+    Expires: when the committed packet + panel event land. (Fred's
+    sign-off half reported satisfied by Rasheed, 2026-08-09-3.)
 - Blocked: nothing. Node D unblocked 2026-08-09: synthesis repo
-  published (`OVVO-Financial/mobius-synthesis`, cloned read-only to
-  `/mnt/d/Projects/mobius-synthesis`, governance TBD — event 2026-08-09-2).
+  published (`OVVO-Financial/mobius-synthesis`, local branch `agent-os`,
+  branch-only governance — events 2026-08-09-2/-3). Phase 0 (record
+  003) running: builds + audits, all three repos.
 - Next tasks:
   1. Extract exact synthesis targets (`NonzeroResponseRHScale`, the
      C−2E signed object) into `AGENTS.md`; reconcile with Fred's earlier
@@ -146,3 +149,23 @@ Remote check (Rasheed asked for updates; law 6 standing watch):
   Ramanujan-sum-indexed target; the repo's canonical target is H and
   C−2E (Ramanujan modules exist, e.g. `RamanujanDivisorBoundaryBulk`,
   but are not the headline). AGENTS.md extraction = next task 1.
+
+### 2026-08-09-3 — decision: uniform branch governance; Phase 0 launched
+
+Rasheed's direction this session: (1) all three repos get local
+`agent-os` branches; `main` untouched everywhere; nothing ever pushed —
+"we don't step on Fred's foot on main"; (2) Fred has given the
+go-ahead for us to "do our thing" on our own end (reported by Rasheed;
+recorded as such, not as a first-hand Fred statement). Effects:
+square-block's read-only constraint relaxed to branch-only writes; the
+experiment-gate constraint reduces to the blind-panel half; synthesis
+governance set to the same branch-only rule on arrival. AGENTS.md
+updated (repo table, evaluator identities). Branches created:
+square-block `agent-os` from origin/main `8ff51e1` (the export WITH
+build scaffolding), synthesis `agent-os` from `e87f728`.
+
+Phase 0 launched as diagnostic record `results/003/`: kernel builds +
+axiom audits in all three repos (elan 4.2.3 installed; all pin
+lean4/mathlib v4.24.0), plus extraction of the synthesis repo's exact
+open-target declarations and kernel verification of its
+"no-external-axiom RH bridge" claim.
