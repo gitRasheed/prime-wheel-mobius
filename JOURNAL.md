@@ -600,3 +600,8 @@ plugin log). All ten angles are signed-mechanism routes — the round-3
 packet's proved obstacles fully suppressed the absolute-value class
 that dominated round 2. Proposals in results/026/proposals/. Mapping
 record 027 next.
+
+## 2026-08-09-37
+Declared results/027 (review): round-3 mapping over the 10 proposals
+(dedup/cluster, nine-wall obstacle audit, kill-test inventory,
+shortlist ≤ 3, per-agent verdicts). Routed to Codex.
