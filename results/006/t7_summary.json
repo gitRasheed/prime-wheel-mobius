@@ -1,0 +1,19 @@
+{
+ "agent6_theta_R": 0.5014524602075392,
+ "agent6_absR_over_sqrtx_min": 0.00024650651574879866,
+ "agent6_absR_over_sqrtx_max": 0.22776314583042925,
+ "agent6_rhoA_mean": 0.9000145544890616,
+ "agent6_rhoA_range": [
+  0.6255447382764087,
+  0.9879776287235335
+ ],
+ "agent6_rhoB_mean": 0.9519660283210465,
+ "agent6_rhoB_range": [
+  0.8196210815779942,
+  0.9941835155238764
+ ],
+ "agent9_max_telescope_resid": 1.623448042664677e-10,
+ "agent9_maxbnd_over_sqrtx_mean": 0.07389712145585393,
+ "agent9_maxbnd_over_sqrtx_max": 0.1538529650241801,
+ "max_float_resid": 8.789356797933578e-09
+}

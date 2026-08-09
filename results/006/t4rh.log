@@ -1,0 +1,12 @@
+[    0.0s] sieving primes to NMAX
+[    3.8s] 12283531 primes
+[    4.7s] FFT self-check vs direct pairs: max abs err = 0.0000 (must be < 0.5)
+[    4.7s] k=5 n=110 x=12320: P=1442 r(0)=1442 max_h r(h)=601 at h=60; sqrt(x)=111; max/sqrt(x)=5.415
+[    4.7s] k=5 n=172 x=29928: P=3202 r(0)=3202 max_h r(h)=1282 at h=420; sqrt(x)=173; max/sqrt(x)=7.411
+[    4.7s] k=6 n=430 x=185760: P=16731 r(0)=16731 max_h r(h)=6199 at h=840; sqrt(x)=431; max/sqrt(x)=14.383
+[    4.9s] k=6 n=713 x=509795: P=42148 r(0)=42148 max_h r(h)=14836 at h=2520; sqrt(x)=714; max/sqrt(x)=20.779
+[    6.7s] k=7 n=1800 x=3243600: P=232873 r(0)=232873 max_h r(h)=74843 at h=9240; sqrt(x)=1801; max/sqrt(x)=41.556
+[   14.2s] k=7 n=3113 x=9696995: P=645439 r(0)=645439 max_h r(h)=200515 at h=27720; sqrt(x)=3114; max/sqrt(x)=64.391
+[   43.4s] k=8 n=7000 x=49014000: P=2944418 r(0)=2944418 max_h r(h)=857869 at h=360360; sqrt(x)=7001; max/sqrt(x)=122.535
+[  172.5s] k=8 n=14935 x=223084095: P=12281343 r(0)=12281343 max_h r(h)=3423808 at h=360360; sqrt(x)=14936; max/sqrt(x)=229.232
+[  172.5s] done; peak RSS = 21.2 GB

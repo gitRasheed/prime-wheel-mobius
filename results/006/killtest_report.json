@@ -1,0 +1,127 @@
+{
+  "record": "006",
+  "kind": "kill-test wave 1 results",
+  "date": "2026-08-09",
+  "framework": {
+    "sieve_N": 1000000000,
+    "arrays": "mu int8, Mertens int32, pi int32, Li float64 (recon Li convention), 17 GB on disk (fw_*.npy in work/killtests/)",
+    "verification": [
+      "mu[0..223092870] byte-identical to record-004 exact sieve (independent segmented algorithm)",
+      "Mertens checkpoints: M(6)=-1, M(8)=-2, M(30)=-3, M(210)=-1, M(2310)=-1, M(30030)=16, M(510510)=-25, M(9699690)=278, M(223092870)=3516, M(1e8)=1928, M(1e9)=-222",
+      "pi(1e8)=5761455, pi(1e9)=50847534",
+      "H(k=2,n=2) = -224/225 exact; E(6,8) = 1-(Li(8)-Li(6)) to 1e-12"
+    ],
+    "build_wall_s": 70
+  },
+  "T4_agent5_telescoped_reciprocal_dispersion": {
+    "test3_mu_err_sign_correlation": {
+      "what_ran": "Pearson corr(mu(d), err(x//d)) at every square sample, blocks k=5..8 (125/541/2400/11822 samples), two conventions: A = kernel range d<=x//(y+1) with block-clamped err, B = proposer's literal d<=n with plain pi-Li err",
+      "mean_corr_A_by_block": {"k5": 0.0338, "k6": 0.0260, "k7": 0.0164, "k8": 0.0064},
+      "positive_fraction_A": {"k5": 0.64, "k6": 0.70, "k7": 0.69, "k8": 0.61},
+      "mean_z_A": {"k5": 0.248, "k6": 0.298, "k7": 0.376, "k8": 0.309},
+      "aggregate_significance_k8": "mean corr 0.0064, SE 1.7e-4 => t ~ 38: systematically positive",
+      "caveat": "effect size decays ~ (#d)^{-1/2}; per-sample z stays ~0.3 (bounded resonance, not accumulating); realized cancellation |sum mu*err|/sum|err| improves 0.13 -> 0.026 from k5 to k8",
+      "kill_condition": "a systematic nonzero correlation across blocks means the mu-twist does not decorrelate the nested discrepancies and the beyond-3/4 mechanism dies",
+      "verdict": "KILLED (condition met: correlation is positive-signed and statistically nonzero in all four blocks, both conventions)"
+    },
+    "test2_pair_multiplicity": {
+      "what_ran": "r(h) = #{(q1,q2) primes in (n,x]: (x mod q2)-(x mod q1)=h} via exact FFT autocorrelation (float64, self-checked against direct pair count, max err 3e-8), 2 samples per block k=5..8 up to x=223084095",
+      "max_rh_over_sqrtx_by_x": {"12320": 5.4, "29928": 7.4, "185760": 14.4, "509795": 20.8, "3243600": 41.6, "9696995": 64.4, "49014000": 122.5, "223084095": 229.2},
+      "argmax_h": "highly composite: 60, 420, 840, 2520, 9240, 27720, 360360, 360360 (lcm-structured shifts; r(360360)=3423808 at x=2.23e8, ~x^0.78)",
+      "kill_condition": "if some h carries >> x^{1/2} pairs, the DI off-diagonal step cannot be sub-square and the angle dies",
+      "verdict": "KILLED (r_max/sqrt(x) grows from 5.4 to 229 across blocks; violation is structural, concentrated on smooth h)"
+    },
+    "test1_diagonal_variance": {
+      "what_ran": "V(x) = sum over primes q in (n,x] of (1 - 2M(x//q) - 2dLi(q))^2, c_q=+1 comb weight, lambda=dLi (declared operationalization), 10 samples/block k=5..8",
+      "V_over_x": "0.87 at x=2400 decreasing monotonically to 0.42 at x=2.23e8; global slope dlogV/dlogx = 0.935",
+      "kill_condition": "V(x)/x^{1+eps} grows clearly across blocks",
+      "verdict": "SURVIVES (V ~ x, ratio decreasing)"
+    },
+    "overall": "KILLED - two of three components including test 3, which the proposer designated most decisive against the load-bearing beyond-3/4 step"
+  },
+  "T1_agent7_coconductor_gauss_dispersion": {
+    "a_packet_sum_exactness": {
+      "what_ran": "exact Fraction arithmetic, RHLean PrimeWheelCoconductorGram convention (packet = conductor q=Q/gcd(r,Q), Ramanujan kernel c_q(m'-m), field mu on (L,U], window 1_{(L,X]} - rho*1_{(L,U]}): sum over all 27 packets (k=2, Q=900) and 729 packets (k=3, Q=901800900), every square sample",
+      "result": "sum_q A_q == H_{k,n} exactly (Fraction equality) at all 12 samples; H(2,2)=-224/225 reproduced",
+      "verdict": "SURVIVES (coordinate claim exact)"
+    },
+    "b_renewal_vs_raw_scale": {
+      "what_ran": "conductor-normalized amplitudes P_q=(Q/q)A_q for q in {2,3,4,5,6,9,10,15,25,30} at ~12 samples/block, k=2..7 (X to 9.7e6, exceeds requested 1e6), vs renewal (X/q)^{1/2} and vs raw max_b |psi(X;q,b)-X/phi(q)| on same data",
+      "slopes_dlogPq_dlogX": {"2": 0.288, "3": 0.459, "4": 0.442, "5": 0.466, "6": 0.530, "9": 0.647, "10": 0.379, "15": 0.717, "25": 0.661, "30": 0.485},
+      "slopes_dlogDpsi_dlogX": {"range": "0.34-0.51"},
+      "magnitude": "mean |P_q|/sqrt(X/q) = 0.12-0.83 for q<=15, 3.2-3.8 for q=25,30 (max 19.3); mean |P_q|/Dpsi = 0.33-2.2",
+      "blocker": "the proposer's two templates are numerically degenerate over the accessible range: Dpsi itself scales like X^{0.34-0.51}, indistinguishable from the renewal exponent 0.5; amplitudes track neither cleanly (square-bearing conductors 9,15,25 run above both)",
+      "kill_condition": "small-q amplitudes of H track the raw discrepancy scale",
+      "verdict": "INCONCLUSIVE (templates cannot be separated below X ~ 1e7; no clean raw-scale tracking observed, so no kill; passing proves nothing per obstacle 6)"
+    },
+    "c_gauss_window_kernels": {
+      "what_ran": "complete quadratic Gauss sums mod m in {36,100,225,441} (all b) + incomplete windows K(b,m,N=14,H) for H in {8,34,60,120,225}",
+      "result": "max |K|/min(H, sqrt(2 gcd(b,m) m) log m (1+H/m)) = 0.72 over all checks; bound never violated",
+      "verdict": "SURVIVES (kernel majorant confirmed in-range)"
+    },
+    "convention_caveat": "the proposer's loss accounting assumes Q_k is the minimal admissible modulus ~6U_k; under the kernel-extracted spec Q_k=(U//P+1)P with P=prod_{p<=sqrt(U)} p^2, log10(Q/(6U)) = 5.9 (k=3), 31.7 (k=4), ..., 12834.9 (k=8), so for k>=3 the off-diagonal moduli m=lcm(q,q') can vastly exceed the window and the sqrt(m) completion loss accounting must be redone against the true divisor lattice"
+  },
+  "T1_agent0_pinned_quadratic_orbit_coboundary": {
+    "l1_fourier_mass": {
+      "what_ran": "M_k = sum_{a!=0} |c_a(F_k)|, F_k = mu-field on (L,U] zero-padded on Z/Q_k: exact at k=2 (Q=900) and k=3 (Q=901800900, full 9.018e8-frequency sum, parallel); k=4 as the Q->infty integral int_0^1 |P_4(t)| dt on a 2^24 grid (declared deviation: Q_4 ~ 3.8e35 makes the discrete sum infeasible; validated at k=3 where exact sum 9.0402 = integral 9.0402 to 4 digits)",
+      "values": {"M_2": 3.0995, "M_3": 9.0402, "M_4": 31.595},
+      "growth": "local slopes in X=U_k: 0.55 (k=2->3), 0.52 (k=3->4); M_k ~ X^{1/2}, i.e. the ell^1 mass behaves exactly like the absolute-value-inserted operator of obstacle 4",
+      "kill_condition": "if the Fourier mass M_k >> X^delta for some delta>0, the angle is dead at rung 2 and the result is only the reduction theorem",
+      "verdict": "KILLED (M_k ~ X^{0.52-0.55}, nowhere near X^eps)"
+    },
+    "numerology": {
+      "claim": "proposer's designed coincidence Q_k ~ 6 p_k W_{k-1} ~ p_k X_n making sqrt(Q_k) ~ X^{1/2}",
+      "fact": "false under the verified conventions for every k>=3: Q_3/(6U_3)=10^5.9, Q_8/(6U_8)=10^12834.9; the Gauss majorant M_k sqrt(2Q_k) log Q_k is vacuous (exceeds X astronomically); only k=2 (Q=900=30U) sits in the proposer's regime",
+      "note": "transfer-function norm ||G_k||_inf not computed: with Q_3 ~ 9e8 the dense cohomological solve the proposer specified (Q_k ~ 1e4-1e5 assumed) does not exist at k>=3; kill already established by M_k growth + numerology"
+    },
+    "overall": "KILLED (both the ell^1-mass smallness and the modulus-to-scale numerology fail; the reduction-theorem floor is all that remains)"
+  },
+  "T7_agent6_compensated_renewal_kernel_collapse": {
+    "kill1_drift": {
+      "what_ran": "exact collapse derived and verified: Mplus_y(x) = Msm_y(x) + sum_{d<=dmax} M(d) pi_d (integer identity, asserted exactly at all 154 sampled x across k=4..8; proof: reciprocal intervals tile (y,x], every d<=dmax<y is automatically y-smooth), giving C-2E = -sum_d M(d) Pi_d + R(x) with w_d=-M(d), R(x) = Msm_y(x) - B(y,x); Msm_y = mu-sum over y-smooth squarefree integers <= x",
+      "result": "theta(R) = 0.501 (fit over x in [2300, 2.23e8]); |R|/sqrt(x) in [2.5e-4, 0.228]; float residual of collapse <= 8.8e-9",
+      "kill_condition": "residual R(x) growing like x^theta with theta > 0.6 kills the Kernel-Collapse Identity",
+      "verdict": "SURVIVES (identity is exact, drift is exactly renewal-scale x^{0.50}; w_d = -M(d) << |M(d)|+d^{1/2} as claimed)"
+    },
+    "kill2_per_d_cancellation": {
+      "what_ran": "rho(x) = sum_d |C_d-2E_d| / sum_d (|C_d|+2|E_d|), two operationalizations: rho_A algebraic split C_d = M(d)(pi_d - 2Li_d); rho_B interval split C_d = [Mplus(b_d)-Mplus(a_d)] - 2M(d)Li_d",
+      "result": "rho_A mean 0.900 (range 0.63-0.99, rising with block: 0.983 at k=8 top); rho_B mean 0.952 (0.993 at k=8 top); both -> 1 as x grows",
+      "kill_condition": "if rho(x) ~ 1 throughout, cancellation lives only across d, the compensation is statistical rather than algebraic and the kernel-level claim dies",
+      "verdict": "KILLED (rho ~ 0.9-0.99 and increasing: no per-d cancellation; the C-2E compensation is across-d/statistical)"
+    },
+    "overall": "SPLIT - the Kernel-Collapse Identity itself is TRUE and exact with sqrt(x) drift (kill 1 survives, strongest positive finding of the wave), but per-d compensation is absent (kill 2 fires): the martingale-transform structure exists while the cancellation it must explain lives entirely across the d-family, exactly the configuration the proposer flagged as fatal to the kernel-level (vs value-level) claim; kill 3 (L^2 diagonal/off-diagonal exponents) deferred to wave 2"
+  },
+  "T7_agent7_packet_exactness": {
+    "verdict": "SURVIVES",
+    "detail": "see T1_agent7.a: sum of all coconductor packets == H exactly, Fraction arithmetic, k=2 (27 packets) and k=3 (729 packets), every sample"
+  },
+  "T7_agent9_abel_boundary": {
+    "what_ran": "telescoped identity E(y,x) = sum_{d<=dmax} mu(d) err_blk(x//d) vs reference quotient_BE at 154 samples k=4..8; dyadic-cut boundary terms bnd(E0) = M(E0) err_blk(x//(E0+1)) for E0 = 2,4,...,dmax/2 and E0 ~ x^{1/4}",
+    "result": "max telescope residual 1.6e-10 (float epsilon; the y-clamp boundary term vanishes identically under kernel conventions); max |bnd|/sqrt(x) = 0.154, mean 0.074, no growth trend in x",
+    "kill_condition": "boundary term generically of size >> x^{1/2+eps} breaks the basis",
+    "verdict": "SURVIVES (boundary is a small fraction of sqrt(x) throughout)"
+  },
+  "telemetry": {
+    "phase_tag": "killtests",
+    "box": "mobius-fleet-1 (16 vCPU, 31 GB)",
+    "wall_times_s": {"framework_build": 70, "t4_corr_variance": 30, "t7_identities": 36, "t4_rh_fft": 173, "t1_packets": 397},
+    "total_wall_including_reruns_min": "~18",
+    "cpu_utilization_heavy_phase": "80.4% user (mpstat 5s sample during concurrent t1 l1-mass + t4/t7), 73.8% during k=8 FFT",
+    "peak_rss_gb": {"framework": 10.8, "t4": 5.5, "t7": 9.3, "t4_rh": 21.2, "t1": 1.1}
+  },
+  "deviations_declared": [
+    "T4 test 1: c_q and lambda(q) operationalized as c_q=+1 (comb weight of a y-rough prime) and lambda=Li(q)-Li(q-1); the proposer left them implicit in 'read off the kernel-checked identity' (C-2E = Mplus - 2 sum_{prime q} M(x//q) makes c_q=+1 canonical)",
+    "T4 tests run at blocks k=5..8 (x to 2.2e8) rather than the proposer's 'x up to ~1e7' - superset",
+    "T1 agent7(b) run to X=9.7e6 (blocks k<=7), superset of requested 1e6",
+    "T1 agent0: k=4 ell^1 mass by quadrature not exact discrete sum (Q_4 ~ 3.8e35); transfer function G_k not computed (proposer's dense-solve assumption Q_k ~ 1e4-1e5 fails at k>=3 by 10^4-10^12830); kill established without it",
+    "T7 agent6: proposer gave no formula for w_d; the exact collapse w_d = -M(d), R = Msm_y - B was derived and then verified integer-exactly - stronger than the requested numeric check",
+    "k=4 packet-sum exactness skipped (3^15 divisor packets); exactness established at k=2,3"
+  ],
+  "files": [
+    "t4_corr_k{5,6,7,8}.csv", "t4_variance.csv", "t4_rh.csv", "t4_summary.json",
+    "t7_agent6.csv", "t7_agent9.csv", "t7_summary.json",
+    "t1_packets_exact_k2.csv", "t1_packets_exact_k3.csv", "t1_smallq.csv",
+    "t1_gauss.csv", "t1_summary.json",
+    "build.log", "t4.log", "t4rh.log", "t7.log", "t1.log"
+  ]
+}

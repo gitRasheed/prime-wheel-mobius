@@ -1,0 +1,10 @@
+[    0.0s] 3401 primes <= 31622
+[    0.0s] loading existing fw_mu.npy (already cross-checked)
+[    0.3s] Mertens int32 chunked cumsum
+[   10.6s] Mertens checkpoints OK; M(1e9) = -222
+[   11.9s] prime sieve to 1e9
+[   23.4s] pi int32 chunked cumsum
+[   31.3s] pi checkpoints OK; pi(1e9) = 50847534
+[   32.7s] Li float64 (recon convention)
+[   59.8s] Li(1e6) = 78626.503076 (true Li_2(1e6) ~ 78626.5)
+[   69.7s] done; peak RSS = 10.8 GB

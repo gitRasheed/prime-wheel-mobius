@@ -1,0 +1,32 @@
+[    0.0s] loading framework prefixes
+[   19.8s] prime sieve for rough-marking
+[   24.3s] k=4: L=210 U=2310 y=49
+[   24.3s]   k=4: 34 samples done; collapse identity exact on all
+[   24.3s] k=5: L=2310 U=30030 y=174
+[   24.3s]   k=5: 43 samples done; collapse identity exact on all
+[   24.3s] k=6: L=30030 U=510510 y=715
+[   24.4s]   k=6: 43 samples done; collapse identity exact on all
+[   24.4s] k=7: L=510510 U=9699690 y=3115
+[   24.7s]   k=7: 41 samples done; collapse identity exact on all
+[   24.7s] k=8: L=9699690 U=223092870 y=14937
+[   36.3s]   k=8: 42 samples done; collapse identity exact on all
+[   36.4s] summary: {
+ "agent6_theta_R": 0.5014524602075392,
+ "agent6_absR_over_sqrtx_min": 0.00024650651574879866,
+ "agent6_absR_over_sqrtx_max": 0.22776314583042925,
+ "agent6_rhoA_mean": 0.9000145544890616,
+ "agent6_rhoA_range": [
+  0.6255447382764087,
+  0.9879776287235335
+ ],
+ "agent6_rhoB_mean": 0.9519660283210465,
+ "agent6_rhoB_range": [
+  0.8196210815779942,
+  0.9941835155238764
+ ],
+ "agent9_max_telescope_resid": 1.623448042664677e-10,
+ "agent9_maxbnd_over_sqrtx_mean": 0.07389712145585393,
+ "agent9_maxbnd_over_sqrtx_max": 0.1538529650241801,
+ "max_float_resid": 8.789356797933578e-09
+}
+[   36.4s] done; peak RSS = 9.3 GB

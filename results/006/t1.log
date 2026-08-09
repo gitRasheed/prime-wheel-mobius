@@ -1,0 +1,54 @@
+[    0.0s] k=2: Q=900, 27 packets, block length 24
+[    0.1s]   k=2 n=2: sum_q A_q == H == -224/225 exact OK
+[    0.1s]   k=2 n=3: sum_q A_q == H == 1/50 exact OK
+[    0.1s]   k=2 n=4: sum_q A_q == H == -24/25 exact OK
+[    0.1s] k=3: Q=901800900, 729 packets, block length 180
+[    0.4s]   k=3 n=5: sum_q A_q == H == 180360179/90180090 exact OK
+[    0.7s]   k=3 n=6: sum_q A_q == H == -1/25050025 exact OK
+[    1.0s]   k=3 n=7: sum_q A_q == H == 27327299/13663650 exact OK
+[    1.3s]   k=3 n=8: sum_q A_q == H == -9018010/9018009 exact OK
+[    1.6s]   k=3 n=9: sum_q A_q == H == 601200577/150300150 exact OK
+[    2.0s]   k=3 n=10: sum_q A_q == H == -1/5010005 exact OK
+[    2.3s]   k=3 n=11: sum_q A_q == H == 901800787/450900450 exact OK
+[    2.6s]   k=3 n=12: sum_q A_q == H == 150300127/75150075 exact OK
+[    2.9s]   k=3 n=13: sum_q A_q == H == -8198191/2732730 exact OK
+[    3.0s] building prime powers for psi template
+[    3.3s] k=2: small-q table at 3 samples
+[    3.3s] k=3: small-q table at 9 samples
+[    3.3s] k=4: small-q table at 18 samples
+[    3.3s] k=5: small-q table at 14 samples
+[    3.3s] k=6: small-q table at 13 samples
+[    3.4s] k=7: small-q table at 13 samples
+[    4.5s] q=2: d log|P_q|/d log X = 0.288; d log Dpsi/d log X = 0.339 (renewal template = 0.5)
+[    4.5s] q=3: d log|P_q|/d log X = 0.459; d log Dpsi/d log X = 0.413 (renewal template = 0.5)
+[    4.5s] q=4: d log|P_q|/d log X = 0.442; d log Dpsi/d log X = 0.424 (renewal template = 0.5)
+[    4.5s] q=5: d log|P_q|/d log X = 0.466; d log Dpsi/d log X = 0.458 (renewal template = 0.5)
+[    4.5s] q=6: d log|P_q|/d log X = 0.530; d log Dpsi/d log X = 0.371 (renewal template = 0.5)
+[    4.5s] q=9: d log|P_q|/d log X = 0.647; d log Dpsi/d log X = 0.483 (renewal template = 0.5)
+[    4.5s] q=10: d log|P_q|/d log X = 0.379; d log Dpsi/d log X = 0.435 (renewal template = 0.5)
+[    4.5s] q=15: d log|P_q|/d log X = 0.717; d log Dpsi/d log X = 0.478 (renewal template = 0.5)
+[    4.5s] q=25: d log|P_q|/d log X = 0.661; d log Dpsi/d log X = 0.505 (renewal template = 0.5)
+[    4.5s] q=30: d log|P_q|/d log X = 0.485; d log Dpsi/d log X = 0.469 (renewal template = 0.5)
+[    4.5s] Part D: ell^1 Fourier mass
+[    4.5s] M_2 (exact, Q=900) = 3.0995;  sqrt(U)=5.48
+[  393.6s] M_3 (exact, Q=901800900) = 9.0402;  sqrt(U)=14.49
+[  394.9s] k=2: integral |P_k| = 3.1017 (P(0)=2), sqrt(U-L)=4.90
+[  396.2s] k=3: integral |P_k| = 9.0402 (P(0)=2), sqrt(U-L)=13.42
+[  397.4s] k=4: integral |P_k| = 31.5952 (P(0)=0), sqrt(U-L)=45.83
+[  397.4s] k=2: U=30, Q has ~4 digits, log10(Q/(6U)) = 0.76
+[  397.4s] k=3: U=210, Q has ~10 digits, log10(Q/(6U)) = 5.93
+[  397.4s] k=4: U=2310, Q has ~36 digits, log10(Q/(6U)) = 31.68
+[  397.4s] k=5: U=30030, Q has ~137 digits, log10(Q/(6U)) = 131.41
+[  397.4s] k=6: U=510510, Q has ~591 digits, log10(Q/(6U)) = 583.83
+[  397.4s] k=7: U=9699690, Q has ~2638 digits, log10(Q/(6U)) = 2629.86
+[  397.4s] k=8: U=223092870, Q has ~12845 digits, log10(Q/(6U)) = 12834.92
+[  397.4s] Part E: Gauss window kernel spot checks
+[  397.4s]   m=36 N=14 H=34: max |K|/bound = 0.707 at b=27
+[  397.4s]   m=100 N=14 H=34: max |K|/bound = 0.707 at b=75
+[  397.4s]   m=225 N=14 H=34: max |K|/bound = 0.561 at b=150
+[  397.4s]   m=225 N=14 H=8: max |K|/bound = 0.720 at b=219
+[  397.4s]   m=225 N=14 H=60: max |K|/bound = 0.577 at b=150
+[  397.4s]   m=225 N=14 H=120: max |K|/bound = 0.577 at b=150
+[  397.4s]   m=225 N=14 H=225: max |K|/bound = 0.577 at b=150
+[  397.4s]   m=441 N=14 H=34: max |K|/bound = 0.561 at b=294
+[  397.4s] done; peak RSS = 1.1 GB

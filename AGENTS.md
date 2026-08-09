@@ -195,3 +195,10 @@ Arithmetic,Geometry,Proof}`, `MODULES.md`.
 | What to attack next | `IDEAS.md` |
 | What is proved in Lean here | `docs/THEOREM_STATUS.md` |
 | What is proved in the sibling | `square-block-mobius/MODULES.md`, paper §status table |
+
+**Declared obstacle addendum (record 006, 2026-08-09):**
+- **Modulus magnitude**: `primorialMinimalTorusModulus k` exceeds
+  `6·U_k` by factors 10^5.9 (k=3) to 10^12835 (k=8). Any attack
+  scaling with √Q_k, or assuming Q_k ≍ U_k / Q_k ≍ p_k·X numerology,
+  is dead on arrival; Gauss-sum gains must be claimed at packet
+  conductor level (q | Q_k, q small), never at full modulus.
