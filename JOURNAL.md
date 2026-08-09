@@ -6,8 +6,15 @@
   First wave = kill-test diagnostics, not proof attempts.
 - Target: `ProjectedRenewalQuadraticBoundedStatement`
   (mobius-synthesis; premise-free bridge to RH, record 003).
-- Leading angle: none yet — shortlist G1–G4 (IDEAS.md node G) pending
-  kill tests 4/7/1 (mapping report, results/005).
+- Leading angle: none declared. Post-wave-1 scoreboard (006): G3
+  KILLED (implementation), agent0 KILLED, G1 alive (decisive test
+  inconclusive, wave-2 rerun at range), G2/G4 untested; biggest
+  finding = collapse identity (H-object = −Σ_d M(d)Π_d + drift at
+  θ=0.501), formalization running as experiment 009.
+- Running now: record 008 (kill-test wave 2 — cluster-L L² arbiter,
+  G1 discrimination at 10⁸–10⁹, G2 loci, cluster-Q mass, deferred
+  identity checks) and record 009 (collapse-identity Lean
+  formalization), both Opus agents per routing policy 2026-08-09-10.
 - Evaluator health: GREEN all three repos (record 003, EC2
   mobius-fleet-1). C/E correlation confirmed to 0.94 (record 004).
 - Active constraints:
