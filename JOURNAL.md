@@ -477,3 +477,13 @@ mains untouched, work visible on our own branches. The NO-PUSH
 constraint is amended accordingly: agent-os branches may push;
 main never. mobius-ops stays local-only (contains account/IP details,
 and has no remote by design).
+
+## 2026-08-09-24
+Declared results/021 (diagnostic): H3 gate formulation. Freezes the
+cluster-Z discrete moment Σ_{0<γ≤T}|F_K(ρ)|/|ρ| into an exact
+quantified statement, resolves the sup-β inference chain (where does
+an unconditional route confront β>1/2 — zero-density, contradiction
+structure, or incoherence), literature table (Landau–Gonek, Ng J₋₁,
+large sieve at zeros), obstacle audit, kill test. Routed to Codex,
+blocking. Verdicts: FORMULATES-CLEANLY / WITH-REPAIR / INCOHERENT
+(latter kills cluster Z at rung 2). EC2 stays stopped — desk only.
