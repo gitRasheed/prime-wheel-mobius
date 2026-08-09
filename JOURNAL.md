@@ -626,3 +626,10 @@ reproduced. Cross-stack replication loop confirmed live; coordinate
 choice validated; numerics-grade, promotes nothing. Fred requests
 more PRs incl. route-closing content → PR #4 (backward affine
 excursion, b26e73e) queued.
+
+## 2026-08-09-40
+PR #4 opened (backward affine excursion → OVVO-Financial/mobius-
+synthesis, head 7ed0075, stacked on #3): --wfail green + audit pass
+at head on warm tree; complies with Fred's cache caveat (existing
+toolchain/mathlib, incremental, no new deps). EC2 stopped. Night
+closes: records 021–028, PRs #1–#4.
