@@ -469,3 +469,11 @@ discrete moment at zeros — genuinely deep), H1 (constant-improvement
 subproblem D2+D3 from record 020), H4 (audit debt). Rung 0
 beat-the-trivial remains open; five informal claims corrected by the
 kernel/review channels today.
+
+### 2026-08-09-23 — decision: push agent-os branches to remote (Rasheed's direction)
+
+Rasheed directed pushing the agent-os branches to the remote repos —
+mains untouched, work visible on our own branches. The NO-PUSH
+constraint is amended accordingly: agent-os branches may push;
+main never. mobius-ops stays local-only (contains account/IP details,
+and has no remote by design).
