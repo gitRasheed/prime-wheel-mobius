@@ -616,3 +616,13 @@ ADVANCE 2 / MERGE 1 / KILL 7 / new estimates 0. Day closes: records
 021–027 in one cascade; queue for next session = experiment
 declarations for I1 (kernel amplification lemma + exact zero-mode
 desk derivation) then I2.
+
+## 2026-08-09-39
+results/028 (external): Fred's independent stack ran IDEAS.md kill
+test 4 (μ×R sign correlation) on the Abel form via our landed
+PrimeSieveAbelIdentity; expected fast death (his dyadic-Li route
+died on exactly this measurement); result — pathology NOT
+reproduced. Cross-stack replication loop confirmed live; coordinate
+choice validated; numerics-grade, promotes nothing. Fred requests
+more PRs incl. route-closing content → PR #4 (backward affine
+excursion, b26e73e) queued.
