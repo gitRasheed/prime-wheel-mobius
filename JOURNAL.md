@@ -414,3 +414,14 @@ The frontier object is now fully specified: kernel-proved identity
 (015) + empirical profile (016). Next: blind seeding round 2 against
 the Abel face (packet includes the 𝔉-closure and all standing
 obstacles), record 017.
+
+### 2026-08-09-19 — round 2 mapped: node H; zero-shadow obstacle; rung-0 finally in reach
+
+10/10 proposals, zero 𝔉-retreads (the proved closure filters
+automatically now). Best-of-round: H1 deletes the pinned obstacle via
+an O(1)-Lipschitz excursion lemma; H2 offers the program's first
+concrete unconditional theorem target (full-constant KV on the Abel
+sum) with a repairable hinge; H3 quarantines all RH content into one
+diagonal term. New proved-shape obstacle: 𝔉's zero-coordinate shadow.
+Wave 3 (018) = K1 desk audit + K7 literature + K2 zero-sum
+reconstruction; K2 settles the 5-proposal Z cluster in one run.

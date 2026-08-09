@@ -262,3 +262,18 @@ Abel-form bilinear statement Σ_{d≤√x} μ(d)(π(x/d)−Li(x/d)) ≪
 x^{1/2+ε}** — equivalent to the E-face target with no exponent flow;
 next records: formalize the identity (kernel), measure √K-cancellation
 (numerics), scope Type-II (seeding round 2).
+
+## H. Round-2 angles (Abel face; blind panel 017, 2026-08-09)
+
+Full mapping in results/017 verdict. Shortlist: **H1** agent0
+moment-hierarchy (deletes obstacle 3; rung-0 = unconditional
+Moment-Hierarchy Equivalence Theorem, Lean-formalizable). **H2**
+agent8 product-form Perron / full-constant KV (𝔉-exit by inventory;
+hinge lemma needs the 1/ζ-completion repair — do NOT execute as
+written). **H3** agent4 Landau–Gonek zero-pair resolvent (RH content
+quarantined in −M(x)log K; rung 2 → two-zero moments, Ng line).
+**H4** agent6 exact-telescoping sieve reduction (residue lands on the
+sanctioned V8 door). New standing obstacle: **zero-coordinate shadow
+of 𝔉** — CS-over-zeros with absolute F_K reproduces trivial scale;
+signed evaluation at zeros or exit. Clusters Z/V/I with shared kill
+conditions (017 verdict); kill-wave order K1,K7,K2,K5,K3,K4,K6.
