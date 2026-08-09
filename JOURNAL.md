@@ -279,3 +279,17 @@ proven-equivalent faces, and the definition-drift gap flagged in
 record 003 is closed on our branch. Report item for Fred (his README
 cites the formerly-orphan predicate). Kill-test wave (006) still
 running in parallel.
+
+### 2026-08-09-10 — decision: model-routing refinement (Rasheed)
+
+Extends 2026-08-09-8. Constraint learned: Codex/GPT-5.6 subagents run
+sandboxed — no AWS CLI / SSH. Routing policy: Fable = coordinator
+(records, gates, briefs); Opus 5 subagents = all infrastructure-
+touching work (AWS, box builds, numerics), given tightly-scoped briefs
+(frozen targets, exact paths, hard asserts, fixed report formats —
+the wander guard); Codex/GPT-5.6 = pure-reasoning work (adversarial
+review, proof-sketch critique, independent verification), where the
+sandbox costs nothing and cross-model diversity is the value. Hybrid
+permitted: Opus agents invoking the Codex plugin to relay GPT-5.6
+reasoning into tool-capable hands. Rasheed forecasts ~20-subagent
+GPT-5.6 workflow waves — route those at sandbox-safe tasks only.
