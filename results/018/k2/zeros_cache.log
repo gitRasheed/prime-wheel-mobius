@@ -1,0 +1,28 @@
+[     0.0s] hard asserts OK; computing 5000 zeros at dps=30
+[     7.4s]   200/5000 zeros
+[    10.2s]   400/5000 zeros
+[    20.6s]   600/5000 zeros
+[    25.0s]   800/5000 zeros
+[    35.7s]   1000/5000 zeros
+[    43.5s]   1200/5000 zeros
+[    54.7s]   1400/5000 zeros
+[    62.8s]   1600/5000 zeros
+[    74.9s]   1800/5000 zeros
+[    83.0s]   2000/5000 zeros
+[    95.4s]   2200/5000 zeros
+[   105.0s]   2400/5000 zeros
+[   122.8s]   2600/5000 zeros
+[   132.5s]   2800/5000 zeros
+[   150.0s]   3000/5000 zeros
+[   160.8s]   3200/5000 zeros
+[   177.0s]   3400/5000 zeros
+[   189.6s]   3600/5000 zeros
+[   205.7s]   3800/5000 zeros
+[   218.5s]   4000/5000 zeros
+[   234.1s]   4200/5000 zeros
+[   246.6s]   4400/5000 zeros
+[   262.0s]   4600/5000 zeros
+[   275.5s]   4800/5000 zeros
+[   281.4s]   5000/5000 zeros
+[   281.4s] wrote 5000 zeros; gamma_1 = 14.13472514173469379045725198, gamma_5000 = 5447.861998301299856412158673
+[   281.4s] classical checkpoints OK

@@ -425,3 +425,20 @@ sum) with a repairable hinge; H3 quarantines all RH content into one
 diagonal term. New proved-shape obstacle: 𝔉's zero-coordinate shadow.
 Wave 3 (018) = K1 desk audit + K7 literature + K2 zero-sum
 reconstruction; K2 settles the 5-proposal Z cluster in one run.
+
+### 2026-08-09-20 — wave 3 verdicts: H2 repaired-survives; cluster Z survives K2 with a named gate
+
+K1 repaired H2's hinge (1/ζ-completion, doubled-height contour; full
+interior KV constant). K7: weak form classical, constant novel. K2:
+the decisive cluster-Z measurement returned ABSOLUTE-SUMMABLE —
+overshoot ≍ log²–log³x, exponent-in-x statistically zero; the
+explicit-formula route is NOT capped at trivial scale, and its true
+gate is now a named object (unconditional J₋₁-type discrete moment at
+zeros). Note the epistemics: the zero-shadow obstacle written after
+round 2 predicted a kill; the measurement refuted the prediction and
+refined the obstacle instead — numerics falsifying our own
+speculation is the channel working. Declaring 019 (H2 repaired
+Theorem A, paper-grade proof + blocking cross-model review; kernel
+formalization infeasible — mathlib lacks VK machinery — so target
+status is reviewed-unconditional, honestly labelled) and 020 (H1
+Lipschitz/moment-hierarchy reduction — kernel-eligible, Lean).
