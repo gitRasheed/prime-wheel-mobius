@@ -364,3 +364,14 @@ shared assumption was false — exactly why convergence is "a signal,
 not a vote." G2's last gate: H=1 exponent-flow audit (013, per review
 011). Ops: third lost completion signal from the Codex plugin; the
 companion status/result CLI is now the standing retrieval path.
+
+### 2026-08-09-15 — 013: NEUTRAL-OR-EXPANDS; G2 closure pending review 014
+
+The H=1 exponent audit returned F_0(σ) = 5/8 + σ/4 (expansion ≥ 1/4
+everywhere; worse at the true D² scale). With 012's exact
+counterexample this ends angle G2's dispersion architecture unless
+the blocking review (014, Opus recomputing Codex — reversed roles for
+diversity) finds an error or an evading subfamily. Post-review state
+of node G if confirmed: G1, G2, G3 dead; alive = cluster L (arbiter
+passed), G4's formulation debt, parity-locus isolation, plus re-seed
+round 2 armed with the kill map.
