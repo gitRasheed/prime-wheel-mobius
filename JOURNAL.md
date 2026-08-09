@@ -350,3 +350,17 @@ the reviewer, the genuinely nonstandard hinge of the angle. This is
 the anti-sycophancy contract doing exactly what it was installed for:
 a same-model panel ranked this angle #2 and none of us caught the
 2-adic failure; the cross-model reviewer found it in minutes.
+
+### 2026-08-09-14 — 012: MAP-FAILS, verified exactly; G2's transfer core closed outright
+
+Codex formulation came back MAP-FAILS with an explicit witness family;
+I re-verified the algebra symbolically and the linear fiber growth to
+D=10⁵ — exact counterexample, so the bounded-fiber transfer closes
+outright (numerics channel authority). Cluster Q's central mechanism —
+five agents' convergent idea — is now dead in its literal form:
+quadratic roots bound sampling-residue repetitions, not pair fibers,
+and conductors reach D². The convergence signal was real but the
+shared assumption was false — exactly why convergence is "a signal,
+not a vote." G2's last gate: H=1 exponent-flow audit (013, per review
+011). Ops: third lost completion signal from the Codex plugin; the
+companion status/result CLI is now the standing retrieval path.
