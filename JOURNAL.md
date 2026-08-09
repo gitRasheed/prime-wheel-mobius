@@ -537,3 +537,15 @@ divisor jumps: amortized-polylog via divisor counting?) + D3 (support
 growth: does unconditional VK-quality PNT input suffice?) + assembly
 (best unconditional C(y,x); is polylog reachable). Routed to Codex,
 desk only. Verdicts: PLAN-VIABLE / BLOCKED / FALSE-HOPE.
+
+## 2026-08-09-30
+results/023 closed: **PLAN-VIABLE, goal corrected**. Pointwise-polylog
+Lipschitz is dead (h=1 jump sum = exact divisor sum; Wigert extremal
+kill), replaced by unconditional affine modulus A_y = 2+o(1),
+B_y = K/log(y+1). Error #8: 020's "D3 needs PNT-strength" false at
+excursion scale (Chebyshev suffices). Discovery: 020's forward
+theorem vacuous at canonical square pins; backward window exactly
+stable for length y → backward affine version gives W ≍ √x at
+canonical pins, H^{2k+1} moment lower bound unconditional on the
+increment side (windowed upper bound = the open half). Frozen plan =
+bounded Lean scope; record 024 (kernel formalization) is next.
