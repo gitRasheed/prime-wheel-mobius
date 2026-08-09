@@ -3,3 +3,70 @@ Sun Aug  9 11:18:03 UTC 2026
 info: downloading https://releases.lean-lang.org/lean4/v4.24.0/lean-4.24.0-linux.tar.zst
 info: installing /home/rasheed/.elan/toolchains/leanprover--lean4---v4.24.0
 info: mathlib: cloning https://github.com/leanprover-community/mathlib4.git
+info: mathlib: checking out revision 'f897ebcf72cd16f89ab4577d0c826cd14afaafc7'
+info: plausible: cloning https://github.com/leanprover-community/plausible
+info: plausible: checking out revision 'dfd06ebfe8d0e8fa7faba9cb5e5a2e74e7bd2805'
+info: LeanSearchClient: cloning https://github.com/leanprover-community/LeanSearchClient
+info: LeanSearchClient: checking out revision '99657ad92e23804e279f77ea6dbdeebaa1317b98'
+info: importGraph: cloning https://github.com/leanprover-community/import-graph
+info: importGraph: checking out revision 'd768126816be17600904726ca7976b185786e6b9'
+info: proofwidgets: cloning https://github.com/leanprover-community/ProofWidgets4
+info: proofwidgets: checking out revision '556caed0eadb7901e068131d1be208dd907d07a2'
+info: aesop: cloning https://github.com/leanprover-community/aesop
+info: aesop: checking out revision '725ac8cd67acd70a7beaf47c3725e23484c1ef50'
+info: Qq: cloning https://github.com/leanprover-community/quote4
+info: Qq: checking out revision 'dea6a3361fa36d5a13f87333dc506ada582e025c'
+info: batteries: cloning https://github.com/leanprover-community/batteries
+info: batteries: checking out revision '8da40b72fece29b7d3fe3d768bac4c8910ce9bee'
+info: Cli: cloning https://github.com/leanprover/lean4-cli
+info: Cli: checking out revision '91c18fa62838ad0ab7384c03c9684d99d306e1da'
+✔ [3/21] Built Cache.Lean (32s)
+✔ [4/21] Built Cache.Lean:c.o (337ms)
+✔ [10/21] Built Batteries.Data.String.Basic:c.o (319ms)
+✔ [11/21] Built Batteries.Data.String.Matcher:c.o (570ms)
+✔ [12/21] Built Batteries.Data.Array.Match:c.o (784ms)
+✔ [13/21] Built Cache.IO (33s)
+✔ [14/21] Built Cache.IO:c.o (3.1s)
+✔ [15/21] Built Cache.Hashing (31s)
+✔ [16/21] Built Cache.Hashing:c.o (922ms)
+✔ [17/21] Built Cache.Requests (39s)
+✔ [18/21] Built Cache.Requests:c.o (2.5s)
+✔ [19/21] Built Cache.Main (31s)
+✔ [20/21] Built Cache.Main:c.o (827ms)
+✔ [21/21] Built cache:exe (2.6s)
+  % Total    % Received % Xferd  Average Speed   Time    Time     Time  Current
+                                 Dload  Upload   Total   Spent    Left  Speed
+  0     0    0     0    0     0      0      0 --:--:-- --:--:-- --:--:--     0  0     0    0     0    0     0      0      0 --:--:-- --:--:-- --:--:--     0
+ 32 1075k   32  349k    0     0  1107k      0 --:--:-- --:--:-- --:--:-- 1107k100 1075k  100 1075k    0     0  3055k      0 --:--:-- --:--:-- --:--:-- 19.7M
+
+installing leantar 0.1.15
+uncaught exception: no such file or directory (error code: 2)
+  file: /home/rasheed/.cache/mathlib/leantar and/or /home/rasheed/.cache/mathlib/leantar-0.1.15
+cache_get_exit: 1
+✔ [325/1178] Built Plausible.Random (69s)
+✔ [326/1459] Built Plausible.Attr (95s)
+✔ [327/1540] Built Qq.SortLocalDecls (106s)
+✔ [328/1932] Built Mathlib.Tactic.Linter.DirectoryDependency (151s)
+✔ [329/1989] Built ProofWidgets.Compat (138s)
+✔ [330/2162] Built ProofWidgets.Util (154s)
+✔ [331/2493] Built Plausible.Gen (107s)
+✔ [332/3423] Built Plausible.Arbitrary (28s)
+✔ [333/3729] Built Mathlib.Tactic.Linter.Header (74s)
+✔ [334/3729] Built ProofWidgets.Cancellable (72s)
+✔ [335/3729] Built ProofWidgets.Component.Basic (73s)
+✔ [336/3729] Built Qq.Typ (226s)
+✔ [337/3729] Built Qq.ForLean.Do (226s)
+✔ [338/3729] Built Qq.ForLean.ToExpr (226s)
+✔ [339/3729] Built Qq.ForLean.ReduceEval (226s)
+✔ [340/3729] Built Plausible.Sampleable (63s)
+✔ [341/3729] Built Mathlib.Tactic.Linter.OldObtain (63s)
+✔ [342/3729] Built Mathlib.Lean.Elab.Tactic.Meta (63s)
+✔ [343/3729] Built Mathlib.Tactic.Linter.UnusedTacticExtension (63s)
+✔ [344/3729] Built Mathlib.Tactic.Linter.Multigoal (63s)
+✔ [345/3729] Built Mathlib.Tactic.DeclarationNames (63s)
+✔ [346/3729] Built Mathlib.Tactic.MinImports (67s)
+✔ [347/3729] Built Mathlib.Tactic.Linter.FlexibleLinter (64s)
+✔ [348/3729] Built Mathlib.Tactic.Linter.GlobalAttributeIn (62s)
+✔ [349/3729] Built Mathlib.Tactic.Linter.HashCommandLinter (62s)
+✔ [350/3729] Built Mathlib.Tactic.Linter.DocPrime (62s)
+✔ [351/3729] Built Mathlib.Tactic.Linter.DocString (63s)

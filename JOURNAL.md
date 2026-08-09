@@ -8,9 +8,11 @@
   (synthesis, forthcoming focus).
 - Leading angle: none declared. Tree seeded from papers only
   (`IDEAS.md` A–F); blind-panel re-seed not yet run.
-- Evaluator health: prime-wheel `lake build` not yet run locally
-  (UNOBSERVABLE here; CI green per repo workflows — unverified this
-  session). Source-level grep audit clean (event 2026-08-08-1).
+- Evaluator health: **GREEN, all three repos** (record 003,
+  2026-08-09): builds + audits pass on EC2 evaluator `mobius-fleet-1`;
+  unconditional bridge pair `#print axioms`-clean. Canonical target:
+  `ProjectedRenewalQuadraticBoundedStatement` (see AGENTS.md;
+  `NonzeroResponseRHScale` is an unimported orphan — flagged to Fred).
 - Active constraints:
   - NO PUSH, any repo; all agent work on local `agent-os` branches in
     all three repos; `main` never modified. Expires: only by Fred's
@@ -24,16 +26,18 @@
   branch-only governance — events 2026-08-09-2/-3). Phase 0 (record
   003) running: builds + audits, all three repos.
 - Next tasks:
-  1. Extract exact synthesis targets (`NonzeroResponseRHScale`, the
-     C−2E signed object) into `AGENTS.md`; reconcile with Fred's earlier
-     Ramanujan-sum summary; flag the "no external Mertens→RH axiom"
-     claim for kernel verification (event 2026-08-09-2).
-  2. Run `lake build RHLean --wfail` + audit locally (here AND
-     synthesis — synthesis ships lakefile + audit script); record
-     evaluator health honestly (diagnostic).
-  3. Convene blind panel to re-seed `IDEAS.md` (packet committed first).
-  4. Optional follow-up to 002: structured k=4 spectrum for the
-     conductor-decay profile (known-unknown #2).
+  1. Phase 1 reconnaissance (diagnostic): compute H_{k,n}, C, E exactly
+     over feasible range on the EC2 box; measure the C/E correlation
+     the route doc claims; map where cancellation lives in the
+     reciprocal-d family; build the reusable harness.
+  2. Draft + commit the blind-panel seeding packet (exact target =
+     `ProjectedRenewalQuadraticBoundedStatement`, obstacles, ladder);
+     then convene the panel (unblocks experiment declarations).
+  3. Candidate first experiment after panel: connecting theorem
+     `NonzeroResponseRHScale` ↔ quadratic statement (closes the
+     definition-drift orphan gap).
+  4. Report to Fred when he surfaces: orphan-module gap; EC2 evaluator
+     exists; record 003 summary.
 
 ---
 
@@ -208,3 +212,31 @@ inventory: `mobius-ops/README.md`. Local record-003 builds continue in
 parallel — the EC2 box is the fleet evaluator going forward; local
 remains the OS home. Note: account creds are root — flagged to Rasheed
 to move to IAM.
+
+### 2026-08-09-6 — record 003 verdict: evaluator GREEN everywhere; bridge kernel-clean; canonical-target correction
+
+Phase 0 complete, far faster than expected: the EC2 evaluator built
+all three repos in under 10 minutes total (warm mathlib cache + NVMe;
+the local drvfs builds were superseded and stopped, partial logs
+retained). All three audit scripts pass. `#print axioms` on
+`projectedRenewalQuadraticBounded_imp_riemannHypothesis_unconditional`
+and `riemannHypothesis_of_mertensEnergy`: exactly
+`[propext, Classical.choice, Quot.sound]` — the estimate→RH chain is
+premise-free at kernel grade. Known-unknown #6 closed (square-block
+verifies).
+
+The finding that matters most: the single unimported module is
+`RHLean.Analysis.MobiusSynthesisBoundary`, the file defining the
+README's headline `NonzeroResponseRHScale`. It compiles but nothing
+references it — no theorem ties it to
+`ProjectedRenewalQuadraticBoundedStatement`, which is what the bridge
+consumes. Definition drift caught exactly as PROOF_OS's kernel-channel
+reference section warns. Program response: canonical target is now
+declared as the quadratic statement (AGENTS.md updated); the orphan is
+flagged to Fred; proving the connecting theorem is queued as the
+candidate first experiment after the blind panel.
+
+Frontier delta: none — this is formalization-support (verified
+baseline), honestly labelled. Frontier =
+`ProjectedRenewalQuadraticBoundedStatement`. Next: Phase 1
+reconnaissance numerics on the EC2 box; seeding packet draft.

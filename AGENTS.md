@@ -103,17 +103,30 @@ No rung is currently proved unconditionally — all status: open.
   (exact decomposition `..._eq_pntCorrected_sub_two_error`,
   `RHLean/Analysis/PrimeSievePNTCentering.lean:213`), explicitly not at
   its two pieces separately.
-- Bridge status (resolves the 2026-08-09-2 CONFLICTED item): the
-  **forward** chain estimate → RH is criterion-free —
+- Bridge status: **kernel-verified 2026-08-09 (record 003)** — the
+  forward chain estimate → RH is criterion-free:
   `projectedRenewalQuadraticBounded_imp_riemannHypothesis_unconditional`
-  (`RHLean/Proof/TerminalMertensForward.lean:37`), resting on the
-  in-repo `riemannHypothesis_of_mertensEnergy`
-  (`RHLean/Analysis/MertensEnergyRHForward.lean:66`). The *equivalence*
-  still takes the typed premise `ClassicalMertensRHCriterion`; reverse
-  RH → Mertens not asserted. Kernel-grade `#print axioms` on the
-  unconditional pair: pending (record 003; the repo's own
-  `TerminalAxiomAudit.lean` predates this route). Note: 249 files on
-  disk vs 248 imported — one unimported module, unidentified.
+  (`RHLean/Proof/TerminalMertensForward.lean:37`) and its engine
+  `riemannHypothesis_of_mertensEnergy`
+  (`RHLean/Analysis/MertensEnergyRHForward.lean:66`) both `#print
+  axioms` to exactly `[propext, Classical.choice, Quot.sound]` (green
+  build + clean audit, EC2 evaluator). The *equivalence* still takes
+  the typed premise `ClassicalMertensRHCriterion`; reverse RH → Mertens
+  not asserted.
+- **Canonical program target** (definition-drift finding, record 003):
+  `ProjectedRenewalQuadraticBoundedStatement` — the statement the
+  bridge consumes. `NonzeroResponseRHScale`
+  (`RHLean/Analysis/MobiusSynthesisBoundary.lean`) is an **orphan**:
+  its module is the one file excluded from the 248-import manifest,
+  compiles clean, but no theorem connects it to the bridge chain.
+  Treat as documentation-grade; connecting theorem = candidate first
+  contribution. Gap flagged for Fred (resolution owner: Fred Viole).
+
+**Fleet evaluator (record 003 onward).** EC2 `mobius-fleet-1`
+(i-0fc2bb4713d1486ca, us-east-1, Ubuntu 24.04, elan → lean4 v4.24.0,
+mathlib v4.24.0, warm caches for all three repos). Tooling and
+inventory: `/mnt/d/Projects/mobius-ops`. Local drvfs builds are
+superseded for verification work.
 
 Audit fact (2026-08-08, this adoption): grep over all 61 `.lean` files in
 both repos — zero `sorry`/`admit`, zero project-local `axiom`/`constant`

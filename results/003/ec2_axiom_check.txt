@@ -1,0 +1,4 @@
+'RHLean.Proof.TerminalMertensForward.projectedRenewalQuadraticBounded_imp_riemannHypothesis_unconditional' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+'RHLean.Analysis.riemannHypothesis_of_mertensEnergy' depends on axioms: [propext, Classical.choice, Quot.sound]

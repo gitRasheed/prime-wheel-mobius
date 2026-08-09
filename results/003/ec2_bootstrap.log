@@ -1,0 +1,1009 @@
+Sun Aug  9 11:27:21 UTC 2026
+Hit:1 http://us-east-1.ec2.archive.ubuntu.com/ubuntu noble InRelease
+Get:2 http://us-east-1.ec2.archive.ubuntu.com/ubuntu noble-updates InRelease [126 kB]
+Get:3 http://us-east-1.ec2.archive.ubuntu.com/ubuntu noble-backports InRelease [126 kB]
+Get:4 http://us-east-1.ec2.archive.ubuntu.com/ubuntu noble/universe amd64 Packages [15.0 MB]
+Get:5 http://us-east-1.ec2.archive.ubuntu.com/ubuntu noble/universe Translation-en [5982 kB]
+Get:6 http://security.ubuntu.com/ubuntu noble-security InRelease [126 kB]
+Get:7 http://us-east-1.ec2.archive.ubuntu.com/ubuntu noble/universe amd64 Components [3871 kB]
+Get:8 http://us-east-1.ec2.archive.ubuntu.com/ubuntu noble/universe amd64 c-n-f Metadata [301 kB]
+Get:9 http://us-east-1.ec2.archive.ubuntu.com/ubuntu noble/multiverse amd64 Packages [269 kB]
+Get:10 http://us-east-1.ec2.archive.ubuntu.com/ubuntu noble/multiverse Translation-en [118 kB]
+Get:11 http://us-east-1.ec2.archive.ubuntu.com/ubuntu noble/multiverse amd64 Components [35.0 kB]
+Get:12 http://us-east-1.ec2.archive.ubuntu.com/ubuntu noble/multiverse amd64 c-n-f Metadata [8328 B]
+Get:13 http://us-east-1.ec2.archive.ubuntu.com/ubuntu noble-updates/main amd64 Packages [1184 kB]
+Get:14 http://us-east-1.ec2.archive.ubuntu.com/ubuntu noble-updates/main Translation-en [281 kB]
+Get:15 http://us-east-1.ec2.archive.ubuntu.com/ubuntu noble-updates/main amd64 Components [180 kB]
+Get:16 http://us-east-1.ec2.archive.ubuntu.com/ubuntu noble-updates/universe amd64 Packages [1682 kB]
+Get:17 http://us-east-1.ec2.archive.ubuntu.com/ubuntu noble-updates/universe Translation-en [335 kB]
+Get:18 http://us-east-1.ec2.archive.ubuntu.com/ubuntu noble-updates/universe amd64 Components [388 kB]
+Get:19 http://us-east-1.ec2.archive.ubuntu.com/ubuntu noble-updates/universe amd64 c-n-f Metadata [34.9 kB]
+Get:20 http://us-east-1.ec2.archive.ubuntu.com/ubuntu noble-updates/restricted amd64 Packages [1414 kB]
+Get:21 http://us-east-1.ec2.archive.ubuntu.com/ubuntu noble-updates/restricted Translation-en [320 kB]
+Get:22 http://us-east-1.ec2.archive.ubuntu.com/ubuntu noble-updates/multiverse amd64 Packages [45.4 kB]
+Get:23 http://us-east-1.ec2.archive.ubuntu.com/ubuntu noble-updates/multiverse Translation-en [12.3 kB]
+Get:24 http://us-east-1.ec2.archive.ubuntu.com/ubuntu noble-updates/multiverse amd64 Components [940 B]
+Get:25 http://us-east-1.ec2.archive.ubuntu.com/ubuntu noble-updates/multiverse amd64 c-n-f Metadata [656 B]
+Get:26 http://us-east-1.ec2.archive.ubuntu.com/ubuntu noble-backports/main amd64 Packages [40.6 kB]
+Get:27 http://us-east-1.ec2.archive.ubuntu.com/ubuntu noble-backports/main Translation-en [9172 B]
+Get:28 http://us-east-1.ec2.archive.ubuntu.com/ubuntu noble-backports/main amd64 Components [5760 B]
+Get:29 http://us-east-1.ec2.archive.ubuntu.com/ubuntu noble-backports/main amd64 c-n-f Metadata [368 B]
+Get:30 http://us-east-1.ec2.archive.ubuntu.com/ubuntu noble-backports/universe amd64 Packages [31.0 kB]
+Get:31 http://us-east-1.ec2.archive.ubuntu.com/ubuntu noble-backports/universe Translation-en [18.6 kB]
+Get:32 http://us-east-1.ec2.archive.ubuntu.com/ubuntu noble-backports/universe amd64 Components [12.6 kB]
+Get:33 http://us-east-1.ec2.archive.ubuntu.com/ubuntu noble-backports/universe amd64 c-n-f Metadata [1588 B]
+Get:34 http://us-east-1.ec2.archive.ubuntu.com/ubuntu noble-backports/restricted amd64 Components [212 B]
+Get:35 http://us-east-1.ec2.archive.ubuntu.com/ubuntu noble-backports/restricted amd64 c-n-f Metadata [116 B]
+Get:36 http://us-east-1.ec2.archive.ubuntu.com/ubuntu noble-backports/multiverse amd64 Packages [748 B]
+Get:37 http://us-east-1.ec2.archive.ubuntu.com/ubuntu noble-backports/multiverse Translation-en [340 B]
+Get:38 http://us-east-1.ec2.archive.ubuntu.com/ubuntu noble-backports/multiverse amd64 Components [212 B]
+Get:39 http://us-east-1.ec2.archive.ubuntu.com/ubuntu noble-backports/multiverse amd64 c-n-f Metadata [116 B]
+Get:40 http://security.ubuntu.com/ubuntu noble-security/main amd64 Packages [927 kB]
+Get:41 http://security.ubuntu.com/ubuntu noble-security/main Translation-en [201 kB]
+Get:42 http://security.ubuntu.com/ubuntu noble-security/main amd64 Components [46.3 kB]
+Get:43 http://security.ubuntu.com/ubuntu noble-security/universe amd64 Packages [1199 kB]
+Get:44 http://security.ubuntu.com/ubuntu noble-security/universe Translation-en [239 kB]
+Get:45 http://security.ubuntu.com/ubuntu noble-security/universe amd64 Components [76.3 kB]
+Get:46 http://security.ubuntu.com/ubuntu noble-security/universe amd64 c-n-f Metadata [24.2 kB]
+Get:47 http://security.ubuntu.com/ubuntu noble-security/restricted amd64 Packages [1320 kB]
+Get:48 http://security.ubuntu.com/ubuntu noble-security/restricted Translation-en [302 kB]
+Get:49 http://security.ubuntu.com/ubuntu noble-security/multiverse amd64 Packages [40.3 kB]
+Get:50 http://security.ubuntu.com/ubuntu noble-security/multiverse Translation-en [10.6 kB]
+Get:51 http://security.ubuntu.com/ubuntu noble-security/multiverse amd64 Components [208 B]
+Get:52 http://security.ubuntu.com/ubuntu noble-security/multiverse amd64 c-n-f Metadata [468 B]
+Fetched 36.4 MB in 4s (9475 kB/s)
+Reading package lists...
+Reading package lists...
+Building dependency tree...
+Reading state information...
+git is already the newest version (1:2.43.0-1ubuntu7.3).
+git set to manually installed.
+curl is already the newest version (8.5.0-2ubuntu10.11).
+curl set to manually installed.
+rsync is already the newest version (3.2.7-1ubuntu1.5).
+rsync set to manually installed.
+The following additional packages will be installed:
+  binutils binutils-common binutils-x86-64-linux-gnu bzip2 cpp cpp-13
+  cpp-13-x86-64-linux-gnu cpp-x86-64-linux-gnu dpkg-dev fakeroot
+  fontconfig-config fonts-dejavu-core fonts-dejavu-mono g++ g++-13
+  g++-13-x86-64-linux-gnu g++-x86-64-linux-gnu gcc gcc-13 gcc-13-base
+  gcc-13-x86-64-linux-gnu gcc-x86-64-linux-gnu libalgorithm-diff-perl
+  libalgorithm-diff-xs-perl libalgorithm-merge-perl libaom3 libasan8
+  libatomic1 libbinutils libc-bin libc-dev-bin libc-devtools libc6 libc6-dev
+  libcc1-0 libcrypt-dev libctf-nobfd0 libctf0 libdeflate0 libdpkg-perl
+  libfakeroot libfile-fcntllock-perl libfontconfig1 libgcc-13-dev libgd3
+  libgomp1 libgprofng0 libheif-plugin-aomdec libheif-plugin-aomenc libheif1
+  libhwasan0 libisl23 libitm1 libjbig0 libjpeg-turbo8 libjpeg8 liblerc4
+  liblsan0 libmpc3 libquadmath0 libsframe1 libsharpyuv0 libstdc++-13-dev
+  libtiff6 libtsan2 libubsan1 libwebp7 libxpm4 linux-libc-dev
+  linux-tools-common locales lto-disabled-list make manpages-dev rpcsvc-proto
+Suggested packages:
+  binutils-doc gprofng-gui bzip2-doc cpp-doc gcc-13-locales cpp-13-doc
+  debian-keyring g++-multilib g++-13-multilib gcc-13-doc gcc-multilib autoconf
+  automake libtool flex bison gdb gcc-doc gcc-13-multilib gdb-x86-64-linux-gnu
+  glibc-doc libnss-nis libnss-nisplus bzr libgd-tools libheif-plugin-libde265
+  libheif-plugin-x265 libheif-plugin-ffmpegdec libheif-plugin-jpegdec
+  libheif-plugin-jpegenc libheif-plugin-j2kdec libheif-plugin-j2kenc
+  libheif-plugin-rav1e libheif-plugin-svtenc libstdc++-13-doc make-doc zip
+The following NEW packages will be installed:
+  binutils binutils-common binutils-x86-64-linux-gnu build-essential bzip2 cpp
+  cpp-13 cpp-13-x86-64-linux-gnu cpp-x86-64-linux-gnu dpkg-dev fakeroot
+  fontconfig-config fonts-dejavu-core fonts-dejavu-mono g++ g++-13
+  g++-13-x86-64-linux-gnu g++-x86-64-linux-gnu gcc gcc-13 gcc-13-base
+  gcc-13-x86-64-linux-gnu gcc-x86-64-linux-gnu libalgorithm-diff-perl
+  libalgorithm-diff-xs-perl libalgorithm-merge-perl libaom3 libasan8
+  libatomic1 libbinutils libc-dev-bin libc-devtools libc6-dev libcc1-0
+  libcrypt-dev libctf-nobfd0 libctf0 libdeflate0 libdpkg-perl libfakeroot
+  libfile-fcntllock-perl libfontconfig1 libgcc-13-dev libgd3 libgomp1
+  libgprofng0 libheif-plugin-aomdec libheif-plugin-aomenc libheif1 libhwasan0
+  libisl23 libitm1 libjbig0 libjpeg-turbo8 libjpeg8 liblerc4 liblsan0 libmpc3
+  libquadmath0 libsframe1 libsharpyuv0 libstdc++-13-dev libtiff6 libtsan2
+  libubsan1 libwebp7 libxpm4 linux-libc-dev lto-disabled-list make
+  manpages-dev rpcsvc-proto unzip
+The following packages will be upgraded:
+  libc-bin libc6 linux-tools-common locales
+4 upgraded, 73 newly installed, 0 to remove and 39 not upgraded.
+Need to get 86.2 MB of archives.
+After this operation, 268 MB of additional disk space will be used.
+Get:1 http://us-east-1.ec2.archive.ubuntu.com/ubuntu noble-updates/main amd64 libc6 amd64 2.39-0ubuntu8.8 [3262 kB]
+Get:2 http://us-east-1.ec2.archive.ubuntu.com/ubuntu noble-updates/main amd64 libc-bin amd64 2.39-0ubuntu8.8 [682 kB]
+Get:3 http://us-east-1.ec2.archive.ubuntu.com/ubuntu noble-updates/main amd64 locales all 2.39-0ubuntu8.8 [4231 kB]
+Get:4 http://us-east-1.ec2.archive.ubuntu.com/ubuntu noble-updates/main amd64 binutils-common amd64 2.42-4ubuntu2.10 [240 kB]
+Get:5 http://us-east-1.ec2.archive.ubuntu.com/ubuntu noble-updates/main amd64 libsframe1 amd64 2.42-4ubuntu2.10 [15.7 kB]
+Get:6 http://us-east-1.ec2.archive.ubuntu.com/ubuntu noble-updates/main amd64 libbinutils amd64 2.42-4ubuntu2.10 [577 kB]
+Get:7 http://us-east-1.ec2.archive.ubuntu.com/ubuntu noble-updates/main amd64 libctf-nobfd0 amd64 2.42-4ubuntu2.10 [98.0 kB]
+Get:8 http://us-east-1.ec2.archive.ubuntu.com/ubuntu noble-updates/main amd64 libctf0 amd64 2.42-4ubuntu2.10 [94.5 kB]
+Get:9 http://us-east-1.ec2.archive.ubuntu.com/ubuntu noble-updates/main amd64 libgprofng0 amd64 2.42-4ubuntu2.10 [849 kB]
+Get:10 http://us-east-1.ec2.archive.ubuntu.com/ubuntu noble-updates/main amd64 binutils-x86-64-linux-gnu amd64 2.42-4ubuntu2.10 [2463 kB]
+Get:11 http://us-east-1.ec2.archive.ubuntu.com/ubuntu noble-updates/main amd64 binutils amd64 2.42-4ubuntu2.10 [18.2 kB]
+Get:12 http://us-east-1.ec2.archive.ubuntu.com/ubuntu noble-updates/main amd64 libc-dev-bin amd64 2.39-0ubuntu8.8 [20.4 kB]
+Get:13 http://us-east-1.ec2.archive.ubuntu.com/ubuntu noble-updates/main amd64 linux-libc-dev amd64 6.8.0-137.137 [1522 kB]
+Get:14 http://us-east-1.ec2.archive.ubuntu.com/ubuntu noble/main amd64 libcrypt-dev amd64 1:4.4.36-4build1 [112 kB]
+Get:15 http://us-east-1.ec2.archive.ubuntu.com/ubuntu noble/main amd64 rpcsvc-proto amd64 1.4.2-0ubuntu7 [67.4 kB]
+Get:16 http://us-east-1.ec2.archive.ubuntu.com/ubuntu noble-updates/main amd64 libc6-dev amd64 2.39-0ubuntu8.8 [2125 kB]
+Get:17 http://us-east-1.ec2.archive.ubuntu.com/ubuntu noble-updates/main amd64 gcc-13-base amd64 13.3.0-6ubuntu2~24.04.1 [51.6 kB]
+Get:18 http://us-east-1.ec2.archive.ubuntu.com/ubuntu noble-updates/main amd64 libisl23 amd64 0.26-3build1.1 [680 kB]
+Get:19 http://us-east-1.ec2.archive.ubuntu.com/ubuntu noble-updates/main amd64 libmpc3 amd64 1.3.1-1build1.1 [54.6 kB]
+Get:20 http://us-east-1.ec2.archive.ubuntu.com/ubuntu noble-updates/main amd64 cpp-13-x86-64-linux-gnu amd64 13.3.0-6ubuntu2~24.04.1 [10.7 MB]
+Get:21 http://us-east-1.ec2.archive.ubuntu.com/ubuntu noble-updates/main amd64 cpp-13 amd64 13.3.0-6ubuntu2~24.04.1 [1042 B]
+Get:22 http://us-east-1.ec2.archive.ubuntu.com/ubuntu noble/main amd64 cpp-x86-64-linux-gnu amd64 4:13.2.0-7ubuntu1 [5326 B]
+Get:23 http://us-east-1.ec2.archive.ubuntu.com/ubuntu noble/main amd64 cpp amd64 4:13.2.0-7ubuntu1 [22.4 kB]
+Get:24 http://us-east-1.ec2.archive.ubuntu.com/ubuntu noble-updates/main amd64 libcc1-0 amd64 14.2.0-4ubuntu2~24.04.1 [48.0 kB]
+Get:25 http://us-east-1.ec2.archive.ubuntu.com/ubuntu noble-updates/main amd64 libgomp1 amd64 14.2.0-4ubuntu2~24.04.1 [148 kB]
+Get:26 http://us-east-1.ec2.archive.ubuntu.com/ubuntu noble-updates/main amd64 libitm1 amd64 14.2.0-4ubuntu2~24.04.1 [29.7 kB]
+Get:27 http://us-east-1.ec2.archive.ubuntu.com/ubuntu noble-updates/main amd64 libatomic1 amd64 14.2.0-4ubuntu2~24.04.1 [10.5 kB]
+Get:28 http://us-east-1.ec2.archive.ubuntu.com/ubuntu noble-updates/main amd64 libasan8 amd64 14.2.0-4ubuntu2~24.04.1 [3027 kB]
+Get:29 http://us-east-1.ec2.archive.ubuntu.com/ubuntu noble-updates/main amd64 liblsan0 amd64 14.2.0-4ubuntu2~24.04.1 [1322 kB]
+Get:30 http://us-east-1.ec2.archive.ubuntu.com/ubuntu noble-updates/main amd64 libtsan2 amd64 14.2.0-4ubuntu2~24.04.1 [2772 kB]
+Get:31 http://us-east-1.ec2.archive.ubuntu.com/ubuntu noble-updates/main amd64 libubsan1 amd64 14.2.0-4ubuntu2~24.04.1 [1184 kB]
+Get:32 http://us-east-1.ec2.archive.ubuntu.com/ubuntu noble-updates/main amd64 libhwasan0 amd64 14.2.0-4ubuntu2~24.04.1 [1641 kB]
+Get:33 http://us-east-1.ec2.archive.ubuntu.com/ubuntu noble-updates/main amd64 libquadmath0 amd64 14.2.0-4ubuntu2~24.04.1 [153 kB]
+Get:34 http://us-east-1.ec2.archive.ubuntu.com/ubuntu noble-updates/main amd64 libgcc-13-dev amd64 13.3.0-6ubuntu2~24.04.1 [2681 kB]
+Get:35 http://us-east-1.ec2.archive.ubuntu.com/ubuntu noble-updates/main amd64 gcc-13-x86-64-linux-gnu amd64 13.3.0-6ubuntu2~24.04.1 [21.1 MB]
+Get:36 http://us-east-1.ec2.archive.ubuntu.com/ubuntu noble-updates/main amd64 gcc-13 amd64 13.3.0-6ubuntu2~24.04.1 [494 kB]
+Get:37 http://us-east-1.ec2.archive.ubuntu.com/ubuntu noble/main amd64 gcc-x86-64-linux-gnu amd64 4:13.2.0-7ubuntu1 [1212 B]
+Get:38 http://us-east-1.ec2.archive.ubuntu.com/ubuntu noble/main amd64 gcc amd64 4:13.2.0-7ubuntu1 [5018 B]
+Get:39 http://us-east-1.ec2.archive.ubuntu.com/ubuntu noble-updates/main amd64 libstdc++-13-dev amd64 13.3.0-6ubuntu2~24.04.1 [2420 kB]
+Get:40 http://us-east-1.ec2.archive.ubuntu.com/ubuntu noble-updates/main amd64 g++-13-x86-64-linux-gnu amd64 13.3.0-6ubuntu2~24.04.1 [12.2 MB]
+Get:41 http://us-east-1.ec2.archive.ubuntu.com/ubuntu noble-updates/main amd64 g++-13 amd64 13.3.0-6ubuntu2~24.04.1 [16.0 kB]
+Get:42 http://us-east-1.ec2.archive.ubuntu.com/ubuntu noble/main amd64 g++-x86-64-linux-gnu amd64 4:13.2.0-7ubuntu1 [964 B]
+Get:43 http://us-east-1.ec2.archive.ubuntu.com/ubuntu noble/main amd64 g++ amd64 4:13.2.0-7ubuntu1 [1100 B]
+Get:44 http://us-east-1.ec2.archive.ubuntu.com/ubuntu noble/main amd64 make amd64 4.3-4.1build2 [180 kB]
+Get:45 http://us-east-1.ec2.archive.ubuntu.com/ubuntu noble-updates/main amd64 libdpkg-perl all 1.22.6ubuntu6.6 [268 kB]
+Get:46 http://us-east-1.ec2.archive.ubuntu.com/ubuntu noble-updates/main amd64 bzip2 amd64 1.0.8-5.1build0.1 [34.5 kB]
+Get:47 http://us-east-1.ec2.archive.ubuntu.com/ubuntu noble/main amd64 lto-disabled-list all 47 [12.4 kB]
+Get:48 http://us-east-1.ec2.archive.ubuntu.com/ubuntu noble-updates/main amd64 dpkg-dev all 1.22.6ubuntu6.6 [1074 kB]
+Get:49 http://us-east-1.ec2.archive.ubuntu.com/ubuntu noble/main amd64 build-essential amd64 12.10ubuntu1 [4928 B]
+Get:50 http://us-east-1.ec2.archive.ubuntu.com/ubuntu noble/main amd64 libfakeroot amd64 1.33-1 [32.4 kB]
+Get:51 http://us-east-1.ec2.archive.ubuntu.com/ubuntu noble/main amd64 fakeroot amd64 1.33-1 [67.2 kB]
+Get:52 http://us-east-1.ec2.archive.ubuntu.com/ubuntu noble/main amd64 fonts-dejavu-mono all 2.37-8 [502 kB]
+Get:53 http://us-east-1.ec2.archive.ubuntu.com/ubuntu noble/main amd64 fonts-dejavu-core all 2.37-8 [835 kB]
+Get:54 http://us-east-1.ec2.archive.ubuntu.com/ubuntu noble/main amd64 fontconfig-config amd64 2.15.0-1.1ubuntu2 [37.3 kB]
+Get:55 http://us-east-1.ec2.archive.ubuntu.com/ubuntu noble/main amd64 libalgorithm-diff-perl all 1.201-1 [41.8 kB]
+Get:56 http://us-east-1.ec2.archive.ubuntu.com/ubuntu noble/main amd64 libalgorithm-diff-xs-perl amd64 0.04-8build3 [11.2 kB]
+Get:57 http://us-east-1.ec2.archive.ubuntu.com/ubuntu noble/main amd64 libalgorithm-merge-perl all 0.08-5 [11.4 kB]
+Get:58 http://us-east-1.ec2.archive.ubuntu.com/ubuntu noble-updates/main amd64 libaom3 amd64 3.8.2-2ubuntu0.1 [1941 kB]
+Get:59 http://us-east-1.ec2.archive.ubuntu.com/ubuntu noble/main amd64 libfontconfig1 amd64 2.15.0-1.1ubuntu2 [139 kB]
+Get:60 http://us-east-1.ec2.archive.ubuntu.com/ubuntu noble/main amd64 libsharpyuv0 amd64 1.3.2-0.4build3 [15.8 kB]
+Get:61 http://us-east-1.ec2.archive.ubuntu.com/ubuntu noble-updates/main amd64 libheif-plugin-aomdec amd64 1.17.6-1ubuntu4.6 [11.3 kB]
+Get:62 http://us-east-1.ec2.archive.ubuntu.com/ubuntu noble-updates/main amd64 libheif1 amd64 1.17.6-1ubuntu4.6 [276 kB]
+Get:63 http://us-east-1.ec2.archive.ubuntu.com/ubuntu noble/main amd64 libjpeg-turbo8 amd64 2.1.5-2ubuntu2 [150 kB]
+Get:64 http://us-east-1.ec2.archive.ubuntu.com/ubuntu noble/main amd64 libjpeg8 amd64 8c-2ubuntu11 [2148 B]
+Get:65 http://us-east-1.ec2.archive.ubuntu.com/ubuntu noble-updates/main amd64 libdeflate0 amd64 1.19-1build1.1 [43.9 kB]
+Get:66 http://us-east-1.ec2.archive.ubuntu.com/ubuntu noble/main amd64 libjbig0 amd64 2.1-6.1ubuntu2 [29.7 kB]
+Get:67 http://us-east-1.ec2.archive.ubuntu.com/ubuntu noble/main amd64 liblerc4 amd64 4.0.0+ds-4ubuntu2 [179 kB]
+Get:68 http://us-east-1.ec2.archive.ubuntu.com/ubuntu noble/main amd64 libwebp7 amd64 1.3.2-0.4build3 [230 kB]
+Get:69 http://us-east-1.ec2.archive.ubuntu.com/ubuntu noble-updates/main amd64 libtiff6 amd64 4.5.1+git230720-4ubuntu2.5 [200 kB]
+Get:70 http://us-east-1.ec2.archive.ubuntu.com/ubuntu noble-updates/main amd64 libxpm4 amd64 1:3.5.17-1ubuntu0.24.04.1 [36.7 kB]
+Get:71 http://us-east-1.ec2.archive.ubuntu.com/ubuntu noble/main amd64 libgd3 amd64 2.3.3-9ubuntu5 [128 kB]
+Get:72 http://us-east-1.ec2.archive.ubuntu.com/ubuntu noble-updates/main amd64 libc-devtools amd64 2.39-0ubuntu8.8 [29.3 kB]
+Get:73 http://us-east-1.ec2.archive.ubuntu.com/ubuntu noble/main amd64 libfile-fcntllock-perl amd64 0.22-4ubuntu5 [30.7 kB]
+Get:74 http://us-east-1.ec2.archive.ubuntu.com/ubuntu noble-updates/main amd64 libheif-plugin-aomenc amd64 1.17.6-1ubuntu4.6 [14.7 kB]
+Get:75 http://us-east-1.ec2.archive.ubuntu.com/ubuntu noble-updates/main amd64 linux-tools-common all 6.8.0-137.137 [363 kB]
+Get:76 http://us-east-1.ec2.archive.ubuntu.com/ubuntu noble/main amd64 manpages-dev all 6.7-2 [2013 kB]
+Get:77 http://us-east-1.ec2.archive.ubuntu.com/ubuntu noble-updates/main amd64 unzip amd64 6.0-28ubuntu4.1 [174 kB]
+dpkg-preconfigure: unable to re-open stdin: No such file or directory
+Fetched 86.2 MB in 1s (94.7 MB/s)
+(Reading database ... (Reading database ... 5%(Reading database ... 10%(Reading database ... 15%(Reading database ... 20%(Reading database ... 25%(Reading database ... 30%(Reading database ... 35%(Reading database ... 40%(Reading database ... 45%(Reading database ... 50%(Reading database ... 55%(Reading database ... 60%(Reading database ... 65%(Reading database ... 70%(Reading database ... 75%(Reading database ... 80%(Reading database ... 85%(Reading database ... 90%(Reading database ... 95%(Reading database ... 100%(Reading database ... 72595 files and directories currently installed.)
+Preparing to unpack .../libc6_2.39-0ubuntu8.8_amd64.deb ...
+Unpacking libc6:amd64 (2.39-0ubuntu8.8) over (2.39-0ubuntu8.7) ...
+Setting up libc6:amd64 (2.39-0ubuntu8.8) ...
+(Reading database ... (Reading database ... 5%(Reading database ... 10%(Reading database ... 15%(Reading database ... 20%(Reading database ... 25%(Reading database ... 30%(Reading database ... 35%(Reading database ... 40%(Reading database ... 45%(Reading database ... 50%(Reading database ... 55%(Reading database ... 60%(Reading database ... 65%(Reading database ... 70%(Reading database ... 75%(Reading database ... 80%(Reading database ... 85%(Reading database ... 90%(Reading database ... 95%(Reading database ... 100%(Reading database ... 72595 files and directories currently installed.)
+Preparing to unpack .../libc-bin_2.39-0ubuntu8.8_amd64.deb ...
+Unpacking libc-bin (2.39-0ubuntu8.8) over (2.39-0ubuntu8.7) ...
+Setting up libc-bin (2.39-0ubuntu8.8) ...
+(Reading database ... (Reading database ... 5%(Reading database ... 10%(Reading database ... 15%(Reading database ... 20%(Reading database ... 25%(Reading database ... 30%(Reading database ... 35%(Reading database ... 40%(Reading database ... 45%(Reading database ... 50%(Reading database ... 55%(Reading database ... 60%(Reading database ... 65%(Reading database ... 70%(Reading database ... 75%(Reading database ... 80%(Reading database ... 85%(Reading database ... 90%(Reading database ... 95%(Reading database ... 100%(Reading database ... 72595 files and directories currently installed.)
+Preparing to unpack .../00-locales_2.39-0ubuntu8.8_all.deb ...
+Unpacking locales (2.39-0ubuntu8.8) over (2.39-0ubuntu8.7) ...
+Selecting previously unselected package binutils-common:amd64.
+Preparing to unpack .../01-binutils-common_2.42-4ubuntu2.10_amd64.deb ...
+Unpacking binutils-common:amd64 (2.42-4ubuntu2.10) ...
+Selecting previously unselected package libsframe1:amd64.
+Preparing to unpack .../02-libsframe1_2.42-4ubuntu2.10_amd64.deb ...
+Unpacking libsframe1:amd64 (2.42-4ubuntu2.10) ...
+Selecting previously unselected package libbinutils:amd64.
+Preparing to unpack .../03-libbinutils_2.42-4ubuntu2.10_amd64.deb ...
+Unpacking libbinutils:amd64 (2.42-4ubuntu2.10) ...
+Selecting previously unselected package libctf-nobfd0:amd64.
+Preparing to unpack .../04-libctf-nobfd0_2.42-4ubuntu2.10_amd64.deb ...
+Unpacking libctf-nobfd0:amd64 (2.42-4ubuntu2.10) ...
+Selecting previously unselected package libctf0:amd64.
+Preparing to unpack .../05-libctf0_2.42-4ubuntu2.10_amd64.deb ...
+Unpacking libctf0:amd64 (2.42-4ubuntu2.10) ...
+Selecting previously unselected package libgprofng0:amd64.
+Preparing to unpack .../06-libgprofng0_2.42-4ubuntu2.10_amd64.deb ...
+Unpacking libgprofng0:amd64 (2.42-4ubuntu2.10) ...
+Selecting previously unselected package binutils-x86-64-linux-gnu.
+Preparing to unpack .../07-binutils-x86-64-linux-gnu_2.42-4ubuntu2.10_amd64.deb ...
+Unpacking binutils-x86-64-linux-gnu (2.42-4ubuntu2.10) ...
+Selecting previously unselected package binutils.
+Preparing to unpack .../08-binutils_2.42-4ubuntu2.10_amd64.deb ...
+Unpacking binutils (2.42-4ubuntu2.10) ...
+Selecting previously unselected package libc-dev-bin.
+Preparing to unpack .../09-libc-dev-bin_2.39-0ubuntu8.8_amd64.deb ...
+Unpacking libc-dev-bin (2.39-0ubuntu8.8) ...
+Selecting previously unselected package linux-libc-dev:amd64.
+Preparing to unpack .../10-linux-libc-dev_6.8.0-137.137_amd64.deb ...
+Unpacking linux-libc-dev:amd64 (6.8.0-137.137) ...
+Selecting previously unselected package libcrypt-dev:amd64.
+Preparing to unpack .../11-libcrypt-dev_1%3a4.4.36-4build1_amd64.deb ...
+Unpacking libcrypt-dev:amd64 (1:4.4.36-4build1) ...
+Selecting previously unselected package rpcsvc-proto.
+Preparing to unpack .../12-rpcsvc-proto_1.4.2-0ubuntu7_amd64.deb ...
+Unpacking rpcsvc-proto (1.4.2-0ubuntu7) ...
+Selecting previously unselected package libc6-dev:amd64.
+Preparing to unpack .../13-libc6-dev_2.39-0ubuntu8.8_amd64.deb ...
+Unpacking libc6-dev:amd64 (2.39-0ubuntu8.8) ...
+Selecting previously unselected package gcc-13-base:amd64.
+Preparing to unpack .../14-gcc-13-base_13.3.0-6ubuntu2~24.04.1_amd64.deb ...
+Unpacking gcc-13-base:amd64 (13.3.0-6ubuntu2~24.04.1) ...
+Selecting previously unselected package libisl23:amd64.
+Preparing to unpack .../15-libisl23_0.26-3build1.1_amd64.deb ...
+Unpacking libisl23:amd64 (0.26-3build1.1) ...
+Selecting previously unselected package libmpc3:amd64.
+Preparing to unpack .../16-libmpc3_1.3.1-1build1.1_amd64.deb ...
+Unpacking libmpc3:amd64 (1.3.1-1build1.1) ...
+Selecting previously unselected package cpp-13-x86-64-linux-gnu.
+Preparing to unpack .../17-cpp-13-x86-64-linux-gnu_13.3.0-6ubuntu2~24.04.1_amd64.deb ...
+Unpacking cpp-13-x86-64-linux-gnu (13.3.0-6ubuntu2~24.04.1) ...
+Selecting previously unselected package cpp-13.
+Preparing to unpack .../18-cpp-13_13.3.0-6ubuntu2~24.04.1_amd64.deb ...
+Unpacking cpp-13 (13.3.0-6ubuntu2~24.04.1) ...
+Selecting previously unselected package cpp-x86-64-linux-gnu.
+Preparing to unpack .../19-cpp-x86-64-linux-gnu_4%3a13.2.0-7ubuntu1_amd64.deb ...
+Unpacking cpp-x86-64-linux-gnu (4:13.2.0-7ubuntu1) ...
+Selecting previously unselected package cpp.
+Preparing to unpack .../20-cpp_4%3a13.2.0-7ubuntu1_amd64.deb ...
+Unpacking cpp (4:13.2.0-7ubuntu1) ...
+Selecting previously unselected package libcc1-0:amd64.
+Preparing to unpack .../21-libcc1-0_14.2.0-4ubuntu2~24.04.1_amd64.deb ...
+Unpacking libcc1-0:amd64 (14.2.0-4ubuntu2~24.04.1) ...
+Selecting previously unselected package libgomp1:amd64.
+Preparing to unpack .../22-libgomp1_14.2.0-4ubuntu2~24.04.1_amd64.deb ...
+Unpacking libgomp1:amd64 (14.2.0-4ubuntu2~24.04.1) ...
+Selecting previously unselected package libitm1:amd64.
+Preparing to unpack .../23-libitm1_14.2.0-4ubuntu2~24.04.1_amd64.deb ...
+Unpacking libitm1:amd64 (14.2.0-4ubuntu2~24.04.1) ...
+Selecting previously unselected package libatomic1:amd64.
+Preparing to unpack .../24-libatomic1_14.2.0-4ubuntu2~24.04.1_amd64.deb ...
+Unpacking libatomic1:amd64 (14.2.0-4ubuntu2~24.04.1) ...
+Selecting previously unselected package libasan8:amd64.
+Preparing to unpack .../25-libasan8_14.2.0-4ubuntu2~24.04.1_amd64.deb ...
+Unpacking libasan8:amd64 (14.2.0-4ubuntu2~24.04.1) ...
+Selecting previously unselected package liblsan0:amd64.
+Preparing to unpack .../26-liblsan0_14.2.0-4ubuntu2~24.04.1_amd64.deb ...
+Unpacking liblsan0:amd64 (14.2.0-4ubuntu2~24.04.1) ...
+Selecting previously unselected package libtsan2:amd64.
+Preparing to unpack .../27-libtsan2_14.2.0-4ubuntu2~24.04.1_amd64.deb ...
+Unpacking libtsan2:amd64 (14.2.0-4ubuntu2~24.04.1) ...
+Selecting previously unselected package libubsan1:amd64.
+Preparing to unpack .../28-libubsan1_14.2.0-4ubuntu2~24.04.1_amd64.deb ...
+Unpacking libubsan1:amd64 (14.2.0-4ubuntu2~24.04.1) ...
+Selecting previously unselected package libhwasan0:amd64.
+Preparing to unpack .../29-libhwasan0_14.2.0-4ubuntu2~24.04.1_amd64.deb ...
+Unpacking libhwasan0:amd64 (14.2.0-4ubuntu2~24.04.1) ...
+Selecting previously unselected package libquadmath0:amd64.
+Preparing to unpack .../30-libquadmath0_14.2.0-4ubuntu2~24.04.1_amd64.deb ...
+Unpacking libquadmath0:amd64 (14.2.0-4ubuntu2~24.04.1) ...
+Selecting previously unselected package libgcc-13-dev:amd64.
+Preparing to unpack .../31-libgcc-13-dev_13.3.0-6ubuntu2~24.04.1_amd64.deb ...
+Unpacking libgcc-13-dev:amd64 (13.3.0-6ubuntu2~24.04.1) ...
+Selecting previously unselected package gcc-13-x86-64-linux-gnu.
+Preparing to unpack .../32-gcc-13-x86-64-linux-gnu_13.3.0-6ubuntu2~24.04.1_amd64.deb ...
+Unpacking gcc-13-x86-64-linux-gnu (13.3.0-6ubuntu2~24.04.1) ...
+Selecting previously unselected package gcc-13.
+Preparing to unpack .../33-gcc-13_13.3.0-6ubuntu2~24.04.1_amd64.deb ...
+Unpacking gcc-13 (13.3.0-6ubuntu2~24.04.1) ...
+Selecting previously unselected package gcc-x86-64-linux-gnu.
+Preparing to unpack .../34-gcc-x86-64-linux-gnu_4%3a13.2.0-7ubuntu1_amd64.deb ...
+Unpacking gcc-x86-64-linux-gnu (4:13.2.0-7ubuntu1) ...
+Selecting previously unselected package gcc.
+Preparing to unpack .../35-gcc_4%3a13.2.0-7ubuntu1_amd64.deb ...
+Unpacking gcc (4:13.2.0-7ubuntu1) ...
+Selecting previously unselected package libstdc++-13-dev:amd64.
+Preparing to unpack .../36-libstdc++-13-dev_13.3.0-6ubuntu2~24.04.1_amd64.deb ...
+Unpacking libstdc++-13-dev:amd64 (13.3.0-6ubuntu2~24.04.1) ...
+Selecting previously unselected package g++-13-x86-64-linux-gnu.
+Preparing to unpack .../37-g++-13-x86-64-linux-gnu_13.3.0-6ubuntu2~24.04.1_amd64.deb ...
+Unpacking g++-13-x86-64-linux-gnu (13.3.0-6ubuntu2~24.04.1) ...
+Selecting previously unselected package g++-13.
+Preparing to unpack .../38-g++-13_13.3.0-6ubuntu2~24.04.1_amd64.deb ...
+Unpacking g++-13 (13.3.0-6ubuntu2~24.04.1) ...
+Selecting previously unselected package g++-x86-64-linux-gnu.
+Preparing to unpack .../39-g++-x86-64-linux-gnu_4%3a13.2.0-7ubuntu1_amd64.deb ...
+Unpacking g++-x86-64-linux-gnu (4:13.2.0-7ubuntu1) ...
+Selecting previously unselected package g++.
+Preparing to unpack .../40-g++_4%3a13.2.0-7ubuntu1_amd64.deb ...
+Unpacking g++ (4:13.2.0-7ubuntu1) ...
+Selecting previously unselected package make.
+Preparing to unpack .../41-make_4.3-4.1build2_amd64.deb ...
+Unpacking make (4.3-4.1build2) ...
+Selecting previously unselected package libdpkg-perl.
+Preparing to unpack .../42-libdpkg-perl_1.22.6ubuntu6.6_all.deb ...
+Unpacking libdpkg-perl (1.22.6ubuntu6.6) ...
+Selecting previously unselected package bzip2.
+Preparing to unpack .../43-bzip2_1.0.8-5.1build0.1_amd64.deb ...
+Unpacking bzip2 (1.0.8-5.1build0.1) ...
+Selecting previously unselected package lto-disabled-list.
+Preparing to unpack .../44-lto-disabled-list_47_all.deb ...
+Unpacking lto-disabled-list (47) ...
+Selecting previously unselected package dpkg-dev.
+Preparing to unpack .../45-dpkg-dev_1.22.6ubuntu6.6_all.deb ...
+Unpacking dpkg-dev (1.22.6ubuntu6.6) ...
+Selecting previously unselected package build-essential.
+Preparing to unpack .../46-build-essential_12.10ubuntu1_amd64.deb ...
+Unpacking build-essential (12.10ubuntu1) ...
+Selecting previously unselected package libfakeroot:amd64.
+Preparing to unpack .../47-libfakeroot_1.33-1_amd64.deb ...
+Unpacking libfakeroot:amd64 (1.33-1) ...
+Selecting previously unselected package fakeroot.
+Preparing to unpack .../48-fakeroot_1.33-1_amd64.deb ...
+Unpacking fakeroot (1.33-1) ...
+Selecting previously unselected package fonts-dejavu-mono.
+Preparing to unpack .../49-fonts-dejavu-mono_2.37-8_all.deb ...
+Unpacking fonts-dejavu-mono (2.37-8) ...
+Selecting previously unselected package fonts-dejavu-core.
+Preparing to unpack .../50-fonts-dejavu-core_2.37-8_all.deb ...
+Unpacking fonts-dejavu-core (2.37-8) ...
+Selecting previously unselected package fontconfig-config.
+Preparing to unpack .../51-fontconfig-config_2.15.0-1.1ubuntu2_amd64.deb ...
+Unpacking fontconfig-config (2.15.0-1.1ubuntu2) ...
+Selecting previously unselected package libalgorithm-diff-perl.
+Preparing to unpack .../52-libalgorithm-diff-perl_1.201-1_all.deb ...
+Unpacking libalgorithm-diff-perl (1.201-1) ...
+Selecting previously unselected package libalgorithm-diff-xs-perl:amd64.
+Preparing to unpack .../53-libalgorithm-diff-xs-perl_0.04-8build3_amd64.deb ...
+Unpacking libalgorithm-diff-xs-perl:amd64 (0.04-8build3) ...
+Selecting previously unselected package libalgorithm-merge-perl.
+Preparing to unpack .../54-libalgorithm-merge-perl_0.08-5_all.deb ...
+Unpacking libalgorithm-merge-perl (0.08-5) ...
+Selecting previously unselected package libaom3:amd64.
+Preparing to unpack .../55-libaom3_3.8.2-2ubuntu0.1_amd64.deb ...
+Unpacking libaom3:amd64 (3.8.2-2ubuntu0.1) ...
+Selecting previously unselected package libfontconfig1:amd64.
+Preparing to unpack .../56-libfontconfig1_2.15.0-1.1ubuntu2_amd64.deb ...
+Unpacking libfontconfig1:amd64 (2.15.0-1.1ubuntu2) ...
+Selecting previously unselected package libsharpyuv0:amd64.
+Preparing to unpack .../57-libsharpyuv0_1.3.2-0.4build3_amd64.deb ...
+Unpacking libsharpyuv0:amd64 (1.3.2-0.4build3) ...
+Selecting previously unselected package libheif-plugin-aomdec:amd64.
+Preparing to unpack .../58-libheif-plugin-aomdec_1.17.6-1ubuntu4.6_amd64.deb ...
+Unpacking libheif-plugin-aomdec:amd64 (1.17.6-1ubuntu4.6) ...
+Selecting previously unselected package libheif1:amd64.
+Preparing to unpack .../59-libheif1_1.17.6-1ubuntu4.6_amd64.deb ...
+Unpacking libheif1:amd64 (1.17.6-1ubuntu4.6) ...
+Selecting previously unselected package libjpeg-turbo8:amd64.
+Preparing to unpack .../60-libjpeg-turbo8_2.1.5-2ubuntu2_amd64.deb ...
+Unpacking libjpeg-turbo8:amd64 (2.1.5-2ubuntu2) ...
+Selecting previously unselected package libjpeg8:amd64.
+Preparing to unpack .../61-libjpeg8_8c-2ubuntu11_amd64.deb ...
+Unpacking libjpeg8:amd64 (8c-2ubuntu11) ...
+Selecting previously unselected package libdeflate0:amd64.
+Preparing to unpack .../62-libdeflate0_1.19-1build1.1_amd64.deb ...
+Unpacking libdeflate0:amd64 (1.19-1build1.1) ...
+Selecting previously unselected package libjbig0:amd64.
+Preparing to unpack .../63-libjbig0_2.1-6.1ubuntu2_amd64.deb ...
+Unpacking libjbig0:amd64 (2.1-6.1ubuntu2) ...
+Selecting previously unselected package liblerc4:amd64.
+Preparing to unpack .../64-liblerc4_4.0.0+ds-4ubuntu2_amd64.deb ...
+Unpacking liblerc4:amd64 (4.0.0+ds-4ubuntu2) ...
+Selecting previously unselected package libwebp7:amd64.
+Preparing to unpack .../65-libwebp7_1.3.2-0.4build3_amd64.deb ...
+Unpacking libwebp7:amd64 (1.3.2-0.4build3) ...
+Selecting previously unselected package libtiff6:amd64.
+Preparing to unpack .../66-libtiff6_4.5.1+git230720-4ubuntu2.5_amd64.deb ...
+Unpacking libtiff6:amd64 (4.5.1+git230720-4ubuntu2.5) ...
+Selecting previously unselected package libxpm4:amd64.
+Preparing to unpack .../67-libxpm4_1%3a3.5.17-1ubuntu0.24.04.1_amd64.deb ...
+Unpacking libxpm4:amd64 (1:3.5.17-1ubuntu0.24.04.1) ...
+Selecting previously unselected package libgd3:amd64.
+Preparing to unpack .../68-libgd3_2.3.3-9ubuntu5_amd64.deb ...
+Unpacking libgd3:amd64 (2.3.3-9ubuntu5) ...
+Selecting previously unselected package libc-devtools.
+Preparing to unpack .../69-libc-devtools_2.39-0ubuntu8.8_amd64.deb ...
+Unpacking libc-devtools (2.39-0ubuntu8.8) ...
+Selecting previously unselected package libfile-fcntllock-perl.
+Preparing to unpack .../70-libfile-fcntllock-perl_0.22-4ubuntu5_amd64.deb ...
+Unpacking libfile-fcntllock-perl (0.22-4ubuntu5) ...
+Selecting previously unselected package libheif-plugin-aomenc:amd64.
+Preparing to unpack .../71-libheif-plugin-aomenc_1.17.6-1ubuntu4.6_amd64.deb ...
+Unpacking libheif-plugin-aomenc:amd64 (1.17.6-1ubuntu4.6) ...
+Preparing to unpack .../72-linux-tools-common_6.8.0-137.137_all.deb ...
+Unpacking linux-tools-common (6.8.0-137.137) over (6.8.0-134.134) ...
+Selecting previously unselected package manpages-dev.
+Preparing to unpack .../73-manpages-dev_6.7-2_all.deb ...
+Unpacking manpages-dev (6.7-2) ...
+Selecting previously unselected package unzip.
+Preparing to unpack .../74-unzip_6.0-28ubuntu4.1_amd64.deb ...
+Unpacking unzip (6.0-28ubuntu4.1) ...
+Setting up libsharpyuv0:amd64 (1.3.2-0.4build3) ...
+Setting up libaom3:amd64 (3.8.2-2ubuntu0.1) ...
+Setting up manpages-dev (6.7-2) ...
+Setting up lto-disabled-list (47) ...
+Setting up liblerc4:amd64 (4.0.0+ds-4ubuntu2) ...
+Setting up libxpm4:amd64 (1:3.5.17-1ubuntu0.24.04.1) ...
+Setting up libfile-fcntllock-perl (0.22-4ubuntu5) ...
+Setting up libalgorithm-diff-perl (1.201-1) ...
+Setting up unzip (6.0-28ubuntu4.1) ...
+Setting up binutils-common:amd64 (2.42-4ubuntu2.10) ...
+Setting up libdeflate0:amd64 (1.19-1build1.1) ...
+Setting up linux-libc-dev:amd64 (6.8.0-137.137) ...
+Setting up libctf-nobfd0:amd64 (2.42-4ubuntu2.10) ...
+Setting up libgomp1:amd64 (14.2.0-4ubuntu2~24.04.1) ...
+Setting up bzip2 (1.0.8-5.1build0.1) ...
+Setting up locales (2.39-0ubuntu8.8) ...
+Generating locales (this might take a while)...
+  en_US.UTF-8... done
+Generation complete.
+Setting up libjbig0:amd64 (2.1-6.1ubuntu2) ...
+Setting up libsframe1:amd64 (2.42-4ubuntu2.10) ...
+Setting up libfakeroot:amd64 (1.33-1) ...
+Setting up fakeroot (1.33-1) ...
+update-alternatives: using /usr/bin/fakeroot-sysv to provide /usr/bin/fakeroot (fakeroot) in auto mode
+Setting up rpcsvc-proto (1.4.2-0ubuntu7) ...
+Setting up gcc-13-base:amd64 (13.3.0-6ubuntu2~24.04.1) ...
+Setting up make (4.3-4.1build2) ...
+Setting up libquadmath0:amd64 (14.2.0-4ubuntu2~24.04.1) ...
+Setting up fonts-dejavu-mono (2.37-8) ...
+Setting up libmpc3:amd64 (1.3.1-1build1.1) ...
+Setting up libatomic1:amd64 (14.2.0-4ubuntu2~24.04.1) ...
+Setting up fonts-dejavu-core (2.37-8) ...
+Setting up libjpeg-turbo8:amd64 (2.1.5-2ubuntu2) ...
+Setting up libdpkg-perl (1.22.6ubuntu6.6) ...
+Setting up libwebp7:amd64 (1.3.2-0.4build3) ...
+Setting up libubsan1:amd64 (14.2.0-4ubuntu2~24.04.1) ...
+Setting up libhwasan0:amd64 (14.2.0-4ubuntu2~24.04.1) ...
+Setting up libcrypt-dev:amd64 (1:4.4.36-4build1) ...
+Setting up libasan8:amd64 (14.2.0-4ubuntu2~24.04.1) ...
+Setting up libtsan2:amd64 (14.2.0-4ubuntu2~24.04.1) ...
+Setting up libbinutils:amd64 (2.42-4ubuntu2.10) ...
+Setting up libisl23:amd64 (0.26-3build1.1) ...
+Setting up libc-dev-bin (2.39-0ubuntu8.8) ...
+Setting up linux-tools-common (6.8.0-137.137) ...
+Setting up libalgorithm-diff-xs-perl:amd64 (0.04-8build3) ...
+Setting up libcc1-0:amd64 (14.2.0-4ubuntu2~24.04.1) ...
+Setting up liblsan0:amd64 (14.2.0-4ubuntu2~24.04.1) ...
+Setting up libitm1:amd64 (14.2.0-4ubuntu2~24.04.1) ...
+Setting up libalgorithm-merge-perl (0.08-5) ...
+Setting up libctf0:amd64 (2.42-4ubuntu2.10) ...
+Setting up libjpeg8:amd64 (8c-2ubuntu11) ...
+Setting up cpp-13-x86-64-linux-gnu (13.3.0-6ubuntu2~24.04.1) ...
+Setting up fontconfig-config (2.15.0-1.1ubuntu2) ...
+Setting up libgprofng0:amd64 (2.42-4ubuntu2.10) ...
+Setting up libgcc-13-dev:amd64 (13.3.0-6ubuntu2~24.04.1) ...
+Setting up libtiff6:amd64 (4.5.1+git230720-4ubuntu2.5) ...
+Setting up libc6-dev:amd64 (2.39-0ubuntu8.8) ...
+Setting up libstdc++-13-dev:amd64 (13.3.0-6ubuntu2~24.04.1) ...
+Setting up binutils-x86-64-linux-gnu (2.42-4ubuntu2.10) ...
+Setting up cpp-x86-64-linux-gnu (4:13.2.0-7ubuntu1) ...
+Setting up cpp-13 (13.3.0-6ubuntu2~24.04.1) ...
+Setting up gcc-13-x86-64-linux-gnu (13.3.0-6ubuntu2~24.04.1) ...
+Setting up binutils (2.42-4ubuntu2.10) ...
+Setting up dpkg-dev (1.22.6ubuntu6.6) ...
+Setting up gcc-13 (13.3.0-6ubuntu2~24.04.1) ...
+Setting up cpp (4:13.2.0-7ubuntu1) ...
+Setting up g++-13-x86-64-linux-gnu (13.3.0-6ubuntu2~24.04.1) ...
+Setting up gcc-x86-64-linux-gnu (4:13.2.0-7ubuntu1) ...
+Setting up gcc (4:13.2.0-7ubuntu1) ...
+Setting up g++-x86-64-linux-gnu (4:13.2.0-7ubuntu1) ...
+Setting up g++-13 (13.3.0-6ubuntu2~24.04.1) ...
+Setting up g++ (4:13.2.0-7ubuntu1) ...
+update-alternatives: using /usr/bin/g++ to provide /usr/bin/c++ (c++) in auto mode
+Setting up build-essential (12.10ubuntu1) ...
+Setting up libheif-plugin-aomdec:amd64 (1.17.6-1ubuntu4.6) ...
+Setting up libheif1:amd64 (1.17.6-1ubuntu4.6) ...
+Setting up libheif-plugin-aomenc:amd64 (1.17.6-1ubuntu4.6) ...
+Processing triggers for libc-bin (2.39-0ubuntu8.8) ...
+Processing triggers for man-db (2.12.0-4build2) ...
+Processing triggers for sgml-base (1.31) ...
+Setting up libfontconfig1:amd64 (2.15.0-1.1ubuntu2) ...
+Setting up libgd3:amd64 (2.3.3-9ubuntu5) ...
+Setting up libc-devtools (2.39-0ubuntu8.8) ...
+Processing triggers for libc-bin (2.39-0ubuntu8.8) ...
+
+Running kernel seems to be up-to-date.
+
+Restarting services...
+ systemctl restart acpid.service chrony.service cron.service irqbalance.service multipathd.service packagekit.service polkit.service rsyslog.service systemd-journald.service systemd-networkd.service systemd-resolved.service systemd-timedated.service systemd-udevd.service udisks2.service
+
+Service restarts being deferred:
+ systemctl restart ModemManager.service
+ systemctl restart cloud-final.service
+ /etc/needrestart/restart.d/dbus.service
+ systemctl restart getty@tty1.service
+ systemctl restart networkd-dispatcher.service
+ systemctl restart serial-getty@ttyS0.service
+ systemctl restart systemd-logind.service
+ systemctl restart unattended-upgrades.service
+
+No containers need to be restarted.
+
+No user sessions are running outdated binaries.
+
+No VM guests are running outdated hypervisor (qemu) binaries on this host.
+info: downloading installer
+Cloning into 'prime-wheel-mobius'...
+Cloning into 'square-block-mobius'...
+Cloning into 'mobius-synthesis'...
+=== prime-wheel: Sun Aug  9 11:27:55 UTC 2026
+info: downloading https://releases.lean-lang.org/lean4/v4.24.0/lean-4.24.0-linux.tar.zst
+info: installing /home/ubuntu/.elan/toolchains/leanprover--lean4---v4.24.0
+info: mathlib: cloning https://github.com/leanprover-community/mathlib4.git
+info: mathlib: checking out revision 'f897ebcf72cd16f89ab4577d0c826cd14afaafc7'
+info: plausible: cloning https://github.com/leanprover-community/plausible
+info: plausible: checking out revision 'dfd06ebfe8d0e8fa7faba9cb5e5a2e74e7bd2805'
+info: LeanSearchClient: cloning https://github.com/leanprover-community/LeanSearchClient
+info: LeanSearchClient: checking out revision '99657ad92e23804e279f77ea6dbdeebaa1317b98'
+info: importGraph: cloning https://github.com/leanprover-community/import-graph
+info: importGraph: checking out revision 'd768126816be17600904726ca7976b185786e6b9'
+info: proofwidgets: cloning https://github.com/leanprover-community/ProofWidgets4
+info: proofwidgets: checking out revision '556caed0eadb7901e068131d1be208dd907d07a2'
+info: aesop: cloning https://github.com/leanprover-community/aesop
+info: aesop: checking out revision '725ac8cd67acd70a7beaf47c3725e23484c1ef50'
+info: Qq: cloning https://github.com/leanprover-community/quote4
+info: Qq: checking out revision 'dea6a3361fa36d5a13f87333dc506ada582e025c'
+info: batteries: cloning https://github.com/leanprover-community/batteries
+info: batteries: checking out revision '8da40b72fece29b7d3fe3d768bac4c8910ce9bee'
+info: Cli: cloning https://github.com/leanprover/lean4-cli
+info: Cli: checking out revision '91c18fa62838ad0ab7384c03c9684d99d306e1da'
+✔ [3/21] Built Cache.Lean (264ms)
+✔ [4/21] Built Cache.Lean:c.o (110ms)
+✔ [5/21] Built Cache.IO (1.1s)
+✔ [6/21] Built Cache.Hashing (593ms)
+✔ [7/21] Built Cache.Hashing:c.o (480ms)
+✔ [13/21] Built Cache.IO:c.o (1.6s)
+✔ [14/21] Built Batteries.Data.String.Basic:c.o (75ms)
+✔ [15/21] Built Batteries.Data.Array.Match:c.o (213ms)
+✔ [16/21] Built Batteries.Data.String.Matcher:c.o (162ms)
+✔ [17/21] Built Cache.Requests (1.1s)
+✔ [18/21] Built Cache.Main (575ms)
+✔ [19/21] Built Cache.Main:c.o (510ms)
+✔ [20/21] Built Cache.Requests:c.o (1.3s)
+✔ [21/21] Built cache:exe (348ms)
+  % Total    % Received % Xferd  Average Speed   Time    Time     Time  Current
+                                 Dload  Upload   Total   Spent    Left  Speed
+  0     0    0     0    0     0      0      0 --:--:-- --:--:-- --:--:--     0  0     0    0     0    0     0      0      0 --:--:-- --:--:-- --:--:--     0
+100 1075k  100 1075k    0     0  7903k      0 --:--:-- --:--:-- --:--:-- 7903k
+
+installing leantar 0.1.15
+Fetching ProofWidgets cloud release... done!
+Current branch: HEAD
+Using cache (Azure) from origin: leanprover-community/mathlib4
+Attempting to download 7335 file(s) from leanprover-community/mathlib4 cache
+Downloaded: 1 file(s) [attempted 1/7335 = 0%, 15 KB/s]Downloaded: 101 file(s) [attempted 101/7335 = 1%, 8 KB/s]Downloaded: 213 file(s) [attempted 213/7335 = 2%, 1687 KB/s]Downloaded: 341 file(s) [attempted 341/7335 = 4%, 2310 KB/s]Downloaded: 474 file(s) [attempted 474/7335 = 6%, 2169 KB/s]Downloaded: 606 file(s) [attempted 606/7335 = 8%, 207 KB/s]Downloaded: 744 file(s) [attempted 744/7335 = 10%, 1687 KB/s]Downloaded: 881 file(s) [attempted 881/7335 = 12%, 902 KB/s]Downloaded: 1016 file(s) [attempted 1016/7335 = 13%, 331 KB/s]Downloaded: 1150 file(s) [attempted 1150/7335 = 15%, 2797 KB/s]Downloaded: 1287 file(s) [attempted 1287/7335 = 17%, 2413 KB/s]Downloaded: 1424 file(s) [attempted 1424/7335 = 19%, 1367 KB/s]Downloaded: 1560 file(s) [attempted 1560/7335 = 21%, 584 KB/s]Downloaded: 1697 file(s) [attempted 1697/7335 = 23%, 406 KB/s]Downloaded: 1826 file(s) [attempted 1826/7335 = 24%, 613 KB/s]Downloaded: 1965 file(s) [attempted 1965/7335 = 26%, 357 KB/s]Downloaded: 2103 file(s) [attempted 2103/7335 = 28%, 374 KB/s]Downloaded: 2236 file(s) [attempted 2236/7335 = 30%, 248 KB/s]Downloaded: 2379 file(s) [attempted 2379/7335 = 32%, 2214 KB/s]Downloaded: 2516 file(s) [attempted 2516/7335 = 34%, 226 KB/s]Downloaded: 2661 file(s) [attempted 2661/7335 = 36%, 168 KB/s]Downloaded: 2795 file(s) [attempted 2795/7335 = 38%, 441 KB/s]Downloaded: 2932 file(s) [attempted 2932/7335 = 39%, 224 KB/s]Downloaded: 3074 file(s) [attempted 3074/7335 = 41%, 3352 KB/s]Downloaded: 3209 file(s) [attempted 3209/7335 = 43%, 354 KB/s]Downloaded: 3346 file(s) [attempted 3346/7335 = 45%, 510 KB/s]Downloaded: 3483 file(s) [attempted 3483/7335 = 47%, 442 KB/s]Downloaded: 3615 file(s) [attempted 3615/7335 = 49%, 735 KB/s]Downloaded: 3760 file(s) [attempted 3760/7335 = 51%, 2385 KB/s]Downloaded: 3894 file(s) [attempted 3894/7335 = 53%, 503 KB/s]Downloaded: 4031 file(s) [attempted 4031/7335 = 54%, 1284 KB/s]Downloaded: 4168 file(s) [attempted 4168/7335 = 56%, 433 KB/s]Downloaded: 4301 file(s) [attempted 4301/7335 = 58%, 382 KB/s]Downloaded: 4433 file(s) [attempted 4433/7335 = 60%, 75 KB/s]Downloaded: 4563 file(s) [attempted 4563/7335 = 62%, 1270 KB/s]Downloaded: 4700 file(s) [attempted 4700/7335 = 64%, 2489 KB/s]Downloaded: 4837 file(s) [attempted 4837/7335 = 65%, 686 KB/s]Downloaded: 4974 file(s) [attempted 4974/7335 = 67%, 518 KB/s]Downloaded: 5111 file(s) [attempted 5111/7335 = 69%, 365 KB/s]Downloaded: 5244 file(s) [attempted 5244/7335 = 71%, 777 KB/s]Downloaded: 5383 file(s) [attempted 5383/7335 = 73%, 750 KB/s]Downloaded: 5513 file(s) [attempted 5513/7335 = 75%, 1000 KB/s]Downloaded: 5655 file(s) [attempted 5655/7335 = 77%, 267 KB/s]Downloaded: 5799 file(s) [attempted 5799/7335 = 79%, 189 KB/s]Downloaded: 5941 file(s) [attempted 5941/7335 = 80%, 3534 KB/s]Downloaded: 6081 file(s) [attempted 6081/7335 = 82%, 281 KB/s]Downloaded: 6219 file(s) [attempted 6219/7335 = 84%, 3174 KB/s]Downloaded: 6352 file(s) [attempted 6352/7335 = 86%, 957 KB/s]Downloaded: 6487 file(s) [attempted 6487/7335 = 88%, 492 KB/s]Downloaded: 6619 file(s) [attempted 6619/7335 = 90%, 3648 KB/s]Downloaded: 6756 file(s) [attempted 6756/7335 = 92%, 2044 KB/s]Downloaded: 6896 file(s) [attempted 6896/7335 = 94%, 633 KB/s]Downloaded: 7033 file(s) [attempted 7033/7335 = 95%, 721 KB/s]Downloaded: 7169 file(s) [attempted 7169/7335 = 97%, 2941 KB/s]Downloaded: 7302 file(s) [attempted 7302/7335 = 99%, 694 KB/s]Downloaded: 7333 file(s) [attempted 7333/7335 = 99%, 424 KB/s]Downloaded: 7335 file(s) [attempted 7335/7335 = 100%, 424 KB/s]
+Decompressing 7335 file(s)
+Unpacked in 4541 ms
+Completed successfully!
+✔ [2222/2492] Built RHLean.Arithmetic.BooleanCubeCancellation (1.1s)
+✔ [4531/4806] Built RHLean.Arithmetic.TruncatedBooleanCube (1.2s)
+✔ [7353/7376] Built RHLean.Analysis.MertensEnergyCriterion (3.8s)
+✔ [7354/7376] Built RHLean.Arithmetic.PrimeProductCubeFrontier (3.9s)
+✔ [7355/7376] Built RHLean.Arithmetic.PrimeWheelFiniteSystem (3.0s)
+✔ [7356/7376] Built RHLean.Arithmetic.PrimeFaceMoebius (3.9s)
+✔ [7357/7376] Built RHLean.Analysis.FiniteTorusFourierPairing (10s)
+✔ [7358/7376] Built RHLean.Analysis.PrimeWheelCompleteSpectrum (7.3s)
+✔ [7359/7376] Built RHLean.Arithmetic.PrimesUpToFrontier (3.8s)
+✔ [7360/7376] Built RHLean.Analysis.PrimeWheelFourierReduction (3.0s)
+✔ [7361/7376] Built RHLean.Arithmetic.PrimorialWheelScale (4.1s)
+✔ [7362/7376] Built RHLean.Analysis.PrimeWheelTorusRealization (4.1s)
+✔ [7363/7376] Built RHLean.Analysis.PrimeWheelJointSpectrum (3.0s)
+✔ [7364/7376] Built RHLean.Arithmetic.PrimorialWheelScaleGrowth (3.0s)
+✔ [7365/7376] Built RHLean.Arithmetic.PrimeWheelMobiusRecovery (4.5s)
+✔ [7366/7376] Built RHLean.Analysis.PrimeWheelHarmonicCriterion (3.9s)
+✔ [7367/7376] Built RHLean.Arithmetic.PrimorialWheelPrefixIdentity (4.1s)
+✔ [7368/7376] Built RHLean.Analysis.PrimeWheelArithmeticSpectrum (4.8s)
+✔ [7369/7376] Built RHLean.Analysis.PrimeWheelRHBridge (3.8s)
+✔ [7370/7376] Built RHLean.Analysis.PrimeWheelConductorGram (3.9s)
+✔ [7371/7376] Built RHLean.Analysis.PrimeWheelDirichletResponse (4.4s)
+✔ [7372/7376] Built RHLean.Analysis.PrimorialWheelExplicitCriterion (3.9s)
+✔ [7373/7376] Built RHLean.Analysis.PrimorialWheelMertensTransfer (7.2s)
+✔ [7374/7376] Built RHLean.Analysis.PublicPrimeWheelReduction (3.7s)
+✔ [7375/7376] Built RHLean (3.6s)
+Build completed successfully (7376 jobs).
+=== prime-wheel OK Sun Aug  9 11:29:38 UTC 2026
+=== square-block: Sun Aug  9 11:29:38 UTC 2026
+info: mathlib: cloning https://github.com/leanprover-community/mathlib4.git
+info: mathlib: checking out revision 'f897ebcf72cd16f89ab4577d0c826cd14afaafc7'
+info: plausible: cloning https://github.com/leanprover-community/plausible
+info: plausible: checking out revision 'dfd06ebfe8d0e8fa7faba9cb5e5a2e74e7bd2805'
+info: LeanSearchClient: cloning https://github.com/leanprover-community/LeanSearchClient
+info: LeanSearchClient: checking out revision '99657ad92e23804e279f77ea6dbdeebaa1317b98'
+info: importGraph: cloning https://github.com/leanprover-community/import-graph
+info: importGraph: checking out revision 'd768126816be17600904726ca7976b185786e6b9'
+info: proofwidgets: cloning https://github.com/leanprover-community/ProofWidgets4
+info: proofwidgets: checking out revision '556caed0eadb7901e068131d1be208dd907d07a2'
+info: aesop: cloning https://github.com/leanprover-community/aesop
+info: aesop: checking out revision '725ac8cd67acd70a7beaf47c3725e23484c1ef50'
+info: Qq: cloning https://github.com/leanprover-community/quote4
+info: Qq: checking out revision 'dea6a3361fa36d5a13f87333dc506ada582e025c'
+info: batteries: cloning https://github.com/leanprover-community/batteries
+info: batteries: checking out revision '8da40b72fece29b7d3fe3d768bac4c8910ce9bee'
+info: Cli: cloning https://github.com/leanprover/lean4-cli
+info: Cli: checking out revision '91c18fa62838ad0ab7384c03c9684d99d306e1da'
+✔ [3/21] Built Cache.Lean (258ms)
+✔ [4/21] Built Cache.Lean:c.o (109ms)
+✔ [5/21] Built Cache.IO (1.1s)
+✔ [6/21] Built Cache.Hashing (581ms)
+✔ [7/21] Built Cache.Hashing:c.o (479ms)
+✔ [8/21] Built Cache.IO:c.o (1.6s)
+✔ [14/21] Built Batteries.Data.String.Basic:c.o (74ms)
+✔ [15/21] Built Batteries.Data.String.Matcher:c.o (163ms)
+✔ [16/21] Built Batteries.Data.Array.Match:c.o (213ms)
+✔ [17/21] Built Cache.Requests (1.2s)
+✔ [18/21] Built Cache.Main (573ms)
+✔ [19/21] Built Cache.Main:c.o (508ms)
+✔ [20/21] Built Cache.Requests:c.o (1.3s)
+✔ [21/21] Built cache:exe (364ms)
+Fetching ProofWidgets cloud release... done!
+Current branch: HEAD
+Using cache (Azure) from origin: leanprover-community/mathlib4
+No files to download
+Decompressing 7335 file(s)
+Unpacked in 4714 ms
+Completed successfully!
+✔ [7351/7423] Built RHLean.Geometry.FermatCoordinates (4.2s)
+✔ [7352/7423] Built RHLean.Analysis.QuadraticPhasePeriod (4.2s)
+✔ [7353/7423] Built RHLean.Proof.HeightShellGram (4.4s)
+✔ [7354/7423] Built RHLean.Kernel.FixedPackets (4.4s)
+✔ [7355/7423] Built RHLean.Arithmetic.MoebiusDoubling (4.8s)
+✔ [7356/7423] Built RHLean.Geometry.SquareMapConformality (5.8s)
+✔ [7357/7423] Built RHLean.Arithmetic.PrimeSquareMod24 (6.1s)
+✔ [7358/7423] Built RHLean.Arithmetic.PrimeSquareMod40 (6.6s)
+✔ [7359/7423] Built RHLean.Arithmetic.FullPrimeFactorizationState (7.2s)
+✔ [7360/7423] Built RHLean.Proof.SignedCanonicalHeight (7.2s)
+✔ [7361/7423] Built RHLean.Analysis.QuadraticExponentCongruence (4.4s)
+✔ [7362/7423] Built RHLean.Geometry.CofactorParabolas (4.5s)
+✔ [7363/7423] Built RHLean.Geometry.ComplexSquareRecovery (4.5s)
+✔ [7364/7423] Built RHLean.Arithmetic.FourSlotCell (4.5s)
+✔ [7365/7423] Built RHLean.Geometry.TwoABDisplacement (4.2s)
+✔ [7366/7423] Built RHLean.Geometry.ComplexSquareFiber (4.4s)
+✔ [7367/7423] Built RHLean.Analysis.ComplexQuadraticPhase (4.6s)
+✔ [7368/7423] Built RHLean.Analysis.FiniteTorusFourierPairing (13s)
+✔ [7369/7423] Built RHLean.Proof.BalancedCanonicalGap (6.2s)
+✔ [7370/7423] Built RHLean.Analysis.ReducedQuadraticGauss (3.0s)
+✔ [7371/7423] Built RHLean.Proof.ResonantProjection (4.1s)
+✔ [7372/7423] Built RHLean.Proof.CanonicalGapPrefixGram (4.2s)
+✔ [7373/7423] Built RHLean.Proof.ResonantLeakage (4.1s)
+✔ [7374/7423] Built RHLean.Analysis.SmallModulusResonance (4.3s)
+✔ [7375/7423] Built RHLean.Proof.CanonicalGapAncestryFlow (6.3s)
+✔ [7376/7423] Built RHLean.Proof.ActualResidualDecomposition (4.2s)
+✔ [7377/7423] Built RHLean.Proof.BlockLyapunovClosure (4.4s)
+✔ [7378/7423] Built RHLean.Proof.ActualForcingEstimates (4.5s)
+✔ [7379/7423] Built RHLean.Proof.JointGramControl (5.5s)
+✔ [7380/7423] Built RHLean.Verification.FiniteRangeCertificates (4.7s)
+✔ [7381/7423] Built RHLean.Proof.UniformResidualBound (4.2s)
+✔ [7382/7423] Built RHLean.Proof.ActualStartSignedFrame (4.2s)
+✔ [7383/7423] Built RHLean.Proof.ActualStartLocalSignedFrame (4.1s)
+✔ [7384/7423] Built RHLean.Proof.RiemannHypothesisBridge (3.0s)
+✔ [7385/7423] Built RHLean.Proof.GeometricRHReduction (5.0s)
+✔ [7386/7423] Built RHLean.Analysis.SquarePrefixMertensBridge (10s)
+✔ [7387/7423] Built RHLean.Analysis.MertensEnergyCriterion (3.6s)
+✔ [7388/7423] Built RHLean.Proof.NormalizedCofactorExpansion (4.1s)
+✔ [7389/7423] Built RHLean.Analysis.ConcreteSquarePrefixGeometry (4.9s)
+✔ [7390/7423] Built RHLean.Proof.ConcreteSquarePrefixCofactorRealization (3.6s)
+✔ [7391/7423] Built RHLean.Analysis.CanonicalHighSectorCore (4.4s)
+✔ [7392/7423] Built RHLean.Analysis.SquarePrefixHeightPartition (3.8s)
+✔ [7393/7423] Built RHLean.Proof.CumulativeHeightFlow (3.8s)
+✔ [7394/7423] Built RHLean.Proof.HeightShellReconstruction (4.1s)
+✔ [7395/7423] Built RHLean.Analysis.CanonicalLowOccupancy (5.1s)
+✔ [7396/7423] Built RHLean.Proof.BirthMovingAbsorption (4.0s)
+✔ [7397/7423] Built RHLean.Analysis.TwoABScaleTransfer (4.2s)
+✔ [7398/7423] Built RHLean.Analysis.CanonicalHighSectorBridge (3.9s)
+✔ [7399/7423] Built RHLean.Analysis.CanonicalExtremePrimeSupport (3.0s)
+✔ [7400/7423] Built RHLean.Proof.LifetimeOverlapKernel (4.1s)
+✔ [7401/7423] Built RHLean.Analysis.TwoABPrimeDilation (3.9s)
+✔ [7402/7423] Built RHLean.Proof.LifetimeActiveSet (3.7s)
+✔ [7403/7423] Built RHLean.Analysis.DyadicTransportCompression (4.6s)
+✔ [7404/7423] Built RHLean.Proof.LifetimeLocalEnergyCriterion (4.3s)
+✔ [7405/7423] Built RHLean.Analysis.DyadicTransportCanonicalForm (3.0s)
+✔ [7406/7423] Built RHLean.Proof.LifetimeEndpointDecomposition (3.7s)
+✔ [7407/7423] Built RHLean.Analysis.SquareRootMatchedTransport (3.8s)
+✔ [7408/7423] Built RHLean.Proof.DeathProcessArithmetic (3.7s)
+✔ [7409/7423] Built RHLean.Proof.DeathProcessShellIdentity (3.6s)
+✔ [7410/7423] Built RHLean.Proof.DeathShellCardinalityAndCentering (3.7s)
+✔ [7411/7423] Built RHLean.Proof.DeathShellDivisorFibers (3.9s)
+✔ [7412/7423] Built RHLean.Proof.DeathShellCofactorParity (5.3s)
+✔ [7413/7423] Built RHLean.Proof.DeathShellSubpolynomial (6.3s)
+✔ [7414/7423] Built RHLean.Proof.FullFactorizationBridge (3.7s)
+✔ [7415/7423] Built RHLean.Analysis.SquareBlockDeathProcess (3.7s)
+✔ [7416/7423] Built RHLean.Proof.CanonicalSignedParent (3.7s)
+✔ [7417/7423] Built RHLean.Proof.CanonicalGapAncestryBridge (4.4s)
+✔ [7418/7423] Built RHLean.Analysis.SquareRootTransportRealization (4.0s)
+✔ [7419/7423] Built RHLean.Proof.SurvivorZeroMode (4.4s)
+✔ [7420/7423] Built RHLean.Proof.SurvivorResidueCovariance (3.0s)
+✔ [7421/7423] Built RHLean.Analysis.SquareBlockSurvivorBridge (3.6s)
+✔ [7422/7423] Built RHLean (3.6s)
+Build completed successfully (7423 jobs).
+=== square-block OK Sun Aug  9 11:33:07 UTC 2026
+=== synthesis: Sun Aug  9 11:33:07 UTC 2026
+info: mathlib: cloning https://github.com/leanprover-community/mathlib4.git
+info: mathlib: checking out revision 'f897ebcf72cd16f89ab4577d0c826cd14afaafc7'
+info: plausible: cloning https://github.com/leanprover-community/plausible
+info: plausible: checking out revision 'dfd06ebfe8d0e8fa7faba9cb5e5a2e74e7bd2805'
+info: LeanSearchClient: cloning https://github.com/leanprover-community/LeanSearchClient
+info: LeanSearchClient: checking out revision '99657ad92e23804e279f77ea6dbdeebaa1317b98'
+info: importGraph: cloning https://github.com/leanprover-community/import-graph
+info: importGraph: checking out revision 'd768126816be17600904726ca7976b185786e6b9'
+info: proofwidgets: cloning https://github.com/leanprover-community/ProofWidgets4
+info: proofwidgets: checking out revision '556caed0eadb7901e068131d1be208dd907d07a2'
+info: aesop: cloning https://github.com/leanprover-community/aesop
+info: aesop: checking out revision '725ac8cd67acd70a7beaf47c3725e23484c1ef50'
+info: Qq: cloning https://github.com/leanprover-community/quote4
+info: Qq: checking out revision 'dea6a3361fa36d5a13f87333dc506ada582e025c'
+info: batteries: cloning https://github.com/leanprover-community/batteries
+info: batteries: checking out revision '8da40b72fece29b7d3fe3d768bac4c8910ce9bee'
+info: Cli: cloning https://github.com/leanprover/lean4-cli
+info: Cli: checking out revision '91c18fa62838ad0ab7384c03c9684d99d306e1da'
+✔ [3/21] Built Cache.Lean (255ms)
+✔ [4/21] Built Cache.Lean:c.o (109ms)
+✔ [5/21] Built Cache.IO (1.1s)
+✔ [6/21] Built Cache.Hashing (590ms)
+✔ [7/21] Built Cache.Hashing:c.o (477ms)
+✔ [8/21] Built Cache.IO:c.o (1.6s)
+✔ [14/21] Built Batteries.Data.String.Basic:c.o (75ms)
+✔ [15/21] Built Batteries.Data.String.Matcher:c.o (161ms)
+✔ [16/21] Built Batteries.Data.Array.Match:c.o (211ms)
+✔ [17/21] Built Cache.Requests (1.1s)
+✔ [18/21] Built Cache.Main (571ms)
+✔ [19/21] Built Cache.Main:c.o (506ms)
+✔ [20/21] Built Cache.Requests:c.o (1.3s)
+✔ [21/21] Built cache:exe (338ms)
+Fetching ProofWidgets cloud release... done!
+Current branch: HEAD
+Using cache (Azure) from origin: leanprover-community/mathlib4
+No files to download
+Decompressing 7335 file(s)
+Unpacked in 4617 ms
+Completed successfully!
+✔ [7351/7600] Built RHLean.Arithmetic.BooleanCubeCancellation (1.5s)
+✔ [7352/7600] Built RHLean.Arithmetic.PrimorialWheelCancellation (6.3s)
+✔ [7353/7600] Built RHLean.Proof.ComplementaryMainGram (6.6s)
+✔ [7354/7600] Built RHLean.Geometry.SquareMapConformality (6.8s)
+✔ [7355/7600] Built RHLean.Proof.PrimeCombDiscrepancyRecurrence (6.8s)
+✔ [7356/7600] Built RHLean.Arithmetic.LeastPrimeDepthHierarchy (7.3s)
+✔ [7357/7600] Built RHLean.Arithmetic.PrimeSquareMod24 (7.4s)
+✔ [7358/7600] Built RHLean.Arithmetic.DyadicFrozenPrefix (7.7s)
+✔ [7359/7600] Built RHLean.Arithmetic.SquareBlockPrefixCombSweep (7.6s)
+✔ [7360/7600] Built RHLean.Proof.TwoAnchorSlackCoverage (8.3s)
+✔ [7361/7600] Built RHLean.Arithmetic.PrimeSquareMod40 (8.5s)
+✔ [7362/7600] Built RHLean.Arithmetic.PrimeWheelFiniteSystem (7.5s)
+✔ [7363/7600] Built RHLean.Proof.SignedCanonicalHeight (9.1s)
+✔ [7364/7600] Built RHLean.Proof.DegreeShellTransfer (9.1s)
+✔ [7365/7600] Built RHLean.Proof.AbstractEnergyRecurrence (10s)
+✔ [7366/7600] Built RHLean.Analysis.OptimalLogBase (6.6s)
+✔ [7367/7600] Built RHLean.Analysis.OriginalVioleFunction (6.6s)
+✔ [7368/7600] Built RHLean.Proof.FinitePartialMoments (7.6s)
+✔ [7369/7600] Built RHLean.Analysis.GrowingParentPhaseUniformity (6.6s)
+✔ [7370/7600] Built RHLean.Proof.OrthogonalResidual (6.7s)
+✔ [7371/7600] Built RHLean.Analysis.EulerCRTRoughnessRecursion (6.9s)
+✔ [7372/7600] Built RHLean.Arithmetic.SignedBuchstabRecursion (7.2s)
+✔ [7373/7600] Built RHLean.Kernel.FixedPackets (6.0s)
+✔ [7374/7600] Built RHLean.Geometry.FermatCoordinates (5.0s)
+✔ [7375/7600] Built RHLean.Arithmetic.FullPrimeFactorizationState (8.1s)
+✔ [7376/7600] Built RHLean.Analysis.RamanujanDivisorBoundary (6.5s)
+✔ [7377/7600] Built RHLean.Arithmetic.MoebiusDoubling (6.1s)
+✔ [7378/7600] Built RHLean.Analysis.QuadraticPhasePeriod (6.2s)
+✔ [7379/7600] Built RHLean.Arithmetic.TruncatedBooleanCube (2.0s)
+✔ [7380/7600] Built RHLean.Proof.HeightShellGram (6.5s)
+✔ [7381/7600] Built RHLean.Analysis.FiniteTorusFourierPairing (18s)
+✔ [7382/7600] Built RHLean.Arithmetic.FourPrimeWheelCancellation (6.7s)
+✔ [7383/7600] Built RHLean.Proof.TernaryRefinementBound (20s)
+✔ [7384/7600] Built RHLean.Proof.CoreExtensionDefect (7.2s)
+✔ [7385/7600] Built RHLean.Proof.PrimeCombWheelBoundary (7.2s)
+✔ [7386/7600] Built RHLean.Geometry.CofactorParabolas (6.7s)
+✔ [7387/7600] Built RHLean.Geometry.ComplexSquareRecovery (6.8s)
+✔ [7388/7600] Built RHLean.Analysis.FreshPrimeOscillationTransfer (7.1s)
+✔ [7389/7600] Built RHLean.Arithmetic.SquareBlockParityPopulation (7.1s)
+✔ [7390/7600] Built RHLean.Arithmetic.FourSlotCell (6.6s)
+✔ [7391/7600] Built RHLean.Analysis.RamanujanDivisorBoundaryBulk (6.8s)
+✔ [7392/7600] Built RHLean.Analysis.QuadraticExponentCongruence (6.7s)
+✔ [7393/7600] Built RHLean.Proof.NearOrthogonality (8.1s)
+✔ [7394/7600] Built RHLean.Arithmetic.PrimeProductCubeFrontier (6.5s)
+✔ [7395/7600] Built RHLean.Proof.BalancedCanonicalGap (9.7s)
+✔ [7396/7600] Built RHLean.Analysis.PrimeWheelFourierReduction (6.7s)
+✔ [7397/7600] Built RHLean.Analysis.PrimeWheelCompleteSpectrum (12s)
+✔ [7398/7600] Built RHLean.Geometry.LeastPrimeEndpoint (6.2s)
+✔ [7399/7600] Built RHLean.Geometry.ComplexSquareFiber (6.3s)
+✔ [7400/7600] Built RHLean.Proof.CollisionCellFrontierBound (5.0s)
+✔ [7401/7600] Built RHLean.Arithmetic.PrimeThreeActivation (6.0s)
+✔ [7402/7600] Built RHLean.Geometry.TwoABDisplacement (6.5s)
+✔ [7403/7600] Built RHLean.Proof.MutableSupportBound (6.4s)
+✔ [7404/7600] Built RHLean.Analysis.QuadraticShiftDichotomy (6.2s)
+✔ [7405/7600] Built RHLean.Analysis.DivisorUpperMobius (6.4s)
+✔ [7406/7600] Built RHLean.Analysis.ComplexQuadraticPhase (6.4s)
+✔ [7407/7600] Built RHLean.Arithmetic.PrimeProductFrontierExhaustion (6.1s)
+✔ [7408/7600] Built RHLean.Arithmetic.PrimeFaceMoebius (6.3s)
+✔ [7409/7600] Built RHLean.Proof.CanonicalExtremeHeight (6.3s)
+✔ [7410/7600] Built RHLean.Proof.CanonicalGapPrefixGram (6.8s)
+✔ [7411/7600] Built RHLean.Analysis.PrimeWheelJointSpectrum (6.3s)
+✔ [7412/7600] Built RHLean.Analysis.PrimeWheelTorusRealization (6.6s)
+✔ [7413/7600] Built RHLean.Arithmetic.EndpointCoreDecomposition (5.8s)
+✔ [7414/7600] Built RHLean.Analysis.PrimeWheelCoconductorGram (7.2s)
+✔ [7415/7600] Built RHLean.CellMask.PrimeThreeMeanEnergy (6.0s)
+✔ [7416/7600] Built RHLean.Proof.ReducedSquareClassMod40 (5.6s)
+✔ [7417/7600] Built RHLean.Analysis.ReducedQuadraticGauss (5.0s)
+✔ [7418/7600] Built RHLean.Proof.VanishingTransitionRelevance (6.2s)
+✔ [7419/7600] Built RHLean.Proof.ResonantProjection (6.2s)
+✔ [7420/7600] Built RHLean.Analysis.QuadraticPhaseShiftSign (6.5s)
+✔ [7421/7600] Built RHLean.Arithmetic.PrimesUpToFrontier (5.9s)
+✔ [7422/7600] Built RHLean.Arithmetic.ConditionedPrimeFrontierStep (6.1s)
+✔ [7423/7600] Built RHLean.Analysis.PrimeWheelLocalSpectrum (9.1s)
+✔ [7424/7600] Built RHLean.Proof.CanonicalGapOrthogonalMode (5.8s)
+✔ [7425/7600] Built RHLean.Proof.CanonicalGapBridgeGram (6.0s)
+✔ [7426/7600] Built RHLean.Analysis.PrimeWheelHarmonicCriterion (5.5s)
+✔ [7427/7600] Built RHLean.Arithmetic.CanonicalEndpointCore (5.1s)
+✔ [7428/7600] Built RHLean.Proof.ResonantLeakage (4.7s)
+✔ [7429/7600] Built RHLean.Analysis.SmallModulusResonance (4.9s)
+✔ [7430/7600] Built RHLean.Analysis.PrimeWheelCoconductorTail (5.7s)
+✔ [7431/7600] Built RHLean.Proof.CanonicalGapAncestryFlow (8.7s)
+✔ [7432/7600] Built RHLean.Arithmetic.PrimorialWheelScale (4.4s)
+✔ [7433/7600] Built RHLean.Arithmetic.PrimeFaceProductUniqueness (4.5s)
+✔ [7434/7600] Built RHLean.Proof.ActualResidualDecomposition (4.2s)
+✔ [7435/7600] Built RHLean.Analysis.PrimeWheelCoconductorLowGram (4.0s)
+✔ [7436/7600] Built RHLean.Arithmetic.SquarefreePrimeFaceSurjectivity (3.8s)
+✔ [7437/7600] Built RHLean.Proof.BlockLyapunovClosure (4.6s)
+✔ [7438/7600] Built RHLean.Arithmetic.PrimorialWheelScaleGrowth (3.0s)
+✔ [7439/7600] Built RHLean.Arithmetic.PrimeWheelMobiusRecovery (4.6s)
+✔ [7440/7600] Built RHLean.Analysis.PrimeWheelCoconductorResiduePairing (4.0s)
+✔ [7441/7600] Built RHLean.Arithmetic.AdmissibleFaceSquarefreeImage (4.1s)
+✔ [7442/7600] Built RHLean.Proof.ResonantCofactorCancellation (4.3s)
+✔ [7443/7600] Built RHLean.Arithmetic.PrimeWheelMobiusDensity (3.0s)
+✔ [7444/7600] Built RHLean.Proof.ActualForcingEstimates (4.7s)
+✔ [7445/7600] Built RHLean.Analysis.PrimeWheelArithmeticSpectrum (4.8s)
+✔ [7446/7600] Built RHLean.Arithmetic.TruncatedCubeMertensPrefix (3.0s)
+✔ [7447/7600] Built RHLean.Proof.JointGramControl (5.7s)
+✔ [7448/7600] Built RHLean.Arithmetic.MoebiusPrefixFrontierIdentity (3.7s)
+✔ [7449/7600] Built RHLean.Verification.FiniteRangeCertificates (4.5s)
+✔ [7450/7600] Built RHLean.Arithmetic.PrimeAveragedFrontierIdentity (3.9s)
+✔ [7451/7600] Built RHLean.Proof.UniformResidualBound (4.2s)
+✔ [7452/7600] Built RHLean.Proof.ActualStartSignedFrame (4.0s)
+✔ [7453/7600] Built RHLean.Proof.ActualStartLocalSignedFrame (3.9s)
+✔ [7454/7600] Built RHLean.Proof.RiemannHypothesisBridge (3.8s)
+✔ [7455/7600] Built RHLean.Proof.EndpointCubeAnalyticClosure (3.8s)
+✔ [7456/7600] Built RHLean.Proof.GeometricRHReduction (4.8s)
+✔ [7457/7600] Built RHLean.Proof.EndpointProjectionBridge (3.5s)
+✔ [7458/7600] Built RHLean.Proof.SpectralEndpointGramBridge (3.9s)
+✔ [7459/7600] Built RHLean.Analysis.SquarePrefixMertensBridge (10s)
+✔ [7460/7600] Built RHLean.Analysis.MertensEnergyCriterion (3.8s)
+✔ [7461/7600] Built RHLean.Arithmetic.PrimorialWheelPrefixIdentity (4.2s)
+✔ [7462/7600] Built RHLean.Proof.NormalizedCofactorExpansion (4.3s)
+✔ [7463/7600] Built RHLean.Analysis.ConcreteSquarePrefixGeometry (5.2s)
+✔ [7464/7600] Built RHLean.Analysis.MertensPowerGrowth (5.4s)
+✔ [7465/7600] Built RHLean.Arithmetic.PrimorialWheelMinimalTorus (4.3s)
+✔ [7466/7600] Built RHLean.Proof.ConcreteSquarePrefixCofactorRealization (4.2s)
+✔ [7467/7600] Built RHLean.Proof.NormalizedCofactorTripling (4.2s)
+✔ [7468/7600] Built RHLean.Analysis.PrimeWheelDirichletResponse (4.9s)
+✔ [7469/7600] Built RHLean.Analysis.MathlibMertensHook (4.4s)
+✔ [7470/7600] Built RHLean.Proof.SignedMutableFinalObject (4.5s)
+✔ [7471/7600] Built RHLean.Analysis.MertensStepFunction (4.8s)
+✔ [7472/7600] Built RHLean.Analysis.CanonicalHighSectorCore (5.3s)
+✔ [7473/7600] Built RHLean.Arithmetic.PrimeProductLowerBound (4.9s)
+✔ [7474/7600] Built RHLean.Analysis.PrimeWheelRawPeriod (5.1s)
+✔ [7475/7600] Built RHLean.Proof.SymmetricPrimeExtension (5.4s)
+✔ [7476/7600] Built RHLean.Analysis.SquarePrefixHeightPartition (5.5s)
+✔ [7477/7600] Built RHLean.Analysis.PrimeWheelExplicitCriterion (5.2s)
+✔ [7478/7600] Built RHLean.Analysis.PrimeWheelCoconductorTailBound (5.5s)
+✔ [7479/7600] Built RHLean.Proof.HeightShellReconstruction (5.1s)
+✔ [7480/7600] Built RHLean.Analysis.SquareWheelNesting (5.6s)
+✔ [7481/7600] Built RHLean.Analysis.MertensStepGrowth (6.0s)
+✔ [7482/7600] Built RHLean.Proof.CumulativeHeightFlow (5.9s)
+✔ [7483/7600] Built RHLean.Analysis.PrimeWheelPeriodicRawBridge (9.4s)
+✔ [7484/7600] Built RHLean.Analysis.CanonicalLowOccupancy (7.4s)
+✔ [7485/7600] Built RHLean.Analysis.PrimorialWheelExplicitCriterion (4.6s)
+✔ [7486/7600] Built RHLean.Proof.FareyModesAndTransportWindows (5.5s)
+✔ [7487/7600] Built RHLean.Analysis.PrimeWheelCoconductorSubtractionBridge (5.4s)
+✔ [7488/7600] Built RHLean.Analysis.MertensMellinContinuation (5.1s)
+✔ [7489/7600] Built RHLean.Analysis.TwoABScaleTransfer (5.3s)
+✔ [7490/7600] Built RHLean.Analysis.SquareWheelQuadraticSampling (5.5s)
+✔ [7491/7600] Built RHLean.Proof.BirthMovingAbsorption (5.3s)
+✔ [7492/7600] Built RHLean.Analysis.CanonicalExtremePrimeSupport (4.9s)
+✔ [7493/7600] Built RHLean.Analysis.CanonicalHighSectorBridge (4.9s)
+✔ [7494/7600] Built RHLean.Proof.LowOmegaHighOrientation (6.3s)
+✔ [7495/7600] Built RHLean.Analysis.PrimeWheelConductorGram (5.1s)
+✔ [7496/7600] Built RHLean.Proof.ConcreteSquarePrefixHighResidual (5.7s)
+✔ [7497/7600] Built RHLean.Analysis.PrimeWheelRawUnitOrbit (8.3s)
+✔ [7498/7600] Built RHLean.Analysis.MertensMellinLSeriesBridge (5.7s)
+✔ [7499/7600] Built RHLean.Proof.LifetimeOverlapKernel (5.5s)
+✔ [7500/7600] Built RHLean.Analysis.TwoABPrimeDilation (5.6s)
+✔ [7501/7600] Built RHLean.Analysis.SquareWheelZeroModeElimination (6.2s)
+✔ [7502/7600] Built RHLean.Proof.RealSquareBlockIncrements (5.5s)
+✔ [7503/7600] Built RHLean.Analysis.PrimeWheelPeriodicRawConductorResponse (10s)
+✔ [7504/7600] Built RHLean.Proof.CanonicalHighSectorCovariance (6.4s)
+✔ [7505/7600] Built RHLean.Proof.TriplingPacketTransport (6.5s)
+✔ [7506/7600] Built RHLean.Analysis.LogWeightedPrimeExtension (5.2s)
+✔ [7507/7600] Built RHLean.Proof.LifetimeActiveSet (5.4s)
+✔ [7508/7600] Built RHLean.Proof.InternalBlockLifetimeGram (5.7s)
+✔ [7509/7600] Built RHLean.Analysis.MertensZetaIdentityContinuation (7.1s)
+✔ [7510/7600] Built RHLean.Analysis.DyadicTransportCompression (7.0s)
+✔ [7511/7600] Built RHLean.Proof.SquareBlockPartialMomentBalance (6.2s)
+✔ [7512/7600] Built RHLean.Proof.SquareBlockCoherentGram (6.4s)
+✔ [7513/7600] Built RHLean.Analysis.PrimeBoundaryDefectBridge (6.6s)
+✔ [7514/7600] Built RHLean.Proof.SquareBlockSmoothTransportGram (6.3s)
+✔ [7515/7600] Built RHLean.Analysis.PrimeWheelRawShellConstancy (8.4s)
+✔ [7516/7600] Built RHLean.Proof.CompleteHighFamilyDecomposition (6.1s)
+✔ [7517/7600] Built RHLean.Proof.LifetimeGramArchitectureBridge (5.2s)
+✔ [7518/7600] Built RHLean.Proof.LifetimeLocalEnergyCriterion (6.1s)
+✔ [7519/7600] Built RHLean.Analysis.LogWeightedPrimeExtensionFiber (6.6s)
+✔ [7520/7600] Built RHLean.Proof.MutablePNTClosure (11s)
+✔ [7521/7600] Built RHLean.Analysis.DyadicTransportCanonicalForm (5.8s)
+✔ [7522/7600] Built RHLean.Proof.DyadicCompressedPacketGram (5.8s)
+✔ [7523/7600] Built RHLean.Analysis.MertensEnergyRHForward (6.1s)
+✔ [7524/7600] Built RHLean.Proof.SquareBlockTransportBaseline (5.2s)
+✔ [7525/7600] Built RHLean.Proof.CoherentGramVanishingTransfer (6.2s)
+✔ [7526/7600] Built RHLean.Proof.SquareBlockIncrementEnergy (6.4s)
+✔ [7527/7600] Built RHLean.Proof.ConcreteHighFamilyJointGram (5.3s)
+✔ [7528/7600] Built RHLean.Proof.LifetimeEndpointDecomposition (4.8s)
+✔ [7529/7600] Built RHLean.Analysis.LogWeightedPrimeExtensionEndpoint (5.1s)
+✔ [7530/7600] Built RHLean.Analysis.PrimeWheelRamanujanIdentification (7.0s)
+✔ [7531/7600] Built RHLean.Analysis.SquareRootMatchedTransport (4.9s)
+✔ [7532/7600] Built RHLean.Proof.PrimeSievePostSqrtGap (5.3s)
+✔ [7533/7600] Built RHLean.Proof.SquareBlockGramRowCancellation (4.6s)
+✔ [7534/7600] Built RHLean.Analysis.DynamicVioleBaseline (4.9s)
+✔ [7535/7600] Built RHLean.Analysis.ExactActivityPrimeIntervals (5.9s)
+✔ [7536/7600] Built RHLean.Proof.DeathProcessArithmetic (4.4s)
+✔ [7537/7600] Built RHLean.Analysis.PrimeWheelRamanujanBoundaryReduction (5.4s)
+✔ [7538/7600] Built RHLean.Proof.ConcreteLiCoreExtensionWeight (4.3s)
+✔ [7539/7600] Built RHLean.Proof.DeathProcessShellIdentity (4.2s)
+✔ [7540/7600] Built RHLean.Analysis.PrimeWheelRamanujanBoundaryBulkReduction (4.1s)
+✔ [7541/7600] Built RHLean.Proof.DeathShellCardinalityAndCentering (4.3s)
+✔ [7542/7600] Built RHLean.Analysis.PrimeWheelRawConductorCoefficient (6.5s)
+✔ [7543/7600] Built RHLean.Analysis.PrimeWheelSmoothConductorMobiusReindex (4.5s)
+✔ [7544/7600] Built RHLean.Proof.DeathShellDivisorFibers (4.7s)
+✔ [7545/7600] Built RHLean.Analysis.PrimeWheelRawConductorMobiusReindex (5.1s)
+✔ [7546/7600] Built RHLean.Proof.CompleteFermatSieve (5.7s)
+✔ [7547/7600] Built RHLean.Analysis.PrimeWheelFullConductorRecombination (5.9s)
+✔ [7548/7600] Built RHLean.Analysis.PrimeWheelRawConductorWeight (5.9s)
+✔ [7549/7600] Built RHLean.Analysis.PrimeWheelRawBoundaryMobiusPairing (4.6s)
+✔ [7550/7600] Built RHLean.Analysis.PrimeWheelPeriodicRawAttack (4.3s)
+✔ [7551/7600] Built RHLean.Analysis.PrimeWheelFullConductorUniformPacket (4.7s)
+✔ [7552/7600] Built RHLean.Proof.DeathShellCofactorParity (6.0s)
+✔ [7553/7600] Built RHLean.Proof.DeathShellSubpolynomial (6.9s)
+✔ [7554/7600] Built RHLean.Analysis.PrimeWheelRHBridge (4.0s)
+✔ [7555/7600] Built RHLean.Proof.FullFactorizationBridge (4.1s)
+✔ [7556/7600] Built RHLean.Analysis.SquareBlockDeathProcess (4.2s)
+✔ [7557/7600] Built RHLean.Analysis.PrimorialWheelHarmonicReduction (4.1s)
+✔ [7558/7600] Built RHLean.Proof.CanonicalSignedParent (4.1s)
+✔ [7559/7600] Built RHLean.Analysis.PrimeWheelFullConductorMobiusReindexedResidual (11s)
+✔ [7560/7600] Built RHLean.Analysis.PrimorialWheelMertensTransfer (7.7s)
+✔ [7561/7600] Built RHLean.Proof.CanonicalGapAncestryBridge (4.7s)
+✔ [7562/7600] Built RHLean.Proof.OneBlockInvariant (6.5s)
+✔ [7563/7600] Built RHLean.Analysis.PrimeWheelRawBoundaryExpansionCollapse (4.7s)
+✔ [7564/7600] Built RHLean.Analysis.SquareRootTransportRealization (4.5s)
+✔ [7565/7600] Built RHLean.Proof.SurvivorZeroMode (5.0s)
+✔ [7566/7600] Built RHLean.Proof.CanonicalGapAncestryEnergyBridge (5.3s)
+✔ [7567/7600] Built RHLean.Proof.ExactPrefixPopulationIdentity (5.2s)
+✔ [7568/7600] Built RHLean.Proof.PrimeSieveSquareRootTransport (4.8s)
+✔ [7569/7600] Built RHLean.Proof.SurvivorResidueCovariance (4.7s)
+✔ [7570/7600] Built RHLean.Analysis.SquareWheelQuantitativeBridge (6.8s)
+✔ [7571/7600] Built RHLean.Proof.SurvivorDyadicStaticCancellation (4.8s)
+✔ [7572/7600] Built RHLean.Proof.CanonicalGapAncestryGram (4.8s)
+✔ [7573/7600] Built RHLean.Proof.SquareRootAncestryRoot (6.1s)
+✔ [7574/7600] Built RHLean.Proof.SeededPopulationInduction (4.9s)
+✔ [7575/7600] Built RHLean.Proof.SurvivorLargePrimeRootBoundary (7.7s)
+✔ [7576/7600] Built RHLean.Analysis.SquareBlockSurvivorBridge (4.2s)
+✔ [7577/7600] Built RHLean.Proof.SurvivorResidueCovarianceCriterion (4.8s)
+✔ [7578/7600] Built RHLean.Analysis.PrimeSievePNTCentering (4.7s)
+✔ [7579/7600] Built RHLean.Proof.CanonicalGapAncestryHighRealization (5.1s)
+✔ [7580/7600] Built RHLean.Proof.SurvivorPrimeFaceFrontier (5.7s)
+✔ [7581/7600] Built RHLean.Proof.SquareRootAncestrySuccessor (5.6s)
+✔ [7582/7600] Built RHLean.Proof.SurvivorResidueCollisionReindex (4.5s)
+✔ [7583/7600] Built RHLean.Analysis.PrimeSieveQuotientPNTError (4.9s)
+✔ [7584/7600] Built RHLean.Proof.CanonicalGapAncestryProjectedRenewal (4.6s)
+✔ [7585/7600] Built RHLean.Proof.SurvivorResiduePrimeToggle (4.5s)
+✔ [7586/7600] Built RHLean.Proof.SurvivorPrimeFaceRealization (4.6s)
+✔ [7587/7600] Built RHLean.Proof.SurvivorPairEffectiveModulus (4.8s)
+✔ [7588/7600] Built RHLean.Proof.CanonicalGapAncestryPrimePacketScales (4.2s)
+✔ [7589/7600] Built RHLean.Proof.CanonicalGapAncestryQuadraticClosure (4.2s)
+✔ [7590/7600] Built RHLean.Proof.TerminalMertensReduction (3.9s)
+✔ [7591/7600] Built RHLean.Proof.CanonicalGapAncestryPrimePacketRenewal (4.1s)
+✔ [7592/7600] Built RHLean.Proof.CanonicalGapAncestryZeroCutoff (4.9s)
+✔ [7593/7600] Built RHLean.Proof.TerminalMertensForward (4.0s)
+✔ [7594/7600] Built RHLean.Proof.CanonicalGapAncestryPrimePacketFibre (4.1s)
+✔ [7595/7600] Built RHLean.Proof.CanonicalGapAncestryPrimePacketBaseline (4.3s)
+✔ [7596/7600] Built RHLean.Proof.TerminalAxiomAudit (9.0s)
+✔ [7597/7600] Built RHLean.Proof.CanonicalGapAncestryPrimePackets (3.8s)
+✔ [7598/7600] Built RHLean.Proof.CanonicalGapAncestryPrimePacketTopFibre (4.6s)
+✔ [7599/7600] Built RHLean (3.9s)
+Build completed successfully (7600 jobs).
+=== synthesis OK Sun Aug  9 11:37:28 UTC 2026
+Sun Aug  9 11:37:28 UTC 2026

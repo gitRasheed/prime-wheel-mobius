@@ -2,3 +2,63 @@ repo: square-block-mobius  commit: 8ff51e1c85822fd0121bdaaa6726d1b1dd8587d4  bra
 Sun Aug  9 11:18:06 UTC 2026
 info: waiting for previous installation request to finish (/home/rasheed/.elan/toolchains/leanprover--lean4---v4.24.lock, held by PID 16325)
 info: mathlib: cloning https://github.com/leanprover-community/mathlib4.git
+info: mathlib: checking out revision 'f897ebcf72cd16f89ab4577d0c826cd14afaafc7'
+info: plausible: cloning https://github.com/leanprover-community/plausible
+info: plausible: checking out revision 'dfd06ebfe8d0e8fa7faba9cb5e5a2e74e7bd2805'
+info: LeanSearchClient: cloning https://github.com/leanprover-community/LeanSearchClient
+info: LeanSearchClient: checking out revision '99657ad92e23804e279f77ea6dbdeebaa1317b98'
+info: importGraph: cloning https://github.com/leanprover-community/import-graph
+info: importGraph: checking out revision 'd768126816be17600904726ca7976b185786e6b9'
+info: proofwidgets: cloning https://github.com/leanprover-community/ProofWidgets4
+info: proofwidgets: checking out revision '556caed0eadb7901e068131d1be208dd907d07a2'
+info: aesop: cloning https://github.com/leanprover-community/aesop
+info: aesop: checking out revision '725ac8cd67acd70a7beaf47c3725e23484c1ef50'
+info: Qq: cloning https://github.com/leanprover-community/quote4
+info: Qq: checking out revision 'dea6a3361fa36d5a13f87333dc506ada582e025c'
+info: batteries: cloning https://github.com/leanprover-community/batteries
+info: batteries: checking out revision '8da40b72fece29b7d3fe3d768bac4c8910ce9bee'
+info: Cli: cloning https://github.com/leanprover/lean4-cli
+info: Cli: checking out revision '91c18fa62838ad0ab7384c03c9684d99d306e1da'
+✔ [3/21] Built Cache.Lean (32s)
+✔ [4/21] Built Cache.Lean:c.o (435ms)
+✔ [10/21] Built Batteries.Data.String.Basic:c.o (361ms)
+✔ [11/21] Built Batteries.Data.Array.Match:c.o (746ms)
+✔ [12/21] Built Batteries.Data.String.Matcher:c.o (546ms)
+✔ [13/21] Built Cache.IO (33s)
+✔ [14/21] Built Cache.IO:c.o (2.9s)
+✔ [15/21] Built Cache.Hashing (31s)
+✔ [16/21] Built Cache.Hashing:c.o (890ms)
+✔ [17/21] Built Cache.Requests (39s)
+✔ [18/21] Built Cache.Requests:c.o (2.6s)
+✔ [19/21] Built Cache.Main (30s)
+✔ [20/21] Built Cache.Main:c.o (834ms)
+✔ [21/21] Built cache:exe (2.4s)
+  % Total    % Received % Xferd  Average Speed   Time    Time     Time  Current
+                                 Dload  Upload   Total   Spent    Left  Speed
+  0     0    0     0    0     0      0      0 --:--:-- --:--:-- --:--:--     0  0     0    0     0    0     0      0      0 --:--:-- --:--:-- --:--:--     0
+100 1075k  100 1075k    0     0  3222k      0 --:--:-- --:--:-- --:--:-- 3222k
+
+installing leantar 0.1.15
+Fetching ProofWidgets cloud release... done!
+Current branch: HEAD
+Using cache (Azure) from origin: leanprover-community/mathlib4
+Attempting to download 7335 file(s) from leanprover-community/mathlib4 cache
+Downloaded: 1 file(s) [attempted 1/7335 = 0%, 10 KB/s]Downloaded: 9 file(s) [attempted 9/7335 = 0%, 98 KB/s]Downloaded: 19 file(s) [attempted 19/7335 = 0%, 2 KB/s]Downloaded: 25 file(s) [attempted 25/7335 = 0%, 85 KB/s]Downloaded: 41 file(s) [attempted 41/7335 = 0%, 9 KB/s]Downloaded: 54 file(s) [attempted 54/7335 = 0%, 647 KB/s]Downloaded: 69 file(s) [attempted 69/7335 = 0%, 453 KB/s]Downloaded: 93 file(s) [attempted 93/7335 = 1%, 220 KB/s]Downloaded: 116 file(s) [attempted 116/7335 = 1%, 8 KB/s]Downloaded: 139 file(s) [attempted 139/7335 = 1%, 346 KB/s]Downloaded: 164 file(s) [attempted 164/7335 = 2%, 10 KB/s]Downloaded: 193 file(s) [attempted 193/7335 = 2%, 868 KB/s]Downloaded: 222 file(s) [attempted 222/7335 = 3%, 48 KB/s]Downloaded: 258 file(s) [attempted 258/7335 = 3%, 1026 KB/s]Downloaded: 292 file(s) [attempted 292/7335 = 3%, 113 KB/s]Downloaded: 325 file(s) [attempted 325/7335 = 4%, 252 KB/s]Downloaded: 358 file(s) [attempted 358/7335 = 4%, 63 KB/s]Downloaded: 386 file(s) [attempted 386/7335 = 5%, 333 KB/s]uncaught exception: no such file or directory (error code: 2)
+  file: /home/rasheed/.cache/mathlib/1cb5bae633672061.ltar.part and/or /home/rasheed/.cache/mathlib/1cb5bae633672061.ltar
+cache_get_exit: 1
+✔ [324/1222] Built Plausible.Random (116s)
+✔ [325/1400] Built Qq.SortLocalDecls (133s)
+✔ [326/1410] Built Plausible.Attr (123s)
+✔ [327/1535] Built ProofWidgets.Compat (120s)
+✔ [328/1690] Built ProofWidgets.Util (124s)
+✔ [329/1857] Built Mathlib.Tactic.Linter.DirectoryDependency (164s)
+✔ [330/2252] Built Plausible.Gen (33s)
+✔ [331/3247] Built Plausible.Arbitrary (32s)
+✔ [332/3433] Built ProofWidgets.Cancellable (61s)
+✔ [333/3433] Built ProofWidgets.Component.Basic (61s)
+✔ [334/3608] Built Qq.ForLean.Do (205s)
+✔ [335/3609] Built Qq.Typ (206s)
+✔ [336/3621] Built Qq.ForLean.ReduceEval (206s)
+✔ [337/3621] Built Qq.ForLean.ToExpr (206s)
+✔ [338/3703] Built Mathlib.Tactic.Linter.Header (62s)
+✔ [339/3703] Built Plausible.Sampleable (63s)

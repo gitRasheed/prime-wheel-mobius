@@ -185,8 +185,9 @@ writing the exact statement it would prove.
    near-flat local slope as a diagnostic only (with the explicit
    Mertens-conjecture deception warning). Range extension and slope
    stability across more dyadic scales: unmeasured.
-6. **Square-block kernel reproducibility.** No lakefile/toolchain in the
-   sibling's `lean/`; standalone verification UNOBSERVABLE. Owner: Fred.
+6. **Square-block kernel reproducibility.** — **CLOSED** (record 003,
+   2026-08-09): the republished export ships build scaffolding; green
+   `lake build RHLean --wfail` + clean audit on the EC2 evaluator.
 7. **The classical bridge.** — **HALF-ANSWERED** by the synthesis repo
    (record 003 extraction, 2026-08-09): the forward direction
    `MertensEnergyBoundedStatement → RH` is proved in-repo
