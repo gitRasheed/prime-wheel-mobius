@@ -1,0 +1,21 @@
+# Axiom check for RHLean/Analysis/MobiusSynthesisBoundaryBridge.lean
+# Run on EC2 box i-0fc2bb4713d1486ca (work/mobius-synthesis), 2026-08-09
+# Command: lake env lean AxiomCheck.lean  (scratch file importing the new module,
+#          after building the module olean with lake env lean -o)
+# Exit code: 0
+
+'RHLean.Analysis.MobiusSynthesisBoundaryBridge.projectedRenewalQuadraticBounded_of_nonzeroResponseRHScale' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+'RHLean.Analysis.MobiusSynthesisBoundaryBridge.nonzeroResponseRHScale_of_projectedRenewalQuadraticBounded' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+'RHLean.Analysis.MobiusSynthesisBoundaryBridge.nonzeroResponseRHScale_iff_projectedRenewalQuadraticBounded' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+'RHLean.Analysis.MobiusSynthesisBoundaryBridge.primeWheelResidualBounded_of_nonzeroResponseRHScale' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+'RHLean.Analysis.MobiusSynthesisBoundaryBridge.nonzeroResponseRHScale_of_mertensEnergyBounded' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]

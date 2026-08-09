@@ -1,0 +1,29 @@
+# Build log, results/007 connecting theorem
+# Box: EC2 i-0fc2bb4713d1486ca, repo work/mobius-synthesis (clone of main), lean4 v4.24.0 / mathlib v4.24.0
+# Date: 2026-08-09
+
+Iteration 1: lake env lean RHLean/Analysis/MobiusSynthesisBoundaryBridge.lean
+  -> first failed because the orphan dependency RHLean.Analysis.MobiusSynthesisBoundary
+     had no cached olean; fixed with: lake build RHLean.Analysis.MobiusSynthesisBoundary
+     (Built in 3.7s on warm cache, 7418 jobs total reported up to date.)
+  -> then ~10 errors: Real.rpow vs `^` (instHPow) notation mismatch blocking rw-based
+     mathlib lemmas (rpow_add / rpow_neg / rpow_sub); `div_le_div` renamed away;
+     one linear_combination sign; `positivity` on goals of shape 1 <= x+1 (not a
+     positivity goal); one field_simp closing a goal early leaving `ring` with no goals.
+
+Iteration 2: after adding `rpow_eq : Real.rpow a b = a ^ b := rfl` bridge lemma and
+  simp only [rpow_eq] conversions, fixing positivity sites, flipping linear_combination:
+  -> 4 errors left: div_le_div_iff also unknown (renamed in this mathlib);
+     one positivity failure on a `set`-bound sqrt variable; one stray `ring` after
+     field_simp closed the goal.
+
+Iteration 3: replaced division-monotonicity by an explicit one_div_le_one_div_of_le
+  calc, replaced positivity by mul_nonneg + Real.rpow_nonneg, dropped stray ring:
+  -> lake env lean RHLean/Analysis/MobiusSynthesisBoundaryBridge.lean
+     EXIT=0, no output (zero errors, zero warnings, zero sorries).
+
+Axiom check (scratch AxiomCheck.lean importing the module): EXIT=0, all five
+public theorems depend on exactly [propext, Classical.choice, Quot.sound].
+See axiom-check.txt.
+
+Total build iterations to green: 3.

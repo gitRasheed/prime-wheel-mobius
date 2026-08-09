@@ -1,0 +1,9 @@
+'RHLean.Analysis.MobiusSynthesisBoundaryBridge.projectedRenewalQuadraticBounded_of_nonzeroResponseRHScale' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+'RHLean.Analysis.MobiusSynthesisBoundaryBridge.nonzeroResponseRHScale_of_projectedRenewalQuadraticBounded' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+'RHLean.Analysis.MobiusSynthesisBoundaryBridge.nonzeroResponseRHScale_iff_projectedRenewalQuadraticBounded' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]

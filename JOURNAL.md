@@ -263,3 +263,19 @@ adversarial reviews and independent verification passes run on the
 Codex companion (cross-model diversity, exactly what PROOF_OS's
 anti-sycophancy contract wants); Claude agents keep deep-context work.
 Recorded as a standing allocation policy, revisable by decision event.
+
+### 2026-08-09-9 — experiment 007 SUCCESS: connecting theorem kernel-proved (first original contribution)
+
+Full success on the program's first declared experiment. The orphan
+`NonzeroResponseRHScale` is now kernel-equivalent to
+`ProjectedRenewalQuadraticBoundedStatement` (∀Λ≥0 form) — new module
+MobiusSynthesisBoundaryBridge at mobius-synthesis agent-os 6026165,
+manifest import 59c7fdd; coordinator independently re-ran the full
+frozen gate on the box (7602-job build green, audit clean, axioms
+baseline-only on all three theorems). Frontier delta: none —
+formalization-support, honestly labelled; the analytic frontier is
+unchanged but the program now has ONE canonical target with two
+proven-equivalent faces, and the definition-drift gap flagged in
+record 003 is closed on our branch. Report item for Fred (his README
+cites the formerly-orphan predicate). Kill-test wave (006) still
+running in parallel.
