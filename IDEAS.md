@@ -248,3 +248,17 @@ Full week of compute if run entirely; run 4/7/1 first.
 
 Warning absorbed from the round (agents 5, 8): the Lean target admits
 H = 1, so window-only averaging mechanisms yield lemmas, not closures.
+
+**Node G update (2026-08-09, records 012–014):** G2 **closed-dead at
+class scope** — class 𝔉 (L²-Mertens input + sign-discarding
+recombination at H=1, = every completion/large-sieve implementation;
+review 014 structural lemma). Kernel of the obituary: F(σ) ≥ 1/2+σ/2,
+expansion ≥ 1/4 on the whole range, confirmed by both model families
+via independent routes; the bounded-fiber transfer separately dead by
+exact counterexample (012). Reopens when: an argument outside 𝔉 —
+direct μ×R cancellation (Cell D) or a Type-II route with an honest
+prime-correlation input. **New leading object (from review 014): the
+Abel-form bilinear statement Σ_{d≤√x} μ(d)(π(x/d)−Li(x/d)) ≪
+x^{1/2+ε}** — equivalent to the E-face target with no exponent flow;
+next records: formalize the identity (kernel), measure √K-cancellation
+(numerics), scope Type-II (seeding round 2).

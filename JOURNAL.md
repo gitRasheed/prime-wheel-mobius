@@ -375,3 +375,21 @@ diversity) finds an error or an evading subfamily. Post-review state
 of node G if confirmed: G1, G2, G3 dead; alive = cluster L (arbiter
 passed), G4's formulation debt, parity-locus isolation, plus re-seed
 round 2 armed with the kill map.
+
+### 2026-08-09-16 — review 014: G2 CLOSED at class scope; Abel reformulation is the new frontier object
+
+Opus review confirmed the closure on a stronger basis than the Codex
+audit (details in results/014): the whole class 𝔉 of L²-input +
+sign-discarding-recombination arguments expands the exponent by ≥1/4
+— structural lemma: at H=1 every large sieve is downstream of a
+Cauchy–Schwarz that already destroyed the d-cancellation, and the
+lost factor is exactly √D (numerically exact). Both model families
+now agree on the constant 1/4 by independent routes. G2 closed-dead
+(class scope, escapes named: Cell D and Type-II). The review's
+by-product may matter more than the closure: the exact Abel identity
+E = Σ_{d≤K}μ(d)R(⌊x/d⌋) − M(K)R(y) kills the σ-bootstrap framing
+entirely and reduces the target to one bilinear μ×R statement.
+Reviewer also caught that 008's arrays already showed |E| ≍ √Diag —
+the answer was in our own data, unread. Next wave: formalize the Abel
+identity (015), Abel-coordinate cancellation measurement (016),
+Type-II scoping in seeding round 2.
