@@ -113,14 +113,13 @@ No rung is currently proved unconditionally — all status: open.
   build + clean audit, EC2 evaluator). The *equivalence* still takes
   the typed premise `ClassicalMertensRHCriterion`; reverse RH → Mertens
   not asserted.
-- **Canonical program target** (definition-drift finding, record 003):
-  `ProjectedRenewalQuadraticBoundedStatement` — the statement the
-  bridge consumes. `NonzeroResponseRHScale`
-  (`RHLean/Analysis/MobiusSynthesisBoundary.lean`) is an **orphan**:
-  its module is the one file excluded from the 248-import manifest,
-  compiles clean, but no theorem connects it to the bridge chain.
-  Treat as documentation-grade; connecting theorem = candidate first
-  contribution. Gap flagged for Fred (resolution owner: Fred Viole).
+- **Canonical program target**: `ProjectedRenewalQuadraticBoundedStatement`
+  ⟺ `NonzeroResponseRHScale` — **kernel-proved equivalent** (record
+  007, our contribution: `MobiusSynthesisBoundaryBridge` at
+  mobius-synthesis `agent-os` 6026165+59c7fdd, local branch only; the
+  formerly orphan module is now imported and audited). One target, two
+  proven faces. Upstream `main` still has the orphan gap — report item
+  for Fred (owner: Fred Viole).
 
 **Fleet evaluator (record 003 onward).** EC2 `mobius-fleet-1`
 (i-0fc2bb4713d1486ca, us-east-1, Ubuntu 24.04, elan → lean4 v4.24.0,
