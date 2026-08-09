@@ -1,0 +1,1502 @@
+\documentclass[11pt]{article}
+
+\usepackage[T1]{fontenc}
+\usepackage[utf8]{inputenc}
+\usepackage{lmodern}
+\usepackage{microtype}
+\usepackage[a4paper,margin=1.08in]{geometry}
+\usepackage{amsmath,amssymb,amsthm,mathtools,bm}
+\usepackage{booktabs,array,longtable}
+\usepackage{enumitem}
+\usepackage{xcolor}
+\usepackage{hyperref}
+\usepackage{cleveref}
+\usepackage{fancyhdr}
+\usepackage{lastpage}
+
+\definecolor{navy}{RGB}{25,48,85}
+\definecolor{teal}{RGB}{26,111,112}
+\definecolor{rust}{RGB}{151,67,42}
+\definecolor{lightgray}{RGB}{245,247,249}
+\definecolor{midgray}{RGB}{90,98,108}
+
+\hypersetup{
+  colorlinks=true,
+  linkcolor=navy,
+  citecolor=teal,
+  urlcolor=rust,
+  pdftitle={Seeded Prime-Comb Dynamics and the Finite Harmonic Reduction of Primorial-Block Mobius Sums},
+  pdfauthor={Fred Viole, OVVO Labs}
+}
+
+\pagestyle{fancy}
+\fancyhf{}
+\fancyhead[L]{\small Seeded prime-comb harmonic reduction}
+\fancyhead[R]{\small Fred Viole}
+\fancyfoot[C]{\small \thepage\ of \pageref{LastPage}}
+\setlength{\headheight}{14pt}
+
+\setcounter{tocdepth}{2}
+\setcounter{secnumdepth}{3}
+\setlist[itemize]{leftmargin=1.5em,itemsep=0.25em,topsep=0.35em}
+\setlist[enumerate]{leftmargin=1.7em,itemsep=0.3em,topsep=0.35em}
+
+\newtheorem{theorem}{Theorem}[section]
+\newtheorem{proposition}[theorem]{Proposition}
+\newtheorem{lemma}[theorem]{Lemma}
+\newtheorem{corollary}[theorem]{Corollary}
+\newtheorem{conjecture}[theorem]{Open theorem}
+\theoremstyle{definition}
+\newtheorem{definition}[theorem]{Definition}
+\newtheorem{remark}[theorem]{Remark}
+\newtheorem{example}[theorem]{Example}
+
+\crefname{conjecture}{open theorem}{open theorems}
+\Crefname{conjecture}{Open theorem}{Open theorems}
+
+\newcommand{\N}{\mathbb N}
+\newcommand{\Z}{\mathbb Z}
+\newcommand{\C}{\mathbb C}
+\newcommand{\R}{\mathbb R}
+\newcommand{\one}{\mathbf 1}
+\newcommand{\e}{\mathrm e}
+\newcommand{\ee}[1]{\mathrm e\!\left(#1\right)}
+\newcommand{\ep}{\varepsilon}
+\newcommand{\cond}{\operatorname{cond}}
+\newcommand{\supp}{\operatorname{supp}}
+\newcommand{\lcm}{\operatorname{lcm}}
+\newcommand{\Rea}{\operatorname{Re}}
+\newcommand{\Pplus}{P^{+}}
+\newcommand{\parallelp}{\mathbin{\|}}
+\newcommand{\normfrac}[1]{\left\|#1\right\|_{\R/\Z}}
+\newcommand{\Mert}{M}
+\newcommand{\mob}{\mu}
+
+\newcommand{\statusbox}[2]{%
+\begin{center}
+\fcolorbox{#1}{lightgray}{\parbox{0.91\textwidth}{\small\textbf{#2}}}
+\end{center}}
+
+
+% Public machine-checked companion link shown immediately after each proof.
+% The first argument distinguishes exact theorem matches from explicitly noted
+% finite counterparts or replacements used by the standalone formalization.
+\newcommand{\leanxref}[3]{%
+  \par\smallskip
+  {\small\noindent\textcolor{teal}{\textbf{#1:}}\par
+  \noindent\href{#3}{\nolinkurl{#2}}\par}
+  \smallskip
+}
+
+\title{\vspace{-1.5em}\textbf{Seeded Prime-Comb Dynamics and the Finite Harmonic Reduction of Primorial-Block M\"obius Sums}\\[0.45em]
+\large From the zero field to a pinned spectral nonconcentration theorem}
+\author{Fred Viole\\OVVO Labs}
+\date{July 2026}
+
+\begin{document}
+\maketitle
+
+\begin{abstract}
+This paper gives a self-contained construction of a deterministic prime-comb field whose exact correction recovers the M\"obius function on every primorial block.  The construction begins with the identically zero field, introduces a formal period-one seed that creates the uniform value $-1$, and then applies commuting prime operators that flip first-power divisibility and kill square divisibility.  On a complete square-sensitive wheel the constant mode contracts by the exact factor
+\[
+\prod_{p\le y}\left(1-\frac1p\right)^2.
+\]
+At the square-root cutoff $y=\lfloor\sqrt{W_k}\rfloor$, every squarefree integer $n\le W_k$ has at most one prime factor above $y$.  The seed therefore represents the unique unseen large prime whenever one exists; the only incorrectly oriented live sites are the fully $y$-smooth squarefree integers.  Reversing precisely those sites recovers $\mu(n)$ pointwise and yields the exact block-prefix identity
+\[
+A_k(x)-2C_k(x)=M(x)-M(W_{k-1}).
+\]
+
+The apparent mismatch between the periodic raw comb and the magnitude-truncated smooth core is resolved by a lossless finite-torus embedding.  The raw field is periodically lifted to a cyclic group, the smooth-core site field is zero-padded on the same fundamental domain, and both are transformed in one additive Fourier basis.  The joint coefficient vector is explicit: a tensor-product CRT spectrum minus a sharply truncated divisor spectrum.  Every block prefix is then exactly a Dirichlet-kernel pairing with this fixed vector.  Squaring gives a finite signed Gram form; conductor decomposition gives exact decay for the raw multiplicative-chaos spectrum.  The Riemann Hypothesis is thereby reduced to one open, finite-dimensional statement: a uniform pinned-origin maximal nonconcentration estimate for the actual joint coefficient vector.  The same RH-scale theorem also implies $M(x)=o(x)$ and hence the Prime Number Theorem.  The classical Mertens criteria for PNT and RH are standard; the framework-specific point is that the same exact finite block residual and the same maximal Fourier inequality feed both criteria.  The exact identities are proved here; finite computations are reported separately; the final harmonic estimate is stated explicitly and is not claimed as proved.
+\end{abstract}
+
+\statusbox{navy}{Status convention.  Results labelled theorem, proposition, lemma, or corollary are proved from the stated definitions or standard cited results.  Numerical values are finite computations.  Statements labelled ``Open theorem'' are the remaining analytic obligations and are not asserted as established.}
+\newpage
+
+\tableofcontents
+\newpage
+
+\section{Introduction}
+
+Let
+\[
+M(x)=\sum_{n\le x}\mu(n)
+\]
+be the Mertens function.  The classical Riemann-Hypothesis criterion is
+\begin{equation}\label{eq:classical-rh-criterion}
+\mathrm{RH}
+\quad\Longleftrightarrow\quad
+M(x)=O_{\varepsilon}\!\left(x^{1/2+\varepsilon}\right)
+\quad\text{for every }\varepsilon>0;
+\end{equation}
+see, for example, \cite[Ch.~14]{Titchmarsh} or \cite{MontgomeryVaughan}.  The purpose of this paper is not to assume cancellation in $M(x)$, but to expose an exact finite mechanism whose sole unresolved component is a harmonic nonconcentration estimate equivalent to \eqref{eq:classical-rh-criterion}.
+
+The construction has five layers.
+\begin{enumerate}
+\item A period-one seed turns an initial zero field into the constant field $-1$.
+\item For each prime $p$, a $p^2$-periodic operator flips first-power hits and kills square hits.
+\item At a square-root prime cutoff, the seed supplies exactly one provisional parity coordinate.  It is correct when an unseen large prime exists and extraneous otherwise.
+\item Reversing the fully smooth squarefree sites produces $\mu(n)$ exactly on the whole primorial block.
+\item Both the periodic comb and the finite smooth-core correction are embedded in one cyclic Fourier space.  A prefix cutoff becomes a standard Dirichlet kernel.
+\end{enumerate}
+
+The resulting block residual is not an approximation:
+\begin{equation}\label{eq:intro-residual}
+R_k(x)=A_k(x)-2C_k(x)=M(x)-M(W_{k-1})
+\qquad(W_{k-1}<x\le W_k).
+\end{equation}
+The open problem is therefore exactly a maximal estimate for the deterministic boundary interference created when the cutoff $x$ shears incomplete prime-square periods.
+
+The finite Fourier reduction culminates in a fixed coefficient vector $b_k(r)$ and the identity
+\begin{equation}\label{eq:intro-fourier}
+R_k(W_{k-1}+N)
+=
+\sum_{r\bmod \mathcal Q_k}
+ b_k(r)
+ D_N\!\left(\frac r{\mathcal Q_k}\right),
+\end{equation}
+where
+\[
+D_N(\theta)=\sum_{j=0}^{N-1}\e^{2\pi i j\theta}
+\]
+is the Dirichlet kernel.  The final theorem to be proved is
+\begin{equation}\label{eq:intro-target}
+\sup_{1\le N\le W_k-W_{k-1}}
+\left|
+\sum_{r\bmod \mathcal Q_k}
+ b_k(r)D_N\!\left(\frac r{\mathcal Q_k}\right)
+\right|
+\ll_{\varepsilon} W_k^{1/2+\varepsilon}.
+\end{equation}
+All conceptual translations terminate at \eqref{eq:intro-target}.  It is a finite, pinned-origin, special-vector harmonic-analysis problem.
+\newpage
+
+\section{Arithmetic notation and the primorial blocks}
+
+Let $p_1=2,p_2=3,p_3=5,\ldots$ denote the primes in increasing order.
+
+\begin{definition}[Primorial block]\label{def:primorial}
+For $k\ge1$, define
+\[
+W_k=\prod_{j=1}^{k}p_j,
+\qquad W_0=1,
+\qquad B_k=(W_{k-1},W_k].
+\]
+Set
+\[
+y_k=\left\lfloor\sqrt{W_k}\right\rfloor.
+\]
+The prime set processed at scale $k$ is
+\[
+\mathcal P_k=\{p:p\text{ prime},\ p\le y_k\}.
+\]
+\end{definition}
+
+Three products must remain distinct.
+\begin{definition}[Smooth-prime and square-sensitive moduli]\label{def:moduli}
+Define
+\[
+\Pi_k=\prod_{p\le y_k}p,
+\qquad
+Q_k=\prod_{p\le y_k}p^2=\Pi_k^2.
+\]
+Thus $W_k$ is the endpoint primorial formed from the first $k$ primes, while $\Pi_k$ is the product of \emph{all} primes up to $\sqrt{W_k}$.  In general $\Pi_k\ne W_k$ and $Q_k\ne W_k^2$.
+\end{definition}
+
+For $n>1$, let $P^+(n)$ denote the largest prime factor of $n$, and set $P^+(1)=1$.  Write $p\parallel n$ when $p\mid n$ but $p^2\nmid n$.  The M\"obius function is
+\[
+\mu(n)=
+\begin{cases}
+0,&p^2\mid n\text{ for some prime }p,\\
+(-1)^{\omega(n)},&n\text{ squarefree},
+\end{cases}
+\]
+with $\mu(1)=1$.
+
+We use
+\[
+e(t)=\e^{2\pi i t},
+\qquad
+\|t\|_{\R/\Z}=\min_{m\in\Z}|t-m|.
+\]
+
+\section{The zero field, the seed, and the prime operators}
+
+\subsection{The initial zero field}
+
+The construction begins with no assigned arithmetic parity.
+
+\begin{definition}[Zero field and formal seed]\label{def:seed}
+Let
+\[
+f_0(n)=0\qquad(n\in\N).
+\]
+Define a formal period-one seed operator $J$ by
+\[
+(Jf_0)(n)=-1\qquad(n\in\N).
+\]
+The seed is not a declaration that $1$ is prime.  It inserts one provisional parity coordinate that later represents a unique prime factor not yet seen by the small-prime operators.
+\end{definition}
+
+\subsection{Genuine prime operators}
+
+\begin{definition}[Prime operator]\label{def:prime-operator}
+For a prime $p$ and a field $f:\N\to\C$, define
+\[
+(T_pf)(n)=
+\begin{cases}
+0,&p^2\mid n,\\
+-f(n),&p\parallel n,\\
+f(n),&p\nmid n.
+\end{cases}
+\]
+\end{definition}
+
+It is useful to isolate the local multiplier
+\begin{equation}\label{eq:up-def}
+u_p(n)=
+\begin{cases}
+1,&p\nmid n,\\
+-1,&p\parallel n,\\
+0,&p^2\mid n.
+\end{cases}
+\end{equation}
+Then $T_pf=u_pf$ pointwise.
+
+\begin{lemma}[Commutation]\label{lem:commutation}
+For distinct primes $p$ and $q$,
+\[
+T_pT_q=T_qT_p.
+\]
+\end{lemma}
+
+\begin{proof}
+Both operators act by pointwise multiplication, respectively by $u_p(n)$ and $u_q(n)$.  Hence
+\[
+(T_pT_qf)(n)=u_p(n)u_q(n)f(n)=u_q(n)u_p(n)f(n)=(T_qT_pf)(n).
+\]
+\end{proof}
+\leanxref{Lean proof}{primeCombOperator_comm}{https://github.com/OVVO-Financial/prime-wheel-mobius/blob/main/formalization/RHLean/Arithmetic/PrimeWheelFiniteSystem.lean}
+
+\begin{definition}[Seeded prime-comb field]\label{def:sigma-y}
+For $y\ge1$, define
+\[
+\sigma_y(n)=\left(\prod_{p\le y}T_p\right)(Jf_0)(n)
+=-\prod_{p\le y}u_p(n).
+\]
+At primorial scale $k$, abbreviate
+\[
+\sigma_k=\sigma_{y_k}.
+\]
+\end{definition}
+
+\begin{proposition}[Pointwise state after the small primes]\label{prop:sigma-pointwise}
+Let
+\[
+\omega_y(n)=\#\{p\le y:p\mid n\}.
+\]
+If $n$ is divisible by $p^2$ for some $p\le y$, then $\sigma_y(n)=0$.  Otherwise
+\[
+\sigma_y(n)=(-1)^{1+\omega_y(n)}.
+\]
+\end{proposition}
+
+\begin{proof}
+Every first-power prime divisor $p\le y$ contributes one sign flip, every miss contributes $1$, and any square hit contributes $0$.  The initial sign is $-1$.
+\end{proof}
+\leanxref{Lean proof}{prod_localPrimeComb_eq_negOnePow_filter_card}{https://github.com/OVVO-Financial/prime-wheel-mobius/blob/main/formalization/RHLean/Arithmetic/PrimeWheelMobiusRecovery.lean}
+\leanxref{Lean proof}{seededPrimeComb_eq_neg_negOnePow_filter_card}{https://github.com/OVVO-Financial/prime-wheel-mobius/blob/main/formalization/RHLean/Arithmetic/PrimeWheelMobiusRecovery.lean}
+
+\section{Complete square-sensitive wheels}
+
+The raw comb is periodic with exact period dividing
+\[
+Q(y)=\prod_{p\le y}p^2.
+\]
+The complete-wheel mean is an exact tensor product.
+
+\begin{lemma}[One-prime mean]\label{lem:local-mean}
+For a prime $p$,
+\[
+\frac1{p^2}\sum_{a\bmod p^2}u_p(a)
+=\left(1-\frac1p\right)^2.
+\]
+\end{lemma}
+
+\begin{proof}
+Among the $p^2$ residue classes modulo $p^2$:
+\begin{itemize}
+\item $p^2-p$ are not divisible by $p$ and contribute $+1$;
+\item $p-1$ are divisible by $p$ but not by $p^2$ and contribute $-1$;
+\item one is divisible by $p^2$ and contributes $0$.
+\end{itemize}
+Therefore
+\[
+\frac{(p^2-p)-(p-1)}{p^2}
+=\frac{(p-1)^2}{p^2}.
+\]
+\end{proof}
+\leanxref{Lean proof}{localPrimeComb_complete_sum}{https://github.com/OVVO-Financial/prime-wheel-mobius/blob/main/formalization/RHLean/Analysis/PrimeWheelCompleteSpectrum.lean}
+
+\begin{theorem}[Exact complete-wheel mean]\label{thm:complete-wheel}
+For $Q(y)=\prod_{p\le y}p^2$,
+\[
+\frac1{Q(y)}\sum_{n\bmod Q(y)}\sigma_y(n)
+=-\prod_{p\le y}\left(1-\frac1p\right)^2.
+\]
+\end{theorem}
+
+\begin{proof}
+By the Chinese remainder theorem,
+\[
+\Z/Q(y)\Z\cong\prod_{p\le y}\Z/p^2\Z.
+\]
+Since $\sigma_y=-\prod_{p\le y}u_p$, averaging over the product group factors into the product of the local averages in \cref{lem:local-mean}.
+\end{proof}
+\leanxref{Lean proof}{primeWheelCRTMass_eq_neg_prod_primeFactors}{https://github.com/OVVO-Financial/prime-wheel-mobius/blob/main/formalization/RHLean/Analysis/PrimeWheelCompleteSpectrum.lean}
+
+\subsection{The CRT product torus and the primorial path}\label{subsec:crt-product-torus}
+
+For fixed $k$, define the simultaneous residue-state map
+\[
+\Phi_k(n)=\bigl(n\bmod p^2\bigr)_{p\le y_k}
+\in\prod_{p\le y_k}\Z/p^2\Z.
+\]
+The Chinese remainder theorem gives a canonical group isomorphism
+\[
+\Z/Q_k\Z\cong\prod_{p\le y_k}\Z/p^2\Z,
+\qquad
+Q_k=\prod_{p\le y_k}p^2,
+\]
+under which $n\bmod Q_k$ corresponds exactly to $\Phi_k(n)$.  Thus one step $n\mapsto n+1$ advances every local coordinate by one:
+\[
+\Phi_k(n+1)=\Phi_k(n)+(1,1,\ldots,1).
+\]
+The ordinary integers therefore trace the diagonal cyclic orbit on the complete CRT product torus, and the raw comb is the pullback of the tensor-product field
+\[
+-(x_p)_p\longmapsto-\prod_{p\le y_k}u_p(x_p).
+\]
+This is the precise sense in which the separate $p^2$-wheels form one finite, closed dynamical system.
+
+\begin{remark}[The CRT wheel is not the primorial block]\label{rem:crt-not-block}
+The complete periodic state space and the arithmetic block must not be identified.  The CRT wheel has length $Q_k$, whereas the primorial block is the pinned interval
+\[
+(W_{k-1},W_k].
+\]
+It is a finite arc of the diagonal orbit inside the CRT wheel, not a fundamental period of that wheel.  In particular, because $W_{k-1}$ is squarefree, $W_{k-1}$ is generally divisible by $p$ but not by $p^2$ for primes occurring in it.  Hence translation by $W_{k-1}$ does not return the $p^2$ coordinate to its starting point.  The primorial endpoints arise instead from the arithmetic coverage hierarchy: when the endpoint increases, the available prime-factor base and the unique-large-prime classification change in a controlled way.  The remaining maximal problem is therefore the size of a pinned, generally misaligned arc of the diagonal CRT orbit.
+\end{remark}
+
+\begin{remark}[Why CRT is the spectral glue]\label{rem:crt-spectral-glue}
+The product-torus identification has two exact consequences used below.  First, complete averages factor into products of one-prime averages.  Second, additive characters on $\Z/Q_k\Z$ factor into local characters on the groups $\Z/p^2\Z$, which yields the tensor-product formula for the raw Fourier coefficients.  The zero-padded smooth core is then placed on the same cyclic group, so the corrected field has one joint coefficient vector and every primorial-block cutoff is represented by a Dirichlet kernel on that same finite frequency grid.
+\end{remark}
+
+\begin{corollary}[Decay of the constant mode]\label{cor:constant-decay}
+The complete-wheel mean tends to zero as $y\to\infty$.
+More precisely, Mertens' product theorem gives
+\[
+\prod_{p\le y}\left(1-\frac1p\right)^2
+\sim \frac{\e^{-2\gamma}}{(\log y)^2}.
+\]
+\end{corollary}
+
+\begin{proof}
+The asymptotic is the square of Mertens' prime product theorem.  Mere convergence to zero also follows from Euler's divergence of $\sum_p1/p$, because
+\[
+2\sum_{p\le y}\log\left(1-\frac1p\right)
+\le -2\sum_{p\le y}\frac1p\longrightarrow-\infty.
+\]
+\end{proof}
+\leanxref{Lean finite counterpart (the classical asymptotic is cited, not re-formalized)}{primeWheelCRTMass_eq_neg_prod_primeFactors}{https://github.com/OVVO-Financial/prime-wheel-mobius/blob/main/formalization/RHLean/Analysis/PrimeWheelCompleteSpectrum.lean}
+
+\begin{remark}[What the complete wheel does and does not prove]
+The theorem determines the constant mode exactly on a completed $Q(y)$-period.  It does not, by itself, bound the largest partial sum before the period closes.  The rest of the paper identifies that unfinished-path problem exactly.
+\end{remark}
+
+\section{Square-root coverage and exact M\"obius recovery}
+
+The square-root cutoff is what makes the formal seed meaningful.
+
+\begin{lemma}[At most one unseen prime]\label{lem:one-large-prime}
+Let $n\le W_k$ be squarefree.  Then at most one prime divisor of $n$ exceeds $y_k=\lfloor\sqrt{W_k}\rfloor$.
+\end{lemma}
+
+\begin{proof}
+If two distinct prime divisors $q_1,q_2$ both exceeded $y_k$, then each would be at least $y_k+1>\sqrt{W_k}$.  Hence
+\[
+n\ge q_1q_2>W_k,
+\]
+contrary to $n\le W_k$.
+\end{proof}
+\leanxref{Lean proof}{large_primeFactors_card_le_one}{https://github.com/OVVO-Financial/prime-wheel-mobius/blob/main/formalization/RHLean/Arithmetic/PrimeWheelMobiusRecovery.lean}
+
+\begin{definition}[Unseen-prime indicator and smooth core]\label{def:smooth-core}
+For squarefree $n\le W_k$, define
+\[
+h_k(n)=\#\{q>y_k:q\mid n\}\in\{0,1\}.
+\]
+Define the smooth-core indicator
+\[
+s_k(n)=\one_{\{n\text{ squarefree},\ P^+(n)\le y_k\}}.
+\]
+Thus $s_k(n)=1$ exactly when $h_k(n)=0$.
+\end{definition}
+
+\begin{proposition}[Seed orientation]\label{prop:seed-orientation}
+For squarefree $n\le W_k$,
+\[
+\mu(n)=(-1)^{\omega_{y_k}(n)+h_k(n)},
+\qquad
+\sigma_k(n)=(-1)^{1+\omega_{y_k}(n)}.
+\]
+Consequently,
+\[
+\sigma_k(n)=
+\begin{cases}
+\mu(n),&h_k(n)=1,\\
+-\mu(n),&h_k(n)=0.
+\end{cases}
+\]
+\end{proposition}
+
+\begin{proof}
+All prime divisors of $n$ are either at most $y_k$ or belong to the set counted by $h_k(n)$.  Since $n$ is squarefree,
+\[
+\omega(n)=\omega_{y_k}(n)+h_k(n).
+\]
+The formula for $\mu(n)$ follows.  The formula for $\sigma_k(n)$ is \cref{prop:sigma-pointwise}.  Comparing exponents modulo $2$ gives the two cases.
+\end{proof}
+\leanxref{Lean proof}{seededPrimeComb_eq_neg_moebius_of_smooth; seededPrimeComb_eq_moebius_of_not_smooth}{https://github.com/OVVO-Financial/prime-wheel-mobius/blob/main/formalization/RHLean/Arithmetic/PrimeWheelMobiusRecovery.lean}
+
+\begin{definition}[Corrected site field]\label{def:corrected-field}
+Define
+\[
+c_k(n)=\sigma_k(n)s_k(n),
+\qquad
+f_k(n)=\sigma_k(n)-2c_k(n)
+\]
+for $1\le n\le W_k$.
+\end{definition}
+
+\begin{theorem}[Exact pointwise M\"obius recovery]\label{thm:mobius-recovery}
+For every $1\le n\le W_k$,
+\[
+\boxed{f_k(n)=\mu(n).}
+\]
+\end{theorem}
+
+\begin{proof}
+If $n$ is squareful, then some prime square dividing $n$ is at most $\sqrt n\le y_k$; hence $\sigma_k(n)=0=c_k(n)=\mu(n)$.
+
+Suppose $n$ is squarefree.  If $h_k(n)=1$, then $s_k(n)=0$, so $f_k(n)=\sigma_k(n)=\mu(n)$ by \cref{prop:seed-orientation}.  If $h_k(n)=0$, then $s_k(n)=1$ and $c_k(n)=\sigma_k(n)$, so
+\[
+f_k(n)=\sigma_k(n)-2\sigma_k(n)=-\sigma_k(n)=\mu(n).
+\]
+\end{proof}
+\leanxref{Lean proof}{correctedPrimeWheelSite_eq_moebius; primorialWheel_correctedSite_eq_moebius}{https://github.com/OVVO-Financial/prime-wheel-mobius/blob/main/formalization/RHLean/Arithmetic/PrimeWheelMobiusRecovery.lean}
+
+\begin{remark}[The exact role of the seed]
+The initial $-1$ contributes one provisional prime-parity coordinate.  On the one-large-prime population this coordinate is the unseen prime and is correct.  On the fully smooth population it is extraneous and must be reversed.  There is no additional pointwise error.
+\end{remark}
+
+\section{Primorial-block prefix identities}
+
+Let
+\[
+L_k=W_{k-1},
+\qquad
+H_k=W_k-W_{k-1}.
+\]
+For $L_k<x\le W_k$, define
+\begin{align}
+A_k(x)&=\sum_{L_k<n\le x}\sigma_k(n),\label{eq:A-def}\\
+C_k(x)&=\sum_{L_k<n\le x}c_k(n),\label{eq:C-def}\\
+R_k(x)&=A_k(x)-2C_k(x).\label{eq:R-def}
+\end{align}
+
+\begin{theorem}[Exact nested-prefix identity]\label{thm:prefix-identity}
+For every $L_k<x\le W_k$,
+\[
+\boxed{R_k(x)=M(x)-M(L_k).}
+\]
+In particular,
+\[
+R_k(W_k)=M(W_k)-M(W_{k-1}).
+\]
+\end{theorem}
+
+\begin{proof}
+By \cref{thm:mobius-recovery},
+\[
+\sigma_k(n)-2c_k(n)=\mu(n)
+\]
+for every $n\le W_k$.  Summing over $L_k<n\le x$ gives the identity.
+\end{proof}
+\leanxref{Lean proof}{primorialWheel_residual_eq_moebiusInterval}{https://github.com/OVVO-Financial/prime-wheel-mobius/blob/main/formalization/RHLean/Arithmetic/PrimorialWheelPrefixIdentity.lean}
+\leanxref{Lean proof}{primorialWheel_residual_cast_eq_mertens_sub}{https://github.com/OVVO-Financial/prime-wheel-mobius/blob/main/formalization/RHLean/Arithmetic/PrimorialWheelPrefixIdentity.lean}
+
+\begin{remark}[Boundary interpretation]
+The complete wheel controls the bulk constant mode.  The prefix $x$ cuts through incomplete $p^2$ periods and through the finite smooth-core set.  The exact mismatch is $R_k(x)$, and \cref{thm:prefix-identity} shows that it is precisely the Mertens increment on the block.  ``Boundary physics'' is therefore an interpretation of an exact identity, not an analogy replacing one.
+\end{remark}
+
+\section{Finite computations through the eighth primorial block}
+
+The exact identities above are mathematical statements.  Exhaustive computation tests implementation fidelity and measures the still-unproved size of $R_k(x)$.\\
+
+
+
+
+That program checked every integer and every nested prefix through
+\[
+W_8=9{,}699{,}690.
+\]
+The implementation checks included:
+\begin{itemize}
+\item $9{,}699{,}689$ pointwise corrected-state comparisons;
+\item $9{,}699{,}689$ nested-prefix identity comparisons;
+\item $100{,}000$ independent trial-division oracle checks;
+\item $17{,}864$ literal prime-operator composition checks;
+\item complete-wheel mean checks through $Q(11)=5{,}336{,}100$;
+\item zero detected failures.
+\end{itemize}
+
+The empirical maximal residuals were:
+\begin{center}
+\begin{tabular}{rrrrr}
+\toprule
+$k$ & $W_k$ & $\max_{x\in B_k}|R_k(x)|$ & maximizing $x$ & $\max |R_k(x)|/\sqrt{x-W_{k-1}}$\\
+\midrule
+1 & 2 & 1 & 2 & 1.000000\\
+2 & 6 & 2 & 5 & 1.154701\\
+3 & 30 & 2 & 13 & 1.000000\\
+4 & 210 & 5 & 95 & 1.000000\\
+5 & 2,310 & 15 & 1,637 & 1.809068\\
+6 & 30,030 & 71 & 24,185 & 1.393052\\
+7 & 510,510 & 274 & 355,733 & 1.386750\\
+8 & 9,699,690 & 1,085 & 6,481,601 & 1.500000\\
+\bottomrule
+\end{tabular}
+\end{center}
+The maximum of $|M(x)|$ for $x\le W_8$ was $1{,}078$ at $x=7{,}109{,}110$, and $M(W_8)=278$.
+
+\statusbox{rust}{These values are finite-range evidence only.  They do not prove that $|R_k(x)|/\sqrt{x-W_{k-1}}$ remains bounded.  The target retained in this paper is only the RH-equivalent $x^{\varepsilon}$-allowed estimate.  The constant-one Mertens conjecture was disproved by Odlyzko and te Riele \cite{OdlyzkoTeRiele}.}
+
+\medskip
+
+The deterministic Python validation program for this section is available directly at \href{https://github.com/OVVO-Financial/prime-wheel-mobius/blob/main/numerics/primorial_block_validation.py}{\texttt{numerics/primorial\_block\_validation.py}}.
+
+
+
+\section{A single finite torus for both arithmetic components}
+
+The raw comb naturally lives on $\Z/Q_k\Z$.  The smooth-core site field is supported by a magnitude condition.  The following embedding places both in one finite additive group without changing any value used by a block prefix.
+
+\subsection{A cyclic group large enough for the block}
+
+Choose
+\[
+m_k=\left\lfloor\frac{W_k}{Q_k}\right\rfloor+1,
+\qquad
+\mathcal Q_k=m_kQ_k.
+\]
+Then $\mathcal Q_k>W_k$ and $Q_k\mid\mathcal Q_k$.
+
+\begin{definition}[Periodic lift of the raw comb]\label{def:raw-lift}
+Let $a_k$ denote $\sigma_k$ as a $Q_k$-periodic function.  Define its lift to $\Z/\mathcal Q_k\Z$ by
+\[
+a_k^{\uparrow}(n)=a_k(n\bmod Q_k).
+\]
+\end{definition}
+
+\begin{definition}[Zero-padded smooth-core field]\label{def:core-padding}
+On the fundamental domain $0\le n<\mathcal Q_k$, define
+\[
+c_k^{0}(n)=
+\begin{cases}
+c_k(n),&1\le n\le W_k,\\
+0,&n=0\text{ or }W_k<n<\mathcal Q_k.
+\end{cases}
+\]
+Extend this periodically modulo $\mathcal Q_k$.
+\end{definition}
+
+\begin{definition}[Joint torus field]\label{def:joint-field}
+Define
+\[
+F_k(n)=a_k^{\uparrow}(n)-2c_k^0(n)
+\qquad(n\in\Z/\mathcal Q_k\Z).
+\]
+\end{definition}
+
+\begin{proposition}[Lossless embedding on the arithmetic range]\label{prop:lossless}
+For every $1\le n\le W_k$,
+\[
+F_k(n)=\mu(n).
+\]
+Consequently, for $1\le N\le H_k$,
+\[
+R_k(L_k+N)=\sum_{j=1}^{N}F_k(L_k+j).
+\]
+\end{proposition}
+
+\begin{proof}
+On $1\le n\le W_k$, the lifted field equals $\sigma_k(n)$ and the zero-padded core equals $c_k(n)$.  Apply \cref{thm:mobius-recovery} and then sum.
+\end{proof}
+\leanxref{Lean pointwise proof}{primorialWheel_correctedSite_eq_moebius}{https://github.com/OVVO-Financial/prime-wheel-mobius/blob/main/formalization/RHLean/Arithmetic/PrimeWheelMobiusRecovery.lean}
+\leanxref{Lean torus proof}{torusPrefixPairing_eq_corrected_sum; canonicalTorusRealizationCertificate}{https://github.com/OVVO-Financial/prime-wheel-mobius/blob/main/formalization/RHLean/Analysis/PrimeWheelTorusRealization.lean}
+
+\begin{remark}[Why the site field must be embedded]
+The cumulative quantity $C_k(x)$ is a prefix sum and should not be subtracted pointwise from $\sigma_k(n)$.  The correct object is the site field $c_k(n)$, followed by the same interval sum applied to both components.  This preserves the exact signed interaction.
+\end{remark}
+
+\section{Fourier transform conventions and the interval kernel}
+
+For a function $g:\Z/\mathcal Q\Z\to\C$, define
+\begin{equation}\label{eq:dft}
+\widehat g(r)=\frac1{\mathcal Q}\sum_{n\bmod\mathcal Q}g(n)e\!\left(-\frac{rn}{\mathcal Q}\right).
+\end{equation}
+Then
+\begin{equation}\label{eq:inverse-dft}
+g(n)=\sum_{r\bmod\mathcal Q}\widehat g(r)e\!\left(\frac{rn}{\mathcal Q}\right)
+\end{equation}
+and Parseval is
+\begin{equation}\label{eq:parseval}
+\sum_{n\bmod\mathcal Q}|g(n)|^2
+=\mathcal Q\sum_{r\bmod\mathcal Q}|\widehat g(r)|^2.
+\end{equation}
+
+\begin{definition}[Dirichlet kernel]\label{def:dirichlet}
+For $N\ge1$, define
+\[
+D_N(\theta)=\sum_{j=0}^{N-1}e(j\theta).
+\]
+For $\theta\notin\Z$,
+\[
+D_N(\theta)
+=e\!\left(\frac{N-1}{2}\theta\right)
+\frac{\sin(\pi N\theta)}{\sin(\pi\theta)}.
+\]
+Hence
+\begin{equation}\label{eq:dirichlet-bound}
+|D_N(\theta)|\le
+\min\left\{N,\frac1{2\|\theta\|_{\R/\Z}}\right\}.
+\end{equation}
+\end{definition}
+
+\begin{proposition}[Exact prefix transform]\label{prop:prefix-transform}
+Set
+\[
+b_k(r)=\widehat F_k(r)e\!\left(\frac{r(L_k+1)}{\mathcal Q_k}\right).
+\]
+Then for $1\le N\le H_k$,
+\begin{equation}\label{eq:exact-dirichlet-pairing}
+\boxed{
+R_k(L_k+N)
+=
+\sum_{r\bmod\mathcal Q_k}
+ b_k(r)D_N\!\left(\frac r{\mathcal Q_k}\right).}
+\end{equation}
+\end{proposition}
+
+\begin{proof}
+Insert Fourier inversion \eqref{eq:inverse-dft} into the sum in \cref{prop:lossless}:
+\begin{align*}
+\sum_{j=1}^{N}F_k(L_k+j)
+&=\sum_{r}\widehat F_k(r)
+  \sum_{j=1}^{N}e\!\left(\frac{r(L_k+j)}{\mathcal Q_k}\right)\\
+&=\sum_r \widehat F_k(r)e\!\left(\frac{r(L_k+1)}{\mathcal Q_k}\right)
+  \sum_{j=0}^{N-1}e\!\left(\frac{rj}{\mathcal Q_k}\right).
+\end{align*}
+\end{proof}
+\leanxref{Lean proof}{prefixWindowSpectrum_neg_eq_phase_mul_dirichlet}{https://github.com/OVVO-Financial/prime-wheel-mobius/blob/main/formalization/RHLean/Analysis/PrimeWheelDirichletResponse.lean}
+\leanxref{Lean proof}{spectralPrefix_lower_add_eq_dirichletPrefix}{https://github.com/OVVO-Financial/prime-wheel-mobius/blob/main/formalization/RHLean/Analysis/PrimeWheelDirichletResponse.lean}
+
+Equation \eqref{eq:exact-dirichlet-pairing} is the exact mathematical form of the sheared cutoff.  The coefficient $b_k(r)$ is fixed throughout the block; the entire cutoff dependence is carried by $D_N$.
+
+\section{The raw CRT spectrum}
+
+\subsection{Local coefficients}
+
+Let
+\[
+\widehat u_p(\rho)=\frac1{p^2}\sum_{a\bmod p^2}u_p(a)e\!\left(-\frac{\rho a}{p^2}\right).
+\]
+
+\begin{proposition}[Exact local Fourier coefficients]\label{prop:local-fourier}
+For $\rho\bmod p^2$,
+\[
+\widehat u_p(\rho)=
+\begin{cases}
+\displaystyle\left(1-\frac1p\right)^2,&\rho=0,\\[7pt]
+\displaystyle\frac{1-2p}{p^2},&p\mid\rho,\ \rho\ne0,\\[7pt]
+\displaystyle\frac1{p^2},&p\nmid\rho.
+\end{cases}
+\]
+\end{proposition}
+
+\begin{proof}
+The identity
+\[
+u_p(a)=1-2\one_{p\mid a}+\one_{p^2\mid a}
+\]
+is immediate from \eqref{eq:up-def}.  At $\rho=0$, \cref{lem:local-mean} applies.  For $\rho\ne0$, the transform of the constant term vanishes.  Moreover,
+\[
+\sum_{p\mid a}e\!\left(-\frac{\rho a}{p^2}\right)
+=\sum_{b\bmod p}e\!\left(-\frac{\rho b}{p}\right)
+=\begin{cases}p,&p\mid\rho,\\0,&p\nmid\rho.
+\end{cases}
+\]
+The single class $a=0$ contributes $1$, giving the stated values after division by $p^2$.
+\end{proof}
+\leanxref{Lean finite-spectrum companion (the displayed three-case evaluation is not a separate named theorem)}{localPrimeCombCRTSpectrum; primeWheelCRTSpectrum_eq_neg_prod_local}{https://github.com/OVVO-Financial/prime-wheel-mobius/blob/main/formalization/RHLean/Analysis/PrimeWheelCompleteSpectrum.lean}
+
+\subsection{Global factorization}
+
+Write $Q=Q_k$.  For each $p\le y_k$, let
+\[
+Q_p=Q/p^2,
+\qquad
+t_pQ_p\equiv1\pmod{p^2}.
+\]
+For $s\bmod Q$, define the local dual coordinate
+\[
+\rho_p(s)\equiv st_p\pmod{p^2}.
+\]
+
+\begin{theorem}[CRT factorization of the raw spectrum]\label{thm:raw-crt-spectrum}
+The normalized Fourier coefficient of $a_k=\sigma_k$ modulo $Q_k$ is
+\begin{equation}\label{eq:raw-factorization}
+\widehat a_k^{(Q_k)}(s)
+=-\prod_{p\le y_k}\widehat u_p\bigl(\rho_p(s)\bigr).
+\end{equation}
+\end{theorem}
+
+\begin{proof}
+Under the CRT isomorphism, a residue $n\bmod Q$ is represented as
+\[
+n\equiv\sum_{p\le y_k}n_pQ_pt_p\pmod Q.
+\]
+Therefore
+\[
+e\!\left(-\frac{sn}{Q}\right)
+=\prod_{p\le y_k}e\!\left(-\frac{\rho_p(s)n_p}{p^2}\right).
+\]
+Since $a_k(n)=-\prod_pu_p(n_p)$, the complete transform factors into the product of the local transforms.
+\end{proof}
+\leanxref{Lean proof}{primeWheelCRTSpectrum_eq_neg_prod_local}{https://github.com/OVVO-Financial/prime-wheel-mobius/blob/main/formalization/RHLean/Analysis/PrimeWheelCompleteSpectrum.lean}
+
+\begin{lemma}[Fourier transform of a periodic lift]\label{lem:periodic-lift-transform}
+Let $\mathcal Q=mQ$ and let $a^{\uparrow}$ be the lift of a $Q$-periodic function $a$.  Then
+\[
+\widehat{a^{\uparrow}}^{(\mathcal Q)}(r)
+=
+\begin{cases}
+\widehat a^{(Q)}(r/m),&m\mid r,\\
+0,&m\nmid r.
+\end{cases}
+\]
+\end{lemma}
+
+\begin{proof}
+Write every residue modulo $mQ$ uniquely as $n+tQ$ with $n\bmod Q$ and $0\le t<m$.  The transform contains the factor
+\[
+\sum_{t=0}^{m-1}e\!\left(-\frac{rt}{m}\right),
+\]
+which is $m$ when $m\mid r$ and $0$ otherwise.  The remaining normalized sum is the transform modulo $Q$.
+\end{proof}
+\leanxref{Lean replacement (the public model uses a common zero-padded torus directly)}{rawBlockSpectrum_eq_arithmeticCoefficient}{https://github.com/OVVO-Financial/prime-wheel-mobius/blob/main/formalization/RHLean/Analysis/PrimeWheelArithmeticSpectrum.lean}
+\leanxref{Lean joint-field identity}{torusJointField_eq_raw_sub_two_smooth}{https://github.com/OVVO-Financial/prime-wheel-mobius/blob/main/formalization/RHLean/Analysis/PrimeWheelJointSpectrum.lean}
+
+\section{The finite smooth-core spectrum}
+
+The squarefree $y_k$-smooth integers are exactly the divisors of $\Pi_k$.  On such a divisor $d$,
+\[
+\sigma_k(d)=(-1)^{1+\omega(d)}=-\mu(d).
+\]
+The magnitude condition $d\le W_k$ cuts the Boolean divisor cube.
+
+\begin{proposition}[Explicit smooth-core coefficients]\label{prop:core-fourier}
+For $r\bmod\mathcal Q_k$,
+\begin{equation}\label{eq:core-fourier}
+\boxed{
+\widehat{c_k^0}(r)
+=-\frac1{\mathcal Q_k}
+\sum_{\substack{d\mid\Pi_k\\d\le W_k}}
+\mu(d)e\!\left(-\frac{rd}{\mathcal Q_k}\right).}
+\end{equation}
+\end{proposition}
+
+\begin{proof}
+The zero-padded field is nonzero exactly at squarefree smooth sites $d\le W_k$.  At each such site its value is $-\mu(d)$.  Substitute into the transform definition \eqref{eq:dft}.
+\end{proof}
+\leanxref{Lean proof}{smoothCoreBlockSpectrum_eq_smoothDivisorCoefficient}{https://github.com/OVVO-Financial/prime-wheel-mobius/blob/main/formalization/RHLean/Analysis/PrimeWheelArithmeticSpectrum.lean}
+
+\begin{remark}[Not a Ramanujan sum]
+The sum in \eqref{eq:core-fourier} is over divisors of $\Pi_k$ satisfying a magnitude truncation.  It is not the classical Ramanujan sum, which ranges over reduced residue classes modulo a fixed modulus.  The distinction is essential.
+\end{remark}
+
+\subsection{Boolean-to-Fourier transfer}
+
+Index the subsets of $\mathcal P_k$ by $S$ and define
+\[
+d_S=\prod_{p\in S}p,
+\qquad
+v_k(S)=(-1)^{1+|S|}\one_{\{d_S\le W_k\}}.
+\]
+Define the transfer matrix
+\[
+K_k(r,S)=\frac1{\sqrt{\mathcal Q_k}}
+e\!\left(-\frac{rd_S}{\mathcal Q_k}\right).
+\]
+Then \eqref{eq:core-fourier} is equivalently
+\begin{equation}\label{eq:boolean-transfer}
+\widehat{c_k^0}
+=\frac1{\sqrt{\mathcal Q_k}}K_kv_k.
+\end{equation}
+The multiplicative magnitude cut is now a finite alternating half-space vector on the Boolean factor cube, and $K_k$ is its exact map into additive frequencies.
+
+\begin{remark}[Optional Fourier-Mellin representation]
+The finite formula \eqref{eq:core-fourier} is sufficient.  If one wishes to retain the logarithmic geometry of the cutoff, define
+\[
+\Psi_k(r,s)=\sum_{d\mid\Pi_k}\mu(d)d^{-s}e\!\left(-\frac{rd}{\mathcal Q_k}\right).
+\]
+Perron inversion recovers the truncation $d\le W_k$ from $\Psi_k(r,s)$.  Prime adjunction satisfies the exact recursion
+\[
+\Psi_j(r,s)=\Psi_{j-1}(r,s)-p_j^{-s}\Psi_{j-1}(p_jr,s).
+\]
+This gives an operator Euler product on finite Fourier space.  It is an optional analytic representation, not a necessary embedding step.
+\end{remark}
+
+\section{The exact joint coefficient vector}
+
+Combining \cref{lem:periodic-lift-transform,prop:core-fourier} gives the central coefficient formula.
+
+\begin{theorem}[Explicit joint torus coefficients]\label{thm:joint-coefficients}
+For every $r\bmod\mathcal Q_k$,
+\begin{equation}\label{eq:joint-coefficients}
+\boxed{
+\widehat F_k(r)
+=
+\one_{\{m_k\mid r\}}
+\widehat a_k^{(Q_k)}(r/m_k)
++
+\frac{2}{\mathcal Q_k}
+\sum_{\substack{d\mid\Pi_k\\d\le W_k}}
+\mu(d)e\!\left(-\frac{rd}{\mathcal Q_k}\right).}
+\end{equation}
+The first term is the exact tensor-product CRT spectrum \eqref{eq:raw-factorization}; the second is the exact truncated divisor spectrum.
+\end{theorem}
+
+\begin{proof}
+By definition, $F_k=a_k^{\uparrow}-2c_k^0$.  Apply linearity of the Fourier transform, \cref{lem:periodic-lift-transform}, and the sign in \eqref{eq:core-fourier}.
+\end{proof}
+\leanxref{Lean proof}{jointSpectrum_eq_rawArithmetic_sub_two_smoothDivisor}{https://github.com/OVVO-Financial/prime-wheel-mobius/blob/main/formalization/RHLean/Analysis/PrimeWheelArithmeticSpectrum.lean}
+
+\begin{remark}[The zero mode]
+In general $\widehat F_k(0)$ is not zero.  Neither $M(W_k)$ nor the block increment $M(W_k)-M(W_{k-1})$ vanishes identically.  One may center the field, but the constant mode must then be retained and accounted for separately.
+\end{remark}
+
+\section{The Dirichlet Gram form}
+
+For fixed $N$, define
+\[
+d_{k,N}(r)=D_N\!\left(\frac r{\mathcal Q_k}\right).
+\]
+Then \eqref{eq:exact-dirichlet-pairing} is
+\[
+R_k(L_k+N)=\sum_r b_k(r)d_{k,N}(r).
+\]
+
+\begin{definition}[Interval Gram matrix]\label{def:gram}
+Define
+\[
+G_{k,N}(r,s)=d_{k,N}(r)\overline{d_{k,N}(s)}.
+\]
+\end{definition}
+
+\begin{proposition}[Exact finite signed Gram identity]\label{prop:gram-identity}
+For every $1\le N\le H_k$,
+\begin{equation}\label{eq:gram-identity}
+|R_k(L_k+N)|^2
+=
+\sum_{r,s\bmod\mathcal Q_k}
+ b_k(r)\overline{b_k(s)}G_{k,N}(r,s).
+\end{equation}
+The matrix $G_{k,N}$ is positive semidefinite and has rank one.
+\end{proposition}
+
+\begin{proof}
+Expand the squared modulus of the scalar sum.  The matrix is the outer product $d_{k,N}d_{k,N}^{*}$.
+\end{proof}
+\leanxref{Lean proof}{intervalGramEnergy_eq_mul_conj}{https://github.com/OVVO-Financial/prime-wheel-mobius/blob/main/formalization/RHLean/Analysis/PrimeWheelFourierReduction.lean}
+\leanxref{Lean full conductor-pair expansion}{intervalGramEnergy_eq_sum_conductorGramBlocks}{https://github.com/OVVO-Financial/prime-wheel-mobius/blob/main/formalization/RHLean/Analysis/PrimeWheelConductorGram.lean}
+
+Write
+\[
+b_k=b_k^{\mathrm{raw}}-2b_k^{\mathrm{core}}
+\]
+with the phase factor absorbed into both components.  Then
+\begin{align}
+|R_k|^2
+={}&\langle b_k^{\mathrm{raw}},G_{k,N}b_k^{\mathrm{raw}}\rangle
++4\langle b_k^{\mathrm{core}},G_{k,N}b_k^{\mathrm{core}}\rangle\notag\\
+&-4\Rea\langle b_k^{\mathrm{raw}},G_{k,N}b_k^{\mathrm{core}}\rangle.
+\label{eq:signed-gram-expanded}
+\end{align}
+The negative cross interaction in \eqref{eq:signed-gram-expanded} is the exact Fourier analogue of the signed Gram architecture: the raw and smooth-core pieces should not be bounded separately if their cancellation is structurally decisive.
+
+\begin{remark}[No entrywise negativity claim]
+The off-diagonal entries of $G_{k,N}$ are not uniformly negative; $G_{k,N}$ is positive semidefinite.  Cancellation is a property of the complete quadratic form evaluated on the special arithmetic vector $b_k$, not an entrywise sign property of the kernel.
+\end{remark}
+
+\section{Conductor decomposition and raw spectral decay}
+
+For a residue $s\bmod Q_k$, define the reduced additive conductor
+\begin{equation}\label{eq:conductor}
+\cond_{Q_k}(s)=\frac{Q_k}{\gcd(s,Q_k)}.
+\end{equation}
+Since $Q_k$ is squarefull with exponent two at each processed prime, the local conductor at $p$ is
+\[
+q_p(s)=
+\begin{cases}
+1,&p^2\mid s,\\
+p,&p\mid s,\ p^2\nmid s,\\
+p^2,&p\nmid s.
+\end{cases}
+\]
+Then
+\[
+\cond_{Q_k}(s)=\prod_{p\le y_k}q_p(s).
+\]
+For a lifted raw frequency $r=m_ks$, its conductor modulo $\mathcal Q_k$ is still
+\[
+\frac{\mathcal Q_k}{\gcd(r,\mathcal Q_k)}
+=\frac{Q_k}{\gcd(s,Q_k)}.
+\]
+
+Define the local squared-energy totals
+\begin{align*}
+E_p(1)&=|\widehat u_p(0)|^2=\left(1-\frac1p\right)^4,\\
+E_p(p)&=\sum_{\substack{\rho\bmod p^2\\p\mid\rho,\ \rho\ne0}}
+|\widehat u_p(\rho)|^2
+=(p-1)\frac{(2p-1)^2}{p^4},\\
+E_p(p^2)&=\sum_{p\nmid\rho}|\widehat u_p(\rho)|^2
+=(p^2-p)\frac1{p^4}.
+\end{align*}
+
+\begin{proposition}[Exact raw energy by conductor]\label{prop:raw-conductor-energy}
+For any divisor $q\mid Q_k$ whose prime exponents belong to $\{0,1,2\}$,
+\begin{equation}\label{eq:exact-conductor-energy}
+\sum_{\substack{s\bmod Q_k\\\cond_{Q_k}(s)=q}}
+|\widehat a_k^{(Q_k)}(s)|^2
+=
+\prod_{p\le y_k}E_p\bigl(p^{v_p(q)}\bigr).
+\end{equation}
+Consequently,
+\begin{equation}\label{eq:raw-energy-bound}
+\sum_{\cond_{Q_k}(s)=q}|\widehat a_k^{(Q_k)}(s)|^2
+\le
+\frac{4^{\omega_1(q)}}{q},
+\end{equation}
+where
+\[
+\omega_1(q)=\#\{p:v_p(q)=1\}.
+\]
+\end{proposition}
+
+\begin{proof}
+The exact formula follows from the product factorization \eqref{eq:raw-factorization}: summing squared coefficients over all local frequencies with prescribed conductor factors separates into a product of local sums.  For the bound, use
+\[
+E_p(1)\le1,
+\qquad
+E_p(p)\le\frac4p,
+\qquad
+E_p(p^2)\le\frac1{p^2}.
+\]
+Multiplying gives \eqref{eq:raw-energy-bound}.
+\end{proof}
+\leanxref{Lean tensor-product spectrum proof}{primeWheelCRTSpectrum_eq_neg_prod_local}{https://github.com/OVVO-Financial/prime-wheel-mobius/blob/main/formalization/RHLean/Analysis/PrimeWheelCompleteSpectrum.lean}
+\leanxref{Lean exact conductor partition (the displayed local product-energy bound is not a separate named theorem)}{jointSpectrumEnergy_eq_sum_conductors}{https://github.com/OVVO-Financial/prime-wheel-mobius/blob/main/formalization/RHLean/Analysis/PrimeWheelHarmonicCriterion.lean}
+
+This is the precise sense in which the raw comb is a decaying multiplicative chaos in conductor space.  The joint field is harder because the truncated divisor spectrum in \eqref{eq:joint-coefficients} need not factor by conductor.  The proof must control the difference, not merely the raw term.
+
+\begin{definition}[Joint conductor energy]\label{def:joint-energy}
+For $q\mid\mathcal Q_k$, define
+\[
+\mathcal E_k(q)
+=
+\sum_{\substack{r\bmod\mathcal Q_k\\
+\mathcal Q_k/\gcd(r,\mathcal Q_k)=q}}
+|b_k(r)|^2.
+\]
+For a dyadic conductor band $D\le q<2D$, define
+\[
+\mathcal E_k[D,2D)=\sum_{D\le q<2D}\mathcal E_k(q).
+\]
+\end{definition}
+
+No RH-strength bound for $\mathcal E_k(q)$ is asserted here.  Deriving useful joint decay and phase nonconcentration from \eqref{eq:joint-coefficients} is part of the open harmonic analysis.
+
+\section{The pinned harmonic nonconcentration theorem}
+
+We now state the terminal analytic problem.
+
+\begin{conjecture}[Prime-wheel harmonic nonconcentration]\label{open:HN}
+For every $\varepsilon>0$, there exists $C_{\varepsilon}>0$ such that for every $k\ge1$ and every $1\le N\le H_k$,
+\begin{equation}\label{eq:HN}
+\boxed{
+\left|
+\sum_{r\bmod\mathcal Q_k}
+ b_k(r)D_N\!\left(\frac r{\mathcal Q_k}\right)
+\right|
+\le C_{\varepsilon}(L_k+N)^{1/2+\varepsilon}.}
+\end{equation}
+One may instead place $C_{\varepsilon}W_k^{1/2+\varepsilon}$ on the right.  For a fixed exponent this block-scale form is pointwise weaker near the left edge of the block, but the two formulations are equivalent when required for every positive $\varepsilon$; see \cref{thm:block-formulations-equivalent}.
+\end{conjecture}
+
+The word \emph{pinned} is essential.  The phase in $b_k(r)$ contains the prescribed origin $L_k=W_{k-1}$.  An $L^2$ estimate averaged over all translations would not automatically control this one arithmetically synchronized start.
+
+\begin{theorem}[Exact equivalence with the block residual estimate]\label{thm:HN-equivalent-residual}
+The statement \eqref{eq:HN} is equivalent to
+\[
+|R_k(x)|\ll_{\varepsilon}x^{1/2+\varepsilon}
+\qquad(W_{k-1}<x\le W_k)
+\]
+uniformly in $k$.
+\end{theorem}
+
+\begin{proof}
+Set $x=L_k+N$ and use the exact identity \eqref{eq:exact-dirichlet-pairing}.
+\end{proof}
+\leanxref{Lean explicit-Dirichlet equivalence}{primorialWheelDirichletNonconcentration_iff_harmonic}{https://github.com/OVVO-Financial/prime-wheel-mobius/blob/main/formalization/RHLean/Analysis/PrimorialWheelExplicitCriterion.lean}
+\leanxref{Lean harmonic-residual equivalence}{primeWheelHarmonicNonconcentration_iff_residualBounded}{https://github.com/OVVO-Financial/prime-wheel-mobius/blob/main/formalization/RHLean/Analysis/PrimeWheelHarmonicCriterion.lean}
+
+\begin{theorem}[Harmonic nonconcentration is RH-equivalent]\label{thm:HN-RH}
+The open statement in \cref{open:HN}, required for every $\varepsilon>0$, is equivalent to the Riemann Hypothesis.
+\end{theorem}
+
+\begin{proof}
+Assume \cref{open:HN}.  By \cref{thm:HN-equivalent-residual}, for $a=1/2+\varepsilon$,
+\[
+|M(W_j)-M(W_{j-1})|\le C_{\varepsilon}W_j^a.
+\]
+Since $W_j\ge2W_{j-1}$,
+\[
+\sum_{j=1}^{k-1}W_j^a
+\le W_{k-1}^a\sum_{m=0}^{\infty}2^{-am}
+\ll_a W_{k-1}^a.
+\]
+Hence $M(W_{k-1})=O_{\varepsilon}(W_{k-1}^a)$.  For $W_{k-1}<x\le W_k$,
+\[
+M(x)=M(W_{k-1})+R_k(x)
+=O_{\varepsilon}(x^a).
+\]
+Thus the classical criterion \eqref{eq:classical-rh-criterion} gives RH.
+
+Conversely, assume RH.  Then for every $\varepsilon>0$,
+\[
+M(t)=O_{\varepsilon}(t^{1/2+\varepsilon}).
+\]
+For $x\in B_k$,
+\[
+|R_k(x)|=|M(x)-M(W_{k-1})|
+\le |M(x)|+|M(W_{k-1})|
+\ll_{\varepsilon}x^{1/2+\varepsilon}.
+\]
+Apply \cref{thm:HN-equivalent-residual}.
+\end{proof}
+\leanxref{Lean proof (conditional only on the classical Mertens--RH criterion)}{primorialWheel_dirichletNonconcentration_iff_riemannHypothesis}{https://github.com/OVVO-Financial/prime-wheel-mobius/blob/main/formalization/RHLean/Analysis/PublicPrimeWheelReduction.lean}
+
+\statusbox{rust}{Theorem \ref{thm:HN-RH} is a theorem about equivalence of formulations.  It does not prove either side.  The unproved content is precisely the uniform estimate \eqref{eq:HN}.}
+
+\section{One finite block inequality yields both PNT and RH}\label{sec:pnt-rh-same-inequality}
+
+The architecture places the Prime Number Theorem and the Riemann Hypothesis on one exact block residual.  To state the relationship rigorously, distinguish the pointwise block estimate
+\begin{equation}\label{eq:block-pointwise}
+\forall\varepsilon>0,
+\qquad
+|R_k(x)|\ll_{\varepsilon}x^{1/2+\varepsilon}
+\qquad(W_{k-1}<x\le W_k)
+\end{equation}
+from the block-endpoint-scale estimate
+\begin{equation}\label{eq:block-scale}
+\forall\varepsilon>0,
+\qquad
+\sup_{W_{k-1}<x\le W_k}|R_k(x)|
+\ll_{\varepsilon}W_k^{1/2+\varepsilon}.
+\end{equation}
+For a fixed exponent, \eqref{eq:block-scale} is weaker near the left edge of a block.  It becomes equivalent to \eqref{eq:block-pointwise} only because the estimates are asserted for every positive $\varepsilon$ and the next prime is subpower relative to the preceding primorial.
+
+\begin{lemma}[Elementary subpower growth of the next prime]\label{lem:next-prime-subpower}
+For every $\eta>0$, there exists $k_0(\eta)$ such that
+\[
+p_k\le W_{k-1}^{\eta}
+\qquad(k\ge k_0(\eta)).
+\]
+\end{lemma}
+
+\begin{proof}
+Iterating Bertrand's postulate gives $p_k<2^k$, while $p_j\ge j+1$ gives $W_{k-1}\ge k!$.  Since
+\[
+k!\ge\left(\frac{k}{2}\right)^{k/2}
+\]
+for all sufficiently large $k$, one has $k\log2=o(\log k!)$.  Hence $2^k\le(k!)^{\eta}$ eventually, proving the claim.  This argument uses no form of PNT.
+\end{proof}
+\leanxref{Lean replacement used by the public transfer (avoids asymptotic prime growth)}{two_mul_primorialEndpoint_add_one_le_succ}{https://github.com/OVVO-Financial/prime-wheel-mobius/blob/main/formalization/RHLean/Arithmetic/PrimorialWheelScaleGrowth.lean}
+
+\begin{theorem}[Equivalence of the two block formulations]\label{thm:block-formulations-equivalent}
+The pointwise estimate \eqref{eq:block-pointwise} and the block-scale estimate \eqref{eq:block-scale}, each required for every $\varepsilon>0$, are equivalent.
+\end{theorem}
+
+\begin{proof}
+The pointwise form immediately implies the block-scale form because $x\le W_k$.
+
+Conversely, fix $\varepsilon>0$.  Choose $\delta,\eta>0$ so small that
+\[
+(1+\eta)\left(\frac12+\delta\right)
+\le\frac12+\varepsilon.
+\]
+Apply \eqref{eq:block-scale} with exponent $\delta$.  By \cref{lem:next-prime-subpower}, for all sufficiently large $k$ and every $x\in(W_{k-1},W_k]$,
+\begin{align*}
+|R_k(x)|
+&\ll_{\delta}W_k^{1/2+\delta}\\
+&=(p_kW_{k-1})^{1/2+\delta}\\
+&\le W_{k-1}^{(1+\eta)(1/2+\delta)}\\
+&\le x^{1/2+\varepsilon}.
+\end{align*}
+The finitely many omitted blocks are absorbed into the implied constant.
+\end{proof}
+\leanxref{Lean public energy-form equivalence}{primorialWheel_residualBounded_iff_mertensEnergy}{https://github.com/OVVO-Financial/prime-wheel-mobius/blob/main/formalization/RHLean/Analysis/PrimorialWheelMertensTransfer.lean}
+
+\begin{theorem}[One block theorem gives the global Mertens criterion]\label{thm:block-to-global-mertens}
+Either equivalent block formulation implies
+\[
+M(x)=O_{\varepsilon}\!\left(x^{1/2+\varepsilon}\right)
+\qquad\text{for every }\varepsilon>0.
+\]
+Conversely, this global Mertens estimate implies both block formulations.
+\end{theorem}
+
+\begin{proof}
+It suffices to use \eqref{eq:block-pointwise}.  Let $x\in(W_{k-1},W_k]$ and put $a=1/2+\varepsilon$.  The exact block identity gives
+\[
+M(x)=M(W_0)+\sum_{j=1}^{k-1}R_j(W_j)+R_k(x).
+\]
+Because every new prime is at least $2$,
+\[
+W_j\le2^{-(k-1-j)}W_{k-1}
+\qquad(j<k).
+\]
+Therefore
+\[
+\sum_{j=1}^{k-1}|R_j(W_j)|
+\ll_{\varepsilon}
+W_{k-1}^{a}\sum_{m\ge0}2^{-am}
+\ll_{\varepsilon}W_{k-1}^{a}.
+\]
+The current incomplete block contributes $O_{\varepsilon}(x^a)$, and $W_{k-1}<x$, so $M(x)=O_{\varepsilon}(x^a)$.
+
+Conversely, if the global estimate holds, then
+\[
+|R_k(x)|
+=|M(x)-M(W_{k-1})|
+\le|M(x)|+|M(W_{k-1})|
+\ll_{\varepsilon}x^{1/2+\varepsilon},
+\]
+and the block-scale form follows from $x\le W_k$.
+\end{proof}
+\leanxref{Lean proof}{primorialWheel_endpointEnergyBounded_of_residualBounded}{https://github.com/OVVO-Financial/prime-wheel-mobius/blob/main/formalization/RHLean/Analysis/PrimorialWheelMertensTransfer.lean}
+\leanxref{Lean proof}{primorialWheel_residualBounded_iff_mertensEnergy}{https://github.com/OVVO-Financial/prime-wheel-mobius/blob/main/formalization/RHLean/Analysis/PrimorialWheelMertensTransfer.lean}
+
+\begin{corollary}[PNT and RH from the same finite inequality]\label{cor:pnt-rh-same-inequality}
+Proving the prime-wheel harmonic nonconcentration theorem proves both:
+\begin{enumerate}
+\item the Riemann Hypothesis, through the classical criterion
+\[
+M(x)=O_{\varepsilon}(x^{1/2+\varepsilon})
+\quad\text{for every }\varepsilon>0;
+\]
+\item the Prime Number Theorem, because taking any fixed $0<\varepsilon<1/2$ gives
+\[
+M(x)=O(x^{1/2+\varepsilon})=o(x),
+\]
+and $M(x)=o(x)$ is a classical equivalent form of PNT.
+\end{enumerate}
+\end{corollary}
+
+\begin{remark}[Novelty calibration]\label{rem:pnt-rh-novelty-calibration}
+The classical equivalences
+\[
+\mathrm{PNT}\Longleftrightarrow M(x)=o(x)
+\qquad\text{and}\qquad
+\mathrm{RH}\Longleftrightarrow
+M(x)=O_{\varepsilon}(x^{1/2+\varepsilon})
+\]
+are standard and are not claimed as contributions of this paper.  The framework-specific statement is narrower and exact: the same reconstructed block residual
+\[
+R_k(x)=M(x)-M(W_{k-1})
+\]
+and the same finite Dirichlet-kernel pairing provide the local maximal quantity whose sublinear control would recover PNT and whose critical square-root control is RH-equivalent.  The present paper proves the reconstruction and the equivalence of formulations; it does not prove either the unconditional sublinear estimate or the RH-scale estimate.
+\end{remark}
+
+\begin{remark}[Unconditional calibration target]\label{rem:unconditional-calibration}
+A valuable intermediate theorem would be to recover, entirely in the prime-wheel coordinates, a known unconditional consequence of the classical zero-free region---or at minimum to prove directly that the block maximal residual is $o(x)$.  Such a result would be a nontrivial consistency check for the framework, but it is not established here.  It must not be inferred merely from complete-wheel mean contraction.
+\end{remark}
+
+Consequently all standard RH-conditional consequences follow from the RH-scale theorem, including the customary square-root-scale error estimates for Chebyshev and prime-counting functions and the corresponding classical RH-conditional upper bounds for prime gaps.  This does not settle stronger conjectural gap laws that are not consequences of RH.
+
+\subsection{Completed equilibrium versus maximal path control}
+
+The exact constant-mode contraction
+\[
+\prod_{p\le y}\left(1-\frac1p\right)^2\longrightarrow0
+\]
+shows that the mean of the raw completed wheel vanishes.  It is a structural analogue of bulk cancellation, but it is not by itself PNT: it neither includes the smooth-core correction nor controls arbitrary prefixes.  The missing information is the path followed before all periodic components complete.
+
+Within the present architecture, a sublinear global maximal estimate would already yield PNT, while the critical square-root estimate with an arbitrary $x^{\varepsilon}$ allowance is RH-equivalent.  Thus PNT and RH are not produced by two unrelated mechanisms here.  They are different quantitative levels of the same finite statement about spectral alignment on misaligned intervals.  The harmonic theorem at the RH scale proves both in one stroke.
+
+\subsection{Lean endpoint}
+
+The formal theorem must quantify over every positive $\varepsilon$; a theorem with one fixed exponent is insufficient for RH.  Schematically, the final composition should have the form
+\begin{verbatim}
+theorem pnt_and_rh_of_primorial_harmonic
+    (h : PrimorialWheelHarmonicNonconcentration)
+    (mertens_rh : MertensEnergyBoundedStatement <->
+      RiemannHypothesisStatement)
+    (mertens_pnt : MertensSublinearStatement <->
+      PrimeNumberTheoremStatement) :
+    PrimeNumberTheoremStatement /\ RiemannHypothesisStatement := ...
+\end{verbatim}
+The repository already protects the Mertens/RH direction behind an ordinary theorem argument.  A PNT adapter should be treated in the same way rather than installed as an axiom.
+
+\section{What a proof of nonconcentration must control}
+
+\subsection{Resonant frequency arcs}
+
+By \eqref{eq:dirichlet-bound}, a frequency is strongly amplified only when
+\[
+\left\|\frac r{\mathcal Q_k}\right\|_{\R/\Z}\lesssim\frac1N.
+\]
+Thus a first necessary object is the joint spectral mass in a short arc around the integral frequency:
+\[
+\mathcal A_{k,N}
+=\left\{r\bmod\mathcal Q_k:
+\left\|\frac r{\mathcal Q_k}\right\|_{\R/\Z}\le\frac{c}{N}\right\}.
+\]
+Energy alone is not enough: phases of $b_k(r)$ must also align for constructive growth.  The required theorem is therefore a simultaneous nonconcentration of mass and phase compatibility.
+
+\subsection{Dyadic conductor bands}
+
+Let $\mathcal B_D$ be the set of frequencies whose reduced conductor lies in $[D,2D)$.  Define
+\[
+S_{k,N}(D)=
+\sum_{r\in\mathcal B_D}b_k(r)D_N\!\left(\frac r{\mathcal Q_k}\right).
+\]
+Then
+\[
+R_k(L_k+N)=\sum_D S_{k,N}(D),
+\]
+where $D$ ranges over dyadic values.  Squaring gives
+\begin{equation}\label{eq:band-gram}
+|R_k|^2
+=
+\sum_D|S_{k,N}(D)|^2
++2\Rea\sum_{D<D'}S_{k,N}(D)\overline{S_{k,N}(D')}.
+\end{equation}
+The raw coefficient energy in each exact conductor is controlled by \cref{prop:raw-conductor-energy}; the central difficulty is to carry the smooth-core subtraction through the same decomposition and retain the signed cross-band interaction.
+
+\subsection{Special-vector rather than operator-norm control}
+
+A uniform operator norm bound for the Dirichlet Gram matrix on arbitrary vectors is not the goal.  An arbitrary coefficient vector can be chosen to align with the Dirichlet kernel.  The theorem must exploit the explicit arithmetic vector
+\[
+\widehat F_k(r)
+=
+\one_{\{m_k\mid r\}}
+\left[-\prod_{p\le y_k}\widehat u_p\bigl(\rho_p(r/m_k)\bigr)\right]
++
+\frac{2}{\mathcal Q_k}
+\sum_{\substack{d\mid\Pi_k\\d\le W_k}}
+\mu(d)e\!\left(-\frac{rd}{\mathcal Q_k}\right).
+\]
+The target is a theorem about this vector and its pinned phase, not about all vectors in $\C^{\mathcal Q_k}$.
+
+\subsection{A rigorous sufficient program}
+
+A proof may be organized into the following components.
+\begin{enumerate}
+\item \textbf{Joint conductor energy.}  Derive bounds for $\mathcal E_k[D,2D)$ that preserve the cancellation between the raw CRT spectrum and the truncated divisor spectrum.
+\item \textbf{Near-resonance counting.}  Bound the weighted joint energy in arcs of width $1/N$, separately in each conductor band.
+\item \textbf{Phase nonalignment.}  Show that the pinned phases of the actual coefficients cannot remain coherent across enough resonant modes to exceed square-root scale.
+\item \textbf{Signed cross-band control.}  Retain the second sum in \eqref{eq:band-gram}; do not replace the full energy by a sum of positive component energies unless an exact orthogonalization is first proved.
+\item \textbf{Maximalization.}  Establish estimates on a dyadic family of $N$ and use a Rademacher--Menshov or comparable square-function argument to control all prefixes.  Logarithmic losses are absorbable into $W_k^{\varepsilon}$.
+\end{enumerate}
+
+This program resembles large-sieve analysis, but it is a highly structured, multidimensional version.  Classical large-sieve ideas are reviewed in \cite{MontgomeryVaughan}.  Results on multiplicative functions in almost all short intervals, such as Matom\"aki--Radziwi\l\l \cite{MatomakiRadziwill}, provide important context but do not directly give the pinned, uniform maximal estimate required here.
+
+\section{Averaged translations versus the primorial origin}
+
+The distinction between average and pinned control can be stated exactly.  Let $F$ be any function modulo $\mathcal Q$, and set
+\[
+S_L(N)=\sum_{j=1}^{N}F(L+j).
+\]
+Parseval gives
+\begin{equation}\label{eq:averaged-start}
+\frac1{\mathcal Q}\sum_{L\bmod\mathcal Q}|S_L(N)|^2
+=
+\sum_{r\bmod\mathcal Q}|\widehat F(r)|^2
+\left|D_N\!\left(\frac r{\mathcal Q}\right)\right|^2.
+\end{equation}
+Thus a weighted second moment of Fourier coefficients controls a translation average.  It permits an exceptional set of starting positions.  Our start $L_k=W_{k-1}$ is deterministic and constructed from the same primes driving the field.  The open theorem must therefore either:
+\begin{itemize}
+\item prove a uniform-in-$L$ estimate;
+\item characterize exceptional starts and exclude $W_{k-1}$; or
+\item exploit special arithmetic cancellation directly at the primorial phase.
+\end{itemize}
+This is why an ``almost all intervals'' theorem cannot simply be substituted for \cref{open:HN}.
+
+\section{Relation to the signed Gram formalization}
+
+The public repository \texttt{OVVO-Financial/prime-wheel-mobius} formalizes the exact prime-wheel architecture in which shell, cofactor, denominator-mode, and resonant/nonresonant contributions are retained inside one signed Gram expression.  Its compiled identities prove that the squared norm of the fully recombined residual equals the complete joint Gram energy.  The formalization deliberately separates this exact identity from the analytic assumption that the Gram energy contracts.
+
+The finite Fourier representation here supplies a concrete candidate realization of the same principle:
+\begin{itemize}
+\item the raw CRT modes correspond to the periodic comb structure;
+\item the truncated divisor spectrum represents the smooth-core correction;
+\item the Dirichlet kernel encodes the moving prefix;
+\item the cross term in \eqref{eq:signed-gram-expanded} retains the cancellation that would be lost by separate positive estimates;
+\item conductor bands supply a natural finite joint index.
+\end{itemize}
+
+The exact Lean layer and the harmonic layer should therefore remain distinct:
+\[
+\begin{gathered}
+\text{exact decomposition and Gram identity}
++\text{ analytic nonconcentration estimate}\\
+\Longrightarrow\quad \text{RH-scale residual control}.
+\end{gathered}
+\]
+The present paper proves the first reduction in ordinary mathematics and isolates the second as \cref{open:HN}.
+
+
+\section{Main reduction summarized}
+
+The complete chain is now finite and exact up to one explicitly marked estimate:
+\begin{align*}
+&f_0(n)=0\\
+&\xrightarrow{\ J\ } -1\\
+&\xrightarrow{\ \prod_{p\le y_k}T_p\ }
+\sigma_k(n)=-\prod_{p\le y_k}u_p(n)\\
+&\xrightarrow{\ \text{reverse fully smooth live sites}\ }
+f_k(n)=\mu(n)\quad(n\le W_k)\\
+&\xrightarrow{\ \text{sum on }(W_{k-1},x]\ }
+R_k(x)=M(x)-M(W_{k-1})\\
+&\xrightarrow{\ \text{finite torus DFT}\ }
+R_k(W_{k-1}+N)=\sum_r b_k(r)D_N(r/\mathcal Q_k)\\
+&\xrightarrow{\ \text{sublinear maximal control}\ }
+M(x)=o(x)\quad\Longleftrightarrow\quad\mathrm{PNT},\\
+&\xrightarrow{\ \text{RH-scale harmonic nonconcentration}\ }
+M(x)=O_{\varepsilon}(x^{1/2+\varepsilon})
+\quad\Longleftrightarrow\quad\mathrm{RH}.
+\end{align*}
+
+Everything through the finite-torus identity is exact.  The classical PNT and RH criteria are standard.  The framework-specific open problem is to prove quantitative maximal control of the same finite block residual: sublinear control would recover PNT, while \cref{open:HN} is the RH-strength statement.
+
+\section{Conclusion}
+
+The prime-wheel construction does not replace the M\"obius function by a heuristic random model.  It gives an exact deterministic representation.
+
+The initial zero field contains no parity information.  The period-one seed supplies one provisional parity coordinate.  Commuting $p^2$-periodic prime operators insert all factor information below the square-root cutoff.  Unique-large-prime geometry explains when the seed is genuine and when it is extraneous.  A finite smooth-core reversal then recovers $\mu(n)$ exactly.  The primorial blocks cover every positive integer, so their nested prefixes recover every Mertens increment.
+
+The magnitude-based smooth core presents no remaining spectral-language obstruction.  Zero-padding its site field into the same finite cyclic group gives an exact divisor-spectrum coefficient vector.  The raw comb remains a tensor-product CRT spectrum, and the joint field is their arithmetic difference.  The arbitrary cutoff is a Dirichlet kernel.  Its squared magnitude is a finite signed Gram form.  The raw spectrum possesses exact conductor decay; the smooth-core correction and the pinned phase must be controlled jointly.
+
+Accordingly, the remaining problem is neither an unspecified prime-distribution mystery nor another change of coordinates.  It is the explicit finite theorem \eqref{eq:HN}: the actual joint coefficient vector cannot concentrate enough mass with sufficiently coherent phase in any Dirichlet-resonant spectral window to create a prefix larger than $x^{1/2+\varepsilon}$.  Proving that theorem closes the reduction, is equivalent to the Riemann Hypothesis, and in particular implies the Prime Number Theorem through the classical implication $M(x)=O(x^{1/2+\varepsilon})=o(x)$ for any fixed $0<\varepsilon<1/2$.  Recovering an unconditional PNT-strength or zero-free-region-strength estimate inside these same coordinates remains a separate and worthwhile calibration problem.
+
+\appendix
+
+\section{Notation table}
+
+\begin{longtable}{>{\raggedright\arraybackslash}p{0.19\textwidth}p{0.72\textwidth}}
+\toprule
+Symbol & Meaning\\
+\midrule
+\endhead
+$W_k$ & Primorial endpoint $\prod_{j\le k}p_j$.\\
+$B_k$ & Primorial block $(W_{k-1},W_k]$.\\
+$L_k,H_k$ & Block start $W_{k-1}$ and block length $W_k-W_{k-1}$.\\
+$y_k$ & Square-root cutoff $\lfloor\sqrt{W_k}\rfloor$.\\
+$\Pi_k$ & Product of all primes $p\le y_k$.\\
+$Q_k$ & Square-sensitive wheel $\Pi_k^2=\prod_{p\le y_k}p^2$.\\
+$\mathcal Q_k$ & A multiple $m_kQ_k>W_k$ used as a common finite torus.\\
+$f_0$ & Initial identically zero field.\\
+$J$ & Formal period-one seed taking $f_0$ to the constant field $-1$.\\
+$T_p$ & Prime operator: miss unchanged, first-power hit flipped, square hit killed.\\
+$u_p$ & Pointwise local multiplier of $T_p$.\\
+$\sigma_k$ & Raw seeded field after all primes $p\le y_k$.\\
+$c_k$ & Sitewise fully smooth squarefree part of $\sigma_k$.\\
+$f_k$ & Corrected field $\sigma_k-2c_k=\mu$ on $[1,W_k]$.\\
+$A_k(x),C_k(x)$ & Raw and smooth-core prefix masses on $B_k$.\\
+$R_k(x)$ & Exact residual $A_k(x)-2C_k(x)=M(x)-M(W_{k-1})$.\\
+$F_k$ & Joint field on $\Z/\mathcal Q_k\Z$: periodic raw lift minus twice the zero-padded core.\\
+$D_N$ & Dirichlet kernel for a prefix of length $N$.\\
+$b_k(r)$ & Phase-adjusted joint Fourier coefficient.\\
+$G_{k,N}$ & Rank-one positive semidefinite interval Gram matrix.\\
+$\cond(r)$ & Reduced additive denominator of a frequency.\\
+\bottomrule
+\end{longtable}
+
+\section{Local Fourier-energy calculation}
+
+For completeness, the local energy bounds used in \cref{prop:raw-conductor-energy} are
+\begin{align*}
+E_p(p)
+&=(p-1)\frac{(2p-1)^2}{p^4}
+\le(p-1)\frac{4p^2}{p^4}
+\le\frac4p,\\
+E_p(p^2)
+&=(p^2-p)\frac1{p^4}
+=\frac{p-1}{p^3}
+\le\frac1{p^2}.
+\end{align*}
+The conductor-one energy satisfies $E_p(1)=(1-1/p)^4\le1$.  The product bound \eqref{eq:raw-energy-bound} follows immediately.
+
+\section{Repository and reproducibility note}
+
+The paper source, standalone Lean formalization, and deterministic numerical scripts are maintained in the public repository
+\[
+\texttt{https://github.com/OVVO-Financial/prime-wheel-mobius}.
+\]
+The formalization is pinned to Lean and Mathlib version \texttt{v4.24.0}.  The exact arithmetic, finite Fourier, full-Gram, and primorial-to-global Mertens reductions are machine checked.  The maximal nonconcentration estimate and the classical Mertens--RH criterion remain explicitly separated from those exact results.  Numerical outputs are reproducibility artifacts and are not theorem premises.
+
+\begin{thebibliography}{99}
+
+\bibitem{Titchmarsh}
+E.~C. Titchmarsh, revised by D.~R. Heath-Brown,
+\emph{The Theory of the Riemann Zeta-Function}, 2nd ed., Oxford University Press, 1986.
+
+\bibitem{MontgomeryVaughan}
+H.~L. Montgomery and R.~C. Vaughan,
+\emph{Multiplicative Number Theory I: Classical Theory}, Cambridge Studies in Advanced Mathematics 97, Cambridge University Press, 2007.
+
+\bibitem{OdlyzkoTeRiele}
+A.~M. Odlyzko and H.~J.~J. te Riele,
+``Disproof of the Mertens conjecture,''
+\emph{Journal f\"ur die reine und angewandte Mathematik} \textbf{357} (1985), 138--160.
+DOI: \href{https://doi.org/10.1515/crll.1985.357.138}{10.1515/crll.1985.357.138}.
+
+\bibitem{MatomakiRadziwill}
+K.~Matom\"aki and M.~Radziwi\l\l,
+``Multiplicative functions in short intervals,''
+\emph{Annals of Mathematics} \textbf{183} (2016), no.~3, 1015--1056.
+DOI: \href{https://doi.org/10.4007/annals.2016.183.3.6}{10.4007/annals.2016.183.3.6}.
+
+\bibitem{Zygmund}
+A.~Zygmund,
+\emph{Trigonometric Series}, 3rd ed., Cambridge University Press, 2002.
+
+\bibitem{RHLean}
+F.~Viole and OVVO Labs,
+\emph{Prime-Wheel M\"obius: Lean formalization and reproducibility archive},
+GitHub repository, 2026,
+\url{https://github.com/OVVO-Financial/prime-wheel-mobius}.
+
+\end{thebibliography}
+
+\end{document}

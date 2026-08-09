@@ -1,0 +1,76 @@
+name: Lean verification
+
+on:
+  push:
+  pull_request:
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: formalization
+    steps:
+      - name: Check out repository
+        uses: actions/checkout@v4
+
+      - name: Audit unfinished proofs and project-local axioms
+        run: bash scripts/audit_assumptions.sh
+
+      - name: Set up Lean
+        uses: leanprover/lean-action@v1
+        with:
+          lake-package-directory: formalization
+          use-mathlib-cache: true
+          build: false
+          test: false
+          lint: false
+
+      - name: Restore RHLean build cache
+        uses: actions/cache/restore@v5
+        with:
+          path: formalization/.lake/build
+          key: rhlean-build-${{ runner.os }}-${{ runner.arch }}-${{ hashFiles('formalization/lean-toolchain', 'formalization/lakefile.lean', 'formalization/lake-manifest.json') }}-${{ github.sha }}
+          restore-keys: |
+            rhlean-build-${{ runner.os }}-${{ runner.arch }}-${{ hashFiles('formalization/lean-toolchain', 'formalization/lakefile.lean', 'formalization/lake-manifest.json') }}-
+
+      - name: Build public formalization
+        run: lake build RHLean --wfail
+
+      # Saved even on failure: a partial build lets the next run resume
+      # instead of recompiling the whole library from scratch.
+      - name: Save RHLean build cache
+        if: always()
+        uses: actions/cache/save@v5
+        with:
+          path: formalization/.lake/build
+          key: rhlean-build-${{ runner.os }}-${{ runner.arch }}-${{ hashFiles('formalization/lean-toolchain', 'formalization/lakefile.lean', 'formalization/lake-manifest.json') }}-${{ github.sha }}
+
+      - name: Print the public reduction and its axioms
+        run: |
+          set -o pipefail
+          cat > /tmp/baseline_check.lean <<'EOF'
+          import RHLean.Analysis.PublicPrimeWheelReduction
+
+          set_option pp.fullNames true in
+          #print RHLean.Analysis.primorialWheel_dirichletNonconcentration_iff_mertensEnergy
+
+          #print axioms RHLean.Analysis.primorialWheel_dirichletNonconcentration_iff_mertensEnergy
+          EOF
+          lake env lean /tmp/baseline_check.lean | tee /tmp/baseline_check.log
+
+      - name: Assert the public reduction rests only on the standard Lean axioms
+        run: |
+          if grep -q 'sorryAx' /tmp/baseline_check.log; then
+            echo 'Public reduction depends on sorryAx: the proof is unfinished.' >&2
+            exit 1
+          fi
+          if ! grep -qE 'depends on axioms|does not depend on any axioms' /tmp/baseline_check.log; then
+            echo 'No axiom report produced; the reduction did not elaborate.' >&2
+            exit 1
+          fi
+          echo 'Axiom audit passed.'
