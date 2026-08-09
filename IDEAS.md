@@ -308,3 +308,21 @@ for kernel identity module). Reopens on: edge operator of norm < 1
 at homogeneity 1/2+ε, or a signed contraction for (k−1)μ(a)log a —
 new Möbius-correlation input (Cell D again). Full grounds:
 results/025.
+
+## I. Round-3 shortlist (blind panel 026, mapping 027, 2026-08-09)
+
+**I1 = E/agent8 (k=1 gate only):** canonical-square ensemble
+dispersion — average over the canonical parameter y; amplification
+lemma (ensemble 2k-moment → dyadic max at pins, Lean candidate) +
+exact centered k=1 Gram/Poisson identity + complete h=0 zero-mode
+defect isolated before any spectral norm. Rung-1: E₂(Y) ≪ Y^{4+ε} ⟹
+|S| ≪ x^{5/6+ε}. Kill: zero term contains uncancelled positive
+Mertens energy. **I2 = P/agent5 (+agent1 merged, partial only):**
+DC/AC principal-mode isolation — exact increment law, finite
+Poincaré, τ-bound, triangular A_q formula; DC contraction NOT
+recorded as leverage (it is the known missing input). Rung-1:
+|A_q| ≪ q^{2−2δ}. Clusters R (5 agents) and D (2 agents) killed —
+R = record-025 reopening condition restated with covert
+absolute-value steps; D = deep-rectangle defect (window kernel
+constant, spectral steps sign-blind). Kill-test order: D-audit,
+R-ledger (both desk, done in mapping), P-Mellin-symbol, E-zero-mode.

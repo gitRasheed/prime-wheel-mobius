@@ -605,3 +605,14 @@ record 027 next.
 Declared results/027 (review): round-3 mapping over the 10 proposals
 (dedup/cluster, nine-wall obstacle audit, kill-test inventory,
 shortlist ≤ 3, per-agent verdicts). Routed to Codex.
+
+## 2026-08-09-38
+results/027 closed: round-3 mapping. Clusters R (0,2,3,4,7) and
+D (6,9) KILLED at desk (covert absolute-value steps; deep-rectangle
+defect). Shortlist: I1 = E/agent8 ensemble amplification + k=1
+zero-mode gate (genuinely new averaging geometry over canonical y);
+I2 = P/agent5+1 DC/AC isolation (bounded-effort, partial only).
+ADVANCE 2 / MERGE 1 / KILL 7 / new estimates 0. Day closes: records
+021–027 in one cascade; queue for next session = experiment
+declarations for I1 (kernel amplification lemma + exact zero-mode
+desk derivation) then I2.
