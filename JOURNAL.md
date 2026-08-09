@@ -555,3 +555,14 @@ Declared results/024 (experiment): kernel formalization of the 023
 frozen plan — backward square-pin stability, divisor-jump identity,
 backward affine modulus, abstract affine excursion/moment lemmas,
 canonical backward theorem. Standard kernel gate. EC2 up for builds.
+
+## 2026-08-09-32
+results/024 closed: **PROMOTED** — kernel set #5 at b26e73e
+(mobius-synthesis agent-os). Backward affine excursion module: exact
+backward stability at canonical pins, divisor-indicator floor jump,
+sharp h/d+1 bound, constant monotonicity, backward increment/
+excursion/moment theorems (hypotheses reduced to 1 ≤ y), exact
+support-insertion identity. Gate green: --wfail + audit + axioms
+[propext, Classical.choice, Quot.sound]. Excursion window at
+canonical pins upgraded W ≍ log x → W ≍ √x (at H ≍ y). Open half:
+windowed moment upper bound. EC2 stopped after gate.
