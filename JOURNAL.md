@@ -516,3 +516,17 @@ PNT-strength); stretch rung 1 x^{1/2−δ}. Desk only, EC2 stays
 stopped. Verdicts: PROOF-COMPLETE (then blocking refute-mode second
 pass) / PROOF-GAP (named object becomes Z's sub-gate) / FALSE-ROUTE
 (Z parks, pivot H1). Routed to Codex.
+
+## 2026-08-09-28
+results/022 closed: **CONFIRMED-WITH-REPAIRS**. Rung-0 moment bound
+𝓜 = o(√x) proved-informal (VK zero-free region pays every zero to
+height 2x²; explicit constants; repairs mandated at writeup level).
+S = o(x) deduction has an unsupplied common-height truncation lemma
+(repair sketched by review) — and is KNOWN anyway via pointwise VK
+PNT + triangle (novelty audit). Error #7: PROOF-COMPLETE overclaim
+caught by refute-mode review. Coordinator note (unreviewed): cluster
+Z fully mapped — rung 2 RH-strength, rung 0 known-strength, rung 1
+quasi-RH-hard via any absolute-value route (majorizes |R(x)|, Ingham
+equivalence to zero-free strip); only signed routes remain. **Z parks
+at rung 0; pivot to H1 (record 020 D2+D3 spec) is next.** No stone
+left unturned in Z within unconditional absolute-value coordinates.
