@@ -1,0 +1,62 @@
+[    0.0s] hard asserts OK
+[    0.0s] Ramanujan sums OK
+[    0.0s] 7873 primes <= isqrt(U_9) = 80434
+[    0.0s] k=4: residue sums built, total = 0 = M(U)-M(L) OK
+[    0.0s] k=5: residue sums built, total = 17 = M(U)-M(L) OK
+[    0.0s] k=6: residue sums built, total = -41 = M(U)-M(L) OK
+[    0.1s] k=7: residue sums built, total = 303 = M(U)-M(L) OK
+[    1.1s] k=8: residue sums built, total = 3238 = M(U)-M(L) OK
+[    1.1s] k=9: segmented mu sieve over (223092870, 6469693230] -- heavy phase
+[   61.0s] k=9 done: 31 segments byte-identical to fw_mu (prefix (L9,998092870]); sum mu over that prefix = -4090 (expected M(998092870)-M(L9) = -4090); sum mu over (L9,U9] = -8528
+[   61.1s] wave-1 cross-check: 260 (k,n,q) packet amplitudes reproduced, max rel dev 0.000e+00
+[   74.2s] P_q is exactly q-periodic in X for all 138 (k,q) pairs tested (k=4..9); amplitude envelope recorded
+[   74.4s] packet amplitudes: 1472 rows
+[   74.4s] extracting primes <= 1e9 and prime powers
+[   85.0s] 50851223 prime powers <= 1e9; psi(1e9) = 1000001596.0 (expect ~1e9)
+[   94.9s] Dpsi done
+[   94.9s] summary: {
+ "670292099": {
+  "slope_absPq_vs_q": 0.18404326293296483,
+  "slope_Dpsi_vs_q": 0.11489880650977034,
+  "slope_renewal_vs_q": -0.5,
+  "corr_logP_logDpsi": 0.10163772158451798,
+  "corr_logP_logrenew": -0.19340657720037513
+ },
+ "740765088": {
+  "slope_absPq_vs_q": 0.2217432790228465,
+  "slope_Dpsi_vs_q": 0.2530906513821009,
+  "slope_renewal_vs_q": -0.5,
+  "corr_logP_logDpsi": 0.01915041264914646,
+  "corr_logP_logrenew": -0.19595312054435923
+ },
+ "818703768": {
+  "slope_absPq_vs_q": 0.4051524593521237,
+  "slope_Dpsi_vs_q": 0.17506675263188773,
+  "slope_renewal_vs_q": -0.5,
+  "corr_logP_logDpsi": 0.08706913122610088,
+  "corr_logP_logrenew": -0.43160002043615237
+ },
+ "904806399": {
+  "slope_absPq_vs_q": 0.17032400670146175,
+  "slope_Dpsi_vs_q": -0.008802862047685975,
+  "slope_renewal_vs_q": -0.5,
+  "corr_logP_logDpsi": 0.0905248808302719,
+  "corr_logP_logrenew": -0.18700787076412997
+ },
+ "999950883": {
+  "slope_absPq_vs_q": -0.028381469839165997,
+  "slope_Dpsi_vs_q": 0.2158638051401077,
+  "slope_renewal_vs_q": -0.5,
+  "corr_logP_logDpsi": 0.15285529653310875,
+  "corr_logP_logrenew": 0.031570042454320456
+ }
+}
+[   94.9s] q=2: slope|P| hi=+0.737 slopeDpsi hi=+0.671 |P|/renewal=0.209 |P|/Dpsi=3.219
+[   94.9s] q=3: slope|P| hi=+1.143 slopeDpsi hi=+0.614 |P|/renewal=0.000 |P|/Dpsi=0.000
+[   94.9s] q=5: slope|P| hi=+0.524 slopeDpsi hi=+0.526 |P|/renewal=0.274 |P|/Dpsi=0.817
+[   94.9s] q=6: slope|P| hi=+1.262 slopeDpsi hi=+0.614 |P|/renewal=0.355 |P|/Dpsi=0.962
+[   94.9s] q=15: slope|P| hi=+0.119 slopeDpsi hi=+0.538 |P|/renewal=0.994 |P|/Dpsi=1.190
+[   94.9s] q=30: slope|P| hi=+1.003 slopeDpsi hi=+0.537 |P|/renewal=0.401 |P|/Dpsi=0.339
+[   94.9s] q=105: slope|P| hi=+0.086 slopeDpsi hi=+0.531 |P|/renewal=3.214 |P|/Dpsi=0.876
+[   94.9s] q=210: slope|P| hi=+0.822 slopeDpsi hi=+0.531 |P|/renewal=4.600 |P|/Dpsi=0.887
+[   94.9s] done; wall=94.9s peak RSS=6.59 GB

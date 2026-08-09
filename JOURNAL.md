@@ -316,3 +316,20 @@ empirically √-scale, open content in the signed discrepancy sum.
 Exactly the kind of catch the kernel channel exists for — an informal
 "concentration" claim that numerics alone would have let stand.
 Record 008 (wave-2 kill tests) still running.
+
+### 2026-08-09-12 — kill-test wave 2 verdicts: G1 killed by its own test; G4's computable half is the cleanest positive
+
+Record 008 closed (details there). Headlines: G1's renewal core
+refuted by its designated discriminator — packet amplitudes are
+exactly q-periodic at pinned samples, a structural consequence of the
+modulus-magnitude fact, robust to the proposer's own Q=6U convention;
+the top-ranked angle from the mapping is dead at implementation
+strength. Cluster L's arbiter passed (alive). Agent1/G2 fully alive
+(parity locus √-scale but fixed-negative-sign rider). Agent3/G4:
+polar-mass cancellation confirmed exactly — H integer-computed at all
+31,449 samples, |H|/√x flat ≈0.14, exponent 0.488 — but its Mellin
+machinery was never written down (INFEASIBLE as stated). Two
+INFEASIBLE verdicts this wave are a process finding: kill tests must
+be computable as stated or the proposal owes a formulation pass.
+Next: first analytic experiment declaration (010, G2's classical
+QSCL lemma) with blocking Codex adversarial review per law 13.

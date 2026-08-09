@@ -1,0 +1,230 @@
+{
+  "record": "008",
+  "kind": "kill-test wave 2 results",
+  "date": "2026-08-09",
+  "parent": "006",
+  "framework": {
+    "arrays": "wave-1 fw_mu.npy / fw_M_i32.npy / fw_pi_i32.npy / fw_Li_f64.npy in work/killtests/, exact to 1e9, reused read-only (not rebuilt, not modified)",
+    "conventions": "L_k=primorial(k), U_k=primorial(k+1), y_k=isqrt(U_k)+1, X_n=(n+1)^2-1 with L_k<X_n<=U_k; reciprocal family d=1..x//(y+1), b_d=x//d, a_d=max(y,x//(d+1)), skip a_d>=b_d; Delta_d=(pi(b_d)-pi(a_d))-(Li(b_d)-Li(a_d)); E(y,x)=sum_d M(d) Delta_d",
+    "hard_asserts_in_every_script": "M(6)=-1, M(8)=-2, M(30)=-3, M(210)=-1, M(2310)=-1, M(30030)=16, pi(1e8)=5761455, pi(1e9)=50847534, E(6,8)=1-(Li(8)-Li(6)) to 1e-12",
+    "new_blocks_reached": "k=9 = (223092870, 6469693230]; square samples n=14936..31621, X=2.23e8..9.9995e8 (arrays cap at 1e9, so block 9 is covered only up to X=1e9, i.e. its bottom 15%)",
+    "independent_verification_this_wave": [
+      "segmented mu sieve over (223092870, 6469693230] (250 segments): the 31 segments below 1e9 are byte-identical to fw_mu.npy; prefix sum over (L9, 998092870] = -4090 = M(998092870)-M(L9)",
+      "packet amplitudes P_q reproduced 260 wave-1 (k,n,q) values from t1_smallq.csv with max relative deviation 0.000e+00",
+      "scalar face reproduced 126 wave-1 samples from t7_agent6.csv: Msm and Mplus integer-identical, C-2E and E to <1e-6",
+      "float-vs-exact: max |float(C-2E) - exact integer H| = 1.03e-7 over 16686 k=9 samples with |H| ~ 4e3 (relative 2.6e-11)"
+    ]
+  },
+
+  "W2_L_agent6_kill3_across_d_L2": {
+    "kill_condition_quoted": "Kill 3: compute the diagonal Sum_d M(d)^2 Pi(I_d)^2 and off-diagonal dispersion sums exactly; empirical exponent clearly above ~1.2 in x over these ranges kills the L^2 closure hypotheses as stated (subject to obstacle 6: survival proves nothing, only failure is informative).",
+    "what_ran": "Diag(x) = sum_d M(d)^2 Delta_d(x)^2 and Off(x) = sum_{d!=d'} M(d)M(d')Delta_d Delta_d' = E(x)^2 - Diag(x), at EVERY square sample of blocks k=6,7,8,9: 541+2400+11822+16686 = 31449 samples, x = 3.03e4 .. 1.0e9",
+    "exponents_in_x": {
+      "global_pooled_slope_logDiag": 0.931,
+      "global_pooled_slope_logAbsOff": 0.883,
+      "block_mean_slope_Diag": 0.912,
+      "block_mean_slope_absOff": 0.909,
+      "within_block_slope_logDiag": {"k6": 1.020, "k7": 1.018, "k8": 1.053, "k9": 1.076},
+      "within_block_slope_logAbsOff": {"k6": 1.035, "k7": 1.055, "k8": 1.177, "k9": 1.174},
+      "note": "within-block slopes are inflated because y_k is fixed inside a block, so the number of reciprocal terms dmax = x//(y+1) grows linearly in x; the cross-block/pooled slopes are the exponent in x proper. Both are below 1.2; the closest approach to the threshold is 1.177 (|Off|, k=8)."
+    },
+    "levels": {
+      "Diag_over_x_block_means": {"k6": 0.01854, "k7": 0.01327, "k8": 0.01102, "k9": 0.00890},
+      "absOff_over_x_block_means": {"k6": 0.01744, "k7": 0.01505, "k8": 0.01436, "k9": 0.00750},
+      "Off_positive_fraction": {"k6": 0.325, "k7": 0.398, "k8": 0.434, "k9": 0.441},
+      "mean_Off_over_Diag": {"k6": -0.028, "k7": 0.278, "k8": 0.473, "k9": 0.143}
+    },
+    "verdict": "SURVIVES",
+    "verdict_detail": "Both of the proposer's conditional inputs hold numerically with room: the Reciprocal Variance sum runs at x^0.93 with Diag/x decreasing monotonically 0.0185 -> 0.0089 across blocks, and the RDE off-diagonal sum runs at x^0.88 with |Off|/x decreasing 0.0174 -> 0.0075. Nothing approaches the 1.2 kill threshold. Per the proposer's own obstacle-6 caveat and PROOF_OS kill semantics this proves nothing about the conditional theorem; it only fails to falsify it. Cluster L therefore emerges from wave 2 with its L^2 arbiter unfired, but wave-1's kill 2 (no per-d cancellation, rho -> 1) still stands against the kernel-level claim."
+  },
+
+  "W2_G1_agent7_renewal_vs_raw": {
+    "kill_condition_quoted": "If the small-q amplitudes of H track the raw discrepancy scale -- i.e., the orthogonal split loses the C - 2E correlation packet-by-packet exactly as the triangle inequality does -- the renewal core is dead and with it the angle (only the unconditional off-diagonal Gauss-sum lemma survives as a tool).",
+    "what_ran": "conductor-normalized packet amplitudes P_q = (Q/q)A_q = (1/q) sum_{a,b} F_q(a) c_q(b-a) G_q(b), field F = mu on (L_k,U_k], window g = 1_{(L,X]} - rho 1_{(L,U]}; blocks k=6,7,8,9 (X = 5.1e5 .. 1.0e9, i.e. the requested 1e8-1e9 range is blocks 8-top and 9-bottom), 23 moduli q | 44100 (the proposer's set {2,3,5,6,10,15,30} plus 16 more to expose the q-profile). Templates: renewal (X/q)^{1/2} and raw Dpsi(X;q) = max_{gcd(b,q)=1} |psi(X;q,b) - X/phi(q)| computed on the same data from all 50851223 prime powers <= 1e9. k=9 needed mu residue-class sums over the entire block (2.23e8, 6.47e9], built by an independent segmented sieve (byte-verified against fw_mu below 1e9).",
+    "decisive_structural_finding": "P_q(X_n) is EXACTLY q-periodic in X: verified for all 138 (k,q) pairs with k=4..9, P_q(X+q) = P_q(X) to 1e-9 relative, and P_q takes exactly q distinct values per block. Reason: with rho underflowing to 0, G_q(b) = cntX(b) = m + 1_S(b) and the constant m is annihilated by sum_j c_q(j) = 0, so only (X-L) mod q survives. Consequently the amplitude has NO growth in X inside a block, and the renewal law (X/q)^{1/2} cannot describe it at any scale.",
+    "growth_numbers": {
+      "d_log_absP_d_log_X_within_block_kernelQ": "0.00 +- 0.4 (fits over 24 log-spaced samples per block; the residual scatter is the mod-q step, not growth)",
+      "amplitude_envelope_growth_across_blocks_d_log_Amp_d_log_U": "median 0.46 over 23 moduli (range 0.26-0.58) -- the envelope scales like the block field norm (U_k)^{1/2}, not like X^{1/2} at pinned X",
+      "q_profile_slope_d_log_Amp_d_log_q": {"k6": 0.360, "k7": 0.498, "k8": 0.548, "k9": 0.366, "renewal_predicts": -0.5},
+      "q_profile_slope_d_log_medianDpsi_d_log_q": {"k6": 0.178, "k7": 0.116, "k8": 0.125, "k9": 0.141},
+      "uniformity_over_all_23_moduli": {
+        "Amp_over_renewal_spread_factor": {"k6": 97, "k7": 333, "k8": 817, "k9": 146},
+        "Amp_over_medianDpsi_spread_factor": {"k6": 9.7, "k7": 13.4, "k8": 65.3, "k9": 12.5}
+      },
+      "uniformity_on_proposers_own_q_set_2_3_5_6_10_15_30": {
+        "Amp_over_renewal": {"k8": [0.023, 1.052, "spread x45.8"], "k9": [0.209, 1.951, "spread x9.3"]},
+        "Amp_over_medianDpsi": {"k8": [0.105, 2.129, "spread x20.3"], "k9": [0.902, 3.317, "spread x3.7"]},
+        "q_slope_Amp": {"k8": 0.645, "k9": 0.236},
+        "q_slope_medianDpsi": {"k8": 0.202, "k9": 0.367}
+      }
+    },
+    "convention_sensitivity": "Rerun under Q = 6*U_k (agent7's own words: 'Q_k the repo's minimal admissible modulus > 6*U_k'), so rho = (X-L)/(6U) in [0,1/6] is nonzero: the amplitudes then acquire an X-linear drift instead of X^{1/2} growth; fitted d log|P_q| / d log X over 24 samples is erratic (-5.3 to +3.3, sign-changing, dominated by zeros of P_q), and the q-profile slope of mean|P_q| is +0.54 to +0.99 -- again the opposite sign from renewal's -0.5. The verdict does not depend on the modulus convention.",
+    "verdict": "KILLED",
+    "verdict_detail": "Wave 1 could not separate the templates below X ~ 1e7. At 1e8-1e9 they separate on the q-axis (the only axis where they differ: renewal decays as q^{-1/2}, the raw per-character discrepancy is nearly q-flat) and the measurement lands on the raw side and refutes renewal outright. (1) The X-dependence required by renewal does not exist at all: P_q is exactly q-periodic in X under the kernel modulus and X-linear-drifting under Q=6U. (2) The q-exponent is +0.24..+0.65, opposite in sign to renewal's -0.5 and on the same side as the raw discrepancy's +0.12..+0.37. (3) On the proposer's own small-q set at k=9 the amplitudes sit within a factor 3.7 of the raw discrepancy scale uniformly in q, versus a factor 9.3 spread against the renewal scale (k=8: 20.3 vs 45.8). Honest residual: the amplitudes do not match raw exactly either (they rise slightly faster in q), so the literal words 'track the raw discrepancy scale' hold only in the sense of 'bounded ratio, raw-like q-profile'. What is unambiguous is that the renewal core -- (X/q)^{1/2} polylog packet amplitudes -- is refuted by its own designated test."
+  },
+
+  "W2_G2a_agent1_square_moduli_locus": {
+    "kill_condition_quoted": "(a) Principal-character locus: compute S_sq(x) = Sum_{m^2 <= sqrt x} M(m^2)*Delta_{m^2}(x); if it grows with a fixed sign at exponent visibly above 1/2, the parity locus is fatal and the angle dies.",
+    "what_ran": "S_sq(x) at every square sample of blocks k=6,7,8,9 (31449 samples, x = 3.03e4 .. 1.0e9); 6..122 square moduli per sample. Range note: under the kernel conventions Delta_d = 0 identically for d > dmax = x//(y+1), so the proposer's range m^2 <= sqrt(x) and the kernel range m^2 <= dmax give the identical sum.",
+    "fixed_sign": {
+      "positive_fraction": {"k6": 0.383, "k7": 0.391, "k8": 0.364, "k9": 0.382},
+      "block_mean_S_sq": {"k6": -6.24, "k7": -17.54, "k8": -87.77, "k9": -235.13},
+      "mean_S_sq_over_sqrt_x": {"k6": -0.0149, "k7": -0.0101, "k8": -0.0098, "k9": -0.0096},
+      "t_statistic_of_mean_S_over_sqrt_x": {"k6": -7.9, "k7": -14.2, "k8": -37.2, "k9": -49.1},
+      "reading": "the sign IS fixed and overwhelmingly significant: S_sq is negative in ~62% of samples in every block and its mean/sqrt(x) is a stable -0.0096 .. -0.0149 with t = -49 at k=9"
+    },
+    "exponent": {
+      "within_block_slope_log_absS": {"k6": 0.529, "k7": 0.470, "k8": 0.454, "k9": 0.520},
+      "pooled_slope_log_absS": 0.437,
+      "block_mean_slope_absS": 0.435,
+      "block_mean_slope_signed_S": 0.466,
+      "mean_absS_over_sqrt_x": {"k6": 0.0371, "k7": 0.0298, "k8": 0.0242, "k9": 0.0216},
+      "max_absS_over_sqrt_x": {"k6": 0.151, "k7": 0.132, "k8": 0.116, "k9": 0.0926},
+      "mean_absS_over_absE": {"k6": 2.30, "k7": 1.97, "k8": 1.53, "k9": 1.42}
+    },
+    "verdict": "SURVIVES",
+    "verdict_detail": "The kill needs BOTH halves; only one fires. Fixed sign: yes, decisively (t = -49 at k=9, consistently negative across four blocks). Exponent visibly above 1/2: no -- every exponent measure lands at 0.43-0.53 and, more tellingly, |S_sq|/sqrt(x) DECREASES monotonically across blocks (0.0371 -> 0.0216) and its maximum decreases too (0.151 -> 0.093), so the locus is sub-sqrt(x), not super-. Unflattering rider: |S_sq| is still 1.4x the size of the whole reciprocal sum |E| on average at k=9 (down from 2.3x at k=6), so the principal-character locus is not small relative to the object it sits inside -- it is merely not growing faster than sqrt(x). If the mechanism needs S_sq = o(E) it does not have it at these ranges."
+  },
+
+  "W2_G2b_agent1_dyadic_correlation": {
+    "kill_condition_quoted": "(b) Internal dispersion at fixed n: compute the correlation matrix of the dyadic-block sums (Sum_{D<d<=2D} M(d)Delta_d(X_n))_D across D at fixed n; if the blocks are strongly positively correlated (no cancellation across the d-family), the H = 1 route via the internal d-average is dead and the mechanism can never reach the pointwise face regardless of the window result.",
+    "deviation": "a correlation matrix needs an ensemble, which 'at fixed n' does not supply. Two ensembles reported: (i) the pinned square samples of a block (per the wave-2 brief), 541-16686 samples; (ii) the window r < H at fixed N (H = 966 / 607), which is the local, drift-free version.",
+    "ensemble_i_pinned_samples": {
+      "mean_offdiagonal_correlation": {"k6": 0.203, "k7": 0.286, "k8": 0.369, "k9": 0.274},
+      "mean_offdiagonal_correlation_scale_detrended": {"k6": 0.177, "k7": 0.251, "k8": 0.327, "k9": 0.282},
+      "fraction_of_pairs_positively_correlated": {"k6": 0.822, "k7": 0.955, "k8": 0.956, "k9": 0.945},
+      "max_offdiagonal_correlation": {"k6": 0.600, "k7": 0.587, "k8": 0.723, "k9": 0.745},
+      "variance_inflation_Var(E)/sum_j Var(B_j)": {"k6": 2.96, "k7": 4.02, "k8": 5.69, "k9": 4.57},
+      "n_dyadic_blocks": {"k6": 10, "k7": 12, "k8": 14, "k9": 14},
+      "significance": "at k=9 (16686 samples) the standard error on a correlation is 0.008, so mean r = 0.274 is ~35 sigma"
+    },
+    "ensemble_ii_local_windows": {
+      "midblock9_N30000_H966": {"mean_offdiag_corr": 0.049, "pos_frac": 0.626, "variance_inflation": 1.49},
+      "topblock8_N14329_H607": {"mean_offdiag_corr": 0.138, "pos_frac": 0.593, "variance_inflation": 2.95},
+      "boundary9_N14936_H966": {"mean_offdiag_corr": 0.294, "pos_frac": 0.652, "variance_inflation": 5.08}
+    },
+    "realized_cancellation_across_the_d_family": {
+      "absE_over_sum_d_abs_M(d)Delta_d": {"k6": 0.0876, "k7": 0.0559, "k8": 0.0310, "k9": 0.0247},
+      "absE_over_sum_j_abs_B_j": {"k6": 0.539, "k7": 0.557, "k8": 0.557, "k9": 0.581},
+      "sign_agreement_of_B_j_with_E": {"k6": 0.588, "k7": 0.624, "k8": 0.647, "k9": 0.671}
+    },
+    "verdict": "INCONCLUSIVE",
+    "verdict_detail": "The two halves of the proposer's own condition disagree, and the two natural ensembles disagree with each other by a factor 3. The correlation IS systematically positive and statistically overwhelming over the pinned-sample ensemble (mean 0.20-0.37, 94-96% of pairs positive, ~35 sigma, variance inflated 3.0-5.7x over independence, and the ratio |E|/sum_j|B_j| drifts UP with x: 0.539 -> 0.581), which reads as the kill. But the parenthetical gloss 'no cancellation across the d-family' is false: cancellation across d is strong and IMPROVING (|E| / sum_d |M(d)Delta_d| falls 0.088 -> 0.025 from k=6 to k=9), and at a fixed local scale (mid-block window, no scale drift) the mean correlation collapses to 0.049 with variance inflation 1.49, i.e. near-independence. Blocking factor: 'strongly positively correlated' is not quantified by the proposer, and the measured 0.05-0.37 sits between the two regimes his condition contrasts. Declaring SURVIVES here would be the expensive error, so it is not declared."
+  },
+
+  "W2_Q_agent8_window_variance_mass": {
+    "kill_condition_quoted": "For a few blocks with N ~ 3*10^4 (so x ~ 10^9, one segmented sieve) and H = ceil(N^{2/3}), compute E(X_{N+r}) for r < H via the reciprocal family, center at the window mean, and decompose the variance by dyadic ranges of d. If >= 90% of the window-centered variance sits in d > N^{1-o(1)} -- the one-variable mu x prime critical block where q = [d,e] > H^2 and no Weyl gain exists -- then the dispersion machinery addresses a vanishing fraction of the object, SGV becomes true-but-empty, and the angle is dead as leverage.",
+    "what_ran": "three windows, exact variance decomposition contrib_j = mean_r[(B_j - mean B_j)(E - mean E)] / Var_r(E), which sums to 1 exactly (verified 1.0000000): (A) the proposer's parameters N=30000, H=ceil(N^{2/3})=966, X = 9.00e8..9.59e8, block 9; (B) top-of-block-8 window N=14329, H=607, X = 2.053e8..2.231e8, where dmax ~ N so the literal critical block exists; (C) block-9 lower-primorial-boundary window N=14936, H=966, X = 2.231e8..2.529e8",
+    "structural_note": "under the verified conventions d only runs to dmax = x//(y_k+1) with y_k = isqrt(U_k)+1, NOT to sqrt(x). At the proposer's own parameters (N=3e4 mid-block-9) dmax = 11189-11921 = 0.37..0.40 N, so the set d > N^{1-o(1)} is EMPTY: the reciprocal family never reaches the critical block d ~ N except at the very top of a block, where dmax -> y ~ N.",
+    "variance_fractions": {
+      "A_midblock9_N30000": {"d>N": 0.000, "d>N^0.95": 0.000, "d>N^0.9": 0.000, "d>N^0.8 (d>4096)": 0.077, "d>dmax/2 (d>8192)": 0.056, "d>dmax/8 (d>2048)": 0.262, "largest_single_dyadic_contribution": "0.208 at d=1", "n_dyadic_blocks": 14},
+      "B_topblock8_N14329": {"d>N": 0.000, "d>N^0.95": 0.000, "d>N^0.9 (d>8192)": -0.024, "d>N^0.8 (d>4096)": 0.194, "d>dmax/8 (d>2048)": 0.318, "largest_single_dyadic_contribution": "0.233 at d in [32,63]", "n_dyadic_blocks": 14},
+      "C_boundary9_N14936": {"d>N": 0.000, "d>N^0.9": 0.000, "d>dmax/2 (d>2048)": 0.118, "d>dmax/8 (d>512)": 0.284, "largest_single_dyadic_contribution": "0.214 at d in [4,7]", "n_dyadic_blocks": 12}
+    },
+    "window_scale": {
+      "sqrt(Var_r E)/N^2": {"A": 1.13e-6, "B": 4.46e-6, "C": 7.17e-6},
+      "|mean_r E|/N^2": {"A": 2.98e-6, "B": 7.69e-6, "C": 1.38e-6}
+    },
+    "secondary_check_quoted": "Secondary cheap check of the synchronization risk: restrict to prime pairs d,e in (N/2, N] (so q = de exactly) and evaluate the r-sum Sum_{r<H} e(X_{N+r}(1/d - 1/e)) for many pairs; if the observed cancellation is systematically absent for windows placed near primorial boundaries (versus mid-block placement), the pinned-frequency degeneracy risk is real and the uniform-gain bookkeeping fails.",
+    "secondary_result": {
+      "method": "exact integer phase reduction t = (X_{N+r} mod de)*(e-d) mod de, 20000 random prime pairs per window, H = 966 fixed across windows for comparability",
+      "boundary9_N14936": {"mean_absS_over_H": 0.00691, "median": 0.00107, "p90": 0.00644, "max": 0.867, "frac_absS>H/2": 0.00030, "mean_q": 1.236e8},
+      "midblock9_N22000": {"mean_absS_over_H": 0.00600, "median": 0.00105, "p90": 0.00518, "max": 0.928, "frac_absS>H/2": 0.00025, "mean_q": 2.693e8},
+      "midblock9_N30000": {"mean_absS_over_H": 0.00596, "median": 0.00105, "p90": 0.00492, "max": 0.968, "frac_absS>H/2": 0.00060, "mean_q": 4.992e8},
+      "reading": "cancellation is near-total everywhere (mean |S|/H ~ 0.006, i.e. |S| ~ 0.19-0.21 sqrt(H)) and the near-primorial window is indistinguishable from mid-block (0.0069 vs 0.0060); the degenerate tail exists but is rare (0.03-0.06% of pairs with |S| > H/2). No synchronization degeneracy detected."
+    },
+    "verdict": "SURVIVES",
+    "verdict_detail": "The 90% concentration condition fails by an enormous margin under every reading. Literal reading: the fraction of window-centered variance carried by d > N^{1-o(1)} is 0.000 (windows A and C, where the set is empty because dmax = 0.37-0.40 N) and -0.024 (window B, where dmax ~ N and the set is non-empty). Generous readings: d > N^{0.8} carries 0.077-0.194, d > dmax/8 carries 0.26-0.32. The variance is spread nearly evenly across all 12-14 dyadic ranges, with no single range above 0.24 and the largest contribution often at d = 1. The secondary synchronization check also fails to fire. Caveat that cuts the other way for the proposer: the reason the literal critical set is empty is that the kernel reciprocal family truncates at y = sqrt(U_k), not sqrt(x), so mid-block the object simply has no d ~ sqrt(x) content for SGV to be empty about; the mass-location kill cannot fire mid-block by construction, and only window B (top-of-block, dmax ~ N) is a genuine test of the stated condition. It fails there too (-0.024)."
+  },
+
+  "W2_I_agent2_buchstab_parity_identity": {
+    "kill_condition_quoted": "Compute exactly, for k = 4, 5 and a handful of complete-square samples X_n in each block ... the Buchstab decompositions of C_{k,n} and 2*E_{k,n} restricted to the critical bilinear window m in [X_n^{1/2-delta}, X_n^{1/2+delta}] with delta = 1/10. Test 1 (kills Part A): if the two restricted values are not exactly equal -- not even after retuning the reindexation offsets -- the parity-cancellation identity is false and the angle dies as stated. Test 2 ...: if their ratio deviates from 1 by more than X_n^{-1/4} at several samples, even statistical cancellation at the needed strength is absent.",
+    "verdict": "INFEASIBLE",
+    "underspecified": [
+      "The Buchstab decomposition is not specified. The mechanism says 'Iterate until every term is either an exact Type-I count or a terminal bilinear Type-II sum with both variables in [x^delta, x^{1-delta}]', but the iteration policy (which terms are re-expanded, in which order, how many iterations J, and against which sieving base at each step) determines the resulting terms; different admissible policies yield different 'restricted values', so 'the Buchstab decomposition of C' is not a well-defined number.",
+      "The restriction variable m is not identified. E = sum_d M(d) Delta_d has natural variables (d, prime q); C is a mass over y-rough integers with no bilinear variable at all until a decomposition is chosen. Which variable is restricted to [X^{1/2-delta}, X^{1/2+delta}] is never stated, and for C the answer depends entirely on the unspecified decomposition.",
+      "'C_{k,n}' is ambiguous between the comb mass Mplus(X) (an integer) and the PNT-corrected C = Mplus(X) - 2 sum_d M(d) Li_d (not an integer). Part A claims an 'integer identity under the kernel-checked reciprocal reindexation', which only makes sense for the former, but the kill test compares against '2*E_{k,n}', which is defined only for the latter.",
+      "'not even after retuning the reindexation offsets' quantifies over a family of offsets that is never defined; the negative half of Test 1 therefore has no domain to search.",
+      "Block indexing is inconsistent with the stated range: the proposal names 'k = 4, 5' and 'feasible at X up to ~10^7', but under the verified conventions blocks 4 and 5 are (210, 2310] and (2310, 30030], i.e. X <= 3.0e4. Which of the two is meant changes the critical window [X^{0.4}, X^{0.6}] from ~[6,25] to ~[4000,63000]."
+    ],
+    "what_would_pin_it": "a written-out decomposition (base primes, iteration rule, stopping rule) producing an explicit finite list of terms for both C and 2E, plus an explicit definition of the offset family and of which of Mplus / C is meant. With those, the test is a few minutes of exact integer arithmetic on the existing framework."
+  },
+
+  "W2_I_agent3_perron_polar_cancellation": {
+    "kill_condition_quoted": "compute H_{k,n} ... exactly for k = 2 and k = 3 across all complete-square samples in the block, for Lambda in {0, 1}; independently evaluate the claimed contour representation numerically (rigorous quadrature of Phi_{k,Lambda} h-hat X^s on Re s = 2, with the polar term of C and of 2E computed separately). Two failure signals, either fatal: (i) the s = 1 polar parts of C and 2E do not cancel identically -- i.e. the residual grows like X or X/log X across the block instead of being o(X) -- which falsifies the exact-cancellation claim; (ii) the height projector IsCanonicalHighHeight ... fails to admit any fixed Mellin symbol, detectable because no single Phi reproduces H_{k,n} across the samples of one block to within the proven truncation error.",
+    "signal_i": {
+      "status": "IMPLEMENTED (the computable half)",
+      "what_ran": "H(x) = C - 2E computed exactly as the integer Msm_y(x) - sum_d M(d) pi_d at every square sample of blocks k=6,7,8,9 (31449 samples, x = 3.03e4 .. 1.0e9). Msm_y(x) = M(x) + sum_{j<=dmax} mu(j)(pi(x//j) - pi(y)) exactly (every n <= 1e9 has at most one prime factor > y_9 = 80435, since y^2 = 6.47e9). Cross-checked against 126 wave-1 t7_agent6.csv samples: Msm and Mplus integer-identical, C-2E and E agree to <1e-6. Blocks 6-9 extend the wave-1 range (which stopped at 2.23e8) by a factor 4.5 and add block 9.",
+      "mean_absH_over_x": {"k6": 3.61e-4, "k7": 8.64e-5, "k8": 1.92e-5, "k9": 5.94e-6},
+      "mean_absH_over_x_over_logx": {"k6": 4.22e-3, "k7": 1.26e-3, "k8": 3.39e-4, "k9": 1.19e-4},
+      "mean_absH_over_sqrt_x": {"k6": 0.1364, "k7": 0.1400, "k8": 0.1468, "k9": 0.1322},
+      "pooled_slope_log_absH": 0.488,
+      "block_mean_slope_log_absH": 0.506,
+      "verdict": "SURVIVES (signal (i) does not fire)",
+      "verdict_detail": "H is o(X) and o(X/log X) by three and four orders of magnitude respectively and falling: |H|/x drops 3.6e-4 -> 5.9e-6 across k=6..9 while |H|/sqrt(x) is flat at 0.132-0.147 and the fitted exponent is 0.49-0.51. Whatever the correct symbol-level statement, there is no residual of size X or X/log X: the s=1 polar mass cancels and what is left sits exactly at the renewal scale sqrt(x). This is the same x^{1/2} drift wave 1 measured for the collapse residual R (theta = 0.501), now confirmed for the full scalar face out to 1e9."
+    },
+    "signal_ii": {
+      "status": "INFEASIBLE",
+      "underspecified": [
+        "Phi_{k,Lambda}(s) is never written down. The mechanism gives only factor sketches ((1/zeta)(-zeta'/zeta) for E, (-zeta'/zeta)G_k for C) with no account of the truncation at y, the clamp a_d = max(y, x//(d+1)) that defines the reciprocal family, or the block-window centering. Without Phi there is nothing to quadrature.",
+        "h-hat_{k,n}(s), the Mellin transform of the block-and-wheel mollifier, is only bounded (|h-hat| <= C_sigma (1 + rho|t|)^{-2}), never defined; the test requires its values, not a majorant.",
+        "'to within the proven truncation error' names a quantity that does not exist -- no truncation error has been proved for this representation -- so signal (ii) has no threshold to test against.",
+        "Lambda enters 'only through the height projector inside Phi' with no formula, so H_{k,n} at Lambda = 0 and Lambda = 1 cannot be distinguished computationally; the requested 'for Lambda in {0,1}' sweep has no content.",
+        "The requested blocks k = 2, 3 are (6,30] and (30,210], i.e. at most 12 square samples in total, which cannot discriminate a Mellin symbol even if one were supplied."
+      ],
+      "what_would_pin_it": "an explicit Phi_{k,Lambda}(s) and h-hat_{k,n}(s) as computable functions plus a stated truncation bound. Signal (i) needed none of this and was run."
+    }
+  },
+
+  "deviations_declared": [
+    "W2-L run at blocks k=6..9 (x = 3.03e4..1.0e9) rather than the proposer's k=3,4 with x up to ~1e7 -- a superset in x by two orders of magnitude; the within-block vs cross-block slope distinction is reported explicitly because y_k is constant inside a block.",
+    "All wave-2 tests are capped at x <= 1e9 by the wave-1 arrays, so block 9 = (2.23e8, 6.47e9] is covered only over its bottom 15%. No block-9 statistic should be read as a full-block statistic.",
+    "W2-G2a: the proposer's summation range m^2 <= sqrt(x) was implemented as m^2 <= dmax = x//(y+1); the two agree identically because Delta_d = 0 for d > dmax under the kernel conventions.",
+    "W2-G2b: 'correlation matrix ... at fixed n' does not define an ensemble; reported over (i) the pinned square samples of a block (per the wave-2 brief) and (ii) the window r < H at fixed N. The two disagree by a factor ~3 in variance inflation and this is why the verdict is INCONCLUSIVE rather than a call.",
+    "W2-Q: run at the proposer's N = 30000, H = ceil(N^{2/3}) = 966, plus two extra windows (top-of-block-8, where dmax ~ N so the literal critical set is non-empty, and the block-9 primorial-boundary window). The extra windows were necessary because at the proposer's own parameters the set d > N^{1-o(1)} is empty under the verified conventions.",
+    "W2-Q secondary: H = 966 held fixed across the three windows for comparability rather than H = ceil(N^{2/3}) per window; 20000 random prime pairs sampled per window rather than all ~1.3e6 pairs.",
+    "W2-G1: rho_n = (X_n - L)/Q_k underflows to 0 for k >= 4 under the kernel-extracted Q_k = (U//P+1)P (record 006's modulus-magnitude obstacle); a full sensitivity rerun under agent7's stated Q = 6*U_k is reported and does not change the verdict.",
+    "W2-G1: the modulus set was extended from the proposer's {2,3,5,6,10,15,30} to 23 moduli dividing 44100. This was required: the two templates are degenerate in the X-exponent (both ~0.5) and differ only in the q-exponent (-0.5 vs ~0), so the q-profile is the only discriminating axis. Verdicts are reported both on the full set and restricted to the proposer's own set.",
+    "W2-G1: block-9 amplitudes required mu residue-class sums over the whole block up to 6.47e9, computed by an independent segmented sieve (not stored); its 31 segments below 1e9 are byte-identical to fw_mu.npy.",
+    "W2-I agent3: only failure-signal (i) was implemented; (ii) is INFEASIBLE. agent2 is INFEASIBLE in full.",
+    "Arithmetic: all counts, Mertens values, Msm, Mplus and H are exact int64; only Li-derived quantities are float64. Measured worst-case float error: max |float(C-2E) - exact H| = 1.03e-7 on |H| ~ 4e3 over 16686 k=9 samples (relative 2.6e-11); max deviation of the exact-collapse identity residual 1.03e-7."
+  ],
+
+  "telemetry": {
+    "phase_tag": "killtests2",
+    "box": "mobius-fleet-1 (16 vCPU, 31 GB), Ubuntu, numpy multiprocessing 14 workers",
+    "wall_times_s": {
+      "kt2_a (W2-L, W2-G2a, W2-G2b, W2-Q + Weyl)": 14.2,
+      "kt2_b (W2-G1, incl. 250-segment mu sieve to 6.47e9)": 94.9,
+      "kt2_c (W2-I agent3 signal i)": 4.7,
+      "kt2_b2 (W2-G1 modulus-convention sensitivity)": 1.2,
+      "total_including_smoke_tests_and_one_rerun_min": "~9"
+    },
+    "peak_process_rss_gb": {"kt2_a": 0.08, "kt2_b": 6.59, "kt2_c": 0.05, "kt2_b2": 0.4},
+    "page_cache_footprint_gb": 17.0,
+    "cpu_utilization_heavy_phase": "82.0-84.3% user + 3.2-6.0% sys, 12.4% idle, sustained over the 59 s block-9 mu sieve (14 of 16 cores = 87.5% ceiling); mpstat 5 s samples in b_mpstat.txt",
+    "note": "kt2_a is fast (14 s for 31449 samples x ~12000 reciprocal terms) because the 17 GB framework arrays were already resident in page cache from the wave-1 build; a cold run pays an extra sequential read."
+  },
+
+  "files": [
+    "kt2_a.py", "kt2_b.py", "kt2_b2.py", "kt2_c.py", "qprof.py", "wincorr.py",
+    "a_samples_k{6,7,8,9}.csv", "a_dyadic_corr_k{6,7,8,9}.csv",
+    "a8_window_{midblock9_N30000,topblock8_N14329,boundary9_N14936}.csv",
+    "a_summary.json", "a_window_dyadic_corr.json",
+    "b_smallq.csv", "b_summary.json", "b_qprofile.json",
+    "b2_convention.csv", "b2_summary.json",
+    "c_scalarface.csv", "c_summary.json",
+    "a.log", "b.log", "c.log", "a_mpstat.txt", "b_mpstat.txt"
+  ],
+
+  "verdict_table": {
+    "W2-L  agent6 kill 3 (across-d L^2 / quadratic variation)": "SURVIVES",
+    "W2-G1 agent7 (renewal vs raw template discrimination at 1e8-1e9)": "KILLED",
+    "W2-G2a agent1 (a) (square-moduli / principal-character locus)": "SURVIVES",
+    "W2-G2b agent1 (b) (dyadic-block correlation, H=1-route arbiter)": "INCONCLUSIVE",
+    "W2-Q  agent8 (window variance mass location + synchronization check)": "SURVIVES",
+    "W2-I  agent2 (Buchstab restricted Type-II equality)": "INFEASIBLE",
+    "W2-I  agent3 (i) (s=1 polar cancellation / H = o(X))": "SURVIVES",
+    "W2-I  agent3 (ii) (fixed Mellin symbol for the height projector)": "INFEASIBLE"
+  }
+}

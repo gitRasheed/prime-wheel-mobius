@@ -1,0 +1,32 @@
+{
+ "a8_window_boundary9_N14936.csv": {
+  "H": 966,
+  "n_blocks": 12,
+  "mean_offdiag_corr": 0.2937787687207817,
+  "pos_offdiag_frac": 0.6515151515151515,
+  "max_offdiag_corr": 0.8499086182967083,
+  "min_offdiag_corr": -0.49261949007585004,
+  "var_E_over_sum_var_Bj": 5.0763151380733715,
+  "mean_absE_over_sum_absBj": 0.6481404198031395
+ },
+ "a8_window_midblock9_N30000.csv": {
+  "H": 966,
+  "n_blocks": 14,
+  "mean_offdiag_corr": 0.048564698179249716,
+  "pos_offdiag_frac": 0.6263736263736264,
+  "max_offdiag_corr": 0.7123397706460249,
+  "min_offdiag_corr": -0.7306225125480578,
+  "var_E_over_sum_var_Bj": 1.4914919741512787,
+  "mean_absE_over_sum_absBj": 0.6079418101594861
+ },
+ "a8_window_topblock8_N14329.csv": {
+  "H": 607,
+  "n_blocks": 14,
+  "mean_offdiag_corr": 0.13831053232567192,
+  "pos_offdiag_frac": 0.5934065934065934,
+  "max_offdiag_corr": 0.8440629014122363,
+  "min_offdiag_corr": -0.7809991515129298,
+  "var_E_over_sum_var_Bj": 2.9543632182821575,
+  "mean_absE_over_sum_absBj": 0.5537348762779764
+ }
+}

@@ -1,0 +1,235 @@
+{
+ "per_k_q": {
+  "k6_q2": {
+   "slope_absP_Qkernel": 1.517159948911457e-16,
+   "slope_absP_Q6U": 1.517159948911457e-16,
+   "mean_ratio_renewal_Q6U": 0.1385290657831042,
+   "top_ratio_renewal_Q6U": 0.12973540502325803,
+   "mean_absP_Q6U": 32.75,
+   "mean_absP_Qkernel": 32.75
+  },
+  "k6_q3": {
+   "slope_absP_Qkernel": 6.758863265444588e-16,
+   "slope_absP_Q6U": 6.758863265444588e-16,
+   "mean_ratio_renewal_Q6U": 0.17862305308588722,
+   "top_ratio_renewal_Q6U": 0.18759859078938346,
+   "mean_absP_Q6U": 35.44444444444444,
+   "mean_absP_Qkernel": 35.44444444444444
+  },
+  "k6_q5": {
+   "slope_absP_Qkernel": -0.02655214244466107,
+   "slope_absP_Q6U": -5.259790347335836,
+   "mean_ratio_renewal_Q6U": 0.04066047024132869,
+   "top_ratio_renewal_Q6U": 2.6158887181559542e-12,
+   "mean_absP_Q6U": 5.150000000124321,
+   "mean_absP_Qkernel": 5.1499999999999995
+  },
+  "k6_q6": {
+   "slope_absP_Qkernel": 0.044161165424023,
+   "slope_absP_Q6U": 0.4107133643245155,
+   "mean_ratio_renewal_Q6U": 0.16674100057794003,
+   "top_ratio_renewal_Q6U": 0.16581529460950106,
+   "mean_absP_Q6U": 23.083333333346918,
+   "mean_absP_Qkernel": 23.083333333333332
+  },
+  "k6_q10": {
+   "slope_absP_Qkernel": -0.057586540375929744,
+   "slope_absP_Q6U": -2.6780165092143324,
+   "mean_ratio_renewal_Q6U": 0.4323001338861074,
+   "top_ratio_renewal_Q6U": 0.16564327799234196,
+   "mean_absP_Q6U": 42.24166666670022,
+   "mean_absP_Qkernel": 42.24166666666667
+  },
+  "k6_q15": {
+   "slope_absP_Qkernel": 0.06644951966387762,
+   "slope_absP_Q6U": -0.8760987985830125,
+   "mean_ratio_renewal_Q6U": 0.8724949414235934,
+   "top_ratio_renewal_Q6U": 1.0045899428759042,
+   "mean_absP_Q6U": 71.84166666673501,
+   "mean_absP_Qkernel": 71.84166666666665
+  },
+  "k6_q30": {
+   "slope_absP_Qkernel": -0.08858420767962955,
+   "slope_absP_Q6U": -0.8799814811318224,
+   "mean_ratio_renewal_Q6U": 3.676823532548234,
+   "top_ratio_renewal_Q6U": 1.232504816285867,
+   "mean_absP_Q6U": 208.7708333334299,
+   "mean_absP_Qkernel": 208.77083333333334
+  },
+  "k7_q2": {
+   "slope_absP_Qkernel": 5.683945714230994e-17,
+   "slope_absP_Q6U": 5.683945714230994e-17,
+   "mean_ratio_renewal_Q6U": 0.04544474508254504,
+   "top_ratio_renewal_Q6U": 0.0510915330669541,
+   "mean_absP_Q6U": 46.875,
+   "mean_absP_Qkernel": 46.875
+  },
+  "k7_q3": {
+   "slope_absP_Qkernel": 9.287601570252333e-17,
+   "slope_absP_Q6U": 9.287601570252333e-17,
+   "mean_ratio_renewal_Q6U": 0.16187039554209054,
+   "top_ratio_renewal_Q6U": 0.21581109440863022,
+   "mean_absP_Q6U": 113.16666666666667,
+   "mean_absP_Qkernel": 113.16666666666667
+  },
+  "k7_q5": {
+   "slope_absP_Qkernel": -0.44315890440387706,
+   "slope_absP_Q6U": -3.0546814885358744,
+   "mean_ratio_renewal_Q6U": 0.1835630991857404,
+   "top_ratio_renewal_Q6U": 9.02818219594935e-12,
+   "mean_absP_Q6U": 87.95000000202036,
+   "mean_absP_Qkernel": 87.95
+  },
+  "k7_q6": {
+   "slope_absP_Qkernel": 0.18758707575251216,
+   "slope_absP_Q6U": -1.6047730516757561,
+   "mean_ratio_renewal_Q6U": 0.11690142820425875,
+   "top_ratio_renewal_Q6U": 0.13450955930981207,
+   "mean_absP_Q6U": 68.12500000456562,
+   "mean_absP_Qkernel": 68.125
+  },
+  "k7_q10": {
+   "slope_absP_Qkernel": -0.1784981320524596,
+   "slope_absP_Q6U": -2.383884810423525,
+   "mean_ratio_renewal_Q6U": 0.2463704873201914,
+   "top_ratio_renewal_Q6U": 0.1289689414163139,
+   "mean_absP_Q6U": 91.33333333469318,
+   "mean_absP_Qkernel": 91.33333333333333
+  },
+  "k7_q15": {
+   "slope_absP_Qkernel": 0.14283632329497684,
+   "slope_absP_Q6U": -0.48035655502890245,
+   "mean_ratio_renewal_Q6U": 0.9316474793909792,
+   "top_ratio_renewal_Q6U": 0.3425239783535544,
+   "mean_absP_Q6U": 311.241666670292,
+   "mean_absP_Qkernel": 311.2416666666666
+  },
+  "k7_q30": {
+   "slope_absP_Qkernel": 0.25035839943350924,
+   "slope_absP_Q6U": -2.2549006609780293,
+   "mean_ratio_renewal_Q6U": 1.892981818315337,
+   "top_ratio_renewal_Q6U": 1.0423849124464493,
+   "mean_absP_Q6U": 454.9402777789258,
+   "mean_absP_Qkernel": 454.94027777777774
+  },
+  "k8_q2": {
+   "slope_absP_Qkernel": -5.264698921732869e-16,
+   "slope_absP_Q6U": -5.264698921732869e-16,
+   "mean_ratio_renewal_Q6U": 0.046164354011285325,
+   "top_ratio_renewal_Q6U": 0.03673773857998122,
+   "mean_absP_Q6U": 210.16666666666666,
+   "mean_absP_Qkernel": 210.16666666666666
+  },
+  "k8_q3": {
+   "slope_absP_Qkernel": -4.2288623950960357e-16,
+   "slope_absP_Q6U": -4.2288623950960357e-16,
+   "mean_ratio_renewal_Q6U": 0.00706646573445908,
+   "top_ratio_renewal_Q6U": 0.0,
+   "mean_absP_Q6U": 23.375,
+   "mean_absP_Qkernel": 23.375
+  },
+  "k8_q5": {
+   "slope_absP_Qkernel": -0.00506944879873612,
+   "slope_absP_Q6U": -0.23645564292338406,
+   "mean_ratio_renewal_Q6U": 0.20220334022267292,
+   "top_ratio_renewal_Q6U": 0.0,
+   "mean_absP_Q6U": 531.9250000648775,
+   "mean_absP_Qkernel": 531.9250000000001
+  },
+  "k8_q6": {
+   "slope_absP_Qkernel": -0.09535176984008294,
+   "slope_absP_Q6U": 3.2821850589512374,
+   "mean_ratio_renewal_Q6U": 0.02053005377328898,
+   "top_ratio_renewal_Q6U": 0.00912928034750032,
+   "mean_absP_Q6U": 51.34027787770548,
+   "mean_absP_Qkernel": 51.34027777777778
+  },
+  "k8_q10": {
+   "slope_absP_Qkernel": 0.1987555799401931,
+   "slope_absP_Q6U": 1.3845715417009368,
+   "mean_ratio_renewal_Q6U": 0.3137896644913634,
+   "top_ratio_renewal_Q6U": 0.3206315813666651,
+   "mean_absP_Q6U": 670.604166744592,
+   "mean_absP_Qkernel": 670.6041666666666
+  },
+  "k8_q15": {
+   "slope_absP_Qkernel": 0.3853979130900998,
+   "slope_absP_Q6U": -0.6468796489199926,
+   "mean_ratio_renewal_Q6U": 1.4818228301147809,
+   "top_ratio_renewal_Q6U": 1.2474760861377743e-09,
+   "mean_absP_Q6U": 2334.166667028261,
+   "mean_absP_Qkernel": 2334.1666666666665
+  },
+  "k8_q30": {
+   "slope_absP_Qkernel": -0.2134232321649105,
+   "slope_absP_Q6U": 0.4162844269866665,
+   "mean_ratio_renewal_Q6U": 0.44753175862501376,
+   "top_ratio_renewal_Q6U": 0.3480839933735538,
+   "mean_absP_Q6U": 473.1694445754056,
+   "mean_absP_Qkernel": 473.1694444444444
+  },
+  "k9_q2": {
+   "slope_absP_Qkernel": 2.700506198024506e-16,
+   "slope_absP_Q6U": 2.700506198024506e-16,
+   "mean_ratio_renewal_Q6U": 0.1537959009244924,
+   "top_ratio_renewal_Q6U": 0.20939054779399366,
+   "mean_absP_Q6U": 2145.9166666666665,
+   "mean_absP_Qkernel": 2145.9166666666665
+  },
+  "k9_q3": {
+   "slope_absP_Qkernel": 4.4360537976633345e-16,
+   "slope_absP_Q6U": 4.4360537976633345e-16,
+   "mean_ratio_renewal_Q6U": 0.052600586312958525,
+   "top_ratio_renewal_Q6U": 0.0,
+   "mean_absP_Q6U": 557.9861111111112,
+   "mean_absP_Qkernel": 557.9861111111112
+  },
+  "k9_q5": {
+   "slope_absP_Qkernel": -0.16342296759279842,
+   "slope_absP_Q6U": -0.7032210557725459,
+   "mean_ratio_renewal_Q6U": 0.2660196616603892,
+   "top_ratio_renewal_Q6U": 0.2735721876137422,
+   "mean_absP_Q6U": 2473.6666643257254,
+   "mean_absP_Qkernel": 2473.6666666666665
+  },
+  "k9_q6": {
+   "slope_absP_Qkernel": 0.22243324043438112,
+   "slope_absP_Q6U": -2.2341330253378033,
+   "mean_ratio_renewal_Q6U": 0.3091896406616705,
+   "top_ratio_renewal_Q6U": 0.35521293901019935,
+   "mean_absP_Q6U": 2516.701391047572,
+   "mean_absP_Qkernel": 2516.701388888889
+  },
+  "k9_q10": {
+   "slope_absP_Qkernel": -0.10925081831913067,
+   "slope_absP_Q6U": -0.9494250112988473,
+   "mean_ratio_renewal_Q6U": 1.8159601737802182,
+   "top_ratio_renewal_Q6U": 1.9505878945016384,
+   "mean_absP_Q6U": 11965.47499817882,
+   "mean_absP_Qkernel": 11965.475
+  },
+  "k9_q15": {
+   "slope_absP_Qkernel": 0.08268160544944607,
+   "slope_absP_Q6U": -0.32378204813425276,
+   "mean_ratio_renewal_Q6U": 0.7917940938533027,
+   "top_ratio_renewal_Q6U": 0.9940273429951607,
+   "mean_absP_Q6U": 4370.666667607303,
+   "mean_absP_Qkernel": 4370.666666666667
+  },
+  "k9_q30": {
+   "slope_absP_Qkernel": -0.2354369546153787,
+   "slope_absP_Q6U": -1.9759801474003962,
+   "mean_ratio_renewal_Q6U": 0.8486747939404896,
+   "top_ratio_renewal_Q6U": 0.4008410444007026,
+   "mean_absP_Q6U": 3215.847226318567,
+   "mean_absP_Qkernel": 3215.847222222222
+  }
+ },
+ "qslope_meanabsP_Q6U_vs_q": {
+  "6": 0.7611827096524859,
+  "7": 0.7595651531821808,
+  "8": 0.9903345831296066,
+  "9": 0.5365359284980257
+ },
+ "note": "renewal template predicts d log|P_q| / d log X = +0.5 and d log|P_q| / d log q = -0.5"
+}

@@ -1,0 +1,234 @@
+[    0.0s] hard asserts OK: M(6)=-1 M(8)=-2 M(30)=-3, E(6,8)=1-(Li(8)-Li(6))
+[    0.0s] === part 1: per-sample sweeps (agent6 kill3, agent1 a+b) ===
+[    0.0s] k=6: L=30030 U=510510 y=715 samples n=173..713 (541) X=30275..509795
+[    0.0s]   k=6 done
+[    0.0s] k=7: L=510510 U=9699690 y=3115 samples n=714..3113 (2400) X=511224..9696995
+[    0.1s]   k=7 done
+[    0.1s] k=8: L=9699690 U=223092870 y=14937 samples n=3114..14935 (11822) X=9703224..223084095
+[    0.8s]   k=8 done
+[    0.8s] k=9: L=223092870 U=6469693230 y=80435 samples n=14936..31621 (16686) X=223113968..999950883
+[    2.0s]   k=9 done
+[    2.0s] agent6 kill3: {
+ "slope_logDiag": 0.9310108494896883,
+ "slope_logAbsOff": 0.8825894861467439,
+ "slope_block_mean_Diag": 0.9123650639846583,
+ "slope_block_mean_absOff": 0.9094578631775312
+}
+[    2.0s] agent1(a): {
+ "slope_log_absS": 0.43650235991504316,
+ "slope_block_mean_absS": 0.4345569159420243,
+ "slope_block_mean_signedS": 0.4664035867678379,
+ "block_mean_signed": [
+  -6.236581088238993,
+  -17.535391673215642,
+  -87.76739130237695,
+  -235.12659273935728
+ ]
+}
+[    2.2s] agent1(b) k=9: {
+ "dyadic_js": [
+  0,
+  1,
+  2,
+  3,
+  4,
+  5,
+  6,
+  7,
+  8,
+  9,
+  10,
+  11,
+  12,
+  13
+ ],
+ "d_ranges": [
+  [
+   1,
+   1
+  ],
+  [
+   2,
+   3
+  ],
+  [
+   4,
+   7
+  ],
+  [
+   8,
+   15
+  ],
+  [
+   16,
+   31
+  ],
+  [
+   32,
+   63
+  ],
+  [
+   64,
+   127
+  ],
+  [
+   128,
+   255
+  ],
+  [
+   256,
+   511
+  ],
+  [
+   512,
+   1023
+  ],
+  [
+   1024,
+   2047
+  ],
+  [
+   2048,
+   4095
+  ],
+  [
+   4096,
+   8191
+  ],
+  [
+   8192,
+   16383
+  ]
+ ],
+ "mean_offdiag_corr": 0.27366257326231125,
+ "max_offdiag_corr": 0.7446594993568195,
+ "min_offdiag_corr": -0.5117821119733093,
+ "pos_offdiag_frac": 0.945054945054945,
+ "mean_offdiag_corr_detrended": 0.2821105048828475,
+ "pos_offdiag_frac_detrended": 0.945054945054945,
+ "mean_cancel_ratio_absE_over_sumabsB": 0.5809982509652367,
+ "mean_cancel_ratio_absE_over_sum_abs_terms": 0.02471660430112244,
+ "var_E_over_sum_var_Bj": 4.565933997713371,
+ "n_dyadic_blocks": 14,
+ "sqrt_n_dyadic": 3.7416573867739413,
+ "mean_sign_agreement_with_E": 0.6705364634167222,
+ "mean_abs_Bj": [
+  414.91403251514026,
+  167.13177762541082,
+  355.4502840868081,
+  327.0788086125118,
+  285.59682278809817,
+  233.6786280283435,
+  217.64101634310896,
+  233.2003509478272,
+  210.97829084805275,
+  201.144674416836,
+  220.0479683947633,
+  272.35842553811045,
+  166.98245128308866,
+  52.83683910190448
+ ]
+}
+[    2.2s] === part 2: agent8 window variance mass location ===
+[    2.3s] window A: {
+ "tag": "midblock9_N30000",
+ "k": 9,
+ "N": 30000,
+ "H": 966,
+ "y": 80435,
+ "X_first": 900060000,
+ "X_last": 958893155,
+ "dmax_first": 11189,
+ "dmax_last": 11921,
+ "window_mean_E": -2683.467629546272,
+ "window_var_E": 1031420.3267391257,
+ "sqrt_var_over_N2": 1.1284318446733922e-06,
+ "abs_mean_E_over_N2": 2.981630699495858e-06,
+ "contrib_sum": 1.0,
+ "varfrac_d>N": 0.0,
+ "thr_d>N": 32768,
+ "varfrac_d>N^0.95": 0.0,
+ "thr_d>N^0.95": 32768,
+ "varfrac_d>N^0.9": 0.0,
+ "thr_d>N^0.9": 16384,
+ "varfrac_d>N^0.8": 0.07691887912572344,
+ "thr_d>N^0.8": 4096,
+ "varfrac_d>dmax/2": 0.056106273503852534,
+ "thr_d>dmax/2": 8192,
+ "varfrac_d>dmax/4": 0.07691887912572344,
+ "thr_d>dmax/4": 4096,
+ "varfrac_d>dmax/8": 0.2616255345224063,
+ "thr_d>dmax/8": 2048,
+ "varfrac_d>sqrt(x)/2": 0.0,
+ "thr_d>sqrt(x)/2": 16384
+}
+[    2.4s] window B: {
+ "tag": "topblock8_N14329",
+ "k": 8,
+ "N": 14329,
+ "H": 607,
+ "y": 14937,
+ "X_first": 205348899,
+ "X_last": 223084095,
+ "dmax_first": 13746,
+ "dmax_last": 14934,
+ "window_mean_E": -1578.4702773495292,
+ "window_var_E": 838567.7130751737,
+ "sqrt_var_over_N2": 4.460025103163327e-06,
+ "abs_mean_E_over_N2": 7.687845434340441e-06,
+ "contrib_sum": 0.9999999999999998,
+ "varfrac_d>N": 0.0,
+ "thr_d>N": 16384,
+ "varfrac_d>N^0.95": 0.0,
+ "thr_d>N^0.95": 16384,
+ "varfrac_d>N^0.9": -0.02387218461406956,
+ "thr_d>N^0.9": 8192,
+ "varfrac_d>N^0.8": 0.19373793980461818,
+ "thr_d>N^0.8": 4096,
+ "varfrac_d>dmax/2": -0.02387218461406956,
+ "thr_d>dmax/2": 8192,
+ "varfrac_d>dmax/4": 0.19373793980461818,
+ "thr_d>dmax/4": 4096,
+ "varfrac_d>dmax/8": 0.31780447126764116,
+ "thr_d>dmax/8": 2048,
+ "varfrac_d>sqrt(x)/2": -0.02387218461406956,
+ "thr_d>sqrt(x)/2": 8192
+}
+[    2.5s] window C: {
+ "tag": "boundary9_N14936",
+ "k": 9,
+ "N": 14936,
+ "H": 966,
+ "y": 80435,
+ "X_first": 223113968,
+ "X_last": 252873603,
+ "dmax_first": 2773,
+ "dmax_last": 3143,
+ "window_mean_E": 308.38478906566695,
+ "window_var_E": 2560356.7559891227,
+ "sqrt_var_over_N2": 7.1726829077172394e-06,
+ "abs_mean_E_over_N2": 1.3823701222774166e-06,
+ "contrib_sum": 1.0,
+ "varfrac_d>N": 0.0,
+ "thr_d>N": 16384,
+ "varfrac_d>N^0.95": 0.0,
+ "thr_d>N^0.95": 16384,
+ "varfrac_d>N^0.9": 0.0,
+ "thr_d>N^0.9": 8192,
+ "varfrac_d>N^0.8": 0.0,
+ "thr_d>N^0.8": 4096,
+ "varfrac_d>dmax/2": 0.11763613857624182,
+ "thr_d>dmax/2": 2048,
+ "varfrac_d>dmax/4": 0.18134735163491456,
+ "thr_d>dmax/4": 1024,
+ "varfrac_d>dmax/8": 0.28352400178715664,
+ "thr_d>dmax/8": 512,
+ "varfrac_d>sqrt(x)/2": 0.0,
+ "thr_d>sqrt(x)/2": 8192
+}
+[    2.5s] === part 3: agent8 secondary Weyl-sum check ===
+[    4.7s] weyl: {"tag": "boundary9_N14936", "N": 14936, "H": 966, "n_primes": 803, "n_pairs": 19978, "mean_absS_over_H": 0.006908697845985202, "median_absS_over_H": 0.001068392218561579, "p90_absS_over_H": 0.006437106208509863, "max_absS_over_H": 0.8668714023385184, "frac_absS_gt_half_H": 0.00030033036339973974, "mean_absS_over_sqrtH": 0.2147260634520143, "mean_q": 123604667.94293723, "H2_over_meanq": 0.007549520706052919}
+[    4.7s] weyl: {"tag": "midblock9_N30000", "N": 30000, "H": 966, "n_primes": 1491, "n_pairs": 19989, "mean_absS_over_H": 0.0059620210731881375, "median_absS_over_H": 0.001046519710577452, "p90_absS_over_H": 0.004919261466611681, "max_absS_over_H": 0.9681391546950693, "frac_absS_gt_half_H": 0.0006003301815998799, "mean_absS_over_sqrtH": 0.1853028376407568, "mean_q": 499183127.1695933, "H2_over_meanq": 0.0018693660687032158}
+[    4.7s] weyl: {"tag": "midblock9_N22000", "N": 22000, "H": 966, "n_primes": 1129, "n_pairs": 19985, "mean_absS_over_H": 0.005998135466466838, "median_absS_over_H": 0.0010515336294771532, "p90_absS_over_H": 0.005183200361961848, "max_absS_over_H": 0.927531711329956, "frac_absS_gt_half_H": 0.0002501876407305479, "mean_absS_over_sqrtH": 0.18642529250498277, "mean_q": 269348016.37393045, "H2_over_meanq": 0.003464499247339985}
+[    4.7s] wrote a_summary.json
+[    4.7s] done; wall=4.7s peak RSS=0.08 GB

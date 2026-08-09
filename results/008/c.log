@@ -1,0 +1,27 @@
+[    0.0s] hard asserts OK
+[    0.0s] k=6: 541 samples, y=715, max float resid 1.688e-11
+[    0.1s] k=7: 2400 samples, y=3115, max float resid 6.324e-10
+[    0.5s] k=8: 11822 samples, y=14937, max float resid 2.841e-08
+[    1.5s] k=9: 16686 samples, y=80435, max float resid 1.030e-07
+[    1.5s] cross-check vs wave-1 t7_agent6.csv: 126 samples agree exactly (Msm, Mplus integer-identical; C-2E and E to 1e-6)
+[    1.6s] summary: {
+ "slope_log_absH": 0.4882717745708496,
+ "slope_block_mean_absH": 0.5055782229188742,
+ "block_mean_absH_over_x": [
+  0.00036090942291209214,
+  8.641992638469306e-05,
+  1.9186428009093383e-05,
+  5.9424271318551055e-06
+ ],
+ "block_mean_absH_over_sqrtx": [
+  0.13644720864337467,
+  0.13995522686877654,
+  0.14678450028042303,
+  0.13220655047325663
+ ]
+}
+[    1.6s] k=6: |H|/x mean 3.609e-04, |H|/(x/log x) 4.224e-03, |H|/sqrt(x) 0.136, slope log|H| 0.408
+[    1.6s] k=7: |H|/x mean 8.642e-05, |H|/(x/log x) 1.262e-03, |H|/sqrt(x) 0.140, slope log|H| 0.470
+[    1.6s] k=8: |H|/x mean 1.919e-05, |H|/(x/log x) 3.391e-04, |H|/sqrt(x) 0.147, slope log|H| 0.556
+[    1.6s] k=9: |H|/x mean 5.942e-06, |H|/(x/log x) 1.187e-04, |H|/sqrt(x) 0.132, slope log|H| 0.372
+[    1.6s] done; wall=1.6s peak RSS=0.05 GB
