@@ -333,3 +333,20 @@ INFEASIBLE verdicts this wave are a process finding: kill tests must
 be computable as stated or the proposal owes a formulation pass.
 Next: first analytic experiment declaration (010, G2's classical
 QSCL lemma) with blocking Codex adversarial review per law 13.
+
+### 2026-08-09-13 — review 011: 010 refuted pre-launch; cross-model review pays for itself on first use
+
+The blocking Codex review came back (completion signal was lost in
+the plugin chain for ~1h — the review itself finished promptly; ops
+note: check task output files when a forwarder goes quiet). Verdict:
+the 010 declaration was mathematically defective — the frozen
+multiplicity claim is false (4 roots of x²≡1 mod 8 vs claimed 2),
+the exp-sum half is vacuous at the parent angle's own weakest link
+(H=1), and the budget assumed mathlib machinery that does not exist.
+All refutations coordinator-verified. 010 closed unlaunched
+(implementation scope, angle G2 untouched); replacement first-contact
+= 012, the pair-to-root collision map + corrected fiber bound — per
+the reviewer, the genuinely nonstandard hinge of the angle. This is
+the anti-sycophancy contract doing exactly what it was installed for:
+a same-model panel ranked this angle #2 and none of us caught the
+2-adic failure; the cross-model reviewer found it in minutes.

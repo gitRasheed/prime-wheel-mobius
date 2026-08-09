@@ -1,0 +1,153 @@
+[codex] Starting Codex task thread.
+[codex] Thread ready (019fe6c3-75f8-71d0-899a-b47f50d49064).
+[codex] Turn started (019fe6c3-7e48-7491-9e2c-f7df8fb65bb8).
+[codex] Assistant message captured: I’ll perform a read-only adversarial review. I’m using the ponytail review discipline because...
+[codex] Running command: /bin/bash -lc "sed -n '1,260p' /home/rasheed/.codex/plugins/cache/ponytail/ponytail/4.9.0/ski...
+[codex] Command completed: /bin/bash -lc "sed -n '1,260p' /home/rasheed/.codex/plugins/cache/ponytail/ponytail/4.9.0/ski... (exit 0)
+[codex] Assistant message captured: The skill’s YAGNI ladder makes the first gate explicit: if QSCL is misstated, redundant, or d...
+[codex] Running command: /bin/bash -lc "sed -n '1,1200p' 'results/010/010.md'"
+[codex] Command completed: /bin/bash -lc "sed -n '1,1200p' 'results/010/010.md'" (exit 0)
+[codex] Running command: /bin/bash -lc "sed -n '1,1200p' 'results/005/proposals/agent1.json'"
+[codex] Command completed: /bin/bash -lc "sed -n '1,1200p' 'results/005/proposals/agent1.json'" (exit 0)
+[codex] Running command: /bin/bash -lc "sed -n '1,1200p' 'results/008/008.md'"
+[codex] Command completed: /bin/bash -lc "sed -n '1,1200p' 'results/008/008.md'" (exit 0)
+[codex] Running command: /bin/bash -lc "sed -n '1,1200p' 'AGENTS.md'"
+[codex] Command completed: /bin/bash -lc "sed -n '1,1200p' 'AGENTS.md'" (exit 0)
+[codex] Assistant message captured: The first substantive defect is already visible: the analytic bound itself is standard up to ...
+[codex] Searching:
+[codex] Running command: /bin/bash -lc "rg -n --glob '*.lean' 'sqrt.*Nat|Real\\.sqrt|Complex\\.abs.*Finset\\.sum' form...
+[codex] Running command: /bin/bash -lc "rg -n --glob '*.lean' 'def gaussSum|theorem.*gaussSum|GaussSum|gaussSum' forma...
+[codex] Running command: /bin/bash -lc "rg -n --glob '*.lean' 'Quadratic.*Gauss|quadratic.*Gauss|Weyl|completion metho...
+[codex] Command completed: /bin/bash -lc "rg -n --glob '*.lean' 'sqrt.*Nat|Real\\.sqrt|Complex\\.abs.*Finset\\.sum' form... (exit 0)
+[codex] Running command: /bin/bash -lc "rg -n --glob '*.lean' -i 'gauss.?sum|weyl.?sum|quadratic exponential|additive ...
+[codex] Running command: /bin/bash -lc "rg -n --glob '*.lean' -i 'gauss' formalization/.lake/packages/mathlib/Mathlib ...
+[codex] Command completed: /bin/bash -lc "rg -n --glob '*.lean' 'Quadratic.*Gauss|quadratic.*Gauss|Weyl|completion metho... (exit 0)
+[codex] Command completed: /bin/bash -lc "rg -n --glob '*.lean' 'def gaussSum|theorem.*gaussSum|GaussSum|gaussSum' forma... (exit 0)
+[codex] Command completed: /bin/bash -lc "rg -n --glob '*.lean' -i 'gauss' formalization/.lake/packages/mathlib/Mathlib ... (exit 0)
+[codex] Command completed: /bin/bash -lc "rg -n --glob '*.lean' -i 'gauss.?sum|weyl.?sum|quadratic exponential|additive ... (exit 0)
+[codex] Searching:
+[codex] Searching:
+[codex] Searching:
+[codex] Assistant message captured: 1. THE STRONGEST REFUTATION The exponential-sum inequality is mathematically correct as an ab...
+[codex] Turn completion inferred after the main thread finished and subagent work drained.
+1. THE STRONGEST REFUTATION
+
+The exponential-sum inequality is mathematically correct as an absolute-constant completion bound, but QSCL as declared is false because its companion multiplicity claim is false and does not actually bound frequency-pair collisions.
+
+For
+S = Σ_{r<H} e((b/q)(N+r+1)²),  gcd(b,q)=1,
+put g = gcd(2b,q). Complete quadratic sums satisfy
+|G(b,h;q)| ≤ √(gq).
+Periodicity modulo q, division into complete periods, and finite Fourier completion of the remainder give
+|S| ≪ √g(H/√q + √q log(2q)).
+Since b/q is reduced, g=gcd(2,q)≤2. Thus the declaration’s
+H/√q + √q·log q
+is valid after absorbing at most √2 into the implicit constant. For an explicit-constant Lean theorem, the clean uniform form should retain √g or split odd and even q.
+
+Edge cases:
+
+- If q is odd, g=1.
+- If q is even, g=2. The shifted complete Gauss sum may vanish or have magnitude √(2q), depending on the parity of its linear coefficient. Completing the square by inverting 2 is invalid here, but the uniform √(2q) bound remains valid.
+- If H>q, complete periods produce the H/√q term.
+- If H≤q, the useful statement is
+  |S| ≪ min{H, √g·√q log(2q)}.
+  At H=1, completion is entirely vacuous: |S|=1 exactly, while the proposed upper bound is much larger.
+- If b/q were not reduced, a factor involving gcd(2b,q) would be essential rather than an absolute constant.
+
+The relevant standard method is finite Fourier completion plus complete quadratic Gauss-sum evaluation. Iwaniec–Kowalski place Gauss sums in §3.4 and “Completing methods” in §12.2; their Chapter 8 is Weyl/van der Corput rather than the book’s completion section. See [Iwaniec–Kowalski, Analytic Number Theory](https://unina2.on-line.it/sebina/repository/catalogazione/documenti/Iwaniec%2C%20Kowalski%20-%20Analytic%20Number%20Theory.pdf). Explicit square-root estimates for incomplete Gaussian sums are also treated by [Korolev, “On incomplete Gaussian sums”](https://m.mathnet.ru/eng/tm3644).
+
+The multiplicity assertion is wrong. The declaration freezes
+“≤ 2^ω(q) via root-counting of (n+1)² ≡ w (mod q)”
+without requiring q squarefree, q odd, or gcd(w,q)=1. Two immediate counterexamples are:
+
+- q=9, w=0: x²≡0 mod 9 has x=0,3,6, hence three roots, but 2^ω(9)=2.
+- q=8, w=1: x²≡1 mod 8 has four roots, but 2^ω(8)=2.
+
+The correct standard bounds are:
+
+- If q is odd and gcd(w,q)=1, then ρ_q(w)≤2^ω(q).
+- If gcd(w,q)=1 with arbitrary q, then ρ_q(w)≤2^{ω(q)+1}; the extra factor is forced by the four unit roots modulo 2^ν for ν≥3.
+- Without coprimality,
+  ρ_q(w)≤2^{ω(q)+1}√gcd(w,q)
+  is a valid uniform form.
+- Alternatively, ρ_q(w)≤2^ω(q) holds for squarefree q.
+
+These follow from prime-power root counts, Hensel lifting, and CRT; Iwaniec–Kowalski §21.3 is the appropriate standard reference.
+
+Worse, a root count in the sampling variable n does not by itself bound the number of pairs (d,d′). The declaration never defines “fixed root datum,” the map from a frequency pair to a root, or the size of its fibers. The parent proposal claims that this manufactures exactly the “map from off-diagonal pairs … to a shared modulus with sub-square multiplicity” missing in the declared large-sieve obstacle, but that map is the hard step. Calling its fibers roots of one congruence does not prove injectivity or bounded multiplicity.
+
+Proving only the valid exponential-sum inequality would therefore be misdirected. Record 010 itself admits “frontier delta: none,” while record 008 leaves the actual G2 risks untouched: W2-G2a found a fixed-negative square-modulus locus of size about 1.42×|E|, and W2-G2b found systematic positive correlation but was inconclusive at H=1. QSCL gives no H=1 cancellation and does not control the fixed-sign locus.
+
+2. THE ASSUMPTIONS MOST LIKELY FALSE
+
+- Statement correctness: “collision multiplicity … bounded by 2^ω(q)” is false as written. Even after correcting the modular root bound, the pair-collision conclusion remains unproved because no pair-to-root fiber theorem is stated.
+
+- Obstacle positioning: record 010 says “none of the analytic obstacles bind,” but its multiplicity clause is precisely an attempted solution to AGENTS.md’s large-sieve non-transfer obstacle. That obstacle therefore binds directly. The declaration also labels q a “small packet conductor,” while the parent only defines q as the reduced denominator of a/d−a′/d′. Nothing in the four files proves that these denominators are small divisors of the relevant torus modulus. AGENTS.md explicitly forbids silently replacing packet-level conductors by full-modulus numerology.
+
+- H=1 relevance: the parent proposal’s self-assessed weakest link is the H=1 bootstrap. The QSCL completion estimate is worse than the trivial bound at H=1, so it provides no leverage on that weakest link.
+
+- Lean feasibility: record 010 allows two agent runs and says the Gauss-sum core must be found or half-built in the first. A read-only inventory of the pinned mathlib v4.24.0 source found no Gauss-sum or Weyl-sum development. The declaration’s statement that “mathlib has Gauss sums for characters” is not supported by the installed source. A proof would have to construct additive characters, orthogonality and completion, shifted quadratic Gauss bounds including even q, interval Fourier-kernel bounds, harmonic estimates, and substantial coercion plumbing. Two runs is not a credible budget.
+
+- Governance of the partial outcome: record 010 permits a Lean statement “stubbed” as an open task. AGENTS.md says the audit rejects sorry, admit, and project-local axiom/constant declarations. Such a stub cannot enter the audited build unless it is only a comment or lives outside the build.
+
+- Log loss: any fixed power (log q)^A with A independent of all parameters is analytically absorbable into q^ε, so it does not itself destroy an ε-level application. But “any log-power loss permitted” is not a frozen theorem until A, its constants, and the parameter ranges are specified. It also does nothing about H=1, and its absorption is irrelevant until the application proves q lies in an acceptable packet-conductor range.
+
+3. TWO OR THREE ALTERNATIVE FIRST-CONTACT EXPERIMENTS
+
+1. Exact collision-map and fiber lemma.
+
+What it is: define every variable in the expanded off-diagonal sum, the reduction (a/d−a′/d′)=b/q, the alleged root datum, and the map from pairs (d,d′,a,a′) to that datum. Prove an actual fiber bound, including prime powers and the 2-part.
+
+Leverage: this directly attacks AGENTS.md’s missing shared-modulus map. It also determines whether Heath-Brown’s quadratic large sieve is applicable at all.
+
+Cheapest kill test: test the proposed fiber theorem symbolically at q=8 and q=9, then enumerate its fibers for one small dyadic D. Any fiber growth not accounted for by the corrected ρ_q(w) bound kills the claimed transfer.
+
+2. H=1 exponent-flow audit.
+
+What it is: start from the parent’s assumed
+Σ_{d≤D}M(d)² ≪ D^{1+2σ}
+and propagate every D-, N-, and q-power through completion and Heath-Brown’s quadratic large sieve. Produce the explicit map σ↦F(σ).
+
+Leverage: the parent itself says the bootstrap is most likely neutral. Record 008’s W2-G2b verdict is inconclusive, so exact exponent bookkeeping dominates formalizing an upstream lemma that is vacuous at H=1.
+
+Cheapest kill test: if F(σ)≥σ, or if the declared D^{3/2} term survives when H=1, the pointwise route is dead.
+
+3. Exact signed parity-locus isolation.
+
+What it is: isolate square moduli inside the full C−2E signed Gram expression, without triangle-splitting, and identify the exact term that is supposed to cancel their fixed sign.
+
+Leverage: W2-G2a found the locus permanently negative and about 1.42×|E|. That contradicts the parent’s suggestion that “sparsity of squares alone” makes it harmless.
+
+Cheapest kill test: apply the best available sparsity-only bound to the isolated term. If it misses the required scale and no opposite signed term is algebraically paired with it, the parity route fails before any exponential-sum formalization.
+
+4. THE CHEAPEST KILL TEST
+
+Check q=8,w=1 in the frozen companion statement. The four residues 1,3,5,7 all satisfy x²≡1 mod 8, while 2^ω(8)=2. This takes under a minute and disproves QSCL as declared.
+
+After correcting that error, the cheapest feasibility test is a theorem-inventory sheet naming the exact existing mathlib lemmas for additive-character orthogonality, shifted quadratic Gauss bounds, and incomplete completion. The present source inventory found none. Failure to name those lemmas means the “two agent runs” budget is already falsified.
+
+5. ONE RECOMMENDATION THE PRIMARY WILL PROBABLY REJECT
+
+Cancel the QSCL launch. Do not spend a Lean run proving the standard exponential-sum inequality.
+
+Replace record 010 with a paper-level collision-map declaration whose sole deliverable is a precise pair-to-root map and a correct fiber bound. That is the nonstandard claim, the claim currently false or undefined, and the claim that would genuinely address the declared large-sieve obstacle. Formalizing the textbook completion lemma first optimizes the easy part while leaving the mechanism’s hinge untouched.
+
+6. WHAT EVIDENCE WOULD REVERSE YOUR OWN VIEW
+
+I would support launch only after all of the following are produced:
+
+- A revised QSCL separating the exponential-sum theorem from the collision theorem, with q≥1, H≥1, N∈ℤ, gcd(b,q)=1, explicit constants, and an even-q branch or explicit √gcd(2b,q) factor.
+
+- Correct multiplicity hypotheses: squarefree q, or unit w with the necessary 2-adic factor, or the general √gcd(w,q) bound.
+
+- A written, checkable pair-to-root map with a proved bounded-fiber statement. Merely counting roots is insufficient.
+
+- A proof that application moduli are genuinely small packet conductors in the sense required by AGENTS.md, rather than potentially large reduced denominators of a/d−a′/d′.
+
+- Exact mathlib theorem names covering most of the completion infrastructure, or a compiled no-sorry prototype of the complete shifted Gauss bound including even q.
+
+- A downstream calculation showing precisely how the chosen log power is absorbed and where QSCL yields a nontrivial gain. For the pointwise route, that calculation must survive H=1.
+
+- A concrete treatment of W2-G2a’s fixed-negative square locus and a quantified criterion resolving W2-G2b’s positive-correlation regime.
+
+Those facts would turn QSCL from a true but strategically inert textbook lemma into a justified first-contact experiment.
