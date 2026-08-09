@@ -583,3 +583,13 @@ drained**: H3 parked at rung 0, H1 kernel-upgraded (b26e73e), H4
 killed. Remaining: seeding round 3 with five impossibility filters +
 the named central object (windowed mean-square upper bound at
 backward canonical windows).
+
+## 2026-08-09-35
+Declared results/026 (experiment): blind seeding round 3. Packet
+frozen with nine obstacles (𝔉-closure + zero shadow, fiber growth,
+pinned-vs-averaged amended by backward excursion, modulus magnitude,
+parity, circularity incl. off-line-zero payment, finite-range
+deception, Wigert floor-jump, renewal edge kill), the windowed
+mean-square central object at backward canonical windows, and the
+updated ladder (rung 0 = KNOWN floor; rung 1 = fixed power saving;
+rung 2 = target). 10 blind Codex agents dispatched.
