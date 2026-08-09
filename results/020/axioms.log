@@ -1,0 +1,19 @@
+'RHLean.Analysis.primeSieveIntervalPrimeCount_sum_le' depends on axioms: [propext, Classical.choice, Quot.sound]
+'RHLean.Analysis.primeSieveMoebiusPrefixSum_increment_norm_le' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+'RHLean.Analysis.primeSieveFloorIncrementSum_le' depends on axioms: [propext, Classical.choice, Quot.sound]
+'RHLean.Analysis.primeSieveQuotientTop_stable' depends on axioms: [propext, Classical.choice, Quot.sound]
+'RHLean.Analysis.primeSieveMoebiusDiscrepancySum_increment_norm_le' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+'RHLean.Analysis.excursionWindow_norm_le' depends on axioms: [propext, Classical.choice, Quot.sound]
+'RHLean.Analysis.excursionWindow_moment_le' depends on axioms: [propext, Classical.choice, Quot.sound]
+'RHLean.Analysis.one_le_excursionWindow' depends on axioms: [propext, Classical.choice, Quot.sound]
+'RHLean.Analysis.primeSieveMoebiusDiscrepancySum_excursion' depends on axioms: [propext, Classical.choice, Quot.sound]
+'RHLean.Analysis.primeSieveMoebiusDiscrepancySum_excursion_moment' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+'RHLean.Analysis.one_le_primeSieveExcursionWindow' depends on axioms: [propext, Classical.choice, Quot.sound]
+'RHLean.Analysis.abs_logarithmicIntegralFromTwo_sub_le' depends on axioms: [propext, Classical.choice, Quot.sound]
+'RHLean.Analysis.primeSievePrimeDiscrepancy_sub_norm_le' depends on axioms: [propext, Classical.choice, Quot.sound]

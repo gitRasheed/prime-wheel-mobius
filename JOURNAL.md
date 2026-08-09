@@ -442,3 +442,15 @@ Theorem A, paper-grade proof + blocking cross-model review; kernel
 formalization infeasible — mathlib lacks VK machinery — so target
 status is reviewed-unconditional, honestly labelled) and 020 (H1
 Lipschitz/moment-hierarchy reduction — kernel-eligible, Lean).
+
+### 2026-08-09-21 — experiment 020 SUCCESS with corrections: kernel theorem #4; obstacle 3 deleted as reduction; H1's constant is the new subproblem
+
+`PrimeSieveLipschitzExcursion` at b0b44b0, gate green, coordinator
+recheck clean. The excursion/moment reduction is kernel-proved for
+all k — the pinned-vs-averaged obstacle is now formally a reduction,
+not a wall. But formalization corrected the informal claim again
+(fourth time today): the discrete Li drift makes the Lipschitz
+constant ≈ 2√x/log x, not O(1); H1's promised power saving now
+hinges on a well-defined open subproblem (improve C toward polylog by
+closing D2+D3). 019's hostile review still pending — that verdict
+decides whether rung 0 closes today via the analytic route.

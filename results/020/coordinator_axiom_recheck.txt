@@ -1,0 +1,6 @@
+'RHLean.Analysis.primeSieveMoebiusDiscrepancySum_increment_norm_le' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+'RHLean.Analysis.primeSieveMoebiusDiscrepancySum_excursion_moment' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
