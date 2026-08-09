@@ -1,0 +1,43 @@
+'RHLean.Analysis.primeSievePNTCorrected_sub_two_error_eq_neg_signedSum_add_smoothMass' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+'RHLean.Analysis.mertensSummatory_eq_neg_signedSum_add_smoothMass' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+'RHLean.Analysis.allPlusPrimeCombPrefixMass_eq_smoothMass_add_signedSum' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+'RHLean.Analysis.primorialMinimalSquareWheelNonzeroResponse_eq_neg_centeredSignedSum_add_centeredSmooth' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+'RHLean.Analysis.norm_primorialMinimalSquareWheelNonzeroResponse_le_collapse' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+'RHLean.Analysis.mem_primeSieveSmoothSourceSet_iff' depends on axioms: [propext, Classical.choice, Quot.sound]
+'RHLean.Analysis.primeSieveSmoothMobiusMass_eq_mertens_add_signedSum' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+'RHLean.Analysis.mertensSummatory_eq_smoothMass_add_highSourceMass' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+'RHLean.Analysis.primeSieveReciprocalMertensSignedSum_eq_reciprocalPrimeTail' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+'RHLean.Analysis.primeSievePNTCorrected_sub_two_error_eq_neg_signedDiscrepancySum_add_correctedRemainder' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+'RHLean.Analysis.primeSieveReciprocalMertensSignedDiscrepancySum_eq_pntError' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+'RHLean.Analysis.primeSieveReciprocalMertensSignedSum_eq_mertensPrimeTail' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+'RHLean.Analysis.sum_primeSieveHighSourceSet_eq_neg_mertensPrimeTail' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+'RHLean.Analysis.filter_not_smooth_eq_primeSieveHighSourceSet' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+'RHLean.Analysis.canonicalLargestPrimeFactor_le_iff_forall_primeFactors_le' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]

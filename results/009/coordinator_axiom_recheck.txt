@@ -1,0 +1,9 @@
+'RHLean.Analysis.primeSievePNTCorrected_sub_two_error_eq_neg_signedSum_add_smoothMass' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+'RHLean.Analysis.primorialMinimalSquareWheelNonzeroResponse_eq_neg_centeredSignedSum_add_centeredSmooth' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+'RHLean.Analysis.primeSievePNTCorrected_sub_two_error_eq_neg_signedDiscrepancySum_add_correctedRemainder' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]

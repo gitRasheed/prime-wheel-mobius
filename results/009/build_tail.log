@@ -1,0 +1,7 @@
+✔ [7601/7603] Built RHLean.Analysis.PrimeSieveCollapseIdentity (4.0s)
+✔ [7602/7603] Built RHLean (3.8s)
+Build completed successfully (7603 jobs).
+
+real	0m14.265s
+user	0m11.946s
+sys	0m2.417s

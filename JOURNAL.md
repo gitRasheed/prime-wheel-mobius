@@ -300,3 +300,19 @@ sandbox costs nothing and cross-model diversity is the value. Hybrid
 permitted: Opus agents invoking the Codex plugin to relay GPT-5.6
 reasoning into tool-capable hands. Rasheed forecasts ~20-subagent
 GPT-5.6 workflow waves — route those at sandbox-safe tasks only.
+
+### 2026-08-09-11 — experiment 009 SUCCESS with a correction: collapse identity kernel-proved, both forms
+
+Second kernel contribution: `PrimeSieveCollapseIdentity` at
+mobius-synthesis agent-os `8b941b6` (3 iterations; gate green;
+coordinator recheck baseline-only). The Lean derivation CORRECTED the
+informal 006 claim: in the prime-count form the Li bulk cancels
+identically (R = Msm, not Msm − B), and the θ=0.501 renewal-scale
+drift belongs to the discrepancy form's remainder Msm − B — the
+prime-count signed sum and Msm are separately ~x^0.9 and nearly
+cancel. Appended correction note to 006. The formal frontier object
+is now: H = −centered(Σ_d M(d)Δ_d) + centered(Msm − B), remainder
+empirically √-scale, open content in the signed discrepancy sum.
+Exactly the kind of catch the kernel channel exists for — an informal
+"concentration" claim that numerics alone would have let stand.
+Record 008 (wave-2 kill tests) still running.
