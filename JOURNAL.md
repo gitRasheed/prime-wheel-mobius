@@ -240,3 +240,16 @@ Frontier delta: none — this is formalization-support (verified
 baseline), honestly labelled. Frontier =
 `ProjectedRenewalQuadraticBoundedStatement`. Next: Phase 1
 reconnaissance numerics on the EC2 box; seeding packet draft.
+
+### 2026-08-09-7 — diagnostic 004 done: C/E correlation confirmed; box oversized for recon
+
+Record 004 closed. ~12,000 square samples, k=2..8, X ≤ 223,092,870,
+all implementation gates green (micro-example asserts, identity
+H = C−2E at every sample). Headlines: corr(C,E) rises to 0.94 at k=8
+with 77% sign agreement — the route doc's central bet is confirmed in
+independent data; cancellation ratio ~0.5–0.6; sup|H|/√X ≤ 0.51
+everywhere (mild upward drift in the sup, tracked, not evidence).
+Utilization verdict per Rasheed's logging directive: avg CPU 1.6% —
+Phase-1 numerics are trivial for c7i.4xlarge; retained solely for
+Phase 2's concurrent Lean loops, downscale if Phase 2 telemetry
+repeats this. Full 304MB exact k=8 CSV on the box by sha256.

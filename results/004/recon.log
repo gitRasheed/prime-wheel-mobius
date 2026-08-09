@@ -1,0 +1,24 @@
+[    0.0s] loading mu, building M / primes / pi / Li arrays
+[   12.7s] base arrays ready
+[   12.7s] k=2: L=6 U=30 y=6 |wheel primes|=3 digits(Q)=3
+[   12.7s]   3 square samples
+[   13.0s]   k=2: max|H|=0.996 sup|H|/sqrtX=0.3520 corr(C,E)=0.9993 signAgree=1.000 cancel=0.4921 maxIdErr=1.73e-17
+[   13.0s] k=3: L=30 U=210 y=15 |wheel primes|=6 digits(Q)=9
+[   13.0s]   9 square samples
+[   13.3s]   k=3: max|H|=4.000 sup|H|/sqrtX=0.4020 corr(C,E)=0.8663 signAgree=0.667 cancel=0.4683 maxIdErr=2.22e-16
+[   13.3s] k=4: L=210 U=2310 y=49 |wheel primes|=15 digits(Q)=36
+[   13.3s]   34 square samples
+[   13.5s]   k=4: max|H|=10.000 sup|H|/sqrtX=0.3536 corr(C,E)=0.8266 signAgree=0.882 cancel=0.3327 maxIdErr=1.42e-14
+[   13.5s] k=5: L=2310 U=30030 y=174 |wheel primes|=40 digits(Q)=137
+[   13.5s]   125 square samples
+[   13.8s]   k=5: max|H|=51.000 sup|H|/sqrtX=0.4340 corr(C,E)=0.8378 signAgree=0.752 cancel=0.4537 maxIdErr=9.95e-13
+[   13.8s] k=6: L=30030 U=510510 y=715 |wheel primes|=127 digits(Q)=591
+[   13.8s]   541 square samples
+[   14.0s]   k=6: max|H|=262.000 sup|H|/sqrtX=0.4836 corr(C,E)=0.8507 signAgree=0.810 cancel=0.4873 maxIdErr=1.67e-11
+[   14.0s] k=7: L=510510 U=9699690 y=3115 |wheel primes|=443 digits(Q)=2638
+[   14.1s]   2400 square samples
+[   15.0s]   k=7: max|H|=1063.000 sup|H|/sqrtX=0.4211 corr(C,E)=0.8939 signAgree=0.654 cancel=0.5922 maxIdErr=6.34e-10
+[   15.0s] k=8: L=9699690 U=223092870 y=14937 |wheel primes|=1748 digits(Q)=12844
+[   18.8s]   11822 square samples
+[   82.6s]   k=8: max|H|=6414.000 sup|H|/sqrtX=0.5075 corr(C,E)=0.9381 signAgree=0.774 cancel=0.5683 maxIdErr=2.83e-08
+[   82.6s] done
