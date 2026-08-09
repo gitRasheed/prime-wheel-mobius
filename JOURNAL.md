@@ -530,3 +530,10 @@ quasi-RH-hard via any absolute-value route (majorizes |R(x)|, Ingham
 equivalence to zero-free strip); only signed routes remain. **Z parks
 at rung 0; pivot to H1 (record 020 D2+D3 spec) is next.** No stone
 left unturned in Z within unconditional absolute-value coordinates.
+
+## 2026-08-09-29
+Declared results/023 (diagnostic): H1 attack plan — D2 (floor-Li
+divisor jumps: amortized-polylog via divisor counting?) + D3 (support
+growth: does unconditional VK-quality PNT input suffice?) + assembly
+(best unconditional C(y,x); is polylog reachable). Routed to Codex,
+desk only. Verdicts: PLAN-VIABLE / BLOCKED / FALSE-HOPE.
