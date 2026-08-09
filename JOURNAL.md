@@ -549,3 +549,9 @@ stable for length y → backward affine version gives W ≍ √x at
 canonical pins, H^{2k+1} moment lower bound unconditional on the
 increment side (windowed upper bound = the open half). Frozen plan =
 bounded Lean scope; record 024 (kernel formalization) is next.
+
+## 2026-08-09-31
+Declared results/024 (experiment): kernel formalization of the 023
+frozen plan — backward square-pin stability, divisor-jump identity,
+backward affine modulus, abstract affine excursion/moment lemmas,
+canonical backward theorem. Standard kernel gate. EC2 up for builds.
