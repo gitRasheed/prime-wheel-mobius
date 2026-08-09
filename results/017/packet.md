@@ -56,12 +56,12 @@ a small constant. |S|/√x ≈ 0.10–0.18 in range.
 
 ## Strength ladder
 
-Rung 0: any unconditional o(x/log^A) / PNT-strength bound on the Abel
-sum (would be genuine publishable progress). Rung 1: any fixed
-exponent θ < 1... wait — trivial bound is Σ|R| ≈ x^{3/4} in range
-(unconditionally weaker); rung 1 = any unconditional exponent below
-the triangle bound. Rung 2 (target): 1/2+ε. Above: sharp O(√x) — not
-a goal.
+Rung 0 (trivial entrant): any unconditional PNT-strength bound
+(o of the trivial scale) on the Abel sum — genuine publishable
+progress. Rung 1: any unconditional exponent strictly below the
+triangle-inequality scale (≈ x^{3/4} empirically; derive your own
+honest trivial bound and beat it). Rung 2 (target): x^{1/2+ε}.
+Above target: sharp O(√x) — not a goal.
 
 ## What to return
 
