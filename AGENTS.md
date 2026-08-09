@@ -93,12 +93,27 @@ No rung is currently proved unconditionally — all status: open.
 - Toolchain: `leanprover/lean4:v4.24.0`, mathlib `v4.24.0` (root
   `lakefile.lean`, `lean-toolchain`); audit script
   `scripts/audit_assumptions.sh`; 248 modules under `RHLean/`.
-- Declared targets (prose extraction pending kernel audit, see journal
-  2026-08-09-2): `NonzeroResponseRHScale` (|H_{k,n}| ≪ X_n^{1/2+ε});
-  route doc directs attack at the signed object C^PNT − 2E^rec.
-- Claim to verify at kernel grade: terminal RH bridge with **no
-  external Mertens→RH typed premise** (stronger than this repo's
-  bridge). CONFLICTED-pending-audit; owner: this program (record 003).
+- Declared open targets (extracted from source, record 003):
+  `NonzeroResponseRHScale` (`RHLean/Analysis/MobiusSynthesisBoundary.lean:46`,
+  |H_{k,n}| ≪ X_n^{1/2+ε} at square-prefix samples) and its
+  quadratic-form counterpart `ProjectedRenewalQuadraticBoundedStatement`
+  (`RHLean/Proof/CanonicalGapAncestryQuadraticClosure.lean:122`), which
+  the terminal bridge consumes. Route doc (`CURRENT_PROOF_ROUTE.md`)
+  directs attack at the signed object C^PNT − 2E^rec
+  (exact decomposition `..._eq_pntCorrected_sub_two_error`,
+  `RHLean/Analysis/PrimeSievePNTCentering.lean:213`), explicitly not at
+  its two pieces separately.
+- Bridge status (resolves the 2026-08-09-2 CONFLICTED item): the
+  **forward** chain estimate → RH is criterion-free —
+  `projectedRenewalQuadraticBounded_imp_riemannHypothesis_unconditional`
+  (`RHLean/Proof/TerminalMertensForward.lean:37`), resting on the
+  in-repo `riemannHypothesis_of_mertensEnergy`
+  (`RHLean/Analysis/MertensEnergyRHForward.lean:66`). The *equivalence*
+  still takes the typed premise `ClassicalMertensRHCriterion`; reverse
+  RH → Mertens not asserted. Kernel-grade `#print axioms` on the
+  unconditional pair: pending (record 003; the repo's own
+  `TerminalAxiomAudit.lean` predates this route). Note: 249 files on
+  disk vs 248 imported — one unimported module, unidentified.
 
 Audit fact (2026-08-08, this adoption): grep over all 61 `.lean` files in
 both repos — zero `sorry`/`admit`, zero project-local `axiom`/`constant`

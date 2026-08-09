@@ -169,3 +169,25 @@ axiom audits in all three repos (elan 4.2.3 installed; all pin
 lean4/mathlib v4.24.0), plus extraction of the synthesis repo's exact
 open-target declarations and kernel verification of its
 "no-external-axiom RH bridge" claim.
+
+### 2026-08-09-4 — extraction verdict: synthesis bridge claim resolved (forward-unconditional); exact targets recorded
+
+Record 003 sub-task (read-only extraction over `mobius-synthesis @
+e87f728`, findings verified against source; builds still running).
+The 2026-08-09-2 CONFLICTED item resolves with nuance: the forward
+chain (open estimate → RH) is criterion-free —
+`projectedRenewalQuadraticBounded_imp_riemannHypothesis_unconditional`
+rests on an in-repo mathlib-only proof of Mertens-energy → RH
+(`riemannHypothesis_of_mertensEnergy`). Only the iff-form theorems
+still take the `ClassicalMertensRHCriterion` typed premise; RH →
+Mertens is explicitly not asserted. For proving RH, forward is the
+direction that matters, so the program's endpoint chain is now
+premise-free — pending our own `#print axioms` at kernel grade,
+because the repo's `TerminalAxiomAudit.lean` predates this route and
+does not cover the unconditional pair. Exact open targets
+(`NonzeroResponseRHScale`, `ProjectedRenewalQuadraticBoundedStatement`)
+and the C−2E decomposition theorem recorded verbatim in
+`results/003/003.md`; AGENTS.md declared facts updated; known-unknown
+#7 half-answered. New minor flag: 249 files on disk vs 248 imported —
+one unimported module to identify post-build (unimported files escape
+build and audit).

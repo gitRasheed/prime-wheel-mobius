@@ -187,9 +187,16 @@ writing the exact statement it would prove.
    stability across more dyadic scales: unmeasured.
 6. **Square-block kernel reproducibility.** No lakefile/toolchain in the
    sibling's `lean/`; standalone verification UNOBSERVABLE. Owner: Fred.
-7. **The classical bridge.** `MertensEnergyBoundedStatement ↔ RH` is a
-   typed premise. Will mathlib ever carry it, or should the program
-   formalize the classical Mertens criterion itself? Unowned.
+7. **The classical bridge.** — **HALF-ANSWERED** by the synthesis repo
+   (record 003 extraction, 2026-08-09): the forward direction
+   `MertensEnergyBoundedStatement → RH` is proved in-repo
+   (`riemannHypothesis_of_mertensEnergy`,
+   `mobius-synthesis/RHLean/Analysis/MertensEnergyRHForward.lean:66`,
+   Mellin + completed-zeta reflection, mathlib-only ingredients) — and
+   forward is the direction a proof of the open estimate needs. The
+   reverse (RH → Mertens) remains a typed premise
+   (`ClassicalMertensRHCriterion`) used only by the iff-form theorems.
+   Kernel audit of the forward pair pending (003).
 8. **Parity-obstruction position.** No source document states whether
    parity-type barriers bind these coordinates. A literature diagnostic
    should establish the program's official position (feeds B, F2).
