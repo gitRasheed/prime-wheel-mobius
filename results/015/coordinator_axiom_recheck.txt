@@ -1,0 +1,6 @@
+'RHLean.Analysis.primeSievePNTError_eq_moebiusDiscrepancySum_sub_abelBoundary' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+'RHLean.Analysis.primeSievePNTError_eq_moebius_weighted_primeDiscrepancy' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]

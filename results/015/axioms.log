@@ -1,0 +1,15 @@
+'RHLean.Analysis.primeSievePNTError_eq_moebiusDiscrepancySum_sub_abelBoundary' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+'RHLean.Analysis.primeSievePNTError_eq_moebius_weighted_primeDiscrepancy' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+'RHLean.Analysis.primeSieveReciprocalPNTError_eq_moebiusDiscrepancySum_sub_abelBoundary' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+'RHLean.Analysis.sum_mertensSummatory_mul_forwardDifference' depends on axioms: [propext, Classical.choice, Quot.sound]
+'RHLean.Analysis.primeSieveReciprocalPrimeDiscrepancy_eq_sub' depends on axioms: [propext, Classical.choice, Quot.sound]
+'RHLean.Analysis.primeSieveReciprocalPrimeCount_eq_sub' depends on axioms: [propext, Classical.choice, Quot.sound]
+'RHLean.Analysis.primeSievePrefixPrimeCount_eq_card' depends on axioms: [propext, Classical.choice, Quot.sound]
+'RHLean.Analysis.lt_div_of_mem_primeSieveQuotientSupport' depends on axioms: [propext, Classical.choice, Quot.sound]
+'RHLean.Analysis.div_succ_quotientSupportTop_le' depends on axioms: [propext, Quot.sound]

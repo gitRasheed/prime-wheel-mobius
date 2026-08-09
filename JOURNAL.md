@@ -393,3 +393,14 @@ Reviewer also caught that 008's arrays already showed |E| ≍ √Diag —
 the answer was in our own data, unread. Next wave: formalize the Abel
 identity (015), Abel-coordinate cancellation measurement (016),
 Type-II scoping in seeding round 2.
+
+### 2026-08-09-17 — experiment 015 SUCCESS: Abel identity kernel-proved verbatim (third contribution)
+
+`PrimeSieveAbelIdentity` at mobius-synthesis agent-os `abca91f`; gate
+green, coordinator recheck baseline-only. Review 014's informal
+identity held exactly — boundary term y confirmed by two support
+lemmas — and came out stronger than stated (hypothesis-free,
+normalization-invariant). The program's target now has a formal
+bilinear face: E = Σ μ(d)R(⌊x/d⌋) − M(K)R(y). Awaiting 016 (the
+√K-cancellation measurement) to calibrate it empirically; then
+Type-II scoping + seeding round 2.
