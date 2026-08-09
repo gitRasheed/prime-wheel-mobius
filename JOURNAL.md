@@ -487,3 +487,23 @@ structure, or incoherence), literature table (Landau–Gonek, Ng J₋₁,
 large sieve at zeros), obstacle audit, kill test. Routed to Codex,
 blocking. Verdicts: FORMULATES-CLEANLY / WITH-REPAIR / INCOHERENT
 (latter kills cluster Z at rung 2). EC2 stays stopped — desk only.
+
+## 2026-08-09-25
+results/021 closed: **FORMULATES-WITH-REPAIR**. The 018 cluster-Z gate
+is incoherent as named (off-line-zero cost suppressed; prime-power
+remainder with F_K(1/2) content omitted); frozen Z-repaired gate
+recorded in IDEAS.md (all zeros, x^{β−1/2} weight, C_{x,K} secondary
+term, ∃A). Informal-math error #6 caught by review channel. Frontier
+delta: gate-correction. Next experiment against Z must target the
+repaired gate; rung 0 = 𝓜 = o(√x).
+
+## 2026-08-09-26
+Upstream PRs opened at Fred's request (his message 20:24+), split per
+his spec: OVVO-Financial/mobius-synthesis #1 (bridge equivalence,
+head 1ddce28), #2 (collapse+Abel identities, head c7d328c), #3
+(Lipschitz/excursion, head 6886ce6, stacked on #2). Branches
+cherry-picked onto Fred's new main c2b5df6 ("Research update", 8 new
+SquareWheel/Survivor modules); each head re-verified on EC2 warm
+tree: lake build RHLean --wfail green + audit_assumptions.sh pass.
+Governance files kept out per Fred's instruction. EC2 started for
+verification, stopped after.

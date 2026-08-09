@@ -277,3 +277,20 @@ sanctioned V8 door). New standing obstacle: **zero-coordinate shadow
 of 𝔉** — CS-over-zeros with absolute F_K reproduces trivial scale;
 signed evaluation at zeros or exit. Clusters Z/V/I with shared kill
 conditions (017 verdict); kill-wave order K1,K7,K2,K5,K3,K4,K6.
+
+### H3 gate correction (record 021, 2026-08-09)
+
+The 018-named cluster-Z gate (Σ|F_K(ρ)|/|ρ| ≪ polylog, "unconditional
+Ng-line J₋₁") is DEAD as formulated — desk-exact: (i) line-only F_K
+moment suppresses the x^{β−1/2} cost of off-line zeros (obstacle 6;
+zero-density cannot repair a single persistent off-line zero); (ii)
+the prime-power remainder C_{x,K} carries −√x·F^log_{K,x}(1/2)/log x,
+invisible to any moment at nontrivial zeros. Cluster Z survives only
+as the **frozen Z-repaired gate**: ∃A,C,x₀ ∀x≥x₀ ∀K∈[κ₋√x,κ₊√x]
+∀T∈[x²,2x²]: x^{−1/2}|C_{x,K}| + 2x^{−1/2}Σ_{0<Im ρ≤T, all zeros,
+w/mult}|Σ_{d≤K}μ(d)Li_*((x/d)^ρ)| ≤ C(log x)^A. Constraints: A < 2
+untenable (Landau–Gonek signed scale log K·log T); Ng J₋₁ literature
+is RH-conditional throughout; no verbatim theorem proves or kills the
+repaired gate. Rung 0 = 𝓜 = o(√x) unconditional (PNT-strength);
+𝓜 ≪ x^{1/4−δ} = rung 1. Any second-moment/CS proof attempt re-enters
+the zero-coordinate shadow of 𝔉. Full chain audit: results/021.
