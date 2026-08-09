@@ -191,3 +191,20 @@ and the C−2E decomposition theorem recorded verbatim in
 #7 half-answered. New minor flag: 249 files on disk vs 248 imported —
 one unimported module to identify post-build (unimported files escape
 build and audit).
+
+### 2026-08-09-5 — decision: EC2 build server + mobius-ops harness repo
+
+Rasheed directed immediate EC2 setup (Phase 2 expected within hours)
+and approved a fourth, ours-only ops repo. Created
+`/mnt/d/Projects/mobius-ops` (local git, never pushed; code only — no
+records/journal content, which stay here per PROOF_OS surfaces rule).
+Provisioned in his AWS account (us-east-1): instance
+`i-0fc2bb4713d1486ca` (c7i.4xlarge 16vCPU/32GB, 200GB gp3, Ubuntu
+24.04, ~$0.71/hr), SSH-only security group locked to our egress IP,
+keypair `mobius-fleet`. Bootstrap user-data installs elan and
+pre-builds all three repos with mathlib cache; marker BOOTSTRAP_DONE.
+vCPU quota increase 16→64 requested (PENDING) for the fleet. Full
+inventory: `mobius-ops/README.md`. Local record-003 builds continue in
+parallel — the EC2 box is the fleet evaluator going forward; local
+remains the OS home. Note: account creds are root — flagged to Rasheed
+to move to IAM.
