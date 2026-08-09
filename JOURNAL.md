@@ -17,15 +17,20 @@
   - square-block-mobius is read-only. Expires: only by Fred's direction.
   - No experiment declarations until the blind-panel seeding event and
     Fred's sign-off on the OS adoption. Expires: on that sign-off.
-- Blocked: node D (synthesis) — repo not published.
+- Blocked: nothing. Node D unblocked 2026-08-09: synthesis repo
+  published (`OVVO-Financial/mobius-synthesis`, cloned read-only to
+  `/mnt/d/Projects/mobius-synthesis`, governance TBD — event 2026-08-09-2).
 - Next tasks:
-  1. Run `lake build RHLean --wfail` + audit locally; record evaluator
-     health honestly (diagnostic).
-  2. Convene blind panel to re-seed `IDEAS.md` (packet committed first).
-  3. On synthesis repo arrival: extract exact target into `AGENTS.md`,
-     resolve the Ramanujan-sum labelling flag.
-  4. Optional follow-up to 002: structured k=4 spectrum (CRT tensor ×
-     44 smooth sites) for the conductor-decay profile (known-unknown #2).
+  1. Extract exact synthesis targets (`NonzeroResponseRHScale`, the
+     C−2E signed object) into `AGENTS.md`; reconcile with Fred's earlier
+     Ramanujan-sum summary; flag the "no external Mertens→RH axiom"
+     claim for kernel verification (event 2026-08-09-2).
+  2. Run `lake build RHLean --wfail` + audit locally (here AND
+     synthesis — synthesis ships lakefile + audit script); record
+     evaluator health honestly (diagnostic).
+  3. Convene blind panel to re-seed `IDEAS.md` (packet committed first).
+  4. Optional follow-up to 002: structured k=4 spectrum for the
+     conductor-decay profile (known-unknown #2).
 
 ---
 
@@ -104,3 +109,40 @@ attack sub-node earned; A1–A5 unblocked from the "never computed"
 unknown. Expected the identity check to pass; the useful surprises were
 how early dense-spectrum feasibility dies (k=3!) and the ℓ¹/ℓ²
 concentration split.
+
+### 2026-08-09-2 — observation: synthesis repo published; both siblings republished; claims to verify
+
+Remote check (Rasheed asked for updates; law 6 standing watch):
+
+- **`OVVO-Financial/mobius-synthesis` is live** (created 2026-08-09
+  ~03:28 UTC, single "Initial commit"). Cloned read-only to
+  `/mnt/d/Projects/mobius-synthesis`. Node D unblocked. 248 Lean
+  modules, toolchain v4.24.0 (matches ours). Source-level grep: zero
+  real `sorry`/`admit` (all hits are prose; `TerminalAxiomAudit.lean`
+  is the repo's own audit module). Kernel build NOT yet run — all
+  claims below UNVERIFIED at kernel grade.
+- Both siblings were **republished as fresh single-commit exports**
+  (~03:28–03:35 UTC): local `main`s now diverge from `origin/main`s.
+  Prime-wheel delta: README +8, SOURCE_MANIFEST reworked, licenses
+  added. Square-block delta: **adds `lean/lakefile.lean`,
+  `lean-toolchain`, `audit_assumptions.sh`** — the missing build
+  scaffolding; known-unknown #6 is now resolvable by running it.
+- Synthesis content (from README/SEAMS/CURRENT_PROOF_ROUTE, prose
+  reading only): explicitly "not a third route to RH" — a seam layer.
+  Canonical target: `NonzeroResponseRHScale`, i.e. |H_{k,n}| ≪
+  X_n^{1/2+ε} at complete-square samples X_n=(n+1)²−1 inside
+  synchronized blocks, with kernel-checked zero-mode elimination
+  (ρ<1/6 contraction) and square-gap transport. Diagnostic-informed
+  route directive: attack the signed object C^PNT − 2E^rec directly
+  (C, E positively correlated; triangle inequality loses the
+  cancellation). Naive strong-induction and direct Bombieri–Vinogradov
+  framings are explicitly ruled out in the route doc.
+- **Two facts needing reconciliation/verification**: (1) the route doc
+  claims the terminal bridge "no longer needs an external Mertens→RH
+  axiom" (constructs the forward criterion via Mellin/completed-zeta
+  reflection) — stronger than prime-wheel's typed-premise honesty;
+  CONFLICTED-pending-kernel-audit until `#print axioms` on the terminal
+  theorem is run. (2) Fred's Discord summary described a
+  Ramanujan-sum-indexed target; the repo's canonical target is H and
+  C−2E (Ramanujan modules exist, e.g. `RamanujanDivisorBoundaryBulk`,
+  but are not the headline). AGENTS.md extraction = next task 1.
