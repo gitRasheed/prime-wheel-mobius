@@ -201,3 +201,50 @@ writing the exact statement it would prove.
 8. **Parity-obstruction position.** No source document states whether
    parity-type barriers bind these coordinates. A literature diagnostic
    should establish the program's official position (feeds B, F2).
+
+## G. Synthesis-target angles (blind panel round 005, 2026-08-09)
+
+Seeded from 10 blind proposals (`results/005/proposals/*.json`, mapping
+report in `results/005/005.md` verdict). All UNVERIFIED informal
+content. Canonical target: `ProjectedRenewalQuadraticBoundedStatement`
+(AGENTS.md). Convergence signals (journaled): 5/10 independently built
+quadratic-phase dispersion from X_n = n(n+2); 0/10 took node A (the
+prime-wheel paper's own endorsed program) — a signal about A's pull.
+
+Clusters (shared load-bearing assumption = cluster kill condition):
+- **Q — quadratic-phase Gauss/Weyl dispersion** (agents 0,1,5,7,8):
+  square sampling manufactures the off-diagonal→shared-modulus map
+  with sub-square multiplicity (obstacle 2's missing ingredient).
+  Dies if mass concentrates beyond the √q-gain threshold.
+- **S — per-frequency survival of C−2E cancellation** (0,7): dies if
+  Parseval spreads the correlation across packets (triangle failure
+  in a prettier basis).
+- **L — ℓ² repair of strong induction** (1,5,6,9): dies if the signed
+  off-diagonal covariance of reciprocal intervals resonates with M —
+  note the 004 finding (corr(C,E) up to 0.94) is weak evidence AGAINST
+  this cluster's assumption; test before spending.
+- **I — exact-identity relocation** (2,3,6): cancellation is algebraic
+  not statistical; cheapest to settle (exact identity checks).
+- **R — contraction/renewal induction** (4,7,6,5): ρ<1/6 upgrades to
+  energy contraction; dies if losses compound multiplicatively.
+
+Shortlist (mapping rank): **G1** = agent7 coconductor-gauss-dispersion
+-renewal (constructs obstacle 2's map unconditionally; weakest link:
+per-packet cancellation survival). **G2** = agent1 quadratic-sample-
+reciprocal-dispersion (QSCL classical + QSRD with honest D^{3/2} loss;
+weakest: neutral H=1 bootstrap). **G3** = agent5 telescoped BTD (only
+well-founded block induction; fixed point 3/4+ε; weakest: pinned
+spectral-set circularity). **G4** = agent3 wheel-mollified-Perron
+(strongest rung-0 deliverable; terminal object concedes RH-hardness
+relocation). Near-miss to absorb as facts: agent9's audit (wheel
+projection = exact major-arc deletion; Montgomery–Soundararajan
+diagonal lands at rung 2 with zero slack).
+
+**Kill-test inventory** (dedup, mapping Part 4): shared 10⁹ segmented-
+sieve framework serves tests 2–6; highest information-per-hour: test 4
+(μ×err sign correlation, hours), test 7 (exact identity checks —
+settles cluster I), test 1 (per-frequency cancellation — settles S).
+Full week of compute if run entirely; run 4/7/1 first.
+
+Warning absorbed from the round (agents 5, 8): the Lean target admits
+H = 1, so window-only averaging mechanisms yield lemmas, not closures.

@@ -1,43 +1,31 @@
 # JOURNAL.md
 
-## Live block (updated 2026-08-09)
+## Live block (updated 2026-08-09, post-seeding)
 
-- Phase: pre-synthesis. Both coordinate systems formalized and published;
-  zero proof attempts run under this OS; synthesis repo pending.
-- Target: see `AGENTS.md` — HN (prime-wheel), SPS (square-block), SYN
-  (synthesis, forthcoming focus).
-- Leading angle: none declared. Tree seeded from papers only
-  (`IDEAS.md` A–F); blind-panel re-seed not yet run.
-- Evaluator health: **GREEN, all three repos** (record 003,
-  2026-08-09): builds + audits pass on EC2 evaluator `mobius-fleet-1`;
-  unconditional bridge pair `#print axioms`-clean. Canonical target:
-  `ProjectedRenewalQuadraticBoundedStatement` (see AGENTS.md;
-  `NonzeroResponseRHScale` is an unimported orphan — flagged to Fred).
+- Phase: **seeded — experiment gate OPEN** (record 005 complete).
+  First wave = kill-test diagnostics, not proof attempts.
+- Target: `ProjectedRenewalQuadraticBoundedStatement`
+  (mobius-synthesis; premise-free bridge to RH, record 003).
+- Leading angle: none yet — shortlist G1–G4 (IDEAS.md node G) pending
+  kill tests 4/7/1 (mapping report, results/005).
+- Evaluator health: GREEN all three repos (record 003, EC2
+  mobius-fleet-1). C/E correlation confirmed to 0.94 (record 004).
 - Active constraints:
-  - NO PUSH, any repo; all agent work on local `agent-os` branches in
-    all three repos; `main` never modified. Expires: only by Fred's
-    explicit direction. (Uniform rule set 2026-08-09-3; square-block
-    read-only relaxed to branch-only per Fred's reported go-ahead.)
-  - No experiment declarations until the blind-panel seeding event.
-    Expires: when the committed packet + panel event land. (Fred's
-    sign-off half reported satisfied by Rasheed, 2026-08-09-3.)
-- Blocked: nothing. Node D unblocked 2026-08-09: synthesis repo
-  published (`OVVO-Financial/mobius-synthesis`, local branch `agent-os`,
-  branch-only governance — events 2026-08-09-2/-3). Phase 0 (record
-  003) running: builds + audits, all three repos.
+  - NO PUSH, any repo; all agent work on local `agent-os` branches;
+    `main` never modified. Expires: only by Fred's explicit direction.
+  - Cross-model policy (Rasheed, 2026-08-09): adversarial reviews and
+    independent verification via Codex companion; Claude agents for
+    deep-context work. Expires: by direction.
+- Blocked: nothing.
 - Next tasks:
-  1. Phase 1 reconnaissance (diagnostic): compute H_{k,n}, C, E exactly
-     over feasible range on the EC2 box; measure the C/E correlation
-     the route doc claims; map where cancellation lives in the
-     reciprocal-d family; build the reusable harness.
-  2. Draft + commit the blind-panel seeding packet (exact target =
-     `ProjectedRenewalQuadraticBoundedStatement`, obstacles, ladder);
-     then convene the panel (unblocks experiment declarations).
-  3. Candidate first experiment after panel: connecting theorem
-     `NonzeroResponseRHScale` ↔ quadratic statement (closes the
-     definition-drift orphan gap).
-  4. Report to Fred when he surfaces: orphan-module gap; EC2 evaluator
-     exists; record 003 summary.
+  1. Build the shared 10⁹ segmented-sieve kill-test framework (one
+     diagnostic record); run tests 4, 7, 1 (settle clusters L, I, S).
+  2. Declare first experiments on surviving shortlist angles (G1
+     first), one record each, budgets + gates frozen at declaration;
+     Codex adversarial review on each declaration.
+  3. Connecting-theorem experiment (NonzeroResponseRHScale ↔ quadratic
+     statement) — small, kernel-checkable, closes the orphan gap.
+  4. Report to Fred: records 002–005 summary + orphan flag.
 
 ---
 
@@ -253,3 +241,25 @@ Utilization verdict per Rasheed's logging directive: avg CPU 1.6% —
 Phase-1 numerics are trivial for c7i.4xlarge; retained solely for
 Phase 2's concurrent Lean loops, downscale if Phase 2 telemetry
 repeats this. Full 304MB exact k=8 CSV on the box by sha256.
+
+### 2026-08-09-8 — decision: seeding complete, experiment gate OPEN; cross-model review policy
+
+Record 005 closed: 10/10 blind proposals returned and mapped (node G
+in IDEAS.md; clusters Q/S/L/I/R; shortlist G1–G4; kill-test
+inventory). Convergence worth its own line: five independent lenses
+built quadratic-phase dispersion out of X_n = n(n+2) — the sampling
+structure as the missing large-sieve substitute — and zero chose the
+prime-wheel paper's own program (node A). Both halves of the
+experiment-gate constraint are satisfied; gate OPEN. Declared first
+wave: the shared segmented-sieve framework + kill tests 4 (μ×err sign
+correlation), 7 (exact identity checks — settles cluster I), 1
+(per-frequency cancellation — settles cluster S). Note the tension to
+test first: record 004's corr(C,E)=0.94 is weak evidence AGAINST
+cluster L's load-bearing assumption — cheap to check before any deep
+spend there.
+
+Also per Rasheed this session: subagent/workflow model policy —
+adversarial reviews and independent verification passes run on the
+Codex companion (cross-model diversity, exactly what PROOF_OS's
+anti-sycophancy contract wants); Claude agents keep deep-context work.
+Recorded as a standing allocation policy, revisable by decision event.
