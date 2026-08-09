@@ -1,0 +1,42 @@
+[     0.0s] hard asserts OK: M(6)=-1 M(8)=-2 M(30)=-3 M(1e9)=-222 pi(1e9)=50847534
+[     0.0s] k=6: L=30030 U=510510 y=715 n in [173,713] x in [30275,509795] K in [42,712] ext f<= 26.8
+[     0.0s] k=7: L=510510 U=9699690 y=3115 n in [714,3113] x in [511224,9696995] K in [164,3112] ext f<= 55.8
+[     0.0s] k=8: L=9699690 U=223092870 y=14937 n in [3114,14935] x in [9703224,223084095] K in [649,14934] ext f<= 122.2
+[     0.0s] k=9: L=223092870 U=6469693230 y=80435 n in [14936,31621] x in [223113968,999950883] K in [2773,12431] ext f<= 321.8  [block truncated at 1e9]
+[     0.0s] pass 1: 31449 samples (32 pinned with profiles)
+[     2.5s] pass 1 wall = 2.46s
+[     2.5s] pass 2: extended sweep, 534 pinned samples, Kext up to 4000000
+[     5.8s] pass 2 wall = 3.34s
+[     7.3s] report written
+[     7.3s] k=6: C_rms(K) all=0.3755 sf=0.4629 M=1.0086 | dlogC/dlogK' full: all=-0.1432 sf=-0.1022 M=-0.0033 | ext beyond K: +0.0063 (to K'/K=27, C=0.3498)
+[     7.3s]       |S| exponent (rms-binned) = 0.4492 (r2=0.592), |E| = 0.5390, sqrt(sum R^2) = 0.5183
+[     7.3s] k=7: C_rms(K) all=0.4268 sf=0.5318 M=1.1536 | dlogC/dlogK' full: all=-0.0546 sf=-0.0236 M=+0.0553 | ext beyond K: -0.0113 (to K'/K=56, C=0.3987)
+[     7.3s]       |S| exponent (rms-binned) = 0.4670 (r2=0.576), |E| = 0.5236, sqrt(sum R^2) = 0.5167
+[     7.3s] k=8: C_rms(K) all=0.3975 sf=0.4976 M=1.2896 | dlogC/dlogK' full: all=-0.0210 sf=-0.0027 M=+0.0709 | ext beyond K: -0.0064 (to K'/K=122, C=0.4278)
+[     7.3s]       |S| exponent (rms-binned) = 0.6126 (r2=0.709), |E| = 0.6411, sqrt(sum R^2) = 0.5162
+[     7.3s] k=9: C_rms(K) all=0.3471 sf=0.4332 M=1.0333 | dlogC/dlogK' full: all=-0.0245 sf=-0.0063 M=+0.0797 | ext beyond K: -0.0068 (to K'/K=322, C=0.3527)
+[     7.3s]       |S| exponent (rms-binned) = 0.5736 (r2=0.456), |E| = 0.4176, sqrt(sum R^2) = 0.5180
+[     7.3s] identity max abs residual = 8.36735125631094e-11
+	Command being timed: "python3 abel_main.py"
+	User time (seconds): 38.64
+	System time (seconds): 19.23
+	Percent of CPU this job got: 764%
+	Elapsed (wall clock) time (h:mm:ss or m:ss): 0:07.56
+	Average shared text size (kbytes): 0
+	Average unshared data size (kbytes): 0
+	Average stack size (kbytes): 0
+	Average total size (kbytes): 0
+	Maximum resident set size (kbytes): 1807024
+	Average resident set size (kbytes): 0
+	Major (requiring I/O) page faults: 0
+	Minor (reclaiming a frame) page faults: 6934113
+	Voluntary context switches: 127098
+	Involuntary context switches: 2264
+	Swaps: 0
+	File system inputs: 0
+	File system outputs: 21592
+	Socket messages sent: 0
+	Socket messages received: 0
+	Signals delivered: 0
+	Page size (bytes): 4096
+	Exit status: 0

@@ -1,0 +1,11 @@
+{
+ "ref_li2_1e9": 50849233.91183802,
+ "known_li_1e9_minus_li_2": 50849233.91493622,
+ "li_max_abs_error": 0.0009198484913213179,
+ "li_max_abs_error_at_t": 1420831,
+ "li_max_rel_error": 0.00017959397393468542,
+ "li_n_checkpoints": 78,
+ "li_abs_error_at_1e9": -0.0009194985032081604,
+ "t7_crosscheck_rows": 126,
+ "t7_crosscheck_max_abs_diff_E": 0.0
+}

@@ -404,3 +404,13 @@ normalization-invariant). The program's target now has a formal
 bilinear face: E = Σ μ(d)R(⌊x/d⌋) − M(K)R(y). Awaiting 016 (the
 √K-cancellation measurement) to calibrate it empirically; then
 Type-II scoping + seeding round 2.
+
+### 2026-08-09-18 — 016: Abel face calibrated — √K-cancellation flat over 5.5 decades; new canonical measurement
+
+Exhaustive run (31,449 samples): identity exact everywhere; the Abel
+main term's cancellation coefficient is FLAT (0.35–0.43) over the
+full K-range and beyond, while the original M-weighted form degrades.
+The frontier object is now fully specified: kernel-proved identity
+(015) + empirical profile (016). Next: blind seeding round 2 against
+the Abel face (packet includes the 𝔉-closure and all standing
+obstacles), record 017.
