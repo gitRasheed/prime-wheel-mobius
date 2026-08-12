@@ -772,3 +772,18 @@ cross-d mandatory at the measured ~D^0.33 saving, absolute-value
 auto-kill, relocation auto-kill, μ²-diagonal test). Length 1.46x
 prior (accepted: certified content mandated). Panels may seed from
 IDEAS.md again as of this commit.
+
+## 2026-08-12-07
+results/031 closed: repair module set built and gate-green at
+14d92fb (--wfail 7642 jobs, audit pass, 30/30 new theorems at the
+standard axioms; ~40 min EC2, instance stopped). PR opened:
+OVVO-Financial/mobius-synthesis#8 (our 5th) — abstract affine
+excursion lemma, sharp slope A_y = 2+o(1) at the pin (the 023
+constants, now kernel-real), corrected backward window +
+nonemptiness, two-obligation triangle theorems, telescope salvage,
+honest docstrings. Day summary: 029-034 all closed; audit certified
+(75/11/0); IDEAS.md rewritten; upstream memo drafted (unsent, with
+Rasheed); PR #8 open; candidate PR #6 (boundary-term PNT bound)
+scoped in 034. Open queue: send memo (Rasheed); PR #8 review cycle;
+PrimeSieveAbelBoundaryPNT module after #8 lands; round-5 panel under
+the section-J constraint set.
