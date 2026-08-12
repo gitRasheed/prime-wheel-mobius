@@ -1,5 +1,23 @@
 # IDEAS.md — the attack-angle tree
 
+> **ERRATUM NOTICE (2026-08-12, records 029/030).** A round-4
+> adversarial audit found and a certification pass CONFIRMED (75
+> confirmed, 11 partial, 0 refuted) systematic errors in this file's
+> framing and in records 021–028. Binding corrections, until this
+> file is rewritten: (1) there is NO kernel arrow from the Abel face
+> to RH — the "two kernel-equivalent faces" claim is FALSE; the Abel
+> identity carries a second RH-strength boundary obligation
+> M(K)·R(y); (2) the collapse (x < y²) and canonical-pin (x₀ ≥ y²)
+> kernel domains are disjoint; (3) shortlist I1 is dead as designed
+> (E₂(Y) ≪ Y^{4+ε} is RH-equivalent via its sign-blind μ² diagonal;
+> probe-confirmed) and I2 is circular (|V₀−A_q| ≪ q unconditional;
+> probe-confirmed); (4) the section-Z frozen-gate constraint "A < 2
+> untenable" applies only to the F_K-proxy — the correct forced floor
+> for the frozen gate is A ≥ 1; the gate also omits the required
+> truncation clause E_T. Per-record replacement text:
+> `results/030/errata/`. Do not seed panels from this file until the
+> rewrite lands.
+
 Governed by `PROOF_OS.md` (surfaces section). The only file where
 speculation is allowed; every claim here about what a technique *can do* is
 UNVERIFIED unless it cites a record or a source document. Seeded 2026-08-08

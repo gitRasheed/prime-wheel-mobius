@@ -1,0 +1,648 @@
+{
+ "certs": [
+  {
+   "certifications": [
+    {
+     "finding": "W \u224d \u221ax headline at canonical pins (024.md Results + JOURNAL 2026-08-09-32): 'W = min(y+1, \u230aH/2C\u230b) \u224d min(\u221ax, H\u00b7log x/\u221ax): with H \u224d y this is W \u224d \u221ax \u2014 the upgrade from W \u224d log x'",
+     "severity": "fatal",
+     "verdict": "CONFIRMED",
+     "reason": "Independently re-derived: K = x0/(y+1) = y at the pin, C = 1 + y/log(y+1) \u224d \u221ax/log x, so with H \u224d y, \u230aH/2C\u230b \u2248 log(y+1)/2 \u2248 (1/4)log x. Numeric check: \u230aH/2C\u230b = 3, 6, 10, 13 at y = 10^3..10^12, ratio to log x converging to 1/4; W/\u221ax \u2248 10^-6 at y = 10^6. The record's own min evaluates to \u0398(log x) \u2014 it picked the larger branch. The backward window is min(y+1, \u00b7) of the same expression as record 020's forward window at the pin, hence never larger. Window length was not upgraded; the sole genuine delta is backward applicability (the forward theorem is indeed vacuous at pins since x0 % (y+1) = y)."
+    },
+    {
+     "finding": "Declared item 3 not delivered with record-023 constants: only C\u00b7(t+1) with slope = intercept = C = 1 + K/log(y+1), versus promised harmonic-sum slope A = 2+o(1), intercept B = K/log(y+1)",
+     "severity": "fatal",
+     "verdict": "CONFIRMED",
+     "reason": "The only increment theorem in the module is primeSieveMoebiusDiscrepancySum_backward_increment_norm_le with bound C\u00b7(t+1); effective slope is C \u224d \u221ax/log x, inflated by \u2248 y/(2 log y) over the promised 2+o(1). Root cause verified by reading the call chain: it invokes primeSieveMoebiusDiscrepancySum_increment_norm_le, which relaxes the sharp floor-increment sum via primeSieveFloorIncrementSum_le (K(h+1) crude bound, lines 392-409 of PrimeSieveLipschitzExcursion.lean), never replaced. Numeric check confirms the 023 constants (A \u2248 2.03, B = y/log y) do yield window \u2248 0.21\u00b7\u221ax at H = y, so the slope separation is exactly what the \u221ax claim needed."
+    },
+    {
+     "finding": "'All five declared items delivered; nothing dropped' false for items 3 and 4: no A\u00b7t+B abstract affine excursion lemma exists; sibling file's abstract lemmas are degenerate A=B=C, forward-only, and not instantiated by the backward proofs",
+     "severity": "major",
+     "verdict": "CONFIRMED",
+     "reason": "Verified by reading both files and grep: no A\u00b7t+B shape anywhere in the backward module; excursionWindow_norm_le/excursionWindow_moment_le take hlip \u2016f(x0+t)\u2212f(x0)\u2016 \u2264 C\u00b7(t+1) (A=B=C, forward direction only); the backward excursion theorem (lines 166-207) re-derives the reverse-triangle argument inline rather than instantiating them. Item 5 is therefore the C\u00b7(t+1) assembly, not 'items 1+3+4 assembled'. The declaration's own gate text promised unproved items would be 'dropped from the record as unproved'; item 4 was dropped but claimed delivered."
+    },
+    {
+     "finding": "'Hypotheses are now just 1 \u2264 y' conflated with non-vacuity: no nonemptiness certificate for primeSieveBackwardWindow exists; window is 0 when H < 2C and both backward theorems degenerate",
+     "severity": "major",
+     "verdict": "CONFIRMED",
+     "reason": "The '1 \u2264 y' half is literally true (checked signatures). But grep confirms no one_le_primeSieveBackwardWindow exists anywhere, while the forward module ships one_le_excursionWindow and one_le_primeSieveExcursionWindow. When H < 2C: \u230aH/2C\u230b = 0, min gives 0, the excursion quantifies over t < 0 (empty), the moment bound reads (H/2)^{2k}\u00b70 \u2264 empty-sum, i.e. 0 \u2264 0. Reaching the first genuine backward point t = 1 needs W \u2265 2, i.e. H \u2265 4C \u2248 4\u221ax/log x \u2014 numerically 2.9\u00d710^5 at y = 10^6, matching the audit. 'The transfer now actually fires at the program's own sample points' has no formal support."
+    },
+    {
+     "finding": "The y+1 cap in min(y+1, \u230aH/2C\u230b) is decorative: it binds only for H \u2265 2C(y+1) \u224d 4x/log x, unconditionally impossible for large y by Vinogradov\u2013Korobov, so the backward window asymptotically equals record 020's forward window (minor)",
+     "severity": "minor",
+     "verdict": "CONFIRMED",
+     "reason": "Cap threshold re-derived: 2C(y+1) = 2(y+1)(1+y/log(y+1)) \u224d 4x/log x, numerically confirmed (2.17\u00d710^7 at y = 10^4 vs 4x/log x = 2.17\u00d710^7). The VK bound H \u2264 \u03a3_{d\u2264y}|R(\u230ax0/d\u230b)| \u226a x0\u00b7log y\u00b7exp(\u2212c(log y)^{3/5}(llog y)^{\u22121/5}) = o(x0/log y) is correct as asymptotics and beats the threshold for all large y. Scope remark: with explicit VK constants the crossover is astronomically far out (log y in the thousands), so the finding is asymptotic-only as an unconditional statement \u2014 but the scale-free version is stronger anyway: at the program's own regime H \u224d y, \u230aH/2C\u230b \u2248 (1/4)log x \u226a y+1 at every finite scale, so the cap is irrelevant wherever the machinery is meant to run. Load-bearing as corroboration of finding 1's 'no numerical upgrade'."
+    },
+    {
+     "finding": "floor_succ_div_sub_eq_divisor_indicator and floor_add_div_sub_le are dead lemmas 'underlying' nothing; the affine constant actually used is the crude K(h+1) relaxation; 'sharp' overstates the h/d+1 bound (exact max is \u2308h/d\u2309) (minor)",
+     "severity": "minor",
+     "verdict": "CONFIRMED",
+     "reason": "Repo-wide grep: both lemmas appear only at their definition sites, zero uses. The docstring claim 'two exact floor facts underlying the affine constant' is false \u2014 the constant flows through the private floor_increment_le and primeSieveFloorIncrementSum_le. The 'sharp' nit verified by brute force: max over x of \u230a(x+h)/d\u230b\u2212\u230ax/d\u230b is exactly \u2308h/d\u2309, so h/d+1 is wasteful by one iff d \u2223 h. The proposed repair re-derived and checked: \u03a3_{d\u2264K}(\u230ah/d\u230b+1) \u2264 h\u00b7H_K + K threaded through primeSieveMoebiusPrefixSum_increment_norm_le gives A = 1 + H_K/log(y+1) = 2+o(1), B = K/log(y+1), yielding window \u2248 0.21\u00b7\u221ax at H = y. FLAGGED AS LOAD-BEARING despite minor severity: it contains both a false documentation claim in a merged kernel module and the exact repair path that would make the record's headline true."
+    }
+   ],
+   "target": "024-lean-module",
+   "errata_path": "/tmp/claude-1000/-mnt-d-Projects-prime-wheel-mobius/0d31eddd-16a5-4696-aef4-2949c1ddd542/scratchpad/errata_024-lean-module.md",
+   "errata_summary": "All six audit findings for 024-lean-module are CONFIRMED on independent re-derivation: the W \u224d \u221ax headline is arithmetically false (the formalized constant C \u224d \u221ax/log x forces W \u224d (1/4)log x at H \u224d y, verified numerically at y = 10^3..10^12), because declared item 3 shipped with the crude K(h+1) slope rather than record-023's A = 2+o(1), and declared item 4 (the two-constant A\u00b7t+B excursion lemma) was silently dropped. The 'hypotheses now just 1 \u2264 y' claim conflates hypothesis removal with non-vacuity \u2014 no kernel theorem witnesses the backward window is ever nonempty, which requires the unproved height H \u2265 2C \u224d 2\u221ax/log x. The Lean theorems themselves are correct as proved, and the genuine frontier delta (backward applicability at pins where the forward machinery is provably vacuous) survives. The errata draft rewrites the 024.md Results paragraph and window/floor-fact bullets, corrects JOURNAL entry 2026-08-09-32, proposes docstring-only Lean fixes, and records the verified repair path (wire floor_add_div_sub_le into a harmonic-sum increment bound, add one_le_primeSieveBackwardWindow) that would make W \u224d \u221ax defensible."
+  },
+  {
+   "target": "025-h4-kill",
+   "certifications": [
+    {
+     "finding": "Ground 2 invalid as stated: 'No exact scalar renewal kernel exists for the prime indicator' is false \u2014 g_P = 1_P*mu exists uniquely and the telescope applies to it",
+     "severity": "major",
+     "verdict": "CONFIRMED",
+     "reason": "Re-derived: 1 is Dirichlet-invertible, so f = (f*mu)*1 uniquely; numerically verified g_P(p)=1, g_P(p^2)=-1, g_P(p^r)=0 (r>=3), g_P(pq)=-2, and the telescope Sum 1_P(n)M(floor(X/n)) = Sum g_P(a) exactly at X=1000. codex_report lines 70-75 only exclude kernels obtained by rescaling g \u2014 a restricted class. What Lambda->1_P destroys is compact support/HB structure, not the telescope; kill substance carried by grounds 1 and 3, so nothing revives."
+    },
+    {
+     "finding": "Ground 5 is a survey, not a theorem; 'each proved exactly' is false for it (two [OPEN] tags in the section it summarizes)",
+     "severity": "major",
+     "verdict": "CONFIRMED",
+     "reason": "codex_report.md lines 159 and 161-165 carry [OPEN] tags (signed localized Harman identity; signed kernel Sum mu(a)log a\u00b7F(X/a)) inside the Q2 section ground 5 summarizes, and the class 'internal repair' is never defined, so the universal quantifier has no referent. The sign-preservation item is exactly the record's own frozen reopen condition, so it cannot simultaneously be a proved-dead repair. Defensible statement is 'no successful repair was supplied'."
+    },
+    {
+     "finding": "Ground 4 misclassified as structural; refutes only the one-parameter self-similarity, and the two-parameter H(N,B) repair (never considered) dies on H(N,1)=M(N) circularity",
+     "severity": "major",
+     "verdict": "PARTIAL",
+     "reason": "The math is right (verified: B_a = floor(y/a) ~ sqrt(X)/a vs sqrt(N_a) ~ sqrt(X)/sqrt(a); H(N,1)=M(N) numerically confirmed; recursion drives B_a to 1 at a ~ y, so uniform-in-B closure needs Mertens-scale input) and the record should add the two-parameter repair and its circular barrier. But the audit's demand to reclassify ground 4 wholesale as 'quantitative' is overbroad: as a refutation of the proposal's STATED self-similarity claim, ground 4 is validly structural and needs no retraction \u2014 only the implied foreclosure of the H(N,B) generalization overreaches."
+    },
+    {
+     "finding": "Ground 3's Lambda->primes bridge (m_P >= m_Lambda/log X; general-k ((k-1)/k)D^{1-theta}) is a charitable model presented under a proof tag",
+     "severity": "major",
+     "verdict": "CONFIRMED",
+     "reason": "m_P is undefined (no prime kernel of the proposal's form exists, per the report's own Q1 RESULT), Mobius inversion is neither pointwise log-division nor positivity-preserving, and the exact kernel g_P = 1_P*mu is k-independent so ((k-1)/k)D^{1-theta} cannot describe it. Conclusion survives via the exact kernel: Sum_{p<=D} p^{-theta} ~ D^{1-theta}/((1-theta)log D) (spot-checked). The Lambda-side is fully rigorous \u2014 all constants 9, 108/(pi^2(1-2eps)), 27/pi^2, 1013 independently re-derived and numerically confirmed, including the second-order correction matching the theta=1/2 numeric ratio 0.769."
+    },
+    {
+     "finding": "The Harman/beta-sieve branch is not reached by the stated grounds (its kernel g(d)=lambda_d 1_{d<=D} genuinely has compact support); the actual kill is the missing lambda_1 = 1 degeneracy argument",
+     "severity": "major",
+     "verdict": "CONFIRMED",
+     "reason": "Verified against agent6.json: the proposal explicitly offers '(or a Harman-sieve schedule)', asserts lambda\u00b1 are 'themselves of this (g*1) form' (true), and imposes 'never as majorants' on itself. Grounds 1-3 are HB-kernel-specific and do not apply; codex_report line 151 is a bare assertion tagged as proved. The lambda_1 = 1 kill checks out: the a=1 renewal term contributes T(x) to its own bound (HB escapes via g(1)=(k-1)mu(1)log 1 = 0), so the induction is vacuous before any mass question. Verdict unaffected; grounds incomplete."
+    },
+    {
+     "finding": "Blanket 'H4 killed' closure covers the untouched rung-0 deliverable S << x\u00b7exp(-c(log x)^{3/5-eps}); it is redundant (banked by 022), not killed",
+     "severity": "minor",
+     "verdict": "CONFIRMED",
+     "reason": "Verified: none of the five grounds addresses the rung0_plan; results/022 records 'S = o(x) is already KNOWN via pointwise VK PNT + triangle inequality'; and the one-line derivation holds (d<=K=x/(y+1) forces x/d>y, termwise VK gives x log x\u00b7e^{-c Phi(y)} which at y~sqrt(x) is the stated shape). One caveat: the 'falsifies strictly better than any termwise bound' remark holds at the level of the NAMED deliverable's strength; the product route could still beat termwise by a second factor, but that stronger form was never the deliverable. Not load-bearing."
+    },
+    {
+     "finding": "Salvage telescope is true but the novelty tag is wrong \u2014 it is the classical Sum M(floor(X/n)) = 1 convolved with g",
+     "severity": "minor",
+     "verdict": "CONFIRMED",
+     "reason": "Identity re-verified exactly (random g at X=1000; g=delta recovers the classical fact, verified at X=10,100,997,1000). It is a one-line corollary of mu*1=delta along the hyperbola; fine to formalize, wrong to record as 'NEW leverage'. Labeling fix only, not load-bearing."
+    },
+    {
+     "finding": "Two dropped log factors in 025.md ground 3 headline: true mass at theta=1/2+eps is ~ D^{1/2-eps}\u00b7log D, and the raw a^{-1} mass is ~ (log D)^2 (the '~ log D' figure imports the non-rigorous 1/log X division)",
+     "severity": "minor",
+     "verdict": "CONFIRMED",
+     "reason": "Re-derived by partial summation with Q(t) ~ t/zeta(2): mass at theta = 9 D^{1-theta} log D/(zeta(2)(1-theta)) and (27/pi^2)(log D)^2 at theta=1, both numerically confirmed (theta=1 ratio 1.011 at D=5000). codex_report line 116 shows the '~ log D' arises only after dividing by log X = 10 log D, i.e. the charitable bridge of the ground-3 finding. Both drops conservative; kill unaffected; not load-bearing."
+    }
+   ],
+   "errata_path": "/tmp/claude-1000/-mnt-d-Projects-prime-wheel-mobius/0d31eddd-16a5-4696-aef4-2949c1ddd542/scratchpad/errata_025-h4-kill.md",
+   "errata_summary": "All eight audit findings for 025-h4-kill were independently re-derived (with numeric spot-checks of the telescope, the exact prime kernel 1_P*mu, the H(N,B) edge formula, the HB kernel at k=3, and all mass constants): seven CONFIRMED, one PARTIAL. The record's CLOSED-KILLED verdict on H4-as-proposed survives untouched, but its justification needs repair: ground 2's kernel-nonexistence sentence must be retracted (the kernel exists and the telescope applies to 1_P \u2014 only compact support and HB structure fail), \"each proved exactly\" and ground 5's universal quantifier must be demoted to \"no successful repair supplied\", the Lambda-to-primes bridge must be retagged as a charitable model with the rigorous exact-kernel divergence substituted, and the missing lambda_1 = 1 kill for the sieve branch plus the H(N,1) = M(N) circularity for the two-parameter repair must be added. The PARTIAL is finding 3: its mathematics and the circularity barrier are correct, but ground 4 as written is a valid structural refutation of the proposal's stated self-similarity, so wholesale reclassification to \"quantitative\" is overbroad. Two minor order-of-magnitude drops (both conservative) and two labeling fixes (novelty tag; rung-0 marked redundant-per-022 rather than killed) round out the errata; nothing reopens the node."
+  },
+  {
+   "target": "022-rung0-parking",
+   "certifications": [
+    {
+     "finding": "Majorization applied to wrong object: coordinator's note claims 'ANY absolute-value route' to rung 1 is quasi-RH-hard because 'the d-sum route majorizes |R(x)| (d=1 term)'",
+     "severity": "major",
+     "verdict": "CONFIRMED",
+     "reason": "Re-derived: the gate object M takes absolute values over zeros with the signed Mobius sum retained inside G(rho); |G(rho)| does not bound its own d=1 summand |Li_*(x^rho)|, so M does not majorize |R(x)|. The majorization is true only of Sigma_d|R(x/d)| and of 022's actual double-triangle method, whose d=1 slice satisfies Sigma_rho|Li_*(x^rho)| >= (|R(x)|-|C_0(x)|)/2 via the explicit formula (verified). 'ANY absolute-value route' therefore kills mu-signed-inside-amplitude routes, including the gate itself, without argument."
+    },
+    {
+     "finding": "Unsupported dichotomy: 'Only signed routes remain above rung 0' implies signed routes escape a barrier killing absolute routes; rung 1 is zero-free-strip-hard in every coordinate; S->M bridge never established away from 1/2+eps",
+     "severity": "major",
+     "verdict": "PARTIAL",
+     "reason": "The finding's conclusion is right: the dichotomy is unsupported and rung-1 hardness was never verified in either coordinate (the Abel boundary term M(K)R(y) blocks the bridge away from 1/2+eps, and the K-truncated Mobius convolution does not invert cleanly). But the finding's own flat assertion 'rung 1 is zero-free-strip-hard in every coordinate system' is conditional on exactly the exponent-preserving bridge it then concedes is missing \u2014 without a bridge, S(x,K) << x^{1-delta} is not known to imply a fixed-power Mertens bound. Correct scoping: rung-1 hardness is open in both coordinates; strip-hardness follows only for routes that additionally carry a bridge to R or M."
+    },
+    {
+     "finding": "Silent rung-1 definition drift: 021 froze M << x^{1/4-delta} (S << x^{3/4-delta}); 022 declares rung 1 as M << x^{1/2-delta} (S << x^{1-delta})",
+     "severity": "major",
+     "verdict": "CONFIRMED",
+     "reason": "Verified verbatim in 021.md Results, 021/codex_report.md line 105, and 022.md Target \u2014 the two targets are materially different. Re-derived the binding-constraint claim: M << x^{1/4-delta} forces |C_{x,K}| << x^{3/4-delta}, which requires power-saving Mobius cancellation in Sigma mu(d)C_0(x/d) ~ -(2 sqrt(x)/log x) F^log(1/2), i.e. cancellation at s=1/2 \u2014 021's own m=2 obstruction \u2014 which the parking note's |R(x)| argument does not address. Recommend logging as informal-math error #9."
+    },
+    {
+     "finding": "'Cluster Z is now fully mapped' / 'Pivot to H1 justified by exhaustion' overclaims: one majorant executed, improvement over trivial only e^{h(x)} (subpower) vs a rung-2 gate ~sqrt(x)/polylog below trivial; signed directions untouched",
+     "severity": "major",
+     "verdict": "CONFIRMED",
+     "reason": "Verified: 022 executed exactly one method (triangle over (rho,d), uniform top-height VK, RvM total counting); the improvement factor e^{h(x)} = exp(~0.00285(log x/loglog x)^{1/3}) is subpower (constant re-derived numerically); the rung-1 leg of the 'map' rests on the invalid note (findings 1-3), so even the charitable rung-classification reading fails. The listed untouched directions (cancellation inside G(rho), log-kernel discrete moments at zeros, range splitting, C_{x,K} cancellation, contradiction structure) are genuinely absent from 022. Parking is defensible on resource grounds only."
+    },
+    {
+     "finding": "Stronger correct kill unrecorded: under RH the d-triangle method is << sqrt(xK) log x ~ x^{3/4} log x \u2014 a hard ceiling no zero-free-region advance lifts to x^{1/2+eps}; therefore 'reopens on a zero-free-strip advance' is also wrong for that method",
+     "severity": "major",
+     "verdict": "PARTIAL",
+     "reason": "Core confirmed by re-derivation: Sigma_{d<=K}|R(x/d)| << sqrt(x) log x * 2 sqrt(K) = 2 sqrt(kappa+) x^{3/4} log x under RH (numerically verified constant), the ceiling is visible in (3.8) and its main part is genuinely of size x^{3/4}/log x, so the method can never reach the rung-2 gate \u2014 this stronger method-level kill should replace the recorded rationale. But the last clause overreaches: a strip beta <= 1-delta gives Sigma_d (x/d)^{1-delta} log^2 << x^{1-delta/2} log^2 x, so the same d-triangle method DOES reach rung 1 (both 022's 1a and, via M(K) << K^{1-delta+eps} in the C-part, 021's 1b) under a strip advance. The reopening trigger is correct for rung-1 progress and wrong only as a route to the rung-2 gate."
+    },
+    {
+     "finding": "Minor: 'M = o(sqrt x)' headline is a presentational trap (PNT-strength written in square-root-looking form)",
+     "severity": "minor",
+     "verdict": "PARTIAL",
+     "reason": "Normalization arithmetic confirmed (M = o(sqrt x) is unnormalized o(x); RH gate is M << (log x)^A), but 022.md explicitly labels the deliverable 'PNT-strength' in both Target and Results, so 'trap' overstates; one clarifying line suffices."
+    },
+    {
+     "finding": "Minor: R(x) << x^{1-delta} 'classically equivalent (Ingham)' to a strip is overstated and mis-attributed",
+     "severity": "minor",
+     "verdict": "CONFIRMED",
+     "reason": "Re-checked: the used direction (power saving => zero exclusion) is clean via Landau/Mellin; the converse carries eps/log losses; only the qualitative fixed-saving <=> fixed-strip statement holds; attribution to Ingham is loose. Folded into erratum E1."
+    },
+    {
+     "finding": "Minor: rung-0 bound non-effective in any recordable range ((log x)^2 e^{-h(x)} < 1 only past log x ~ 4.6e14), and the gamma<3 absorption x_0 dependence is implicit",
+     "severity": "minor",
+     "verdict": "CONFIRMED",
+     "reason": "Numerically re-solved: (log x)^2 e^{-h(x)} = 1 at log x ~ 4.575e14, matching the audit; asymptotic constant 1/(4*55.241*2^{2/3}) = 0.002851 exact. The proof states the gamma<3 absorption qualitatively but 022.md Results carries no effectivity flag."
+    },
+    {
+     "finding": "Minor: moment route's S-consequence strictly dominated by pointwise VK (saving exponent 1/3 vs 3/5) and this is not recorded",
+     "severity": "minor",
+     "verdict": "CONFIRMED",
+     "reason": "Exponents re-derived: uniform payment at T ~ x^2 gives eta based on (log x^2)^{2/3}, hence (log x)^{1/3}-type saving, vs (log x)^{3/5}(loglog x)^{-1/5} for an optimized Perron truncation. The record notes S=o(x) is known but not the quantitative gap. The 'all-zero realization' framing survives since pointwise VK does not control the absolute moment M."
+    },
+    {
+     "finding": "Minor: Step-6 common-height truncation lemma still unsupplied; S(x,K)=o(x) not proved in-document; Codex's integrality objection void",
+     "severity": "minor",
+     "verdict": "CONFIRMED",
+     "reason": "Verified against proof_attempt.md Step 6 and review_refute.md section 4: the lemma is asserted, the sketched repair is not inserted, and 022.md honestly records the gap \u2014 severity minor is right, but this is load-bearing for any future citation of 'S=o(x) via the moment route'. The integrality objection is correctly dropped: floor(x/d) = floor(floor(x)/d) for integer d, so integer x suffices for the S-target."
+    }
+   ],
+   "errata_path": "/tmp/claude-1000/-mnt-d-Projects-prime-wheel-mobius/0d31eddd-16a5-4696-aef4-2949c1ddd542/scratchpad/errata_022-rung0-parking.md",
+   "errata_summary": "The rung-0 mathematics of 022 (M << x^{1/4} + sqrt(x)(log x)^2 e^{-h(x)}) survives certification untouched; every confirmed defect lives in the coordinator's parking note and the rung-1 bookkeeping. Confirmed: the |R(x)|-majorization argument is true of the triangle-over-d method but false of the gate object M ('ANY absolute-value route' must be re-scoped), rung 1 silently drifted from 021's x^{1/4-delta} to 022's x^{1/2-delta} (recommend logging as informal-math error #9), and 'fully mapped / exhaustion' describes one subpower-improving majorant. Two audit findings are PARTIAL: the claim that rung 1 is strip-hard 'in every coordinate' is itself conditional on the missing exponent-preserving S-to-M bridge, and 'reopens on a zero-free-strip advance is wrong' overreaches \u2014 a strip demonstrably lifts the d-triangle method to rung 1 (both definitions), just never to the rung-2 x^{1/2+eps} gate, whose correct kill is the method's RH-ceiling at x^{3/4} log x. The errata draft gives verbatim replacement text for the note's five sentences plus a reopening-trigger split (strip advance reopens rung 1 only; rung 2 reopens only on a signed mechanism), and flags the still-unsupplied Step-6 truncation lemma as the one live gap that must not be cited as proved-in-record."
+  },
+  {
+   "certifications": [
+    {
+     "finding": "Cluster D 'structural defect' (Omega_H constant on deep rectangle, Gram form contains H|A_0|^2) is exact algebra but the inference to 'fatal' is unsupported: the deep-prefix block is cancellable against cross terms; the coercive statement is the exact mean split Sum|V_t|^2 = W|A_q|^2 + Sum|V_t-A_q|^2.",
+     "severity": "major",
+     "verdict": "CONFIRMED",
+     "reason": "Independently re-derived: Omega_H(m,n;X)=max(0,min(H,X-max(m,n)+1)) brute-forced over 2000 cases (depends only on max, so zero m-n localization); Gram = kernel expansion = variance split verified numerically; in 2 of 5 random trials the deep block H|A_0|^2 EXCEEDED the full Gram form, concretely demonstrating cancellability, so the block is an unsupplied estimate, not a contradiction. The mean-based split is exact and coercive, forcing |A_q| << x^{1/2+eps} from the mean-square target. Kill verdict for cluster D unaffected."
+    },
+    {
+     "finding": "Mapping report misattributes the no-short-shifted-convolution objection to agent 6; agent 6 keeps Omega_H explicit in its target and never claims |dp-eq| <~ H (that claim is agent 9's). Correct narrower ground vs agent 6: no pre-spectral signed evaluation of the zero/low-frequency packet; named tools are coefficient-uniform.",
+     "severity": "major",
+     "verdict": "CONFIRMED",
+     "reason": "Verified from agent6.json: the target estimate is Sum mu(d)mu(e) nu(p)nu(q) Omega_H(dp,eq;X) << H X^{1+eps} with the kernel retained exactly, plus the explicit statement that the Cesaro mode must stay inside the same signed dispersion. The conductor-lowering/short-shift geometry appears only in agent9.json (Q ~ sqrt(x/W)=x^{1/4}). Agent 6's own kill test ('kill if isolating the zero mode forces |mu| or |nu| before spectral summation') mandates exactly the check that dooms it, so the KILL verdict survives on the corrected ground."
+    },
+    {
+     "finding": "Dedup miss: cluster D's rung-2 target (1/W)Sum|S|^2 << x^{1+eps} and cluster P's DC deliverable |A_q| << q^{1+eps} are unconditionally equivalent via the exact variance split plus agent 5's elementary Poincare bound; 027 killed one and advanced the other without recording the equivalence.",
+     "severity": "major",
+     "verdict": "CONFIRMED",
+     "reason": "Re-derived every step: V_t - V_{t+1} = c_q(X-t) is exact (floor-difference argument), |c_q(n)| <= sum_{d|n} |a(n/d)| << tau(n) << n^eps since R-increments are bounded, hence |V_t - A_q| << q^{1+eps} and W^{-1}Sum|V_t-A_q|^2 << q^{2+eps} = x^{1+eps} unconditionally; the variance split then gives the equivalence in both directions up to eps. Neither 027.md nor mapping_report.md states it; the D-kill/P-advance split is about method (sign-blind spectral norms vs exact isolation), not target, and the equivalence is a free Lean-formalizable program result."
+    },
+    {
+     "finding": "027.md's cluster-R summary 'a covert absolute-value step found in every one' is unsupported by the report's own recorded grounds and overstated (agent 0: assumption SR(alpha); agent 2: undefined E_recur), risking a wrongly frozen reopen condition.",
+     "severity": "minor",
+     "verdict": "CONFIRMED",
+     "reason": "Verified against mapping_report.md's own 'Covert absolute-value points' and agent{0,2,3,4,7}.json: agent 0's ground is installing the conclusion as assumption SR(alpha) (no sign-discarding step anywhere in its recorded ground) and agent 2's is an under-defined E_recur \u2014 either alone breaks 'every one'. Agents 3 and 7 do carry absolute/energy steps as recorded; for agent 4 the audit's relabel (assumption that the zero-mode cancellation is complete before sign-blind TT*) slightly overstates, since agent 4's target and kill test name the F-B cross-term as open, but the operative defect is still assumption-of-conclusion. Load-bearing flag: kill semantics freeze reopen conditions, so the correction matters ('supply the signed contraction', not 'remove an absolute-value step')."
+    },
+    {
+     "finding": "Agent 7's target estimate Int_0^inf ||D_{y,u}||_{l2(I_y)} du << y^{3/2+eps} is false as written (E_u(1) divergent for u>=1; after excision, Sum_{m<=N}E_u(m) ~ -1/(u-1) uniformly in N makes the u-integral log-divergent whenever M(y)!=0), a literal defect the mapping report missed in favor of the weaker 'absolute packet step' ground.",
+     "severity": "minor",
+     "verdict": "CONFIRMED",
+     "reason": "Re-derived analytically and confirmed numerically: Int_0^1 v^{-u}dv diverges for u>=1 with Lambda(1)=0, so E_u(1) = -infinity; and Sum_{2<=m<=N}E_u(m) computed for u in {2,3,5,10,20} and N in {10,100,1000} is N-uniform and matches -1/(u-1) to 4-6 digits at u=10,20. Hence D_{y,u} ~ -M(y)/(u-1) uniformly across I_y and the u-integral diverges logarithmically for M(y)!=0. Strengthens the kill; verdict unchanged. Flagged as load-bearing-adjacent since the frozen ground understates a provable falsity."
+    },
+    {
+     "finding": "Agent 9 kill ground 'conductor lowering applies, at best, to the moving-boundary/AC component' has right verdict but wrong/incomplete mechanism: the real error is conflating shift-averaging (Jutila) with endpoint-averaging, whose Mellin kernel J_W has bandwidth X/W = sqrt(x), exactly critical at balanced length \u2014 so Q ~ x^{1/4} is unsupported; the audit says the record 'mislocates' the gain.",
+     "severity": "minor",
+     "verdict": "PARTIAL",
+     "reason": "The audit's mechanism analysis is correct and verified: |J_W(z)| ~ min(1, X/(W|Im z|)) numerically confirmed (|J_W| stays ~1 until |Im z| ~ X/W then decays like X/(W|Im z|)), giving zero surplus at balanced Dirichlet-polynomial length sqrt(x), and agent 9's Q ~ sqrt(x/W) = x^{1/4} is indeed unsupported for the full moment. But the audit's charge that the record MISLOCATES the gain is overbroad: the boundary-by-boundary block genuinely has |m-n| < H localization, so the record's 'at best' scoping is a defensible upper bound \u2014 it is under-specified (deep-by-boundary cross blocks have no localization; the conflation is never named), not wrong. Erratum extends rather than replaces the record's sentence."
+    }
+   ],
+   "target": "026-027-kills",
+   "errata_path": "/tmp/claude-1000/-mnt-d-Projects-prime-wheel-mobius/0d31eddd-16a5-4696-aef4-2949c1ddd542/scratchpad/errata_026-027-kills.md",
+   "errata_summary": "All six audit findings for 026-027-kills were re-derived independently: five CONFIRMED, one PARTIAL, and none of 027's verdicts (7 KILL, 2 ADVANCE) change \u2014 every defect is in recorded grounds. The three majors are confirmed: the cluster-D 'structural defect' block H|A_0|^2 is exact but cancellable (demonstrated numerically) and must be replaced by the coercive mean split; agent 6's kill ground is misattributed (the short-shift objection is agent 9's; the correct ground is the absent pre-spectral signed zero-packet evaluation); and D's rung-2 target is unconditionally equivalent to P's DC deliverable |A_q| << q^{1+eps} via the exact variance split plus agent 5's Poincare bound \u2014 a free Lean-formalizable result 027 never recorded. Among the minors, the 'covert absolute-value step in every one' sentence and agent 7's divergent target estimate are confirmed (both flagged as load-bearing because kill grounds freeze reopen conditions), while finding 6 is PARTIAL: the audit's shift-vs-endpoint-average mechanism and critical Mellin bandwidth X/W = sqrt(x) are verified, but its charge that the record 'mislocates' the gain overreaches since the boundary-by-boundary block genuinely carries |m-n| < H. The errata draft quotes each wrong sentence in 027.md and mapping_report.md and supplies replacement text."
+  },
+  {
+   "target": "i1-viability",
+   "certifications": [
+    {
+     "finding": "F1: d=e diagonal D(Y)=\u03a3_{y,t}\u03a3_{d\u2264y}\u03bc(d)\u00b2R(\u230an/d\u230b)\u00b2 of the k=1 Gram form is sign-blind, of size Y^{2+4\u03b8}, and D(Y)\u226aY^{4+\u03b5} is RH-equivalent, so any dispersion/spectral treatment that separates the diagonal must first prove an RH-equivalent bound",
+     "severity": "fatal",
+     "verdict": "CONFIRMED",
+     "reason": "Independently re-derived both directions. Forward from R(u)\u226au^{1/2+\u03b5} is immediate. Converse: D contains its d=1 part; canonical windows [y\u00b2+y, y\u00b2+2y] cover [Y\u00b2,4Y\u00b2] with density ~1/2 and gaps ~Y (numerically verified: density 0.508, max gap 2Y+1) and |R(n+h)\u2212R(n)|\u226ah (sampled sup ratio 0.18), so gap-to-window mapping extends the bound to the full dyadic interval with admissible O(Y\u2074) error, giving \u03a3_{n\u2264X}R(n)\u00b2\u226aX^{2+\u03b5}, which forces \u03b8\u22641/2 by the standard Landau/Ingham mean-square \u03a9-result. Size formula Y^{2+4\u03b8}\u03a3d^{\u22122\u03b8} (Y\u2074/log Y at \u03b8=1/2) re-derived via multiplicity ~d of \u230an/d\u230b and \u03a3_{m\u2264X}R(m)\u00b2\u224dX^{1+2\u03b8}/log\u00b2X. The finding correctly scopes the equivalence to the diagonal bound required by any method separating E\u2082=D+off-diagonal, not to the raw E\u2082 hypothesis."
+    },
+    {
+     "finding": "F2: \u03bc*\u039b=\u2212\u03bc log is unavailable for the truncated d\u2264y sum (complementary \u039b\u00b7M hyperbola edge of record-025 difficulty remains), plus an uncontrolled prime-power signed obligation from R being \u03c0\u2212Li-based; 027's obstacle-9 PASS for cluster E should be FAIL/UNRESOLVED",
+     "severity": "fatal",
+     "verdict": "CONFIRMED",
+     "reason": "Verified the exact identity numerically to machine precision at multiple (n,K): \u03a3_{d\u2264K}\u03bc(d)\u03c8(\u230an/d\u230b) = \u2212\u03a3_{r\u2264n}\u03bc(r)log r \u2212 \u03a3_{m\u2264\u230an/K\u230b}\u039b(m)[M(\u230an/m\u230b)\u2212M(K)]. With K=y, n~y\u00b2 the omitted half is exactly record 025's two-parameter edge (audit wrote m\u2264y where the exact range is m\u2264\u230an/y\u230b\u2208{y+1,y+2} \u2014 immaterial boundary terms, noted in errata). Prime-power defect re-derived: Stieltjes conversion via d\u03c8/log gives J(x)=\u03a3_{p^m\u2264x}1/m, leaving corrections of termwise size \u03a3_{d\u2264Y}(Y\u00b2/d)^{1/2}\u224dY^{3/2} per pin, above the Y^{1+\u03b5} per-pin target, so they must be carried as a signed obligation. The 029 reviewer's downgrade of the prime-power piece from independently-fatal to a component is correct. Obstacle-9 PASS is wrong in substance."
+    },
+    {
+     "finding": "F3: the rung-1 implication E\u2082(Y)\u226aY^{4+\u03b5} \u27f9 |S|\u226ax^{5/6+\u03b5} is arithmetically correct but mislabeled \u2014 Y^{4+\u03b5} is RH-scale under the program's empirical law; honest rung-1 form is E\u2082\u226aY^{5\u2212\u03ba}",
+     "severity": "major",
+     "verdict": "CONFIRMED",
+     "reason": "Re-derived the amplification by hand: narrow branch W~H/C_y, C_y~Y/log Y gives H^{2k+1}/C\u226aY^{2k+2+\u03b7} hence H\u226aY^{1+(2+\u03b7)/(2k+1)}, k=1 \u2192 Y^{5/3+\u03b7/3}=x^{5/6+\u03b7/6}; wide branch W=y+1 needs H\u2273Y\u00b2/log Y but concludes H\u226aY^{1+(1+\u03b7)/(2k)}, contradictory hence vacuous. Under the empirical square-root-cancellation law E\u2082\u224dY^{2+4\u03b8}, so Y^{4+\u03b5} corresponds to \u03b8\u22641/2, while RH pointwise already gives the better x^{3/4+\u03b5} by triangle inequality \u2014 hypothesis strictly stronger than conclusion. General payout H\u226aY^{(A+1)/3+\u03b5} from E\u2082\u226aY^{A+\u03b5} verified; fixed power saving needs only A<5 (trivial bound is A=6), and A=5\u2212\u03ba corresponds to \u03b8\u22643/4\u2212\u03ba/4 under the model. All checks match the finding."
+    },
+    {
+     "finding": "F4: 027 cluster-E obstacle scores '1. \ud835\udd09-closure: CLAIM' and '6. Circularity: PASS at formulation level' are too generous \u2014 obstacle 6 fails at required inputs, obstacle 1 fails for any dispersion implementation, and the positive energy is prime-error energy, not Mertens energy",
+     "severity": "major",
+     "verdict": "CONFIRMED",
+     "reason": "Follows directly from F1 (confirmed): the RH-equivalent diagonal is a required input of every dispersion implementation, so 'PASS at formulation level' is technically true but the operative scoping is wrong, and the finding states this distinction explicitly. The diagonal \u03a3\u03bc(d)\u00b2R(\u230an/d\u230b)\u00b2 is visible before any Poisson step and is algebraically prime-error energy (R\u00b2, not M\u00b2), so 027's 'may be positive Mertens energy in disguise' both understates and misidentifies the object."
+    },
+    {
+     "finding": "F5: 'conductors polynomial' (027 obstacle-4 PASS) is mis-scoped \u2014 binding constraint is conductor vs averaging length: q=lcm(d,e)~Y\u00b2 against y-length Y sits exactly at the no-saving completion threshold, and large-sieve cost Q\u00b2=Y\u2074 exceeds the Y\u00b2 ensemble points",
+     "severity": "major",
+     "verdict": "CONFIRMED",
+     "reason": "Re-derived: an incomplete quadratic phase sum of length N modulo q completes to ~\u221aq\u00b7polylog, which beats the trivial N only when N>\u221aq; here N=Y and \u221aq=Y for typical coprime d,e~Y, so completion returns the trivial bound and only the thin small-conductor sub-family gains. Sample-point vs conductor-cost accounting (Y\u00b2 points against Q\u00b2=Y\u2074) is correct: the family is under-determined. No normalized multilinear form with favourable balance is exhibited in agent8 or 027. Polynomiality alone is not sufficient for obstacle 4 as applied."
+    },
+    {
+     "finding": "F6: the phase e(h(y+1)\u00b2/d) is the idealized output of a Poisson step never performed \u2014 R(\u230an/d\u230b) is a prime-jump step function under a floor, and the required boundary-error analysis collides with kernel-proved obstacle 8",
+     "severity": "major",
+     "verdict": "CONFIRMED",
+     "reason": "Structurally verified: classical Poisson requires smooth weights; the summand jumps at primes and at floor discontinuities. An exact discrete Fourier/Vaaler treatment yields prime sums, floor boundary terms, and a wide frequency spread rather than the single displayed quadratic phase, and obstacle 8 (Wigert floor jumps, kernel-proved) forbids polylog pointwise control of precisely that boundary error, so the missing analysis is substantive, not routine. Neither agent8 nor 027 supplies it."
+    },
+    {
+     "finding": "F7 (minor, flagged load-bearing for 027 \u00a74 ranking rationale): the y-average costs a factor in the exponent (per-pin same-strength input gives x^{2/3+\u03b5} vs ensemble x^{5/6+\u03b5}) and cannot act on the nonnegative diagonal",
+     "severity": "minor",
+     "verdict": "CONFIRMED",
+     "reason": "Arithmetic re-derived: per-pin \u03a3_t|S|\u00b2\u226aY^{3+\u03b5} gives H\u00b3\u226aC\u00b7Y^{3+\u03b5}~Y^{4+\u03b5}, H\u226aY^{4/3+\u03b5}=x^{2/3+\u03b5}; the ensemble form gives only x^{5/6+\u03b5} from the summed hypothesis E\u2082\u226aY^{4+\u03b5}. The ensemble buys 'on average over y' in place of 'for every y' at a 1/6 exponent price, and y-averaging creates no cancellation in a sum of nonnegative terms. Correct, and it undercuts 027's stated reason for ranking E above P, so it is load-bearing for the shortlist ordering though not for the kill."
+    },
+    {
+     "finding": "F8 (minor, flagged load-bearing for how the D-kill is quoted and for the E kill test): the deep-rectangle block H|\u03a3_{r\u2264X\u2212H+1}a(r)|\u00b2 is a term of the Gram expansion, not a lower bound; the genuinely nonnegative zero mode is the window-mean (variance-decomposition) form",
+     "severity": "minor",
+     "verdict": "CONFIRMED",
+     "reason": "The orthogonal decomposition \u03a3_t|S_y(X\u2212t)|\u00b2=(y+1)|S\u0304_y|\u00b2+\u03a3_t|S_y(X\u2212t)\u2212S\u0304_y|\u00b2 verified exactly (numeric check to 10 decimal places); cross terms between the deep block and moving boundary can indeed cancel the deep block, so it must not be quoted as an uncancellable nonnegative contribution. The D-cluster kill survives on its independent leg (\u03a9_H constant on the deep rectangle means the window never localizes m\u2212n). Load-bearing because it prescribes the correct object for the E zero-mode kill test and constrains future citation of the cluster-D argument."
+    },
+    {
+     "finding": "F9: agent8's kill test looks for the wrong energy (Mertens \u03a3M(n)\u00b2 / |\u03a3\u03bc log n|\u00b2 instead of the prime-error diagonal) and can be passed while the route is dead; restate as a three-part test",
+     "severity": "minor",
+     "verdict": "PARTIAL",
+     "reason": "Confirmed for agent8.json (kill_test names only \u03a3_{n\u2264Y\u00b2}M(n)\u00b2 and |\u03a3\u03bc(n)log n|\u00b2) and for IDEAS.md I1 ('uncancelled positive Mertens energy'): the actual k=1 positive quantity is \u03a3_{y,t}\u03a3_d\u03bc(d)\u00b2R(\u230an/d\u230b)\u00b2, algebraically distinct from both, so those versions can be passed while F1 has already killed the route. Overbroad against record 027, however: 027 \u00a73 kill-test 4 adds 'or a blockwise absolute prime error', which the R-diagonal plausibly satisfies, so the operative inventory partially anticipates the correction. The proposed three-part restatement (R-diagonal separation, window-mean zero mode, truncated-convolution edge) is a genuine improvement and is adopted in the errata."
+    }
+   ],
+   "errata_path": "/tmp/claude-1000/-mnt-d-Projects-prime-wheel-mobius/0d31eddd-16a5-4696-aef4-2949c1ddd542/scratchpad/errata_i1-viability.md",
+   "errata_summary": "All nine i1-viability findings certified: both fatals and all four majors CONFIRMED by independent re-derivation and numeric spot-checks (exact truncated-hyperbola identity to machine precision, variance decomposition, canonical-window density 0.508 with gaps ~Y, R-increment bound); minors F7 and F8 CONFIRMED and flagged load-bearing (F7 for 027's E-over-P ranking rationale, F8 for the correct window-mean form of the E zero-mode kill test); F9 is PARTIAL \u2014 right for agent8.json and IDEAS.md but overbroad against 027, whose kill-test inventory already includes a \"blockwise absolute prime error\" clause. The core kill stands: the d=e diagonal of the k=1 Gram form is sign-blind and its required bound D(Y) \u226a Y^{4+\u03b5} is RH-equivalent, the truncated \u03bc*\u039b device leaves record-025's \u039b\u00b7M hyperbola edge plus a Y^{3/2}-termwise prime-power signed obligation, and the \"rung-1\" label on E\u2082 \u226a Y^{4+\u03b5} is wrong (honest rung-1 form is E\u2082 \u226a Y^{5\u2212\u03ba}). The errata quotes and replaces the defective sentences in results/027/mapping_report.md (cluster-E obstacles 1, 4, 6, 9; \u00a74.1 rung-1 deliverable; ranking rationale), IDEAS.md I1, and agent8.json (mechanism, obstacle_positions.6, rung1_version, kill_test), and records two survivals: the Canonical Ensemble Amplification Lemma is correct and Lean-formalizable as stated, and the k=1 Gram identity survives only when written with the R-diagonal, window-mean DC term, and truncated-convolution edge displayed. Recommended disposition (matching the 029 reviewer): demote I1 to a desk autopsy and record the diagonal RH-equivalence as a closed-lane entry (kind: circular) pre-empting the whole k\u22651 canonical-ensemble dispersion family."
+  },
+  {
+   "certifications": [
+    {
+     "finding": "023.md Results / codex_report Q3: backward affine version gives W \u224d \u221ax at canonical pins, 'recovering the H^{2k+1}-scale moment lower bound unconditionally'",
+     "severity": "major",
+     "verdict": "CONFIRMED",
+     "reason": "Independently re-derived: the backward frozen-support window is hard-capped at t \u2264 y (floor((x0\u2212t)/(y+1)) = y for t \u2264 y, drops at t = y+1; verified exhaustively for y < 500, and isqrt(x0\u2212t) = y out to t = 2y). So W_eff = min((H/2\u2212B_y)/A_y, y+1) \u224d min(H, \u221ax); numeric check at x = 10^16 shows the affine window (1.53e8 at H = x^0.55) exceeds the cap (1e8), so at RH-relevant pins H \u2265 x^{1/2+\u03b5} the moment payoff is (H/2)^{2k}\u00b7\u0398(\u221ax) \u2264 H^{2k+1}x^{\u2212\u03b5}, not H^{2k+1}. The audit's mitigation is also correct: |S| \u2265 H/2 holds on the whole capped window, so the per-point average (1/W)\u03a3|S|^{2k} \u2265 (H/2)^{2k} survives at every H. The codex derivation is internally scoped at H \u224d \u221ax and correct as displayed; the unscoped 023.md headline is the overstatement."
+    },
+    {
+     "finding": "023.md D2 headline 'pointwise polylog is DEAD (desk-exact kill)' propagated without the absolute-majorant qualifier",
+     "severity": "major",
+     "verdict": "CONFIRMED",
+     "reason": "Wigert kills only the absolute floor-Li jump majorant J(x); the actual signed frozen-support increment \u03a3_{d|x+1, d\u2264K} \u03bc(d)(1_prime \u2212 \u222bdu/log u) keeps the \u03bc-cancellation (\u03a3_{d|n}\u03bc(d) = 0). Numeric demonstration: at x+1 = 720720 (120 divisors \u2264 K) the signed increment is 0.40 vs absolute majorant 14.0; at x+1 = 831600, 0.017 vs 13.9. codex_report itself marks the signed question OPEN twice. Propagation is worse than the audit quoted: results/026/packet.md obstacle 8 asserts the kill for 'the h=1 increment of the Abel sum' itself, which is materially false as written and was shown to ten blind seeding agents \u2014 this copy needs the fix with major urgency."
+    },
+    {
+     "finding": "codex_report Q3: 'Record 020's present formal theorem yields only W \u224d log x at generic stable pins' \u2014 silently normalized at H = \u0398(\u221ax)",
+     "severity": "minor",
+     "verdict": "CONFIRMED",
+     "reason": "W = floor(H/(2C)) with C = 1 + K/log(y+1) \u2248 2\u221ax/log x gives W \u2248 H\u00b7log x/(4\u221ax), which is \u224d log x only at H \u224d \u221ax. Recomputed at x = 10^16: H = x^0.55 gives W = 58, H = x^0.60 gives W = 366 (audit rounded to 367; floor is 366 \u2014 immaterial), both far above log x/4 \u2248 9.2 and below the cap y = 10^8, reachable at pins x0 \u2261 0 (mod y+1). The audit's scale-free reformulation (window multiplier C/A_y \u2248 y/(2 log y) until the cap binds) also checks out."
+    },
+    {
+     "finding": "codex_report Q1: \u03c4_{\u2264K}(x+1) = \u00bd\u03c4(x+1) + O(1) proof sketch says 'at most the central divisor lost', missing the non-central d = y loss at n = y(y+1)",
+     "severity": "minor",
+     "verdict": "CONFIRMED",
+     "reason": "Re-verified exhaustively for 4 \u2264 x < 60000 with zero failures: since K \u2208 {y\u22121, y} and \u221an \u2208 (y, y+1], the exact law is \u03c4_{\u2264K}(n) = (\u03c4(n)\u22121)/2 at n = (y+1)^2 (central divisor lost), \u03c4(n)/2 \u2212 1 at n = y(y+1) (non-central d = y lost since K = y\u22121 there), \u03c4(n)/2 otherwise; max deviation from \u03c4(n)/2 is exactly 1. The O(1) conclusion and all downstream uses stand; only the one-line justification needs the second case. I concur with the audit's rejection of the extra demand to steer the Wigert sequence around these two n."
+    },
+    {
+     "finding": "023.md D2: 'the honest uniform replacement is an AFFINE modulus' overclaims; a zero-intercept bound is sharper for short windows",
+     "severity": "minor",
+     "verdict": "PARTIAL",
+     "reason": "Confirmed: constants correct (A_y = 2.0835 at y = 10^3, 2.0313 at 10^8; B_y/\u221ax = 0.054 at x = 10^16); the affine bound dominates the kernel's C\u00b7(h+1) bound by exactly 1 + (K\u2212H_K)h/log(y+1) \u2265 1 (Lean module confirmed to consume C\u00b7(t+1)); the zero-intercept bound h\u00b7(1 + \u03c4_max(2x)/log(y+1)) is valid via the exact identity \u03a3 floor-jumps = \u03a3_{x<n\u2264x+h}\u03c4_{\u2264K}(n). Corrected: the audit's crossover 'only worse once h \u224d y' is wrong \u2014 the crossover is h \u2248 K/\u03c4_max(2x) = x^{1/2\u2212o(1)} = y/x^{o(1)}, numerically ~10^3\u201310^4 at x = 10^16 (four orders below y = 10^8); and 'overclaims optimality' overreads 'honest', which in the 020/023 lineage means 'not the false O(1) claim', not optimal. The suggested edit (scope the affine form to h \u224d y, record the zero-intercept alternative) is still worth making."
+    },
+    {
+     "finding": "023.md D3: labelling 020's 'needs PNT-strength' as informal-math error #8 is a scope shift in the error ledger",
+     "severity": "minor",
+     "verdict": "CONFIRMED",
+     "reason": "023's mathematics is right and correctly qualified 'at excursion scale': Chebyshev alone gives R(y) \u226a y/log y = o(y) (split Li_* at \u221ay), so one insertion \u03bc(K+1)R(y+1) absorbs into the affine intercept without PNT. But 020's D3 was written inside 020's polylog-C goal ('needs C improved toward O(polylog), which requires closing D2+D3'), and under that reading 'needs PNT-strength' is an understatement, not an error \u2014 Littlewood forces R(t) = \u03a9_\u00b1(\u221at\u00b7logloglog t/log t), so no input strength gives polylog on the standalone insertion. The falsity exists only under 023's re-reading of 'kill' as 'make o(y)'. Relabel as scope correction; the error ledger should stay at 7 or carry both readings."
+    }
+   ],
+   "errata_path": "/tmp/claude-1000/-mnt-d-Projects-prime-wheel-mobius/0d31eddd-16a5-4696-aef4-2949c1ddd542/scratchpad/errata_023-affine-backward.md",
+   "errata_summary": "All six audit findings for 023-affine-backward substantially survive independent re-derivation: 5 CONFIRMED, 1 PARTIAL, 0 REFUTED, and no false theorem in record 023 itself. The two majors are real scope overstatements that propagated: the H^{2k+1} moment headline silently assumes pin height H equal to sqrt(x) while the backward window is hard-capped at y+1 (payoff (H/2)^{2k}*sqrt(x) at RH-relevant pins), and the unqualified \"pointwise polylog is DEAD\" kill applies only to the absolute floor-jump majorant, not the signed mu-cancelling increment (numerically 0.40 vs 14.0 at x+1=720720) \u2014 worst propagated copy is results/026/packet.md obstacle 8, which as written told ten blind seeding agents that an open signed route is dead. The PARTIAL is finding 5: its zero-intercept alternative bound is correct and worth recording, but its crossover claim \"only worse once h ~ y\" is wrong (crossover is h ~ x^{1/2-o(1)} = y/x^{o(1)}, numerically ~10^3-10^4 at x=10^16), and \"overclaims optimality\" overreads the record's inherited word \"honest\". The errata draft gives exact quote-and-replace text for 023.md, codex_report.md, JOURNAL.md 2026-08-09-30, and the 026 packet, plus a cross-reference for the 024 certifier on the shared H-normalization defect.",
+   "target": "023-affine-backward"
+  },
+  {
+   "certifications": [
+    {
+     "finding": "F1: Packets 026/017 and IDEAS.md assert a kernel-verified chain 'Abel face => RH' / 'two kernel-equivalent faces'; no such kernel arrow exists",
+     "severity": "fatal",
+     "verdict": "CONFIRMED",
+     "reason": "Independently verified on mobius-synthesis main: the kernel chain is ProjectedRenewalQuadraticBoundedStatement <-> NonzeroResponseRHScale -> RH (MobiusSynthesisBoundaryBridge.lean:842-884, TerminalMertensReduction.lean), where NonzeroResponseRHScale bounds H = Z[M]. primeSievePNTError occurs in exactly four modules, all pure identities (git grep confirmed); no theorem takes an E- or S-bound as hypothesis (the excursion modules only propagate S to windows of S). Since mertensSummatory x = C - 2E identically with C = M + 2E, an E-bound alone constrains H not at all \u2014 upstream's own closed lane pnt-reciprocal-coordinate-change says the same. The degenerate uniform-in-y caveat (K=1 gives S = R(x), von Koch) is correctly noted and does not rescue the canonical y ~ sqrt(x) target. Packet wording re-verified verbatim in results/026/packet.md and results/017/packet.md."
+    },
+    {
+     "finding": "F2: review 014's claim that the Abel boundary term M(sqrt x)R(sqrt x) is self-consistent at 1/2 'with no exponent flow and no loss' under the half-scale induction hypothesis",
+     "severity": "major",
+     "verdict": "CONFIRMED",
+     "reason": "The boundary needs two inputs. A Mertens induction hypothesis gives M(K) << x^{1/4+eps} but nothing about R(sqrt x); |R(t)| << t^{1/2+eps} is von Koch prime-side RH, unavailable from any finite-range Mertens statement \u2014 and review 014 itself states five paragraphs earlier that 'the sigma-loop bootstraps the Mertens side only' (internal inconsistency). Re-derived: with half-scale Mertens plus Vinogradov-Korobov the boundary is x^{1/4+eps} * x^{1/2-o(1)} = x^{3/4-o(1)}, confirming the audit's corrected figure (its earlier x^{1-o(1)} was already withdrawn). The identity E = S - M(K)R(y) itself re-verified numerically to residual 0.0. 017 packet's parenthetical inherits the same error."
+    },
+    {
+     "finding": "F3: review 014's 'since E contains the d=1 term with weight 1, |E| << x^{1/2+eps} literally contains RH for pi'",
+     "severity": "major",
+     "verdict": "CONFIRMED",
+     "reason": "Invalid termwise inference: a bound on a signed sum does not bound an individual summand, and record 016 measured large cross-fibre cancellation (|S| ~ x^{1/2} vs triangle ~ x^{3/4}), so the remaining fibres can cancel the d=1 term. The statement is true only in the degenerate K=1 regime (y ~ x), not at canonical y ~ sqrt(x). The surrounding claim (that the sigma-loop cell maps USE pointwise R bounds as input) is separately true and untouched; the audit correctly isolates only the invalid sentence. 026 packet obstacle 6 inherits the wording and needs rescoping to fibre-separating routes."
+    },
+    {
+     "finding": "F4: program state treats 'our Abel face' and upstream's E^rec as the same object up to weighting; they are single-x/uncentered vs three-point-centered duals with three distinct uncollapsed gaps (boundary, centering, comb)",
+     "severity": "major",
+     "verdict": "CONFIRMED",
+     "reason": "Verified from PrimeSievePNTCentering.lean: E^rec = Z[E] with Z = primorialSquareZeroModeCenter (three-point at X_n, L_k, U_k with torus ratio), at the BLOCK cutoff y = primorialPNTPrimeSieveCutoff k \u2014 not per-x canonical y ~ sqrt(x). Abel identity gives Z[E] = Z[S] - Z[B] with B_y(t) = M(floor(t/(y+1)))R(y) by linearity; the boundary varies with t through M(floor(t/(y+1))) and does not cancel under Z \u2014 backward stability (023/024) fixes the quotient only on the length-y backward window at the pin, not at L_k or U_k. Third gap confirmed: H = Z[C] - 2Z[E], so even a full Z[E]-bound is insufficient. Identity re-verified numerically at residual 0.0. Journal 2026-08-12-02 does read sec.7 E^rec measurements as directly about our face family."
+    },
+    {
+     "finding": "F5: upstream CURRENT_PROOF_ROUTE.md sec.7's 'the saving is square-root cancellation across the d-fibres, exactly sufficient with essentially no margin' is contradicted by its own fitted exponents",
+     "severity": "major",
+     "verdict": "CONFIRMED",
+     "reason": "Arithmetic re-done on the document's own numbers: D ~ x^0.5; full square-root cancellation would take the triangle exponent 0.678 to 0.428, but the signed fit is 0.51; measured saving = x^{0.168} = D^{0.336}, below both full square root (D^{0.5}) and the required x^{0.178} ('about x^0.18' per the same paragraph). x^{0.168} at 1e8 = 22.1, consistent with the reported median 24.9x, so the numbers cohere with a sub-square-root reading. The 'square-root bar' is a finite-range regression over-read; asymptotically the heuristic may still be right (RH-true triangle ~ x^{3/4} would require exactly sqrt(D)), but the cited measurement does not establish it. The audit's two withdrawn sub-claims were correctly withdrawn. Journal 2026-08-12-02 imported the over-read verbatim; erratum plus upstream-memo item drafted."
+    },
+    {
+     "finding": "F6 (minor): canonical-orientation-split lane's explicit-formula step lower-bounds a sum by the moduli of its terms and implicitly assumes simple zeros",
+     "severity": "minor",
+     "verdict": "CONFIRMED",
+     "reason": "Lane text verified verbatim in boundary/dead_lanes.json: 'every term of modulus exactly R^(3/2)/|rho(rho+1)zeta'(rho)|, so no cancellation among zeros can push it below R^(3/2-o(1))' \u2014 logically invalid as a pointwise lower bound (phases R^{i gamma} can oscillate), and 1/zeta'(rho) presupposes simple zeros (the lane's own caveats admit this). The closure DECISION stays safe on four decades of flat |positiveSmooth| log R / R^{3/2} numerics and a probably-rescuable mean-square/Omega repair. Load-bearing caveat: the lane's transported 'invariant' (no piece may be a monotone-weighted Moebius sum) is unproved and must not kill our routes by analogy \u2014 this transport risk is why the minor is worth an erratum."
+    },
+    {
+     "finding": "F7 (minor): I2's rung-1 deliverable |A_q| << q^{2-2delta} is equivalent to the target in both directions, not a reduction (ledger kind: circular)",
+     "severity": "minor",
+     "verdict": "CONFIRMED",
+     "reason": "Fully re-derived and numerically verified (q=199, residuals <= 1.4e-14): the increment law V_t - V_{t+1} = c_q(X-t) follows from floor(x/d) jumps at d | x with K = q-1 constant on the window; the telescope V_0 - A_q = q^{-1} sum_{s<q}(q-1-s)c_q(X-s) is exact; |c_q(n)| <= tau(n) since |a(m)| <= 1 in range, so |S - A_q| <= sum|c_q| <<_eps q^{1+eps} unconditionally (measured 108.5 vs q=199). Hence |A_q| << q^{2-2delta} <=> |S| << X^{1-delta+eps}, and even the rung-2 A_q bound is exactly the S target. The AC step is a zero-margin triangle bound. FLAGGED AS LOAD-BEARING: recommend upgrading to major \u2014 the rung-1 line is the shortlist entry's advertised deliverable, and it is a restatement of rung 1, though 027's 'ADVANCE, PARTIAL ONLY' label mitigates."
+    },
+    {
+     "finding": "F8 (minor): I1's rung-1 exponent E2(Y) << Y^{4+eps} => |S| << x^{5/6+eps} is stale; the program's own affine modulus (record 023) gives x^{3/4+eps}",
+     "severity": "minor",
+     "verdict": "CONFIRMED",
+     "reason": "Both exponents re-derived. Pointwise-Lipschitz window (C ~ 2 sqrt(x)/log x, W ~ H log x/(4 sqrt x)): W(H/2)^2 <= x^{2+eps} gives H^3 << x^{5/2+eps}, i.e. H << x^{5/6+eps} \u2014 exactly the recorded number, confirming its provenance in the 026 packet's W = min(y+1, floor(H/2C)). Affine modulus (slope 2+o(1), intercept sqrt(x)/log x): a spike H >> Y caps the window at Y ~ sqrt(x), so Y(H/2)^2 << Y^{4+eps} gives H << Y^{3/2+eps} = x^{3/4+eps}; general k gives Y^{1+(1+eps)/(2k)}. The recorded figure is valid but weaker by x^{1/12} than the kernel package supports. FLAGGED AS LOAD-BEARING for record 030: formalizing the amplification lemma against the stale window would bake a known-wrong constant into a kernel module."
+    },
+    {
+     "finding": "F9 (minor): I2's c_q(n) = sum_{d|n, d<q} mu(d)a(n/d) is a truncated divisor convolution, not a classical Ramanujan sum; the mislabel would break the tau-bound",
+     "severity": "minor",
+     "verdict": "CONFIRMED",
+     "reason": "Verified from results/026/proposals/agent5.json (definition matches) and by computation: classical Ramanujan c_q(q) = phi(q) = 198 at q = 199 vs tau(q) = 2, so the classical object violates the |c_q(n)| << tau(n) bound the AC estimate rests on. The tau-bound is sound as stated in I2's range: X - t >= q(q-1) and d < q force (X-t)/d >= q, so |a(m)| <= 1 and the Li-increment singularity never enters. The labeling ambiguity is confirmed already open at AGENTS.md:47-53 (with the source's own 'Not a Ramanujan sum' remark) and IDEAS.md:99. The 'program state summary' attribution refers to the audit's briefing rather than a repo file, but the substantive defect and its open flag are real."
+    }
+   ],
+   "errata_path": "/tmp/claude-1000/-mnt-d-Projects-prime-wheel-mobius/0d31eddd-16a5-4696-aef4-2949c1ddd542/scratchpad/errata_upstream-reconcile.md",
+   "errata_summary": "All nine upstream-reconcile findings certify as CONFIRMED (none refuted, none partial): the fatal finding is right \u2014 the kernel chain on mobius-synthesis main runs ProjectedRenewalQuadraticBoundedStatement <-> NonzeroResponseRHScale -> RH and carries no arrow from the Abel face, so the 026/017 packet headline \"kernel-verified chain: if the target holds, RH holds\" over the \"two kernel-equivalent faces\" is wrong as written and both blind panels were seeded with it. I independently re-derived every mathematical claim: the Abel identity E = S - M(K)R(y) (numeric residual 0.0), the x^{3/4-o(1)} boundary floor refuting 014's \"no exponent flow\" (informal-math errors #9 and #10 proposed for the 014 boundary and d=1 claims), the sec.7 saving arithmetic (x^{0.168} = D^{0.336}, below both full square root and the required x^{0.178}), I2's exact telescope |S - A_q| << q^{1+eps} making the A_q rung-1 target circular (recommend upgrading finding 7 from minor to major), and I1's stale x^{5/6+eps} versus the affine-modulus x^{3/4+eps} (record 030 must not formalize the stale window). The errata draft gives quoted wrong sentences and replacement text for results/026/packet.md, results/017/packet.md, IDEAS.md nodes G and I, results/014/review_full.md, results/027, and JOURNAL.md 2026-08-12-02, plus two upstream-memo items (sec.7 exponents; the orientation-split explicit-formula step, whose closure survives on numerics but whose \"monotone-weighted Moebius sum\" invariant is unproved and must not be transported by analogy).",
+   "target": "upstream-reconcile"
+  },
+  {
+   "target": "kernel-chain-audit",
+   "certifications": [
+    {
+     "finding": "F1 (fatal): 'kernel chain reduces RH to the Abel face' has no kernel arrow \u2014 primeSieveMoebiusDiscrepancySum never meets any RH-side predicate",
+     "severity": "fatal",
+     "verdict": "CONFIRMED",
+     "reason": "Re-grepped origin/main aa141af (post-fetch, includes today's new NativePNT* modules): the Abel-face symbol occurs in exactly 3 files (AbelIdentity, LipschitzExcursion, BackwardAffineExcursion); those files contain zero occurrences of NonzeroResponseRHScale/MertensEnergyBoundedStatement/ProjectedRenewalQuadraticBoundedStatement/RiemannHypothesis; no other module imports them; no AbelFace* predicate exists. The offending sentence ships verbatim in results/017/packet.md and results/026/packet.md."
+    },
+    {
+     "finding": "F2 (fatal): 'ONE estimate' false \u2014 kernel identities compose to M = T \u2212 D + P with T = M + E and P uncontrolled",
+     "severity": "fatal",
+     "verdict": "CONFIRMED",
+     "reason": "Algebra independently re-derived from the actual theorem statements on origin/main: under hroot (x < y2), Q = M + S, E = S \u2212 B, T := Q \u2212 B = M + E, and the hypothesis-free Abel identity E = D \u2212 P give M = T \u2212 D + P. All cited theorem names exist. T (primeSieveSmoothPNTCorrectedRemainder) and P (primeSieveAbelBoundary) occur only in their defining modules; no bounding theorem exists. A bound on D alone constrains M not at all."
+    },
+    {
+     "finding": "F3 (fatal): collapse (x < y^2) and canonical-pin window ([y^2+y, y^2+2y]) domains are disjoint for every y",
+     "severity": "fatal",
+     "verdict": "CONFIRMED",
+     "reason": "Re-derived and numerically spot-checked: every collapse identity carries hroot : Nat.sqrt x < y (x < y^2); pin = (y+1)^2\u22121 = y^2+2y with window [y^2+y, y^2+2y] entirely >= y^2; Nat.sqrt(pin) = y so hroot fails by exactly one at the pin. Block instantiation verified from primorialWheelCutoff/primorialEndpoint defs: window bottom (s+1)(s+2) > (s+1)^2 > U_k, so the excursion window lies wholly above the primorial block and covers no square sample X_n."
+    },
+    {
+     "finding": "F4 (fatal): 'two kernel-equivalent faces; attack either' is false \u2014 no theorem relates the Abel face to the quadratic face or RH",
+     "severity": "fatal",
+     "verdict": "CONFIRMED",
+     "reason": "The only kernel equivalences on origin/main are nonzeroResponseRHScale_iff_projectedRenewalQuadraticBounded and projectedRenewalQuadraticBounded_iff_mertensEnergyBounded; nothing mentions the Abel face together with any RH-side predicate (grep-verified). The phrase appears verbatim in both sealed packets (017 line 13, 026 line 14), so an external prover of the Abel estimate would hold no formal path to RH."
+    },
+    {
+     "finding": "F5 (major): collapse remainder is defined but not independent \u2014 C = M + 2E, T = M + E, identity is M = M after substitution; upstream closed the same lane as circular",
+     "severity": "major",
+     "verdict": "CONFIRMED",
+     "reason": "Algebra re-derived from kernel theorems (M = C \u2212 2E and the Li-subtracted collapse give C \u2212 2E = \u2212E + T with T = M + E, i.e. a tautology after substitution). The cited dead-lane pnt-reciprocal-coordinate-change (closed_on 2026-08-10, quoted equivalence text and |C|/|M| median 1.296) is verbatim at upstream commit bf8c360; citation-freshness caveat: today's upstream commit aa141af removed that lane from boundary/dead_lanes.json, so the errata should cite the identity and bf8c360, not current main's ledger. Journal 2026-08-12-02 records the lane as claimed."
+    },
+    {
+     "finding": "F6 (major): the Abel identity carries a dropped RH-strength boundary term \u2212M(K)\u00b7R(y); best unconditional bound only x^{1\u2212o(1)}",
+     "severity": "major",
+     "verdict": "CONFIRMED",
+     "reason": "Identity and boundary definition verified (primeSievePNTError_eq_moebiusDiscrepancySum_sub_abelBoundary, hypothesis-free; P = M(K)\u00b7R(y)); VK/Walfisz-shape unconditional bounds give |P| = x^{1\u2212o(1)} at y \u224d \u221ax, far above x^{1/2+\u03b5}; no kernel theorem addresses P. Two scoping notes that do not change the verdict: 017's packet mentions the term but dismisses it with an unproved 'separately self-consistent at 1/2' (026 omits it entirely), and strictly the obligation is on the product M(K)\u00b7R(y), formally weaker than RH-for-each-factor though no unconditional route to it is known."
+    },
+    {
+     "finding": "F7 (major): packet's '(W \u224d \u221ax)' windowed mean-square affordance is wrong \u2014 the kernel backward window at target heights is \u2248 x^\u03b5\u00b7log x",
+     "severity": "major",
+     "verdict": "CONFIRMED",
+     "reason": "Numerically re-verified from the kernel defs (W = min(y+1, \u230aH/2C\u230b), C = 1 + y/log(y+1) \u2248 2\u221ax/log x): at H = x^{1/2+\u03b5}, \u230aH/2C\u230b = x^\u03b5\u00b7log x/4 exactly (matched to 3 s.f. at x = 10^12 for \u03b5 = 0.01/0.05/0.1); the \u221ax cap binds only at H \u2248 4x/log x (audit wrote 2x/log x \u2014 factor-2 slip, immaterial). Additionally derived: a mean-square bound x^{1+\u03b5} over a genuine \u221ax window yields only H \u226a x^{2/3+\u03b5}, so the packet's implication is false as printed; the sanctioned averaged coordinate is essentially pointwise, as the finding says."
+    },
+    {
+     "finding": "F8 (minor): 'y \u224d \u221ax' silently conflates the standalone Abel convention with the block-constant chain cutoff, which 'exceeds \u221aX_n by an astronomical factor'",
+     "severity": "minor",
+     "verdict": "PARTIAL",
+     "reason": "Core claim right and re-verified: y_k = Nat.sqrt(U_k)+1 is block-constant, hroot forces y > \u221ax everywhere, and the packet identifies the two conventions without comment. Quantification wrong: the excess factor y_k/\u221aX_n is bounded by \u221a(U_k/L_k) = \u221a(wheelPrime k) \u2248 \u221a(log U_k) (\u2248 172 even for the 10^12835-scale blocks) \u2014 unbounded over k, hence no uniform \u224d, but modest within any block, not 'astronomical'; likewise K trails \u221ax by at most the same factor. Load-bearing flag: this minor becomes load-bearing for any repair of the F1\u2013F3 gaps, since a repaired composition must fix one y-convention and carry the \u221a(log x) bookkeeping."
+    },
+    {
+     "finding": "F9 (minor): TerminalAxiomAudit guards only 3 theorems, two taking uninhabited ClassicalMertensRHCriterion as an argument invisible to #print axioms; criterion-free arrows unguarded; native_decide in four modules",
+     "severity": "minor",
+     "verdict": "CONFIRMED",
+     "reason": "All sub-claims verified on origin/main: exactly 3 guarded theorems; projectedRenewalQuadraticBounded_iff_riemannHypothesis and canonicalHighUniformLocalBounded_iff_riemannHypothesis_realized take criterion : ClassicalMertensRHCriterion explicitly; that structure is never constructed (only the weaker forward-only MertensForwardCriterion is inhabited, via theorem mertensForwardCriterion); riemannHypothesis_of_mertensEnergy and projectedRenewalQuadraticBounded_imp_riemannHypothesis_unconditional lie outside the guarded file; native_decide in exactly 4 modules; no textual sorry/axiom. Minor severity is correct because the direction the program needs is criterion-free and discharged."
+    }
+   ],
+   "errata_path": "/tmp/claude-1000/-mnt-d-Projects-prime-wheel-mobius/0d31eddd-16a5-4696-aef4-2949c1ddd542/scratchpad/errata_kernel-chain-audit.md",
+   "errata_summary": "All 9 kernel-chain-audit findings were independently re-derived against mobius-synthesis origin/main aa141af (fetched today) and governance records 015/017/026: 7 CONFIRMED, 2 PARTIAL, 0 REFUTED. The four fatal findings hold exactly as stated \u2014 no kernel arrow from the Abel face to RH exists, the identities compose to M = T \u2212 D + P with T = M + E so the \"ONE estimate\" claim is false, the collapse (x < y^2) and canonical-pin ([y^2+y, y^2+2y]) domains are disjoint for every y, and \"two kernel-equivalent faces\" is false and shipped in both sealed packets. PARTIALs are scoped: finding 8's conflation is real but the cutoff excess is ~sqrt(log x) per block, not \"astronomical\"; finding 6 stands but 017's packet mentions (and hand-waves) rather than fully drops the boundary term, and finding 7 carries an immaterial factor-2 slip (cap at ~4x/log x, not 2x/log x). One freshness caveat for the coordinator: today's upstream commit aa141af removed the pnt-reciprocal-coordinate-change dead lane cited by finding 5, so the errata cites the identity itself and commit bf8c360 instead; the errata file gives exact wrong-sentence/replacement pairs for packets 017/026, the standing narrative, and records 023/024, plus recommended upstream axiom-audit guards."
+  },
+  {
+   "target": "i2-viability",
+   "certifications": [
+    {
+     "finding": "F1: DC/AC isolation is circular \u2014 |V0\u2212A_q| \u226a q^{1+\u03b5} unconditionally, so |A_q| \u226a q^\u03b1 \u27fa |V0| \u226a q^\u03b1 at every rung exponent and at the target",
+     "severity": "fatal",
+     "verdict": "CONFIRMED",
+     "reason": "Independently re-derived and numerically verified (q=100..1600): trace identity V0\u2212A_q = q\u207b\u00b9\u03a3_{s\u2264q\u22122}(q\u22121\u2212s)c_q(X\u2212s) holds to 1e-14; |c_q(n)| \u2264 \u03c4(n) on the legal range (m=n/d \u2265 q+1, |a(m)|<1); window \u03c4-sum \u2248 2.2\u00b7q\u00b7log q; measured |V0\u2212A_q| = O(10), \u03a3|c_q| \u2248 0.5q. Hence equivalence at every exponent \u03b1>1 (all rungs \u03b4<1/2 and the 1+\u03b5 target). Upstream lane 'pnt-reciprocal-coordinate-change' and route-doc \u00a73 quote both verified in mobius-synthesis main."
+    },
+    {
+     "finding": "F2: \u03bc*\u039b = \u2212\u03bc log unavailable at the d<q truncation; the proposed contraction lemma is record 025's parked reopening condition assumed verbatim",
+     "severity": "fatal",
+     "verdict": "CONFIRMED",
+     "reason": "\u03bc*\u039b = \u2212\u03bc\u00b7log verified as a complete-convolution identity (n=p, p\u00b2 checks); the object has a hard cutoff d<q \u2248 \u221aX, and completion generates \u03a3_{m\u2272\u221ax}\u039b(m)(M(\u230ax/m\u230b)\u2212M(q\u22121)) \u2014 unpriced Mertens cancellation. Agent5's 'uniform norm gap for the signed \u03bc(a)log a boundary-renewal operator' matches IDEAS.md's record-025 reopening condition ('a signed contraction for (k\u22121)\u03bc(a)log a'). Note: 027/IDEAS already decline to record the contraction as leverage; the substantive NEW content is the truncation obstruction."
+    },
+    {
+     "finding": "F3: spectral gap does not control the non-normal q-dependent family; no recurrence defined; affine modes removed yet the constant mode A_q is the target with no reconstruction identity",
+     "severity": "fatal",
+     "verdict": "CONFIRMED",
+     "reason": "All three gaps verified against agent5.json's actual text: spectral radius bounds neither operator norm nor transients without a uniform resolvent bound (unstated); no scale recurrence or renewal equation is defined anywhere in the proposal; A_q is the constant mode that the projection Aff\u22a5 removes, and no identity reconnects the contraction estimate to it. As stated the attack does not have the shape of an argument outputting a bound on A_q."
+    },
+    {
+     "finding": "F4: rung-1 milestone non-diagnostic for \u03b4 \u2264 1/4 (RH sign-blind termwise gives x^{3/4}log x); 0.678 is finite-range and cannot define a gate",
+     "severity": "major",
+     "verdict": "PARTIAL",
+     "reason": "Core claim confirmed: \u03a3_{d<q}(x/d)^{1/2}log x \u226a x^{3/4}log x re-derived, so \u03b4 \u2264 1/4 certifies nothing about signed cross-d cancellation; diagnostic threshold is \u03b4 > 1/4; my numerics reproduce local termwise slopes 0.68\u20130.71 (finite-range, consistent with obstacle 7). OVERBROAD: 'the record leans on the measured 0.678' is false \u2014 no I2 source (agent5/agent1/027/IDEAS) uses 0.678 as a gate; it appears only in the journal's upstream-convergence note as upstream's measurement. Erratum made prophylactic."
+    },
+    {
+     "finding": "F5: rung-1 milestone out of reach \u2014 only known route is a fixed-width zero-free strip (\u03b4\u2248\u03b7/2), open for every \u03b7; converse not established; I2 restates 022's parked rung without noting its route is the parked missing input",
+     "severity": "major",
+     "verdict": "PARTIAL",
+     "reason": "Mathematics confirmed: strip \u27f9 \u03b4\u2248\u03b7/2 re-derived; no fixed strip known; converse open because truncation breaks \u03bc*\u039b (F2); by F1 the milestone IS 022's parked cluster-Z rung in window-mean coordinates and 022's parking (verified: scoped to absolute-value routes, reopens on signed mechanism or strip) applies. WRONG sub-claim: 'without noting that its own proposed route is the parked missing input' \u2014 IDEAS \u00a7I ('DC contraction NOT recorded as leverage (it is the known missing input)') and mapping_report \u00a75 explicitly note it; what is genuinely unnoted is the equivalence-to-target (F1's content)."
+    },
+    {
+     "finding": "F6: 'DC/AC isolation is new' false \u2014 record 023's affine modulus already gives |V0\u2212A_q| \u2264 (1+o(1))q, strictly stronger than q^{1+\u03b5}",
+     "severity": "major",
+     "verdict": "CONFIRMED",
+     "reason": "Re-derived: 023's |S_y(x\u00b1t)\u2212S_y(x)| \u2264 A_y t + B_y with A_y = 2+o(1), B_y = K/log(y+1) \u2248 q/log q, averaged over the exactly-stable backward window, gives A_y(q\u22121)/2 + B_y = (1+o(1))q, a log factor better than the \u03c4-route's q log q; the \u03c4 bound indeed discards the 1/log(n/d) factor from \u2113(m). Mapping report \u00a72.P.9 'new and valid' is wrong; \u00a74.2's rank reason only partially concedes the overlap. Residual value confirmed formalization-only: kernel carries only C \u2248 2\u221ax/log x (023.md verified)."
+    },
+    {
+     "finding": "F7: \u039b/log replacement is not bookkeeping \u2014 prime-power terms total \u224d q^{3/2}/log q sign-blind, a half power above the q^{1+\u03b5} target",
+     "severity": "major",
+     "verdict": "CONFIRMED",
+     "reason": "1_P = \u039b/log \u2212 \u03a3_{k\u22652}(1/k)1_{p^k} re-derived (\u039b(p^k)/log p^k = 1/k). Numerically the sign-blind aggregate is 2.79\u00b10.02 \u00d7 q^{3/2}/log q at q=100..1600. Reaching q^{1+\u03b5} requires Mertens-type cancellation in \u03a3\u03bc(d)Li((X/d)^{1/2}) \u2014 RH-strength for a full power saving \u2014 never performed; Abel boundary terms unaccounted. Scope note added: the block fits sign-blind within the rung-1 budget for \u03b4<1/4, so the finding is fatal specifically for the stated q^{1+\u03b5} target estimate."
+    },
+    {
+     "finding": "F8: endpoint-correct triangular formula drops the base boundary term R(2)\u00b7M(q\u22121); base-at-1 telescoping hits divergent R(1)",
+     "severity": "major",
+     "verdict": "CONFIRMED",
+     "reason": "Re-derived: every d<q contributes the base value, giving A_q = R(2)M(q\u22121) + ramp-weighted sum; ramp weight w_q(r) verified exact. Normalization refined: the repo uses logarithmicIntegralFromTwo (verified in mobius-synthesis main), under which Li(1) analytically diverges exactly as under li (Lean assigns junk 0, not to be load-bearing) and Li(2)=0 makes R(2)=1, so the boundary term is EXACTLY M(q\u22121). Size is harmless at every stated budget (unconditionally o(q)), but the deliverable as named is incomplete without it."
+    },
+    {
+     "finding": "F9: 'increment law with Ramanujan sums' program-state description is a mislabel; c_q here is not a Ramanujan sum",
+     "severity": "major",
+     "verdict": "PARTIAL",
+     "reason": "Mathematics confirmed: c_q(n) = \u03a3_{d|n,d<q}\u03bc(d)a(n/d) is non-periodic, non-integral, cutoff-dependent; classical facts (c_q(q)=\u03c6(q), |c_q| \u2264 gcd(n,q), H\u00f6lder, orthogonality) would be false if imported \u2014 real hazard given upstream's genuine Ramanujan-sum modules. PROVENANCE REFUTED: no committed program-state file describes I2 this way (grep over IDEAS/JOURNAL/PROOF_OS/026/027 clean); the phrase existed only in the audit orchestrator's own session summary quoted into the review prompt. Erratum reduced to a prophylactic naming rule for record 031 (rename to avoid collision)."
+    },
+    {
+     "finding": "F10 (minor, flagged load-bearing): 'AC estimate is O(q^{1+\u03b5}) in RMS and therefore negligible' at the single pin is a non-sequitur (RMS gives only q^{3/2+\u03b5})",
+     "severity": "minor",
+     "verdict": "CONFIRMED",
+     "reason": "Endpoint extraction from RMS loses \u221aq, verified arithmetically. The same-quality repair \u2014 trace identity plus \u2113\u00b9 bound \u03a3_{n\u2208(X\u2212q,X]}\u03c4(n) \u226a q log q via the hyperbola count (both numerically verified: trace residual \u2264 2e-14, \u03c4-sum \u2248 2.2 q log q) \u2014 is exactly the inequality underpinning F1's circularity, so this minor is load-bearing and is folded into the E1 erratum text."
+    },
+    {
+     "finding": "F11 (minor): increment identity valid only for 0 \u2264 t \u2264 q\u22122; at t=q\u22121 the Abel-face truncation drops K to q\u22122 with an extra d=q\u22121 boundary term; index set X\u2212q+2 \u2264 n \u2264 X",
+     "severity": "minor",
+     "verdict": "CONFIRMED",
+     "reason": "Numerically verified: K = \u230a(X\u2212t)/q\u230b = q\u22121 for all 0\u2264t\u2264q\u22121 and drops to q\u22122 at t=q (q=100..1600); with a fixed-y truncation the identity extends (residual 0), so the defect is definitional \u2014 it bites exactly when V is defined through the Abel face's own K, which is the case for the Lean deliverable. Extra term identified as \u03bc(q\u22121)R(q\u22121). Increment index set confirmed as X\u2212q+2 \u2264 n \u2264 X (q\u22121 increments for t=0..q\u22122)."
+    },
+    {
+     "finding": "F12 (minor): '|a(m)| is uniformly bounded' false globally (a(2) divergent); saved only on the legal range m \u2265 q+1 \u2265 3 where |a(m)| < 1 with sharp sup 1",
+     "severity": "minor",
+     "verdict": "CONFIRMED",
+     "reason": "Legal range re-derived: n \u2265 q\u00b2\u2212q+1 and d \u2264 q\u22121 force m = n/d > q. |a(m)| < 1 on m \u2265 3 checked (including the m=3 edge where the Li increment \u2248 1.12 exceeds 1 but 3 is prime, giving |a(3)| \u2248 0.12); sup \u2192 1 along large primes. Normalization scoped: divergence of a(2) holds under both li and the repo's from-two normalization (Lean junk value 0 makes it convention-dependent, not safe). The proposal indeed states no restriction; a small-argument convention must be fixed before c_q is well defined."
+    },
+    {
+     "finding": "F13: 'iterating across square scales' cannot yield a fixed power \u2014 the natural q \u2192 \u221aq recursion gives O(log log q) steps, hence only a log-power saving; no recurrence defined",
+     "severity": "major",
+     "verdict": "CONFIRMED",
+     "reason": "Arithmetic verified: (1\u2212\u03b7)^N = q^{\u2212\u03b3} needs N \u224d log q geometric steps; q \u2192 \u221aq down to O(1) is log\u2082log q steps, giving (1\u2212\u03b7)^{O(log log q)} = (log q)^{\u2212\u03b3'}. Agent5's text contains no scale recurrence of any kind, so the exponent bookkeeping is unspecified and insufficient on the natural reading. Folded into E3's correction of the contraction step."
+    }
+   ],
+   "errata_path": "/tmp/claude-1000/-mnt-d-Projects-prime-wheel-mobius/0d31eddd-16a5-4696-aef4-2949c1ddd542/scratchpad/errata_i2-viability.md",
+   "errata_summary": "All 13 i2-viability findings were re-derived independently with numeric spot-checks (q = 100..1600): 9 CONFIRMED, 4 PARTIAL, 0 REFUTED. The headline circularity is airtight \u2014 the trace identity and window divisor bound give |V0\u2212A_q| \u226a q log q unconditionally (measured O(10)), so the rung-1 line |A_q| \u226a q^{2\u22122\u03b4} is the pinned target itself and must be re-labelled an equivalence everywhere (IDEAS \u00a7I, 027.md, mapping_report \u00a74.2), with I2 demoted to a pin \u27fa window-mean transfer certificate whose only kernel-valuable content is 023's amortized O(q) constant. Three findings were trimmed: F4's claim that the record leans on the 0.678 exponent and F9's claim that the \"Ramanujan sums\" mislabel lives in committed program state are both unsupported by any repo file (the mislabel existed only in the audit orchestrator's own summary), and F5's \"without noting the parked missing input\" is contradicted by the explicit caveat in IDEAS/027 \u2014 in each case the underlying mathematics is nevertheless correct and the errata carry prophylactic wording. New refinements beyond the audit: the repo's from-two normalization makes the dropped F8 boundary term exactly M(q\u22121) (R(2)=1), and the t = q\u22121 boundary defect's extra term is identified as \u03bc(q\u22121)R(q\u22121)."
+  },
+  {
+   "target": "021-z-gate",
+   "certifications": [
+    {
+     "finding": "Frozen Z-repaired gate is not a self-contained sufficient condition: the truncation clause E_T(x,K) << sqrt(x) polylog at a common height T was tagged NONTRIVIAL-BUT-KNOWN in the report, then dropped from the frozen artifact and from IDEAS.md",
+     "severity": "major",
+     "verdict": "CONFIRMED",
+     "reason": "Re-derived the chain: S = -2Re Sum G + C_{x,K} + E_T with S-S0 = O(K); the box carries only two of the four terms, so gate => target genuinely requires the unsupplied uniform truncation lemma. codex_report.md line 17 tags it NONTRIVIAL-BUT-KNOWN ('not supplied by record 018'), the boxed gate (021.md lines 88-90, IDEAS.md 289-291) omits it, and 022.md lines 87-88 independently hit exactly this wall ('unsupplied common-height truncation lemma'). The lemma is plausibly provable at T ~ x^2 (jump terms total <= K log x ~ sqrt(x) log x), which makes this an omission from the frozen ledger, not a fatal gap."
+    },
+    {
+     "finding": "'Explicitly RH-strength' mislabels the gate: only gate => RH is claimed, RH => gate is unknown in both clauses, and the gate can fail while RH and the Abel target hold",
+     "severity": "major",
+     "verdict": "CONFIRMED",
+     "reason": "Both clause arguments verified. C-clause: partial summation from RH-conditional Mertens (M(u) << sqrt(u) exp((log u)^{1/2}(loglog u)^{O(1)})) gives only K^{o(1)}, superpolylog (numeric check: exp(sqrt(l)) overtakes l^10 near l=10^4); the w<=2, TV=1 log-kernel weight changes nothing. Zero clause: F_K(rho) ~ log K/zeta'(rho) via the Perron double pole, so the clause is a negative-moment (J_{-1}-type) demand open even under RH + simple zeros; full-family negative-moment upper bounds do not exist. Failure under severe Lehmer-pair behaviour while RH holds is a real unstated possibility. Program usage (022: 'RH-strength' vs 'known-strength' as class labels) supports reading the label as class placement. Caveat noted in errata: even the forward direction needs the finding-1 truncation clause plus the separately-audited Abel=>RH bridge, so the finding's phrase 'gate => RH is established' is itself slightly generous."
+    },
+    {
+     "finding": "C0 labeled 'exact prime-power+archimedean term' actually contains the m>=2 nontrivial-zero harmonic families; termwise m=2 harmonic cost is x^{5/8} polylog, exceeding budget by x^{1/8}, hiding a second Mobius demand at Re s = 1/4",
+     "severity": "major",
+     "verdict": "CONFIRMED",
+     "reason": "Re-derived the expansion: pi_0 = Sum_m (mu(m)/m)J_0(t^{1/m}) forces C0(t) = a(t) + Sum_{m>=2}(mu(m)/m)[Li(t^{1/m}) - Sum_rho Li_*(t^{rho/m}) + a(t^{1/m})], so C0 contains zero sums (off-line included) at amplitude t^{beta/m}/(|rho| log t), contradicting the label and matching the report's own table row. Pricing verified numerically: x^{1/4}*(4/3)K^{3/4} / x^{5/8} = 1.33 and excess over sqrt(x) = x^{1/8} exactly at x = 10^12, 10^18, 10^24. Killing it termwise needs power-saving cancellation in Sum mu(d) d^{-1/4-i gamma/2} uniform in gamma, which RH-type partial summation does not give. One rhetorical overreach noted: the record was silent on the higher-m harmonics rather than presenting them 'as elementary residue'."
+    },
+    {
+     "finding": "The frozen 'A < 2 untenable' constraint is false: the Landau-Gonek signed scale log K * log T applies to the unnormalized F_K-proxy; the frozen gate's Li_* kernel divides by log x, forcing only A >= 1",
+     "severity": "major",
+     "verdict": "CONFIRMED",
+     "reason": "Textually verified the dropped scoping: codex_report.md line 99 says 'an F_K-proxy with polylog exponent A<2 is untenable' while 021.md lines 96-97 and IDEAS.md 291-292 state it as a constraint on the frozen gate. Mathematically re-derived via dyadic blocks: I initially suspected the audit detached the x^{i gamma} phase illegitimately, but the gate's absolute values strip the phase on-line, so coefficientwise Landau (X = 1/d, errors O(sqrt(x) L loglog) per block, dominated for V >= x^{1/2+eps}) forces block main terms with weighted coefficient Sum_{p<=K}(log p)/(p(1-log p/L)) -> L log 2 (numerics: ratio 0.89/0.93/0.94 at L=20/30/34, O(1) offset), giving forced block ~ L^2 divided by the kernel's L, hence A >= 1. RMT cross-check J_{-1/2}(T) ~ T(log T)^{1/4} => expected size (log x)^{5/4}, consistent with A>=1, inconsistent with forced A>=2. Same off-line-zero rigor caveat applies to both the original A>=2 proxy claim and the corrected A>=1 claim."
+    },
+    {
+     "finding": "Rung 0 (M = o(sqrt x) giving S = o(x), 'PNT-strength') advertises a payoff already unconditionally known via Vinogradov-Korobov + triangle inequality; the mis-set rung originated in 021 and propagated to 022 (error #7)",
+     "severity": "major",
+     "verdict": "CONFIRMED",
+     "reason": "Re-derived the elementary bound: for d <= K ~ sqrt(x), log(x/d) >= (1/2+o(1)) log x, so Sum |R(floor(x/d))| << x log x * exp(-c'(log x)^{3/5}(loglog x)^{-1/5}) = o(x) with no zero-moment input. The normalization arithmetic |S| <= sqrt(x)*M + |E_T| + O(K) is right, as the finding concedes. 022.md lines 91-99 corroborate verbatim ('S = o(x) is already KNOWN via pointwise VK PNT', error #7, rung 0 re-graded 'known-strength'). The origin of the hollow rung is 021's Q5/Results text."
+    },
+    {
+     "finding": "(minor) 'Bounding it already demands RH-scale Mobius cancellation at s=1/2' states a proved necessity where only termwise-proof failure is desk-exact",
+     "severity": "minor",
+     "verdict": "CONFIRMED",
+     "reason": "The m=2 block of C_{x,K} collapses to -(1/2) Sum mu(d) J_0(sqrt(x/d)), inside which the F_K(1/2) main part and the zero harmonics could in principle cancel, so aggregate necessity is not excluded by the box. The substantive obstacle survives (the aggregate is itself a mu x prime-count correlation at half scale), exactly as the finding says. Errata softens the necessity language."
+    },
+    {
+     "finding": "(minor) The m=2 'approx -sqrt(x) F^log(1/2)/log x' display is an envelope statement, not a justified asymptotic for the signed aggregate",
+     "severity": "minor",
+     "verdict": "CONFIRMED",
+     "reason": "One-term Li expansion error is ~ (sqrt(x)/log^2 x)*K^{1/2} = x^{3/4}/log^2 x, which sits below the trivial envelope but above the signed main term once Mobius cancellation is present, so the display locates the F_K(1/2) demand without sizing the C-clause. (A full optimally-truncated Li expansion could reduce the error to sqrt(x) polylog across a family of weighted blocks, but the record as written makes the one-term claim.)"
+    },
+    {
+     "finding": "(minor) 'Also FALSE en route' (Li_* -> x^rho F_K(rho)/(rho log x)) is graded too high: Abel summation with w <= 2, TV = 1 gives |weighted sum| <= 3 sup_{K'<=K}|F_{K'}(rho)|, so uniformity over partial cutoffs repairs it entirely",
+     "severity": "minor",
+     "verdict": "CONFIRMED",
+     "reason": "Verified the Abel bound: for K <= sqrt(x), w(d) = 1/(1-log d/log x) has w(K) = 2 and total variation 1, giving the factor-3 sup bound; codex_report.md itself listed 'uniformly controlled partial polynomials' as sufficient control, so the report knew the repair while the record's 'FALSE ... must be retained' phrasing overstates. A uniformity strengthening, not a third structural collapse."
+    },
+    {
+     "finding": "(minor) 'M << x^{1/4-delta} would be rung 1' giving S << x^{3/4-delta} is arithmetically incomplete: valid only for 0 < delta < 1/4",
+     "severity": "minor",
+     "verdict": "CONFIRMED",
+     "reason": "|S| <= sqrt(x) M + |E_T| + O(K) with E_T only asserted at sqrt(x) polylog and O(K) ~ sqrt(x) floor terms; for delta >= 1/4 the stated x^{3/4-delta} conclusion falls below what the truncation and jump terms allow, so the frozen rung-1 statement needs the delta-scope. Folded into errata E5."
+    },
+    {
+     "finding": "(minor, flagged load-bearing) The 'forall T in [x^2, 2x^2]' quantifier is gratuitous (monotone LHS makes it equivalent to T = 2x^2); sufficiency needs only exists-T, and T ~ x^2 is safe but not necessary",
+     "severity": "minor",
+     "verdict": "CONFIRMED",
+     "reason": "The zero summands are nonnegative and C_{x,K} is T-independent, so the LHS is nondecreasing in T and forall-T collapses to T = 2x^2; the correct frozen form is exists-T paired with the truncation clause at the same T (smooth truncation error x log^3 x / T is already inside budget at T ~ x). Load-bearing because the finding-1 repair must rewrite the quantifier block: folded into errata E1 as a single corrected gate statement."
+    }
+   ],
+   "errata_path": "/tmp/claude-1000/-mnt-d-Projects-prime-wheel-mobius/0d31eddd-16a5-4696-aef4-2949c1ddd542/scratchpad/errata_021-z-gate.md",
+   "errata_summary": "All ten audit findings for 021-z-gate (5 major, 5 minor) certify as CONFIRMED after independent re-derivation; the audit's arithmetic held up at every point I could check numerically, including the x^{5/8} termwise cost of the m=2 zero harmonics, the L*log2 weighted Landau coefficient, the K^{o(1)}-superpolylog RH-Mertens scale, and the w<=2/TV=1 Abel repair. The one mechanism I seriously doubted \u2014 finding 4's A>=1 derivation, which looked like an illegitimate detachment of the x^{i gamma} phase \u2014 resolves in the audit's favor because the frozen gate's absolute values strip the phase on-line; both the old A>=2 proxy claim and the corrected A>=1 claim share the same Landau-main-term rigor class. The errata draft supplies verbatim replacements for 021.md, codex_report.md, and IDEAS.md lines 289-295: the corrected gate statement (forall-T changed to exists-T plus the mandatory truncation side clause, folding in minor finding 10, which is load-bearing), the strength-class relabel (implies the target; not known to follow from RH; can fail while RH holds), the C0 contents relabel with the unpriced Re s = 1/4 demand, the A>=1 constraint fix, and the rung-0 hollowness cross-referenced to 022's error #7. Two scoping notes are recorded inline: finding 2's 'gate => RH is established' is generous given finding 1 and the separately-audited Abel=>RH bridge, and finding 3's 'presented as elementary residue' overstates a record that was merely silent. If adopted, E1-E4 correspond to the audit's suggested ledger errors #9-#12."
+  }
+ ],
+ "delivs": [
+  {
+   "deliverable": "i2-circularity-probe (record 032b): scaled numerical probe of the I2 DC/AC circularity claim from audit 029. Outputs: /tmp/claude-1000/-mnt-d-Projects-prime-wheel-mobius/0d31eddd-16a5-4696-aef4-2949c1ddd542/scratchpad/i2_circularity_scaled.csv (40 pins, per-pin V0, A_q, |V0-A_q|, sum|c_q|, fit exponents) and .../i2_circularity_note.md (method, fits, robustness, reading), produced by .../i2_circularity_scaled.py (validated value-identical to the pilot at x=1e6 before scaling).",
+   "outcome": "SUPPORTS-AUDIT",
+   "key_numbers": "Scale x=1e8, 40 pins 16<=q<=10000 (X=q^2-1), runtime 70s, peak RSS 1.69GB. |V0-A_q| fit exponent: 0.505 OLS (Theil-Sen 0.516, bin-max envelope 0.643) vs frozen prediction <=1 (pilot 0.60-0.72) \u2014 kill condition (clearly >1) not triggered. sum_t|c_q| fit exponent: 0.978 (Theil-Sen 0.979, tail 0.974) vs prediction ~1+o(1) (pilot 0.97); csum/q -> 0.50 at large q. gap/q max over q>=1000: 0.0158; gap/sqrt(q) median 0.209, max 0.875.",
+   "summary": "Scaled the I2 DC/AC circularity probe from the pilot (x=1e6, 16 pins) to x=1e8, 40 pins up to q=10^4, after rewriting it memory-lean (mu sieved only to q_max since d<=q-1; R table built via chunked cumsum; pilot's dead-code full-length int64 arrays removed) and verifying value-identity with the pilot at 1e6. Both frozen predictions hold with margin: |V0-A_q| grows like ~q^0.5 (well under the predicted <=1; the kill condition of exponent clearly above 1 required the opposite trend), and sum_t|c_q| ~ q^0.98 with csum/q settling at ~0.50. At the top of range the observed |V0-A_q| is 2-3 orders of magnitude below the rung-1 precision q^{1+eps}, so bounding the DC mean A_q at that precision is numerically indistinguishable from bounding V0=S(y,X) itself \u2014 supporting audit 029's fatal circularity finding on I2 (and consistent with 023's unconditional O(q) modulus, which the data undercuts further). Caveat recorded in the note: the ~0.5 gap exponent is itself square-root-cancellation-flavored and must not be quoted as evidence for any bound; only the comparison against the q^{1+eps} precision scale bears on the circularity claim.",
+   "artifacts": [
+    "/tmp/claude-1000/-mnt-d-Projects-prime-wheel-mobius/0d31eddd-16a5-4696-aef4-2949c1ddd542/scratchpad/i2_circularity_scaled.csv",
+    "/tmp/claude-1000/-mnt-d-Projects-prime-wheel-mobius/0d31eddd-16a5-4696-aef4-2949c1ddd542/scratchpad/i2_circularity_note.md",
+    "/tmp/claude-1000/-mnt-d-Projects-prime-wheel-mobius/0d31eddd-16a5-4696-aef4-2949c1ddd542/scratchpad/i2_circularity_scaled.py"
+   ]
+  },
+  {
+   "deliverable": "/tmp/claude-1000/-mnt-d-Projects-prime-wheel-mobius/0d31eddd-16a5-4696-aef4-2949c1ddd542/scratchpad/upstream_memo_draft.md \u2014 three-section upstream memo draft (correction, Sec.7 numbers, PNT spec sheet), ~700 words, second-person address, no maintainer name, replication-status placeholder left for the user to fill before sending.",
+   "outcome": "DELIVERED",
+   "summary": "Fetched origin/main of mobius-synthesis: one new commit (\"Research update\") adds ~12.4k lines of native-PNT work (20+ NativePNT* modules, unconditional PNT at nativePNTSquarePrefixPrimeNumberTheorem with nativePNTError = psi(N)-N affine envelopes and a cubic slope-decay recurrence; RH-scale targets kept separate in NativePNTQuantitativeStatements; frontier deliberately unchanged per route sec.9). Re-verified every correction fact directly on origin/main: (1) primeSieveMoebiusDiscrepancySum still occurs in exactly 3 files, none mentioning NonzeroResponseRHScale/Mertens-energy/RiemannHypothesis \u2014 no kernel arrow from the Abel face to RH, and the new commit does not change any of the five merged kernel modules (git diff empty); (2) the Abel identity is hypothesis-free but carries boundary M(x/(y+1))*R(y) (primeSievePNTError_eq_moebiusDiscrepancySum_sub_abelBoundary, R = pi - Li); (3) collapse theorems all require hroot: Nat.sqrt x < y while the backward-affine module lives at the pin (y+1)^2-1 where Nat.sqrt x0 = y \u2014 domains disjoint, confirmed in source; (4) the real kernel chain is NonzeroResponseRHScale <-> ProjectedRenewalQuadraticBounded <-> Mertens energy => RH, Abel face absent. New wrinkle folded into the memo: upstream's route rewrite REMOVED the old sec.7 paragraph containing the 0.678/0.51 fits and the \"square-root cancellation, required x^0.18\" reading (numbers survive only in a probe script), so the Sec.7 note explicitly refers to the earlier text. Spec sheet is tiered (exact identities / unconditional Lipschitz-excursion bounds with honest constants incl. the corrected W ~ x^eps log x window / conditional Abel-bridge templates) and aligned to their psi-based native error (pi-Li vs psi-N interface shim noted), with an explicit not-provided list (no R(t) upper bounds kernel-proved). Verification supports the audit on all four headline claims.",
+   "key_numbers": "1 new upstream commit, ~12,416 insertions, 20+ NativePNT modules; Abel face token in exactly 3 files; boundary term M(K)R(y) with K=floor(x/(y+1)); collapse domain x < y^2 vs pin x0 = y^2+2y (disjoint); Lipschitz constant C = 1 + K/log(y+1) ~ 2*sqrt(x)/log x; excursion window at H = x^(1/2+eps) is ~ x^eps*log x, not sqrt(x); Sec.7 fits 0.678 vs 0.51 => saving x^0.168 = D^0.336 vs full D^0.5 (= x^0.25), below stated x^0.18; memo ~700 words.",
+   "artifacts": [
+    "/tmp/claude-1000/-mnt-d-Projects-prime-wheel-mobius/0d31eddd-16a5-4696-aef4-2949c1ddd542/scratchpad/upstream_memo_draft.md"
+   ]
+  },
+  {
+   "deliverable": "sec7-replication (record 032c): upstream route-doc sec.7 measurement replicated from upstream's own probe scripts (mobius.py, routeB.py, routeB_dense.py copied read-only from mobius-synthesis main). Reproduce-first at x<=1e7 with unmodified scripts, then unmodified routeB_dense.py at 5e7 (peak RSS 2.0GB) and a verbatim-reuse driver at the recorded 1e8/240-point configuration (peak RSS 2.49GB, 76s; only change is a memory-blocked, numerically identical Li-table build, validated digit-for-digit against the unmodified script at 1e7 and 5e7). Emitted sec7_replication.csv (720 per-x rows across the three grids) and sec7_note.md (numbers only). No repo files touched.",
+   "outcome": "SUPPORTS-AUDIT",
+   "summary": "Every number recorded in sec.7 reproduces exactly at the recorded scale (240-pt log grid to x=1e8, fits over x>=1e5): triangle-bound exponent 0.6780 (doc 0.678; sub-range fits 0.6347/0.6483/0.7058/0.6771 vs doc 0.635/0.648/0.706/0.677), signed |E^rec| exponent 0.5145 (doc ~0.51), median |E|/(sum|E_d|/sqrt(D)) = 1.428 (doc 1.43), log-log correlation 0.7774 (doc 0.78), median saving 24.9x (doc 24.9x). The audit's derived discrepancy also replicates: the measured saving exponent (triangle minus signed) is x^0.1635 = D^0.327 at 1e8 \u2014 LESS than full sqrt(D) cancellation (D^0.5 = x^0.25) in every run (D^0.324-0.404 across 1e7/5e7/1e8 endpoints), and below the x^0.18 the doc states is required at the recorded scale (0.1635 at 1e8, 0.162 at 1e7; the 5e7 endpoint alone gives 0.202, reflecting instability of the signed-exponent fit, which ranges 0.366-0.598 across sub-ranges while the triangle exponent is stable). Additionally the signed exponent 0.5145 exceeds the full-sqrt(D)-prediction exponent sum|E_d|/sqrt(D) = 0.4277 by 0.087. Internal checks passed: C-2E=M(x) exact at all routeB.py checkpoints; Li-table differences match the series to 5.5e-12 relative. Caveat: the doc's raw measurements are accurate as recorded; what the replication supports is the audit's arithmetic that those measurements amount to a D^~0.33 saving, not full square-root cancellation.",
+   "key_numbers": "1e8 run (recorded config): triangle exp 0.6780, signed exp 0.5145, saving x^0.1635 = D^0.327; sqrt(D) benchmark = x^0.25; doc-required x^0.18; median ratio 1.428, corr 0.7774, median saving 24.9x; sum|E_d|/sqrt(D) exp 0.4277. Cross-run saving exponents: 1e7 x^0.1620 (D^0.324), 5e7 x^0.2019 (D^0.404), 1e8 x^0.1635 (D^0.327). Doc rounded figures give x^0.168 = D^0.336. Peak RSS 2.49GB, 76s wall at 1e8.",
+   "artifacts": [
+    "/tmp/claude-1000/-mnt-d-Projects-prime-wheel-mobius/0d31eddd-16a5-4696-aef4-2949c1ddd542/scratchpad/sec7_replication.csv",
+    "/tmp/claude-1000/-mnt-d-Projects-prime-wheel-mobius/0d31eddd-16a5-4696-aef4-2949c1ddd542/scratchpad/sec7_note.md",
+    "/tmp/claude-1000/-mnt-d-Projects-prime-wheel-mobius/0d31eddd-16a5-4696-aef4-2949c1ddd542/scratchpad/sec7/sec7_csv_driver.py",
+    "/tmp/claude-1000/-mnt-d-Projects-prime-wheel-mobius/0d31eddd-16a5-4696-aef4-2949c1ddd542/scratchpad/sec7/dense_1e8.log",
+    "/tmp/claude-1000/-mnt-d-Projects-prime-wheel-mobius/0d31eddd-16a5-4696-aef4-2949c1ddd542/scratchpad/sec7/dense_5e7.log",
+    "/tmp/claude-1000/-mnt-d-Projects-prime-wheel-mobius/0d31eddd-16a5-4696-aef4-2949c1ddd542/scratchpad/sec7/dense_1e7.log",
+    "/tmp/claude-1000/-mnt-d-Projects-prime-wheel-mobius/0d31eddd-16a5-4696-aef4-2949c1ddd542/scratchpad/sec7/routeB_5e7.log"
+   ]
+  },
+  {
+   "deliverable": "i1-diagonal-probe (record 032a): scaled I1 mu^2-diagonal probe at canonical pins x_y=(y+1)^2-1, ensemble y in (Y,2Y], window W=y+1, levels Y=32..2048 (4x the required minimum of 512-per-pilot range; sieve to n=16,785,409), vectorized over t, 669 s total. Outputs: i1_diagonal_scaled.py, i1_diagonal_scaled.csv (13 levels: Y, E2, D, E2/D, mean/var blocks, dc_share, per-level fits), i1_diagonal_note.md (methods + interpretation), i1_diagonal_scaled.log \u2014 all in the scratchpad directory.",
+   "outcome": "SUPPORTS-AUDIT",
+   "summary": "All three frozen predictions hold at scale and the kill condition does not fire. (P1) The sign-blind diagonal D(Y) fits Y^3.743 (full) / Y^3.757 (last-5) with drift-free local slopes 3.72-3.79 across 13 levels \u2014 inside the frozen [3.7,4] band and consistent with the audit's Y^{2+4theta}/log-type RH-scale claim. (P2) E2/D stays in 0.169-0.278 with no upward trend (0.184 at Y=2048): the Moebius signs buy only a bounded factor, not a power \u2014 E2 grows at the same exponent as D, so E2(Y)<<Y^{4+eps} is not weaker than bounding the mu^2 diagonal itself, which no signed/dispersion method can touch. (P3) The DC/mean block carries 99.86% of window energy at Y=2048 and its share is still rising, so a mean-subtracting zero-mode gate removes E2's bulk but leaves the diagonal (which lives inside the mean block) untouched; residual AC energy is only ~Y^2.94. Caveat: at Y<=2048 a log factor is indistinguishable from Y^{+-0.1}, so this is gating evidence for the audit's structural finding, not independent proof. Implements the digest's decision rules: 029's zero-mode gate is DOA unless restated diagonal-subtracted; 030's amplification lemma amplifies an RH-strength input; any restated I1 target must be off-diagonal-only. Structural check verified in-code: K=floor(n/(y+1))=y is constant across the whole canonical window. Moebius sieve self-checked against direct factorization; Li per the base-2 midpoint differences-only convention of record 028.",
+   "key_numbers": "D(Y) exponent: 3.743 full-fit, 3.757 last-5, local slopes 3.72-3.79 (frozen band [3.7,4]: HOLDS). E2 exponent: 3.700 full, 3.889 last-5 (noisy local slopes 2.6-5.2, DC-dominated). E2/D: 0.169-0.278 across Y=32..2048, 0.184 at Y=2048 (frozen ~0.17 bounded away from 1: HOLDS). DC share: 0.9672 (Y=32) -> 0.99863 (Y=2048), monotone rising (frozen ~99%: HOLDS). AC/varblock exponent: 2.937 full, 2.952 last-5. Y=2048 values: E2=1.188e12, D=6.446e12, meanblock=1.187e12, varblock=1.628e9. Runtime 669 s (cap 2100 s).",
+   "artifacts": [
+    "/tmp/claude-1000/-mnt-d-Projects-prime-wheel-mobius/0d31eddd-16a5-4696-aef4-2949c1ddd542/scratchpad/i1_diagonal_scaled.csv",
+    "/tmp/claude-1000/-mnt-d-Projects-prime-wheel-mobius/0d31eddd-16a5-4696-aef4-2949c1ddd542/scratchpad/i1_diagonal_note.md",
+    "/tmp/claude-1000/-mnt-d-Projects-prime-wheel-mobius/0d31eddd-16a5-4696-aef4-2949c1ddd542/scratchpad/i1_diagonal_scaled.py",
+    "/tmp/claude-1000/-mnt-d-Projects-prime-wheel-mobius/0d31eddd-16a5-4696-aef4-2949c1ddd542/scratchpad/i1_diagonal_scaled.log"
+   ]
+  },
+  {
+   "deliverable": "lean-repair-spec",
+   "outcome": "DELIVERED",
+   "summary": "Full repair spec for record 031 written to scratchpad/lean_repair_spec.md, desk-only, no builds, no repo modifications. Covers all six requested items with paste-ready Lean statements in RHLean conventions and transcription-grade proof sketches: (1) abstract affine excursion lemma (generic f, |f(x0\u00b1t)\u2212f(x0)| \u2264 A\u00b7t+B, hypothesis 2B<H, window min(cap, \u230a(H/2\u2212B)/A\u230b), norm + 2k-moment corollaries, both directions via a single excursion-coordinates core); (2) sharp instantiation with slope A_y = 1 + H_K/log(y+1) by wiring the dead floor_add_div_sub_le into a harmonic floor-increment bound \u03a3_{d\u2264K}(\u230a(x+h)/d\u230b\u2212\u230ax/d\u230b) \u2264 h\u00b7H_K + K, with the divisor-indicator/Wigert mechanism spelled out and mathlib lemmas named (Nat.cast_div_le the one load-bearing uncertain name, with fallback); key simplification found: the existing primeSieveMoebiusPrefixSum_increment_norm_le is already sharp, so only the final relaxation changes, and at the canonical pin K is constant along the backward walk so no monotonicity lemma is needed; (3) nonemptiness certificates 1 \u2264 W and n \u2264 W under explicit H \u2265 2(A\u00b7n+B); (4) two-obligation triangle theorems from primeSievePNTError_eq_moebiusDiscrepancySum_sub_abelBoundary (name verified by git grep on main 4082973) plus mandatory honesty docstring encoding the four kernel-chain audit facts; (5) telescope salvage \u03a3_{n\u2264X}(g*1)(n)M(\u230aX/n\u230b) = \u03a3_{a\u2264X} g(a) via a stated hyperbola-swap lemma, the classical unit identity, and Nat.div_div_eq_div_mul, reusing the repo's existing moebius_mul_coe_zeta extraction, honestly tagged non-novel; (6) line-referenced docstring diff table for PrimeSieveBackwardAffineExcursion.lean (6 falsified/overstated claims) plus one optional Lipschitz-file line and an out-of-Lean-scope governance list. Per-item build risk (LOW/MEDIUM), ~555 new LOC estimate, file plan with 4 new modules, landing order, and a pre-build mathlib-name grep checklist included.",
+   "key_numbers": "6 spec items; 4 new Lean modules + 1 docstring-edit file; ~555 est. new LOC; slope A_y = 1 + H_y/log(y+1) = 2.0835 (y=1e3) / 2.0313 (y=1e8) vs crude C \u2248 2\u221ax/log x; intercept B_y = y/log(y+1) \u2248 2\u221ax/log x; repaired window W_eff = min(y, \u230a(H/2\u2212B)/A\u230b) \u2248 min(\u221ax, H/4); window gain factor C/A \u2248 y/(2 log y); nonemptiness threshold \u2248 4\u221ax/log x (unchanged from crude); main commit 408297384342b79016745a55d3f6c8999acb1da6; anchor theorem at PrimeSieveAbelIdentity.lean:188; dead lemmas at BackwardAffineExcursion.lean:44 and :51; crude relaxation at LipschitzExcursion.lean:395-409; build risks: items 1/3/4/6 LOW, items 2/5 MEDIUM",
+   "artifacts": [
+    "/tmp/claude-1000/-mnt-d-Projects-prime-wheel-mobius/0d31eddd-16a5-4696-aef4-2949c1ddd542/scratchpad/lean_repair_spec.md"
+   ]
+  }
+ ]
+}

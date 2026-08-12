@@ -722,3 +722,25 @@ salvage → PR #5 with correction notice → 032 probe scaling +
 spec sheet. The mathematics (identities, pin geometry, excursion
 machinery, kill tests) survives; the narrative compression does not.
 Nothing promoted. EC2 untouched (stopped).
+
+## 2026-08-12-04
+results/030+032+033 closed (workflow wf_6c3bd7db, 15 agents, ~19
+min). 030: certification of all 86 round-4 findings — 75 CONFIRMED /
+11 PARTIAL / 0 REFUTED; the audit survives intact; binding
+corrections listed in the record; per-record errata in
+results/030/errata/; IDEAS.md carries an erratum banner (full
+rewrite queued); Lean repair spec for 031 at
+results/030/lean_repair_spec.md. 032: all three probes SUPPORT the
+audit at scale — I1 diagonal D(Y)~Y^3.74 with E2/D bounded (0.17-
+0.28), I2 circularity |V0-A_q|~q^0.51 (kill line q^1 never
+approached), upstream sec.7 replicated digit-for-digit from their
+own scripts with measured saving D^0.327 < sqrt(D) (their numbers
+honest, the sqrt-cancellation reading overclaimed). 033: upstream
+correction memo drafted (results/033/memo_draft.md), NOT sent —
+Rasheed sends; upstream meanwhile landed ~12.4k lines of native-PNT
+Lean (unconditional PNT in-architecture; does not alter our five
+modules or the correction facts). Shortlist I1/I2 formally DEAD/
+CIRCULAR as designed. Next: 031 kernel repair module per spec (the
+one queue item that survives), then IDEAS.md rewrite, then re-freeze
+the program target (two obligations) before any round-5 panel.
+Nothing promoted; EC2 never started; total session compute $0.
