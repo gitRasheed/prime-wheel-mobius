@@ -699,3 +699,26 @@ also upstream's measured bar; I2's rung-1 target must be desk-checked
 for whether it delivers full √-cancellation across the family before
 any spend (add to 031 declaration). Numerics-grade throughout;
 promotes nothing; queue order unchanged (029 → 030 → 031).
+
+## 2026-08-12-03
+results/029 closed: round-4 adversarial audit (workflow wf_cc1e5820,
+10 Codex reviews via Opus drivers + 5-lens planner panel, 15 agents,
+~32 min). 10/10 ERRORS-FOUND; 12 fatal / 40 major / 34 minor. Core
+(grep- and pilot-verified during planning): (1) the central claim
+"kernel chain reduces RH to the Abel face" is FALSE as stated — no
+kernel arrow Abel face → RH; shipped in sealed packets 017/026.
+(2) The Abel identity's boundary term M(K)R(y) is a dropped second
+RH-strength obligation. (3) Collapse (x < y²) and pin (x₀ ≥ y²)
+domains are disjoint. (4) 024's W ≍ √x headline is false (true W ≍
+log x at H ≍ y); promised affine slope never formalized. (5) I1's
+E₂(Y)≪Y^{4+ε} is RH-equivalent via the sign-blind μ² diagonal.
+(6) I2's DC/AC isolation is circular (|V₀−A_q|≪q unconditional).
+(7) Upstream's §7 measured saving is D^0.336, below their own
+√-cancellation bar. Old queue FROZEN (5/5 planners concur). New
+queue: 030 corrective record (target re-freeze, packet errata,
+error-ledger amendment) → 031 kernel repair module + telescope
+salvage → PR #5 with correction notice → 032 probe scaling +
+§7 replication (local, $0) → 033 upstream correction memo + PNT
+spec sheet. The mathematics (identities, pin geometry, excursion
+machinery, kill tests) survives; the narrative compression does not.
+Nothing promoted. EC2 untouched (stopped).
