@@ -668,3 +668,34 @@ than producing them, but the Abel identity is a two-way bridge, so a
 PNT-grade R bound landed upstream feeds our face directly. Scope
 before promising. Nothing promoted; queue (029 I1 gate → 030
 amplification lemma → 031 I2) unchanged.
+
+## 2026-08-12-02
+Upstream sync (fetch + local main fast-forwarded to origin/main
+4082973). Major developments while away. (1) PRs #1 and #4 MERGED
+2026-08-10; #4 carried the stacked branch, so ALL FIVE kernel theorem
+sets (bridge equivalence, collapse identity, Abel identity, Lipschitz
+excursion, backward affine excursion) are now in upstream main; #2/#3
+closed as redundant-by-inclusion. (2) Upstream's CURRENT_PROOF_ROUTE.md
+rewritten: our canonical square pins X_n = (n+1)^2 - 1 are now the §1
+sampling checkpoints of the official route; H_{k,n} at those pins is
+the canonical target (NonzeroResponseRHScale — the predicate our PR #1
+bridged). (3) Upstream ran ~20 research commits: a dead-lanes ledger
+(boundary/dead_lanes.json, six closed lanes incl. the PNT coordinate
+change C−2E ≡ H and the canonical orientation split — the latter
+killed by an integral-of-M-against-dpi smoothing argument at
+X^{3/4+o(1)}), plus 14 probe scripts. (4) THE decisive measurement
+(route §7, 240-pt log grid to x=1e8): termwise triangle bound over the
+reciprocal d-fibres grows like x^0.678; the signed E^rec fits x^0.51
+and tracks (Σ_d|E_d|)/√D with median ratio 1.43 — i.e. the mechanism
+is full square-root cancellation ACROSS the d-family, with essentially
+no margin. Upstream's stated bar: any estimate that is termwise in
+|M(d)| (or otherwise takes absolute values across d) has already
+discarded the mechanism and cannot close. This is independent
+numerical convergence with our round-3 nine-obstacle packet (records
+026/027), which killed all absolute-value proposals at desk on the
+same reopening condition. Consequence for our queue: the I1 zero-mode
+gate (029) kill condition (uncancelled positive Mertens energy) is now
+also upstream's measured bar; I2's rung-1 target must be desk-checked
+for whether it delivers full √-cancellation across the family before
+any spend (add to 031 declaration). Numerics-grade throughout;
+promotes nothing; queue order unchanged (029 → 030 → 031).
