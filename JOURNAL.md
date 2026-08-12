@@ -787,3 +787,30 @@ Rasheed); PR #8 open; candidate PR #6 (boundary-term PNT bound)
 scoped in 034. Open queue: send memo (Rasheed); PR #8 review cycle;
 PrimeSieveAbelBoundaryPNT module after #8 lands; round-5 panel under
 the section-J constraint set.
+
+## 2026-08-12-08
+Third-repo sync: RH_Lean (upstream's primary consolidated repo,
+local at /mnt/d/Projects/RH_Lean; 319 PRs; export dirs for
+mobius-synthesis/prime-wheel/square-block satellites). Protected
+kernel chain there: SquarePrefixUniformLocalBounded ->
+MertensEnergyBounded -> ClassicalMertensRHCriterion -> RH.
+Permanent route registry: dyadic-Li closed at PR #105 (the closure
+record 028 referenced), Euler-CRT roughness and 2-vs-3 parity
+closed, plus an acceptance rule all future routes must satisfy
+(exact object changed; why not the closed mechanism; predeclared
+stop criterion; coherent/H=1 control; every boundary term; result
+class). SIGNED_GRAM_ARCHITECTURE.md: formal target is the FULL
+signed Gram form — separate positive shell estimates inadmissible
+without a proved orthogonalizing transform (convergent with our
+section-J constraints). PR #319 (merged 2026-08-12 into the agent
+branch, one merge from main): WheelRoughSquarePrefixEnergy.lean,
+365 lines, elementary — the critical square-prefix energy statement
+survives deletion of any fixed finite prime wheel with explicit
+loss (1-(2/3)^r)^(-|P|); robustness infrastructure around the
+target, not frontier movement. Upstream's framing in response to
+our 033 memo: the program bottleneck is the signed H_{k,n} object
+(their protected chain), not the Abel face — consistent with our
+own certified finding (no kernel arrow S -> RH; the RH chain runs
+through H). Our memo's corrections stand for the mobius-synthesis
+satellite; round-5 targeting should aim at signed H/square-prefix
+energy in RH_Lean coordinates under BOTH registries' constraints.
