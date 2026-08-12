@@ -744,3 +744,16 @@ CIRCULAR as designed. Next: 031 kernel repair module per spec (the
 one queue item that survives), then IDEAS.md rewrite, then re-freeze
 the program target (two obligations) before any round-5 panel.
 Nothing promoted; EC2 never started; total session compute $0.
+
+## 2026-08-12-05
+results/034 closed (scoping, desk-only): upstream's native-PNT drop
+gives us the first formal handle on our dropped boundary obligation.
+M(K) = o(K) is now kernel-side upstream (Axer module, their Mertens
+identified with ours exactly); R(y) = o(y) derivable with one new Li
+lemma; product => first formal bound on M(K)R(y): o(x/log x) at
+y ~ sqrt(x) (rate-free). Gap to RH scale remains a full power (their
+quantitative forms are open Props). Truncation clause E_T: not
+helped (no zeta apparatus upstream, verified). Collaboration
+surface: PrimeSieveAbelBoundaryPNT.lean, four lemmas, cycle-free —
+candidate PR #6 after the 031 repair PR. Records 031 (Lean builder)
+and the IDEAS.md rewrite still in flight.
