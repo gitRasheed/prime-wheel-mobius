@@ -757,3 +757,18 @@ helped (no zeta apparatus upstream, verified). Collaboration
 surface: PrimeSieveAbelBoundaryPNT.lean, four lemmas, cycle-free —
 candidate PR #6 after the 031 repair PR. Records 031 (Lean builder)
 and the IDEAS.md rewrite still in flight.
+
+## 2026-08-12-06
+IDEAS.md rewritten (erratum banner absorbed; 506 lines). New binding
+sections: "Program target (re-frozen)" — what the kernel actually
+proves, the two-obligation target, the three missing connecting
+lemmas (pin-to-block bridge, boundary obligation, S-vs-E^rec
+centering); H3 gate ledger amended (∃T + truncation clause, A ≥ 1,
+"strictly stronger than RH as far as known"); H4 grounds
+re-classified; section I: I1 DEAD / I2 CIRCULAR with probe cites,
+salvage folded as identity-grade nodes I-id1/I-id2 + the D≡P
+equivalence; new section J: certified round-5 constraint set (signed
+cross-d mandatory at the measured ~D^0.33 saving, absolute-value
+auto-kill, relocation auto-kill, μ²-diagonal test). Length 1.46x
+prior (accepted: certified content mandated). Panels may seed from
+IDEAS.md again as of this commit.

@@ -1,30 +1,13 @@
 # IDEAS.md — the attack-angle tree
 
-> **ERRATUM NOTICE (2026-08-12, records 029/030).** A round-4
-> adversarial audit found and a certification pass CONFIRMED (75
-> confirmed, 11 partial, 0 refuted) systematic errors in this file's
-> framing and in records 021–028. Binding corrections, until this
-> file is rewritten: (1) there is NO kernel arrow from the Abel face
-> to RH — the "two kernel-equivalent faces" claim is FALSE; the Abel
-> identity carries a second RH-strength boundary obligation
-> M(K)·R(y); (2) the collapse (x < y²) and canonical-pin (x₀ ≥ y²)
-> kernel domains are disjoint; (3) shortlist I1 is dead as designed
-> (E₂(Y) ≪ Y^{4+ε} is RH-equivalent via its sign-blind μ² diagonal;
-> probe-confirmed) and I2 is circular (|V₀−A_q| ≪ q unconditional;
-> probe-confirmed); (4) the section-Z frozen-gate constraint "A < 2
-> untenable" applies only to the F_K-proxy — the correct forced floor
-> for the frozen gate is A ≥ 1; the gate also omits the required
-> truncation clause E_T. Per-record replacement text:
-> `results/030/errata/`. Do not seed panels from this file until the
-> rewrite lands.
-
 Governed by `PROOF_OS.md` (surfaces section). The only file where
 speculation is allowed; every claim here about what a technique *can do* is
 UNVERIFIED unless it cites a record or a source document. Seeded 2026-08-08
 from the two papers' own stated programs (nodes A–C, E) plus
-clearly-marked speculative literature analogues (F). No experiments have
-run; `Committed: none` everywhere. A blind-panel re-seed (PROOF_OS law 13)
-is pending and should run before heavy allocation.
+clearly-marked speculative literature analogues (F). Rewritten 2026-08-12
+after the round-4 audit and certification (029/030: 75 confirmed /
+11 partial / 0 refuted; probes at scale in 032); the former erratum
+banner is absorbed into the body, corrections cited inline.
 
 Targets, verbatim sources in `AGENTS.md`:
 - **HN**: prime-wheel harmonic nonconcentration (paper eq:HN; Lean
@@ -34,6 +17,57 @@ Targets, verbatim sources in `AGENTS.md`:
 - **SYN**: forthcoming synthesis target (collaborator-stated; exact form
   pending repo).
 
+## Program target (re-frozen 2026-08-12, records 029/030 — binding)
+
+Committed: none. Supersedes every earlier "reduction" statement here
+and in the sealed packets of rounds 2–3.
+
+**What the kernel actually proves.** (1) The exact, hypothesis-free
+Abel identity `E = S − M(K)·R(y)`
+(`primeSievePNTError_eq_moebiusDiscrepancySum_sub_abelBoundary`): E
+the prime-sieve PNT error, S the Abel face Σ_{d≤K} μ(d)·R(⌊x/d⌋),
+K = ⌊x/(y+1)⌋. (2) The kernel RH-chain
+`ProjectedRenewalQuadraticBounded ↔ NonzeroResponseRHScale → RH`, on
+the centered wheel object H = Z[M] (= Z[C] − 2Z[E]); forward Mertens
+criterion criterion-free (known-unknown 7). (3) There is **NO kernel
+arrow from the Abel face S to RH** (029 finding 1, certified 030):
+the Abel-face and bridge modules are disjoint; no theorem takes an S-
+or E-bound as hypothesis toward H or RH. The former "two
+kernel-equivalent faces; attack either" language was FALSE — the
+faces are kernel-DUAL, related by exact identities only (the sole
+exception, an Abel bound UNIFORM in y, contains K = 1 = von Koch RH:
+no reduction). The coordinate ring is circular: T = M + E and
+C = M + 2E identically, so {|C|,|E|} ⟺ {|M|,|E|} (030; upstream's
+closed lane `pnt-reciprocal-coordinate-change`).
+
+**The honest target is TWO obligations** (or re-target to E):
+|S| ≪ x^{1/2+ε} AND |M(K)·R(y)| ≪ x^{1/2+ε} at the same (y,x). At
+y ≍ √x the best unconditional bound on the boundary product is
+x^{1−o(1)}; its R(√x) half is prime-side RH at half scale, supplied
+by no Mertens-side induction (030 — review 014's "self-consistent at
+1/2, no loss" claim retracted).
+
+**Connecting lemmas MISSING (none exists, formally or informally):**
+1. **Pin-to-block bridge.** Collapse/centering identities require
+   x < y² (`hroot`); the backward excursion lives at the canonical
+   pin x₀ = (y+1)²−1 with window [y²+y, y²+2y], entirely ≥ y² — the
+   domains are disjoint for every y, and at the block cutoff the
+   whole window lies above the primorial block. Composing needs an
+   extension of the collapse identities to x = y²+O(y) or a boundary
+   transport lemma, plus one y-convention (free y ≍ √x vs
+   block-constant y_k = √U_k+1; factor ≤ √(log x) apart) (029/030).
+2. **Control of the boundary obligation M(K)·R(y)** — no kernel
+   theorem addresses it at all.
+3. **S-vs-E centering mismatch.** Upstream's E^rec is the centered
+   three-point Z[E] at the block cutoff; S is single-x at canonical
+   y ≍ √x. Three gaps: the boundary B_y(t) does not cancel under
+   centering; the centering itself; the comb H = Z[C] − 2Z[E].
+   Transfers between the objects must pay all three (029/030).
+
+Frontier delta of the correction: program-level (largest of the
+project). The exact identities, pin geometry, excursion machinery and
+kill tests survive; the reduction narrative did not (029).
+
 ## Strength ladder (law 10)
 
 | Rung | Statement | Status |
@@ -42,6 +76,14 @@ Targets, verbatim sources in `AGENTS.md`:
 | 1 | any fixed exponent θ<1 for the block residual | open |
 | 2 (target) | 1/2+ε — HN / SPS / SYN | open |
 | above target | sharp O(√x) | not a goal |
+
+Ladder note (029/030): in the Abel-gate coordinates of 021/022 the
+rung-0 consequence S = o(x) is ALREADY KNOWN elementarily (VK +
+triangle; 022 error #7) — rung 0's value there is the 𝓜 moment bound
+itself. 021 and 022 silently used two different rung-1 senses: 1b
+(021) 𝓜 ≪ x^{1/4−δ} ⟹ S ≪ x^{3/4−δ} (0 < δ < 1/4; binding constraint
+= Möbius cancellation at s = 1/2 in the C-part); 1a (022)
+𝓜 ≪ x^{1/2−δ} ⟹ S ≪ x^{1−δ}. Drift fixed: name the sense (030).
 
 ## A. Direct pinned-harmonic-nonconcentration program (HN)
 
@@ -132,7 +174,8 @@ Targets, verbatim sources in `AGENTS.md`:
   close *this* rung fails its own viability control (PROOF_OS, first
   contact).
 - Cheapest kill test: none needed to open; each attack angle inherits this
-  rung as its control.
+  rung as its control. Caveat (030): in the Abel coordinates S = o(x)
+  is already elementary — a rung-0 claim there must deliver more.
 
 ## F. Speculative literature analogues
 
@@ -215,7 +258,8 @@ writing the exact statement it would prove.
    forward is the direction a proof of the open estimate needs. The
    reverse (RH → Mertens) remains a typed premise
    (`ClassicalMertensRHCriterion`) used only by the iff-form theorems.
-   Kernel audit of the forward pair pending (003).
+   Kernel audit of the forward pair pending (003); axiom-guarding of the
+   forward arrows recommended upstream (030).
 8. **Parity-obstruction position.** No source document states whether
    parity-type barriers bind these coordinates. A literature diagnostic
    should establish the program's official position (feeds B, F2).
@@ -267,80 +311,196 @@ Full week of compute if run entirely; run 4/7/1 first.
 Warning absorbed from the round (agents 5, 8): the Lean target admits
 H = 1, so window-only averaging mechanisms yield lemmas, not closures.
 
-**Node G update (2026-08-09, records 012–014):** G2 **closed-dead at
-class scope** — class 𝔉 (L²-Mertens input + sign-discarding
-recombination at H=1, = every completion/large-sieve implementation;
-review 014 structural lemma). Kernel of the obituary: F(σ) ≥ 1/2+σ/2,
-expansion ≥ 1/4 on the whole range, confirmed by both model families
-via independent routes; the bounded-fiber transfer separately dead by
-exact counterexample (012). Reopens when: an argument outside 𝔉 —
-direct μ×R cancellation (Cell D) or a Type-II route with an honest
-prime-correlation input. **New leading object (from review 014): the
-Abel-form bilinear statement Σ_{d≤√x} μ(d)(π(x/d)−Li(x/d)) ≪
-x^{1/2+ε}** — equivalent to the E-face target with no exponent flow;
-next records: formalize the identity (kernel), measure √K-cancellation
-(numerics), scope Type-II (seeding round 2).
+**Node G update (2026-08-09, records 012–014; corrected per
+029/030):** G2 **closed-dead at class scope** — class 𝔉 (L²-Mertens
+input + sign-discarding recombination at H=1, = every
+completion/large-sieve implementation; review 014 structural lemma).
+Kernel of the obituary: F(σ) ≥ 1/2+σ/2, expansion ≥ 1/4 on the whole
+range, both model families, independent routes; the bounded-fiber
+transfer separately dead by exact counterexample (012). Reopens when:
+an argument outside 𝔉 — direct μ×R cancellation (Cell D) or a Type-II
+route with an honest prime-correlation input. **New leading object
+(review 014): the Abel-form bilinear statement
+Σ_{d≤√x} μ(d)(π(x/d)−Li(x/d)) ≪ x^{1/2+ε}** — related to the E-face
+target by the exact identity E = S − M(K)R(y); estimate-equivalence
+at 1/2 additionally requires |M(K)R(y)| ≪ x^{1/2+ε}, whose R(√x) half
+is prime-side RH at half scale, supplied by no Mertens-side induction
+(029/030; 014's "no exponent flow" claim retracted). Neither face is
+kernel-linked to H/RH — see the re-frozen program target above.
 
 ## H. Round-2 angles (Abel face; blind panel 017, 2026-08-09)
 
-Full mapping in results/017 verdict. Shortlist: **H1** agent0
-moment-hierarchy (deletes obstacle 3; rung-0 = unconditional
-Moment-Hierarchy Equivalence Theorem, Lean-formalizable). **H2**
-agent8 product-form Perron / full-constant KV (𝔉-exit by inventory;
-hinge lemma needs the 1/ζ-completion repair — do NOT execute as
-written). **H3** agent4 Landau–Gonek zero-pair resolvent (RH content
-quarantined in −M(x)log K; rung 2 → two-zero moments, Ng line).
-**H4** agent6 exact-telescoping sieve reduction (residue lands on the
-sanctioned V8 door). New standing obstacle: **zero-coordinate shadow
-of 𝔉** — CS-over-zeros with absolute F_K reproduces trivial scale;
-signed evaluation at zeros or exit. Clusters Z/V/I with shared kill
+Full mapping in results/017 verdict. NOTE (029/030): the 017 packet's
+face-equivalence claim and boundary-term waiver were false; read this
+node through the re-frozen target above. Shortlist: **H1** agent0
+moment-hierarchy (deletes obstacle 3; rung-0 = unconditional Moment-Hierarchy
+Equivalence Theorem, Lean-formalizable). **H2** agent8 product-form
+Perron / full-constant KV (𝔉-exit by inventory; hinge lemma needs the
+1/ζ-completion repair — do NOT execute as written). **H3** agent4
+Landau–Gonek zero-pair resolvent (RH content quarantined in
+−M(x)log K; rung 2 → two-zero moments, Ng line). **H4** agent6
+exact-telescoping sieve reduction (residue lands on the sanctioned V8
+door). New standing obstacle: **zero-coordinate shadow of 𝔉** —
+CS-over-zeros with absolute F_K reproduces trivial scale; signed
+evaluation at zeros or exit. Clusters Z/V/I with shared kill
 conditions (017 verdict); kill-wave order K1,K7,K2,K5,K3,K4,K6.
 
-### H3 gate correction (record 021, 2026-08-09)
+### H3 gate correction (record 021, 2026-08-09; amended per 029/030)
 
 The 018-named cluster-Z gate (Σ|F_K(ρ)|/|ρ| ≪ polylog, "unconditional
 Ng-line J₋₁") is DEAD as formulated — desk-exact: (i) line-only F_K
-moment suppresses the x^{β−1/2} cost of off-line zeros (obstacle 6;
-zero-density cannot repair a single persistent off-line zero); (ii)
-the prime-power remainder C_{x,K} carries −√x·F^log_{K,x}(1/2)/log x,
-invisible to any moment at nontrivial zeros. Cluster Z survives only
-as the **frozen Z-repaired gate**: ∃A,C,x₀ ∀x≥x₀ ∀K∈[κ₋√x,κ₊√x]
-∀T∈[x²,2x²]: x^{−1/2}|C_{x,K}| + 2x^{−1/2}Σ_{0<Im ρ≤T, all zeros,
-w/mult}|Σ_{d≤K}μ(d)Li_*((x/d)^ρ)| ≤ C(log x)^A. Constraints: A < 2
-untenable (Landau–Gonek signed scale log K·log T); Ng J₋₁ literature
-is RH-conditional throughout; no verbatim theorem proves or kills the
-repaired gate. Rung 0 = 𝓜 = o(√x) unconditional (PNT-strength);
-𝓜 ≪ x^{1/4−δ} = rung 1. Any second-moment/CS proof attempt re-enters
-the zero-coordinate shadow of 𝔉. Full chain audit: results/021.
+moment suppresses the x^{β−1/2} cost of off-line zeros (obstacle 6);
+(ii) the prime-power remainder C_{x,K} carries
+−√x·F^log_{K,x}(1/2)/log x, invisible to any moment at nontrivial
+zeros. Cluster Z survives only as the **frozen Z-repaired gate**
+(corrected form, 030): ∃A,C,x₀ ∀x≥x₀ ∀K∈[κ₋√x,κ₊√x] ∃T∈[x²,2x²]:
+x^{−1/2}|C_{x,K}| + 2x^{−1/2}Σ_{0<Im ρ≤T, all zeros,
+w/mult}|Σ_{d≤K}μ(d)Li_*((x/d)^ρ)| ≤ C(log x)^A, AND, at the same T,
+the truncation remainder E_T(x,K) in S = −2Re Σ_{0<γ≤T} G_{x,K}(ρ)
++ C_{x,K} + E_T(x,K) satisfies E_T ≪ √x(log x)^{O(1)} uniformly over
+d ≤ K. The E_T clause is an unconditional side lemma (not supplied by
+018/021; 022 hit this wall) — without it the boxed inequality does
+NOT imply the Abel target; the original ∀T was equivalent to T = 2x²
+by monotonicity, and ∃T is what sufficiency uses. Constraints: A ≥ 1
+forced (Landau–Gonek; the earlier "A < 2 untenable" applied only to
+the unnormalized F_K-proxy — the Li_* kernel costs a log); RMT
+expectation A = 5/4. Strength class: the gate implies the Abel target
+and is, as far as known, strictly stronger than RH — RH ⟹ gate is NOT
+known in either clause; the gate can fail while RH and the Abel
+target both hold. The C-clause also hides the m ≥ 2 zero harmonics of
+C₀ (termwise cost x^{5/8}·polylog — a second Möbius demand at
+Re s = 1/4). Ng J₋₁ literature is RH-conditional throughout. Rung 0 =
+𝓜 = o(√x) unconditional (ladder note: S = o(x) already known);
+𝓜 ≪ x^{1/4−δ} = rung 1 in the 021 sense. Method-level kill from 022
+(corrected): triangle-over-d has an unconditional ≍ x^{3/4} ceiling
+even under RH — a strip advance reopens rung 1 only, never rung 2.
+Second-moment/CS attempts re-enter the zero-coordinate shadow of 𝔉.
+Full chain audit: results/021; certified corrections: 029/030.
 
-### H4 verdict (record 025, 2026-08-09): CLOSED-KILLED
+### H4 verdict (record 025, 2026-08-09): CLOSED-KILLED — grounds re-classified per 029/030
 
-Agent6's exact-telescoping sieve reduction is dead on five desk-exact
-grounds: HB type-I support claim false (g(p) = (1−k)log p for p > D);
-Λ-vs-1_P telescope destruction; honest kernel mass ≍ D^{1/2−ε} at
-rung-2 scale (polynomially divergent); edge is a truncated hyperbola
-sum, not the Abel functional (self-similarity false); no internal
-repair survives. Salvage: complete-hyperbola telescope identity
-Σ(g*1)(n)M(⌊X/n⌋) = Σg(a) is TRUE + exact edge formula (candidates
-for kernel identity module). Reopens on: edge operator of norm < 1
-at homogeneity 1/2+ε, or a signed contraction for (k−1)μ(a)log a —
-new Möbius-correlation input (Cell D again). Full grounds:
-results/025.
+Agent6's exact-telescoping sieve reduction stays dead, on
+re-classified grounds (030): grounds 1 (HB type-I support:
+g(p) = (1−k)log p for p > D), 3 (Λ-side mass ≍ D^{1/2−ε}·log D at
+rung-2 weight, polynomially divergent) and 4 (the stated
+one-parameter self-similarity is false) are exact. Ground 2 is
+CORRECTED: passage to 1_P does NOT destroy the telescope — the unique
+exact kernel g_P = 1_P∗μ exists and the salvage identity applies to
+it verbatim; what fails is the proposal's form (g_P not supported on
+[1,D]; prime-side mass ≍ D^{1−θ}/((1−θ)log D) diverges). Ground 5 is
+a survey, not a non-existence theorem. The Harman/β-sieve branch was
+NOT reached by grounds 1–3 (its kernel g(d) = λ_d·1_{d≤D} genuinely
+has compact support); it dies separately on the λ₁ = 1 degeneracy
+(the a = 1 renewal term feeds T(x) into its own bound — induction
+vacuous) plus the proposal's own "never as majorants" constraint; the
+two-parameter repair H(N,B) dies on circularity (H(N,1) = M(N)).
+Salvage: the telescope identity Σ(g*1)(n)M(⌊X/n⌋) = Σg(a) is TRUE +
+exact edge formula — formalizable, but a one-line corollary of
+Σ_{n≤X}M(⌊X/n⌋) = 1, not new leverage; the rung-0 deliverable is
+redundant, not killed (equal strength banked in 022). Reopens on:
+edge operator of norm < 1 at homogeneity 1/2+ε, or a signed
+contraction for (k−1)μ(a)log a — new Möbius-correlation input (Cell D
+again). Full grounds: results/025 as amended by results/030.
 
-## I. Round-3 shortlist (blind panel 026, mapping 027, 2026-08-09)
+## I. Round-3 shortlist (blind panel 026, mapping 027) — post-audit status (029/030/032)
 
-**I1 = E/agent8 (k=1 gate only):** canonical-square ensemble
-dispersion — average over the canonical parameter y; amplification
-lemma (ensemble 2k-moment → dyadic max at pins, Lean candidate) +
-exact centered k=1 Gram/Poisson identity + complete h=0 zero-mode
-defect isolated before any spectral norm. Rung-1: E₂(Y) ≪ Y^{4+ε} ⟹
-|S| ≪ x^{5/6+ε}. Kill: zero term contains uncancelled positive
-Mertens energy. **I2 = P/agent5 (+agent1 merged, partial only):**
-DC/AC principal-mode isolation — exact increment law, finite
-Poincaré, τ-bound, triangular A_q formula; DC contraction NOT
-recorded as leverage (it is the known missing input). Rung-1:
-|A_q| ≪ q^{2−2δ}. Clusters R (5 agents) and D (2 agents) killed —
-R = record-025 reopening condition restated with covert
-absolute-value steps; D = deep-rectangle defect (window kernel
-constant, spectral steps sign-blind). Kill-test order: D-audit,
-R-ledger (both desk, done in mapping), P-Mellin-symbol, E-zero-mode.
+Both shortlist items are off the attack tree. The 026 packet carried
+the false face-equivalence and the mis-stated Wigert kill (absolute
+majorant only — the signed increment is OPEN; 023 re-scoped, 030), so
+all round-3 scoring inherits those caveats.
+
+**I1 (canonical-square ensemble dispersion, k=1 gate) — DEAD as
+designed (029/030; probe-confirmed at scale 032).** The required
+diagonal bound is RH-equivalent: every dispersion implementation
+separates the sign-blind μ² diagonal
+D(Y) = Σ_{y,t}Σ_{d≤y} μ(d)²R(⌊n/d⌋)², and D(Y) ≪ Y^{4+ε} ⟺ RH
+(window density ~1/2 + Lipschitz transfer + Landau/Ingham). Probe at
+Y ≤ 2048 (032): D(Y) fits Y^{3.743}; E₂/D stays 0.17–0.28, no upward
+trend — Möbius signs buy a bounded factor, not a power; the DC block
+carries 99.86% of window energy. Secondary (030): the μ∗Λ zero-mode
+device is unavailable at the truncation (its complementary half is
+025's Λ·M hyperbola edge — obstacle-9 PASS reversed); the rung-1
+label was wrong (E₂ ≪ Y^{4+ε} is RH-scale under the program's own law
+E₂ ≍ Y^{2+4θ}, paying out only x^{5/6+ε} while RH pointwise gives
+x^{3/4+ε} by triangle). Closed-lane class (circular): any
+canonical-ensemble second-moment attack that separates the d=e
+diagonal must first prove an RH-equivalent mean square for π−Li —
+closes the whole k≥1 family.
+
+**I2 (DC/AC principal-mode isolation) — CIRCULAR (029/030;
+probe-confirmed 032).** |V₀ − A_q| ≪ q log q UNCONDITIONALLY (trace
+identity + window divisor count; 023's affine modulus even gives
+(1+o(1))·q), so |A_q| ≪ q^α ⟺ |V₀| ≪ q^α at every α > 1 — DC ≡
+pointwise at every rung-1 precision and at the target. Probe at
+x = 10⁸ (032): |V₀−A_q| fits q^{0.505}. A coordinate change in
+upstream's dead-lane sense, not a reduction; the spectral-contraction
+step assumes 025's reopening condition and, as stated, has no shape
+that outputs a bound on A_q (no norm control, no scale recurrence, no
+reconstruction of the projected-out constant mode; square-scale
+iteration yields only log-power savings). Diagnostic: sign-blind
+termwise summation delivers x^{3/4+o(1)} under RH, so a rung-1
+exponent 1−δ certifies the signed mechanism only for δ > 1/4; the
+measured termwise 0.678 is finite-range and must not define a gate.
+
+**Salvage — identity-grade nodes (NOT attack routes; Committed: none).**
+- **I-id1, exact increment law (from I2), identity-only.**
+  V_t − V_{t+1} = c_q(X−t), exact on 0 ≤ t ≤ q−2 (t = q−1 adds the
+  boundary term μ(q−1)R(q−1)); trace identity; finite Poincaré;
+  base-at-2 ramp formula for A_q INCLUDING the boundary term
+  R(2)·M(q−1) (base-at-1 is illegitimate — Li(1) diverges), with the
+  m ≥ 3 convention. Value: unconditional pin ⟺ window-mean transfer
+  certificate, Lean candidate. Naming: c_q is a truncated Möbius
+  convolution, NOT a Ramanujan sum (classical c_q(q) = φ(q) would
+  break the τ-bound); rename in Lean (030).
+- **I-id2, ensemble/pin geometry (from I1), identity-grade.**
+  Canonical windows [y²+y, y²+2y] cover [Y²,4Y²] with density ~1/2;
+  the Canonical Ensemble Amplification Lemma survives intact,
+  Lean-formalizable: E₂(Y) ≪ Y^{A+ε} ⟹ |S| ≪ x^{(A+1)/6+ε} with the
+  formalized pointwise constant (x^{3/4+ε} at A = 4 via 023's affine
+  modulus awaits formalization — the kernel still carries only the
+  crude C·(t+1) constant, 030). The exact k=1 Gram identity may be
+  recorded only with the R-diagonal, the window-mean DC term, and the
+  truncated-convolution edge all displayed.
+- **D≡P equivalence (program result, elementary, Lean candidate;
+  030).** By the exact mean split Σ|V_t|² = W|A_q|² + Σ|V_t−A_q|² and
+  the unconditional Poincaré bound, cluster D's windowed mean-square
+  rung-2 target and cluster P's DC deliverable |A_q| ≪ q^{1+ε} are
+  the SAME estimate: D was killed on METHOD (Ω_H depends only on
+  max(m,n) — no m−n localization, defeating agent 9's conductor
+  lowering, misattributed to agent 6 in 027; the named spectral tools
+  are coefficient-uniform), not on target. The deep-rectangle block
+  is a cancellable term, not a lower bound. Cluster R corrected: the
+  reopen condition is "supply the signed contraction", not "remove an
+  absolute value".
+
+## J. Certified constraint set for round-5 proposals (frozen; 029/030/032)
+
+Committed: none. Checked against every round-5 proposal at mapping
+time; a violation is an auto-kill, citing the record.
+
+1. **Attack the SIGNED cross-d cancellation directly.** Measured
+   (upstream's own probe scripts, replicated verbatim at x ≤ 10⁸,
+   032): the signed d-family sum beats its triangle majorant by only
+   ~D^{0.33} (signed exponent 0.5145 vs triangle 0.6780; D ≍ √x) —
+   below full √D and below upstream's own stated requirement
+   x^{0.18}. Full square-root cancellation is NOT measured;
+   mechanisms must engage the signed saving that exists, not
+   presuppose more (029/030/032).
+2. **Termwise |R(x/d)| / |M(d)| or absolute values across the
+   d-family: auto-kill.** The triangle-over-d method has an
+   unconditional ≍ x^{3/4} ceiling even under RH (030); the absolute
+   floor-jump majorant is polylog-dead by Wigert while the SIGNED
+   increment — keeping Σ_{d|n}μ(d) = 0 cancellation — remains OPEN
+   (023 re-scoped, 030): absolute-value routes both die and miss the
+   open object.
+3. **Coordinate changes that relocate the difficulty: auto-kill.**
+   Certified instances: C − 2E (C = M + 2E identically; 030) and
+   DC/AC (|V₀−A_q| ≪ q log q, so DC ≡ pointwise; 030/032). Test:
+   does the new coordinate's obligation transfer back unconditionally
+   at the same exponent? If yes, it is a relocation, not a reduction.
+4. **The μ²-diagonal test.** Extract every nonnegative sub-block the
+   method must bound separately (sign-blind μ² diagonal, DC/zero
+   mode, positive-energy packet) and ask: is the hypothesis already
+   RH on a subobject? If the required sub-block bound is
+   RH-equivalent, the route is circular at the level of required
+   inputs — I1 died exactly this way, probe-confirmed (029/030/032).
