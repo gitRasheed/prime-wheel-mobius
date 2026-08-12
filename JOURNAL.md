@@ -641,3 +641,30 @@ rewritten anonymized; raw source moved to internal ops notes
 (local-only). Policy forward: upstream collaborator referred to as
 "upstream maintainer" in published records; verbatim external
 messages live only in internal ops notes.
+
+## 2026-08-12-01
+Catch-up on upstream channel (verbatim source in internal ops notes,
+per redaction policy). Two items. (1) Reference: Anthropic published
+"Claude and the Riemann zeta function"
+(anthropic.com/research/riemann-zeta) — an unreleased research Claude,
+run through Claude Code (~60 subagents, ~31M output tokens, 650 failed
+ideas before the win), raised the lower bound for the proportion of
+zeta zeros on the critical line from 41.6% to 67.2%, with a Lean-
+checked proof and external review (Conrey, Goldston). Read for what it
+is: the critical-line PROPORTION problem, orthogonal to our Abel-face
+estimate — a proportion bound < 100% carries no M(x) consequence we
+can consume, and the article itself says those techniques are not
+expected to prove RH. What it does validate is the methodology: their
+winning architecture (mass blind idea generation → high failure rate
+tolerated → validator pool → Lean verification gate) is structurally
+the loop PROOF_OS.md has run for three rounds. No route change;
+shortlist I1/I2 stands. (2) Upstream maintainer is now attempting to
+finish a PNT proof exclusively inside the repo architecture and asks
+whether we have "some bound to work with". Queued as a scoping
+question for next session: our kernel-green modules are combinatorial
+(collapse/Abel identities, Lipschitz constant, backward excursion +
+moments, support insertion) — the chain consumes R(t) bounds rather
+than producing them, but the Abel identity is a two-way bridge, so a
+PNT-grade R bound landed upstream feeds our face directly. Scope
+before promising. Nothing promoted; queue (029 I1 gate → 030
+amplification lemma → 031 I2) unchanged.
