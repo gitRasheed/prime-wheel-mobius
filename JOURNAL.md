@@ -989,3 +989,18 @@ with div_eq_mul_inv route).
 Queue: #368 review; composition lemma still gated on their open #364;
 round-5 blind panel on the contraction statement is now the only
 non-plumbing item left. EC2 stopped at close.
+
+## 2026-08-15-07 — Post-implementation statement audit: both shipped modules SAFE
+
+Codex desk audit (task-msuvczut-1w5aan) of the final shipped code of #367
+(merged) and #368 (open), statement-level only since the kernel settles
+proofs: both SAFE, sign-off on both PR descriptions, no vacuity, quantifier
+order correct, all Nat corners benign (t=0, y=1, d∈{0,1}, S=∅). Two
+precision nuances recorded: (1) the energy exponent 1+ε equals the squared
+1/2+ε scale only after ε-renaming (equivalent since both quantify all ε>0);
+(2) in #368's headline, (A+B)·N_active = intercept charge B·N_active plus a
+one-unit floor-rounding loss A·N_active — the aggregate loses one A per
+active fiber vs the direct single-fiber bound; "sharp" = the transported pin
+constants, not aggregate optimality. Posted as a comment on #368
+(issuecomment-5304260843). Round-5 workflow plan for the contraction
+statement drafted and presented; awaiting go.
