@@ -912,3 +912,42 @@ quantitative modulus infrastructure for upstream's Route B fibers; all
 bookkeeping, no frontier claim. First Codex launch was killed for running
 local sandboxed Lean against the no-local rule; its half-finished R(0)=0
 proof was salvaged into the relaunch brief and the final module.
+
+## 2026-08-15-04 — Record 041 closed: degree-one energy criterion shipped (RH_Lean PR #367); #362 mis-target repaired
+
+Upstream state at session start: our PR #365 (port + endpoint transfer) and
+PR #366 (fiber calculus) both merged to RH_Lean main (a6cdfdf). Their PR #364
+(2-3-5 parity stencil + collision defects) still open. New maintainer-shared
+material: a DeepSeek memo on #364. Desk-verified its two "exact" claims
+against the code: the 2-3-5 stencil identity (q ≥ 7, |Δ₂Δ₃Δ₅| ≤ 4) is a real
+theorem in open #364; the far-sector renewal identity F_q = −M(⌊X_t/q⌋)
+(q ≥ t+9, t ≥ 55, Λ=16 survivor) is already MERGED on main
+(SurvivorFarUpperRigidity). Memo is sober where the Markov episode was not —
+its own caveats (contraction still open, no RH claim) are correct. Framing
+note kept on record: the renewal identity means the problem recursed into
+itself at lower scale, not that it shrank; renewal structure is PNT-strength
+by default, x^(1/2+ε) is exactly where it historically stalls.
+
+Discovered en route: upstream PR #362 ("exact three-slot Mertens degree-one
+projection") was merged into the stale agent/three-slot-walsh-transition
+branch, never main — the built library on main had NO threeSlotWa/Wb/Wc and
+no degree-one statement. Its content survived only as a byte-identical copy
+in the export_mobius_synthesis/ snapshot.
+
+Record 041 (declared, Codex desk-only design pass task-msutvcbc-xvqny4, all
+KEEP): promoted the two stranded #362 modules verbatim into RHLean/ proper,
+and added ThreeSlotDegreeOneCriterion.lean — the named contraction target
+ThreeSlotDegreeOneEnergyBoundedStatement, the analytic endpoint transfer
+‖M(X) − M(4⌊X/4⌋)‖ ≤ 3, BOTH bridge directions (constants 2C+18 and
+C·4^(1+ε), same ε), the iff with SqrtWheelRecoveredEnergyBounded, and
+riemannHypothesis_of_threeSlotDegreeOneEnergy. Gate: lake build RHLean
+--wfail green (7760 jobs) on EC2, all nine audited theorems axiom-clean.
+Upstream PR #367 opened. Route work item 2 discharged: any future local
+estimate now has an unambiguous formal target that provably reaches RH.
+
+Remaining queue: T3 canonical-pin instantiation (all prerequisites now on
+main); native_decide hygiene sites on main (PrimeSquareCollisionInvolution,
+SurvivorResiduePrimeToggle, +1 arriving with #364); composition lemma
+(stencil = −Mertens renewal) after #364 merges — their agent's lane first;
+round-5 blind panel on the degree-one signed field. EC2 left running pending
+#367 review traffic.
