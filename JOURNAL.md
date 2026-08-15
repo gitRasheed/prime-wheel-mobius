@@ -855,3 +855,34 @@ synthesis architecture rather than beside it — the telescope is now the
 substrate connecting the Abel/prime-sieve face, the survivor sector, and the
 primorial wheel response in one kernel identity. PR reply drafted for user
 approval; not posted.
+
+## 2026-08-15-02 — Codex post-implementation review of the PR #8 fix: SHIP-WITH-EDITS, no mathematical refutation (record 037 addendum)
+
+User asked whether the adversarial reviewers agree with the shipped fix. The
+design pass had been Codex-endorsed; the implementation had not yet been
+adversarially reviewed. Second Codex pass (task-msunrrjx-kwcvcl, refute-first,
+against the actual branch head, the revision-2 manifest, and the reply draft):
+
+- VERDICT: SHIP-WITH-EDITS. "No mathematical refutation was found." Codex
+  independently re-verified the telescope definition (exact universal-
+  telescope LHS for the stated kernel), the index arithmetic (R = n+1 ⇒
+  R−1 = n, R+8 = n+9, near window n+2…n+8), the hypothesis flow (55 ≤ n
+  supplies both 56 ≤ n+1 and the survivor hypothesis), and the sign
+  conventions. Its three earlier rejection risks confirmed preempted; the
+  manifest passes schema/revision/anchor-family/pre-existence/disjointness.
+- Four minor findings, all wording/accuracy, all applied (d19fd16): (1) the
+  module intro and reply draft now carry the minus sign — rigidity
+  identifies the survivor with the transform's NEGATIVE; (2) the
+  two-obligation "no kernel arrow" note reworded to be literally
+  grep-verifiable (the note itself mentions the four RH-chain names, so
+  "none mention" was self-falsifying — now "outside this explanatory note,
+  no declaration ... has a type or proof depending on"); (3) reply-draft
+  claim about record references scoped to the reviewed PR modules (upstream's
+  own PrimeSieveCollapseIdentity still cites a record 006); (4) upstream's
+  hardcoded "366-module repository" in local_ci.sh's success message made
+  count-agnostic. I had separately already fixed the reply draft's local_ci
+  sentence to distinguish the baseline synthesis audit from the witness's
+  gate-style audit — Codex explicitly endorsed the corrected wording.
+- Rebuilt on EC2 after the docstring edits: 7727 jobs green --wfail,
+  assumption audit pass. EC2 stopped. Branch head d19fd16 pushed; PR reply
+  draft final, awaiting user approval to post.
