@@ -814,3 +814,44 @@ own certified finding (no kernel arrow S -> RH; the RH chain runs
 through H). Our memo's corrections stand for the mobius-synthesis
 satellite; round-5 targeting should aim at signed H/square-prefix
 energy in RH_Lean coordinates under BOTH registries' constraints.
+
+## 2026-08-15-01 — PR #8 review response: merge, repairs, and the Lane B synthesis witness (record 037)
+
+Upstream request-changed PR #8 (2026-08-14): post-refresh boundary policy
+requires every Lean math change to carry a Lane A frontier certificate or a
+Lane B cross-track synthesis certificate; plus stale base (main moved to
+d83bfa1, +18k lines incl. signed second-Selberg, wheel-frontier, obstruction,
+physical-scale layers, and the wheel-rough energy module ported from the
+primary repo), stale docs (module count), route-closure language, and two
+prose overstatements.
+
+Response, all gate-green at e87c9ac (pushed to fork, PR updated):
+
+1. Merged d83bfa1 cleanly (0e67f08). Merged tree builds --wfail, 7726 jobs.
+2. P2 repairs: exact cap-binding condition H ≥ 2(A·n+B) stated, x^{1/2+ε}
+   labeled asymptotic-only; record-02x references localized; arguments-vs-
+   values of √x corrected; telescope module explicitly disclaims closing any
+   dead_lanes.json lane. Docs count corrected to the verified manifest count
+   (375 post-witness; upstream's own docs said 366 while main already
+   imported 370).
+3. Lane B witness (the P0): new module MobiusRenewalSquareWheelSynthesis.
+   Design chosen by Codex adversarial pass (D1/D2 rejected as checkbox-grade,
+   D3 as algebraically self-cancelling; D4 endorsed): the g-weighted renewal
+   telescope applied to the far-prime reciprocal Mertens kernel reproduces
+   the far-upper survivor Mertens transform (global far-upper rigidity);
+   substituting that renewal realization through the matched square-prefix
+   decomposition into the primorial-wheel zero-mode center yields ONE exact
+   identity — wheel response in renewal coordinates. No estimate asserted.
+   synthesis.json revision 1→2; anchors (all pre-existing, applied in the
+   proof, visible under pp.fullNames #print): squarePrefixMertens_eq_
+   positiveSmooth_add_matched + survivorSixteenFarUpperPrimeMass_eq_neg_
+   mertensTransform (square) / primorialMinimalSquareWheelNonzeroResponse_
+   eq_mertensCenter (wheel). Axioms clean. Full scripts/local_ci.sh green
+   on EC2 (all builds moved off local machine per user direction; EC2
+   stopped after the run).
+
+Significance: first contribution from our side that lives INSIDE upstream's
+synthesis architecture rather than beside it — the telescope is now the
+substrate connecting the Abel/prime-sieve face, the survivor sector, and the
+primorial wheel response in one kernel identity. PR reply drafted for user
+approval; not posted.
