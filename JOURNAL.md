@@ -966,3 +966,26 @@ transitively contains the entire protected chain to RH) reports exactly
 [propext, Classical.choice, Quot.sound] — the chain nowhere touches an
 ofReduceBool theorem. Action reduced to: one flag line in the next upstream
 reply noting the off-chain usage and the chain's verified cleanliness.
+
+## 2026-08-15-06 — Record 042 closed: T3 pin instantiation shipped (RH_Lean PR #368); #367 merged upstream within the hour
+
+Maintainer merged PR #367 at 20:57Z (~1h after opening) — the named
+contraction target and the repaired #362 modules are on main; the protected
+chain now formally includes ThreeSlotDegreeOneEnergyBoundedStatement.
+
+Record 042 executed in the same session: the T3 canonical-pin instantiation
+left open at record 039. Key design fact discovered during spec-gathering
+(missed by the Codex pass, which otherwise returned no refutation): the
+sharp affine constants are indexed by support level x/(y+1), so fiber
+applications land at level y/d and need slope/intercept monotonicity to
+reach the pin constants. Module PrimeSieveFiniteDifferencePin.lean: pin
+divisor stability (support stability survives every fiber, unconditional in
+d), per-fiber sharp modulus, transported bound A·t·Π(1+1/p) + (A+B)·N_active
+with intercept charged only on moving fibers, 2^|S| audit corollary. Gate
+green 7761 jobs on post-#367 main, seven declarations axiom-clean. PR #368
+opened. Two build iterations (div_le_div_right absent in pin — replaced
+with div_eq_mul_inv route).
+
+Queue: #368 review; composition lemma still gated on their open #364;
+round-5 blind panel on the contraction statement is now the only
+non-plumbing item left. EC2 stopped at close.
