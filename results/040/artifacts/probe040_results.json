@@ -1,0 +1,75 @@
+{
+ "N": 100000000,
+ "K_max": 25000000,
+ "checkpoints": [
+  {
+   "K": 10000,
+   "tv_joint_vs_independent_27": 0.15150045627762776,
+   "tv_pairs_vs_uniform_8x8": 0.07146739130434782,
+   "cond_mutual_info_two_step": 0.8090339883256843,
+   "W_a": 13,
+   "W_b": 14,
+   "W_c": -37,
+   "max_abs_M4K_up_to_K": 72,
+   "max_abs_M_over_sqrt4K": 0.36
+  },
+  {
+   "K": 100000,
+   "tv_joint_vs_independent_27": 0.13471356706347062,
+   "tv_pairs_vs_uniform_8x8": 0.0195621545464398,
+   "cond_mutual_info_two_step": 0.33089504625044563,
+   "W_a": 28,
+   "W_b": 58,
+   "W_c": -75,
+   "max_abs_M4K_up_to_K": 257,
+   "max_abs_M_over_sqrt4K": 0.4063526793316367
+  },
+  {
+   "K": 1000000,
+   "tv_joint_vs_independent_27": 0.134998255598635,
+   "tv_pairs_vs_uniform_8x8": 0.007898225050960658,
+   "cond_mutual_info_two_step": 0.2562114959954352,
+   "W_a": -21,
+   "W_b": 107,
+   "W_c": 106,
+   "max_abs_M4K_up_to_K": 682,
+   "max_abs_M_over_sqrt4K": 0.341
+  },
+  {
+   "K": 5000000,
+   "tv_joint_vs_independent_27": 0.13505182474974542,
+   "tv_pairs_vs_uniform_8x8": 0.0036750531413016416,
+   "cond_mutual_info_two_step": 0.24920502411813775,
+   "W_a": -188,
+   "W_b": -569,
+   "W_c": -196,
+   "max_abs_M4K_up_to_K": 1447,
+   "max_abs_M_over_sqrt4K": 0.32355903634421956
+  },
+  {
+   "K": 10000000,
+   "tv_joint_vs_independent_27": 0.13507001789074635,
+   "tv_pairs_vs_uniform_8x8": 0.0022794553451452775,
+   "cond_mutual_info_two_step": 0.24828307994872728,
+   "W_a": -1375,
+   "W_b": 384,
+   "W_c": 658,
+   "max_abs_M4K_up_to_K": 2573,
+   "max_abs_M_over_sqrt4K": 0.406827020980662
+  },
+  {
+   "K": 25000000,
+   "tv_joint_vs_independent_27": 0.135032208576665,
+   "tv_pairs_vs_uniform_8x8": 0.0014133714837453763,
+   "cond_mutual_info_two_step": 0.2477564875182872,
+   "W_a": -43,
+   "W_b": 852,
+   "W_c": 1119,
+   "max_abs_M4K_up_to_K": 3448,
+   "max_abs_M_over_sqrt4K": 0.3448
+  }
+ ],
+ "rate_exponent_tv_joint_vs_independent_27": -0.011793692857236679,
+ "rate_exponent_tv_pairs_vs_uniform_8x8": -0.4879962109572664,
+ "rate_exponent_cond_mutual_info_two_step": -0.13759592667083625
+}
