@@ -951,3 +951,18 @@ SurvivorResiduePrimeToggle, +1 arriving with #364); composition lemma
 (stencil = −Mertens renewal) after #364 merges — their agent's lane first;
 round-5 blind panel on the degree-one signed field. EC2 left running pending
 #367 review traffic.
+
+## 2026-08-15-05 — native_decide audit correction: house pattern, off-chain, contained
+
+The queued "hygiene fix" is retired as mis-scoped. Full sweep of RH_Lean main:
+44 native_decide sites across 7 files (SquareBlockPrefixCombSweep 20,
+CompleteFermatSieve 20, SmallModulusResonance 2, FourPrimeWheelCancellation 2,
+PrimeSquareCollisionInvolution 1, SurvivorResiduePrimeToggle 1, plus one
+arriving with open #364). This is upstream's deliberate pattern for finite
+sweeps where kernel decide is plausibly infeasible — not a one-line slip, and
+not ours to mass-convert unilaterally. Decisive containment check: the
+kernel axiom audit of riemannHypothesis_of_threeSlotDegreeOneEnergy (which
+transitively contains the entire protected chain to RH) reports exactly
+[propext, Classical.choice, Quot.sound] — the chain nowhere touches an
+ofReduceBool theorem. Action reduced to: one flag line in the next upstream
+reply noting the off-chain usage and the chain's verified cleanliness.
