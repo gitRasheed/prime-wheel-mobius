@@ -886,3 +886,29 @@ against the actual branch head, the revision-2 manifest, and the reply draft):
 - Rebuilt on EC2 after the docstring edits: 7727 jobs green --wfail,
   assumption audit pass. EC2 stopped. Branch head d19fd16 pushed; PR reply
   draft final, awaiting user approval to post.
+
+## 2026-08-15-03 — Records 039/040 closed: Route B fiber calculus shipped; transition-matrix claims measured (three-slot pivot week)
+
+040 (numerics, EC2): upstream's 8-state uniformity observation replicates
+at N=10^8 with rate K^{−0.488} ≈ K^{−1/2} (a symptom of the target scale,
+not a mechanism); the 27-state chain is persistently non-product (TV 0.135
+flat over three decades) and NOT first-order Markov (two-step conditional
+mutual information plateaus at 0.248 nats). The "finite Markov mixing /
+structurally forced" framing is falsified by measurement; upstream's own
+route doc §6 is vindicated. Artifacts in results/040/.
+
+039 (kernel, EC2): after a desk-only Codex design pass (T1-Abel
+identification proven FALSE — rough low remainder + smooth tail both
+persist; T1-saturated/T2-active/T3-fresh-prime/T4-bridge endorsed), two new
+modules landed on RH_Lean PR #365 (7eb8a4c, 7757 jobs green, axioms clean):
+MobiusFiniteDifferenceIdentification (saturated full-prefix identification
+Σ μ(n) f(⌊X/n⌋) = D_S f X; 2^{|S|} lattice card; Euler reciprocal sum;
+truncated operator + tail split) and PrimeSieveFiniteDifferenceModulus
+(R(0)=R(1)=0 via non-integrability of 1/log across u=1; shift commutation;
+active-fiber increment bound; Euler worst case with the exponential
+intercept stated; fresh-prime modulus recurrence — slope ×(1+1/p),
+intercept ×2 visibly; exact Abel rough/smooth bridge). This is the first
+quantitative modulus infrastructure for upstream's Route B fibers; all
+bookkeeping, no frontier claim. First Codex launch was killed for running
+local sandboxed Lean against the no-local rule; its half-finished R(0)=0
+proof was salvaged into the relaunch brief and the final module.
