@@ -1116,3 +1116,35 @@ fiber bookkeeping (moment-a; value raised by the order-search revival).
 kernel-clean, narrowed scope. 6. octave/interleave lemma (once, prior
 art cited, low priority). 7. P-generalized sum-rule witness no-go.
 HOLD: gcd collapse, weighted fiber identity. REJECT: fiber regroup.
+
+## 2026-08-16-03 — Complement-smooth inversion shipped as RH_Lean PR #374; kill report drafted
+
+The round's ranked-first kernel deliverable is upstream. New module
+RHLean/Arithmetic/PrimeCombComplementSmoothInversion.lean (7
+declarations): primeSetSmoothIcc + membership/degenerate-window lemmas,
+single-prime recovery eq_sum_freshPrimeDifference_of_apply_zero, and
+finiteDifferenceOperator_eq_sum_complementSmooth — for disjoint prime
+finsets S, T and f with f 0 = 0 (generic CommRing value type),
+D_S f x = Σ_{n T-smooth ≤ x} D_{S∪T} f ⌊x/n⌋. This is the order-free
+theorem-level form of the round's central diagnosis: every intermediate
+state of the fresh-prime induction is an explicit convolution of the
+saturated object at reduced arguments (relocation, not obstruction).
+
+Cycle ran per the new process: Opus agent; GPT-5.6-Sol round 1 desk
+design review (one wrong blocker correctly rebutted — sum_sigma'
+orientation; several accepted incl. the "with multiplicity" wording
+fix and hS load-bearing witness S={6}); EC2 build 3 iterations to
+green (12 errors it.1, notable: positivity fails on ℕ 1 ≤ q*e', omega
+cannot bridge a*b/b*a, Nat.Prime vs _root_.Prime inside namespace Nat);
+full gate 7772 jobs --wfail exit 0; all 7 declarations axiom-clean;
+GPT-5.6 round 2 statement audit (5 presentation fixes incl. "invertible"
+→ pointwise recovery formula; naming rebuttal kept "complementSmooth").
+16k-check numeric verification, 0 mismatches; all four hypotheses shown
+load-bearing with explicit ℤ counterexamples. PR #374 opened from fork.
+
+Kill-report agent also done: results/043/kill_report.md (830 lines,
+uncommitted pending phase-3 numerics patch), two GPT rounds (34 findings
+r1 incl. a genuine inherited arithmetic error — the μ*1=δ violation set
+has density Π(1−1/p), not 1; 9 findings r2, verdict mergeable). Numerics
+agent (greedy path at scale + G(R)/matched' segmented sieve) still
+running on EC2.
