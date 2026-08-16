@@ -1148,3 +1148,26 @@ r1 incl. a genuine inherited arithmetic error — the μ*1=δ violation set
 has density Π(1−1/p), not 1; 9 findings r2, verdict mergeable). Numerics
 agent (greedy path at scale + G(R)/matched' segmented sieve) still
 running on EC2.
+
+## 2026-08-16-04 — Record 043 closed on both gate arms; phase-3 numerics settle both re-opens; D4 predictive rule falsified
+
+Phase-3 numerics (Opus agent, EC2, two GPT-5.6 rounds — round 1 caught a
+real fast-path soundness bug, round 2 deleted the strongest overclaim):
+greedy floor path CONFIRMED at N = 10^6 (sup = 1.000000 at all 78,498
+stages) but demystified — admissible moves are locally common (~65%),
+existence not strategy, cross-horizon transfer fails (22.61); open
+question is a constructive mu-free ordering rule. Orientation re-open
+CLOSED: |G(R)|/R flat-at-0.30 was pre-asymptotic; effective exponent
+1.4164 and rising at R ≤ 10^8, sign-definiteness fails at R = 20939.
+Collateral: the split is a verified unit-weight index partition that
+does NOT preserve scale — the predictive form of #372's trilemma horn-1
+rule is falsified (kill_report.md §4.0); exact regrouping
+G(R) = Σ_{n<R} mu(n)(pi(R) − pi(n)) (0 failures to 10^8) explains it.
+The pre-asymptotic calibration wall fired against our own re-open —
+first confirmed firing of the standing rule.
+
+Kill report patched and final (1,023 lines). Record 043 closed done on
+both arms: PR #374 shipped + certified kill report. EC2 stopped.
+Next per plan: maintainer sync (PR #374, memory reattribution, D4
+correction), then targeted deep-dives (constructive ordering rule; B7
+sign-reversal; hstate universality) — no further blind swarms.
