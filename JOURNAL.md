@@ -1051,3 +1051,68 @@ relocation — direct tension with mult-fiber-package-discharge, injected
 into Phase 2. Kill panel running: 11 adversarial refuters (2 lenses per
 positive route, 1 verifier per kill claim, 1 null-auditor), default-to-kill.
 EC2 still off; nothing has earned a Lean build yet.
+
+## 2026-08-16-02 — Round-5 kill panel complete: all 3 positive routes killed (unanimous, two models); two nulls re-opened; ship list ranked
+
+Mid-phase directive from Rasheed: no Fable subagents (panel rerun on Opus
+5, 11 refuters, 970k tokens) + GPT-5.6-Sol desk passes via Codex on the
+three positive routes; heavy subagent compute goes to EC2 in future
+phases. Artifacts: results/043/phase2_killpanel.md + gpt56_*_verdict.md.
+
+Verdicts. Positive routes: overlap-square-pin KILL×3 (J(A) ≡ M(A)² —
+restatement; the averaged intermediate Σ M(A)² ≪ T^{2+ε} is RH-EQUIVALENT
+by Mellin, not scaffolding; μ×(μ*μ) tower provably does not close);
+mult-fiber-package-discharge KILL×3 (the Lean site instantiation and the
+measured physical-cofactor D(K) are not connected by any equality —
+physical faithfulness IS the bridge; either relocation or renewal stall;
+classical parity obstruction); excursion-moment-interpolation KILL×3
+(each fixed-m moment obligation is RH-equivalent via Hölder+Mellin,
+Titchmarsh 14.25; ladder is relocation).
+
+Kill claims: all REVISE — upheld after narrowing. hother-kill: witness
+arithmetic perfect (verifier PROVED the lemma in Lean, native_decide;
+plain decide blocked by ZMod CRT inverse; kernel-clean route named);
+but hother fails ONLY when the other prime ∈ {3,5} (holds for 182/210
+pairs) — the universal obstruction is hstate (210/210 fail: cofactor
+transport divides out p² at both mates); conclusion-level upgrade
+(sign reversal itself fails at the witness) verified and preferred.
+pin-kill: floor verified twice (min Q(t)/t = 0.602); ship one refactored
+lemma (subset injection + 2t/5 corollary + payload); kill is a SATURATION
+statement (small wheels survive); B3-recurrence half of F2 NOT killed;
+truncated-operator escape named. sumrule-kill: core valid but witness
+must be P-generalized (g_2 is defeated by the 3-adic dilation family the
+classification missed); falsifier must be re-stated windowed. resigning-
+kill: replication succeeded but the instrument was wrong — and the
+verifier's diagnosis is the finding of the round: record-040's TV 0.1350
+and CMI 0.248 are PURE μ² ZERO-PATTERN statistics (TV27 = TV8 to 10
+decimals at K ≥ 2×10⁵; CMI plateau = zero-pattern CMI 0.2474). The
+memory carries zero sign information. Correct kill witness = δ-biased
+core-resigning (matches ledger to 10dp at exponent 1); unbiased null
+SATISFIES the target and certifies nothing. Prior art both spectral
+proposals missed: mertensSummatory_eq_dyadicCofactorBoundaryMass
+(DyadicTransportCanonicalForm.lean:235) already gives M(B) = odd-annulus
+sum; octave corollary is its B=8L instance.
+
+Null audit: all six arithmetically sound; two RE-OPENED. (1) The
+"fresh-prime induction has no target-compatible per-stage invariant"
+principle is FALSE as stated: a greedy insertion order attains
+sup|g_S|/√x = 1.0000 at every stage (N ≤ 2×10⁴), window energy flat
+0.30·N² — the X^{1-o(1)} mountain is an artifact of smooth-first
+ordering. Correct joint entry (with induction-a's order-free inversion
+lemma): the induction coordinate is obstructed by RELOCATION, not by
+huge intermediates. (2) renewal-a's own pre-registered re-open fired:
+G(R) = Σ_{p≤R} M(p-1) measured at ~0.30·R, sign-definite negative,
+R^{1+o(1)} — the canonical orientation split is a measured
+SCALE-PRESERVING horn-1 partition (unique in the dossier); its "GRH per
+piece" pricing was asserted, not proven. Also corrected: moment-b's
+θ* = 5/6 is a factor-2 unit slip (true value ~0.673; s→1 under RH-true
+limits — pre-asymptotic calibration caveat is now a standing rule).
+
+Ship ranking (verifiers): 1. complement-smooth inversion lemma
+(induction-a; order-free, general, explains the relocation). 2. stage
+identity g_{<P}(X) = M(X)+π(X)−π(X/2) (involution-b). 3. parallelogram
+fiber bookkeeping (moment-a; value raised by the order-search revival).
+4. N_active floor refactor. 5. hother counterexample, conclusion-level,
+kernel-clean, narrowed scope. 6. octave/interleave lemma (once, prior
+art cited, low priority). 7. P-generalized sum-rule witness no-go.
+HOLD: gcd collapse, weighted fiber identity. REJECT: fiber regroup.
