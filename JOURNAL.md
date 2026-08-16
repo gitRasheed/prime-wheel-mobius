@@ -1004,3 +1004,50 @@ active fiber vs the direct single-fiber bound; "sharp" = the transported pin
 constants, not aggregate optimality. Posted as a comment on #368
 (issuecomment-5304260843). Round-5 workflow plan for the contraction
 statement drafted and presented; awaiting go.
+
+## 2026-08-16-01 — Record 043 declared; round-5 generation panel complete (9 proposals, 6 certified nulls)
+
+Upstream moved overnight: our #368 MERGED; their #364, #369, #370 (the
+far-survivor/lower-Mertens composition we had marked blocked), #371, #372
+all merged; #373 open (their SquareRoot* Gram lane — do-not-race). #372's
+diagnostics close four routes and prove the TRILEMMA: index-set partitions
+preserve RH scale but cost GRH per piece; factorization-space and
+coefficient splits destroy scale (cancellation lives between the pieces).
+E_loc(muRho) is measured FALSE. All folded into the round-5 dossier.
+
+Record 043 declared (gate: first kernel lemma or certified kill report),
+dossier frozen at results/043/dossier.md. Phase 1 ran as a 12-agent blind
+Claude generation workflow (2 per mechanism class + trilemma wildcard +
+contrarian; schema-forced proposals with mandatory guardrail answers and
+pre-registered falsification tests; 1.09M tokens, 25 min). Slate at
+results/043/phase1_proposals.md:
+
+- 3 positive routes: overlap-square-pin (exact M(A)² + M2(A²) = 2·S_A(A²)
+  quadratic pin + A-averaging), mult-fiber-package-discharge (multiplicative
+  transport n→pn discharges the full B7 sign-reversal package; defect
+  aggregation D(K) with measured 20x signed saving), excursion-moment-
+  interpolation (unconditional sup-to-moment ladder; m=1 rung would break
+  the x^{3/4} ceiling).
+- 6 kill/structure results with kernel-checkable cores, including: hother
+  FALSE at (3,5) for the CRT-faithful cofactor realization (answers the
+  route doc's named open question NEGATIVELY for faithful transports);
+  N_active ≥ 0.4t floor ⇒ sign-blind B4 transport certifies nothing below
+  x/log x (two agents converged blindly on the same lemma); finite-prime
+  sum-rule witness attaining exponent 1 (kills CRT-sum-rule mechanisms);
+  core-resigning null model reproducing record-040 memory to 4 decimals
+  (the memory is the constraint set's shadow, zero sign information);
+  exact octave interleave Wb(2L) = −(Wa(L)+Wc(L)) (b-channel redundant,
+  target annihilates the χ₄ direction — explains the GRH horn).
+- 6 honest nulls with new certificates: expansive renewal exponent map
+  φ(θ)=(1+θ)/2; stage identity g_{<P}(X)=M(X)+π(X)−π(X/2) (fresh-prime
+  induction has no target-compatible per-stage invariant); complement-
+  smooth inversion (filtration = M in terms of itself); filtration energy
+  mountain ~N^{2.8} measured; drift-is-energy identity 2Σμ(m)M(m) =
+  M(x)²+Q(x); gcd-coordinate self-inverse collapse + θ*=(2−s)/2
+  calibration (measured saving s=0.327 → stall at 5/6).
+
+Three independent panelists concluded the multiplicative-defect route is
+relocation — direct tension with mult-fiber-package-discharge, injected
+into Phase 2. Kill panel running: 11 adversarial refuters (2 lenses per
+positive route, 1 verifier per kill claim, 1 null-auditor), default-to-kill.
+EC2 still off; nothing has earned a Lean build yet.
